@@ -1,0 +1,24 @@
+repos:
+- repo: https://github.com/ibm/detect-secrets
+  rev: 0.13.1+ibm.61.dss
+  hooks:
+    -   id: detect-secrets # pragma: whitelist secret
+        args: [--baseline, .secrets.baseline]
+- repo: local
+  hooks:
+    -   id: make-deps
+        name: Check mqoc go modules are up to date
+        entry: |
+          bash -c '
+            if ! make deps; then
+              echo "Failed to run make deps"
+              exit 1
+            fi
+            git diff --exit-code go.* &> /dev/null
+            if [ $? -ne 0 ]; then
+              echo "Detected module updates, please add and commit."
+              exit 1
+            fi'
+        language: system
+        files: ^
+        stages: [commit]

@@ -1,0 +1,51 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+*.env
+
+# Folders
+_obj
+_test
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+_testmain.go
+
+*.exe
+*.test
+*.prof
+
+# Don't commit vendor/ libs
+vendor/
+
+# Don't commit the built binaries
+/mqcloud-go-sdk
+/mqcloud-go-sdk-darwin-amd64
+/mqcloud-go-sdk-darwin-arm64
+/mqcloud-go-sdk-linux-amd64
+/mqcloud-go-sdk-windows-amd64
+
+# Don't commit common supporting binaries
+/cpctl-linux-amd64
+/jl-linux-amd64
+/kub-linux-amd64
+
+# Don't commit coverage
+cover.out
+cover.html
+*.coverprofile
+testoutput.log
+
+# Ignore mac/vs files
+.vscode
+.DS_Store
+.history

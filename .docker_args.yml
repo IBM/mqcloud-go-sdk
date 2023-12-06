@@ -1,0 +1,28 @@
+# This file contains values to inject for build args and labels to a docker file
+# Values that are empty or commented out will be ignored
+
+# This is a special tag that is for injecting a dependency image to the from statement in a docker file
+# If populated there needs to be an equivalent reference to the arg "DEPENDENCY_IMAGE" in the docker file
+# this being populated will also lead to a label being added to the image referencing this dependecy image 
+# For example
+#
+# DEPENDENCY_IMAGE: ghcr.io/fluxcd/source-controller:v0.17.0
+DEPENDENCY_IMAGE:
+
+# This is an alternative or complementary tag for injecting the base image that the rest of the docker file
+# has been built on top of. This is for alpine or scratch where as dependecy image is one that is of a program
+# for example prometheus
+# Usage is for example
+#
+# BASE_IMAGE: alpine:3.12
+BASE_IMAGE:
+
+# If you wish to add additional build args that can be done here.
+# Follow the format of using
+# *_BUILD_ARG_KEY - is the name of the arg that will be in the docker file
+# *_BUILD_ARG_VALUE - is the value to assign to the arg
+# 
+# For example here is how you would add a build arg called BLUES with a value of clues
+#
+# BLUES_BUILD_ARG_KEY: BLUES
+# BLUES_BUILD_ARG_VALUE: clues
