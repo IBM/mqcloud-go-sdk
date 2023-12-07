@@ -26,9 +26,9 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
+	"github.com/IBM/mqcloud-go-sdk/mqcloudv1"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"github.com/IBM/mqcloud-go-sdk/mqcloudv1"
 )
 
 /**
