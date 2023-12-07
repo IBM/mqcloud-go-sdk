@@ -254,7 +254,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`SetQueueManagerVersion(setQueueManagerVersionOptions *SetQueueManagerVersionOptions)`, func() {
-			WaitForQmStatusUpdate(queue_manager_id, mqcloudService)
+			WaitForQmStatusUpdate(queue_manager_id, mqcloudService, serviceinstance_guid)
 			fmt.Println(
 				"--------- Queue Manager is now in the running state ---------",
 			)
@@ -325,6 +325,44 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			Expect(queueManagerStatus).ToNot(BeNil())
 		})
 	})
+
+	Describe(`CreateUser - Add a user to an instance`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateUser(createUserOptions *CreateUserOptions)`, func() {
+			createUserOptions := &mqcloudv1.CreateUserOptions{
+				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
+				Email:               core.StringPtr("user" + RandString(6) + "@ibm.com"),
+				Name:                core.StringPtr("user" + RandString(6)),
+				AcceptLanguage:      core.StringPtr("testString"),
+			}
+
+			userDetails, response, err := mqcloudService.CreateUser(createUserOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(userDetails).ToNot(BeNil())
+			user_id = userDetails.ID
+		})
+	})
+
+	Describe(`GetUser - Get a user for an instance`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`GetUser(getUserOptions *GetUserOptions)`, func() {
+			getUserOptions := &mqcloudv1.GetUserOptions{
+				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
+				UserID:              user_id,
+				AcceptLanguage:      core.StringPtr("testString"),
+			}
+
+			userDetails, response, err := mqcloudService.GetUser(getUserOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(userDetails).ToNot(BeNil())
+		})
+	})
 	Describe(`ListUsers - Get a list of users for an instance`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -391,41 +429,40 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`CreateUser - Add a user to an instance`, func() {
+	Describe(`CreateApplication - Add an application to an instance`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`CreateUser(createUserOptions *CreateUserOptions)`, func() {
-			createUserOptions := &mqcloudv1.CreateUserOptions{
+		It(`CreateApplication(createApplicationOptions *CreateApplicationOptions)`, func() {
+			createApplicationOptions := &mqcloudv1.CreateApplicationOptions{
 				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
-				Email:               core.StringPtr("user" + RandString(6) + "@ibm.com"),
-				Name:                core.StringPtr("user" + RandString(6)),
+				Name:                core.StringPtr("app" + RandString(1)),
 				AcceptLanguage:      core.StringPtr("testString"),
 			}
 
-			userDetails, response, err := mqcloudService.CreateUser(createUserOptions)
+			applicationCreated, response, err := mqcloudService.CreateApplication(createApplicationOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-			Expect(userDetails).ToNot(BeNil())
-			user_id = userDetails.ID
+			Expect(applicationCreated).ToNot(BeNil())
+			application_id = applicationCreated.ID
 		})
 	})
 
-	Describe(`GetUser - Get a user for an instance`, func() {
+	Describe(`GetApplication - Get an application for an instance`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`GetUser(getUserOptions *GetUserOptions)`, func() {
-			getUserOptions := &mqcloudv1.GetUserOptions{
+		It(`GetApplication(getApplicationOptions *GetApplicationOptions)`, func() {
+			getApplicationOptions := &mqcloudv1.GetApplicationOptions{
 				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
-				UserID:              user_id,
+				ApplicationID:       application_id,
 				AcceptLanguage:      core.StringPtr("testString"),
 			}
 
-			userDetails, response, err := mqcloudService.GetUser(getUserOptions)
+			applicationDetails, response, err := mqcloudService.GetApplication(getApplicationOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
-			Expect(userDetails).ToNot(BeNil())
+			Expect(applicationDetails).ToNot(BeNil())
 		})
 	})
 
@@ -495,43 +532,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`CreateApplication - Add an application to an instance`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`CreateApplication(createApplicationOptions *CreateApplicationOptions)`, func() {
-			createApplicationOptions := &mqcloudv1.CreateApplicationOptions{
-				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
-				Name:                core.StringPtr("app" + RandString(1)),
-				AcceptLanguage:      core.StringPtr("testString"),
-			}
-
-			applicationCreated, response, err := mqcloudService.CreateApplication(createApplicationOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(201))
-			Expect(applicationCreated).ToNot(BeNil())
-			application_id = applicationCreated.ID
-		})
-	})
-
-	Describe(`GetApplication - Get an application for an instance`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`GetApplication(getApplicationOptions *GetApplicationOptions)`, func() {
-			getApplicationOptions := &mqcloudv1.GetApplicationOptions{
-				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
-				ApplicationID:       application_id,
-				AcceptLanguage:      core.StringPtr("testString"),
-			}
-
-			applicationDetails, response, err := mqcloudService.GetApplication(getApplicationOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(200))
-			Expect(applicationDetails).ToNot(BeNil())
-		})
-	})
-
 	Describe(`CreateApplicationApikey - Create a new apikey for an application`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -556,7 +556,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			shouldSkipTest()
 		})
 		It(`CreateTrustStorePemCertificate(createTrustStorePemCertificateOptions *CreateTrustStorePemCertificateOptions)`, func() {
-			WaitForQmStatusUpdate(queue_manager_id, mqcloudService)
+			WaitForQmStatusUpdate(queue_manager_id, mqcloudService, serviceinstance_guid)
 			filePath := truststore_filepath // Replace with your file path
 			file, err := os.Open(filePath)
 			if err != nil {

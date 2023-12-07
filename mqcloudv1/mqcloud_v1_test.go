@@ -7818,7 +7818,7 @@ func ClearTestEnvironment(testEnvironment map[string]string) {
 	}
 }
 
-func WaitForQmStatusUpdate(qmid *string, mqcloudService *mqcloudv1.MqcloudV1) error {
+func WaitForQmStatusUpdate(qmid *string, mqcloudService *mqcloudv1.MqcloudV1, serviceinstance_guid string) error {
 	startTime := time.Now()
 	timeout := 5 * time.Minute
 
@@ -7831,7 +7831,7 @@ func WaitForQmStatusUpdate(qmid *string, mqcloudService *mqcloudv1.MqcloudV1) er
 		}
 
 		getQueueManagerStatusOptions := &mqcloudv1.GetQueueManagerStatusOptions{
-			ServiceInstanceGuid: core.StringPtr("b8ef2cea-1820-412a-b8b4-d877cf5f1979"),
+			ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
 			QueueManagerID:      qmid,
 			AcceptLanguage:      core.StringPtr("testString"),
 		}
