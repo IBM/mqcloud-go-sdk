@@ -1,4 +1,4 @@
-module github.ibm.com/mqoc/mqcloud-go-sdk
+module github.com/IBM/mqcloud-go-sdk
 
 go 1.20
 

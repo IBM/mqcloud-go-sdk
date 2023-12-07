@@ -32,8 +32,8 @@ import (
 	"time"
 
 	"github.com/IBM/go-sdk-core/v5/core"
+	common "github.com/IBM/mqcloud-go-sdk/common"
 	"github.com/go-openapi/strfmt"
-	common "github.ibm.com/mqoc/mqcloud-go-sdk/common"
 )
 
 // MqcloudV1 : The MQ on Cloud API defines a REST API interface to work with MQ on Cloud service in IBM Cloud.
