@@ -28,7 +28,7 @@ import (
 	"github.com/IBM/go-sdk-core/v5/core"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"github.ibm.com/mqoc/mqcloud-go-sdk/mqcloudv1"
+	"github.com/IBM/mqcloud-go-sdk/mqcloudv1"
 )
 
 // This file provides an example of how to use the mqcloud service.
