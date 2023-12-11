@@ -44,7 +44,7 @@ type MqcloudV1 struct {
 }
 
 // DefaultServiceURL is the default URL to make service requests to.
-const DefaultServiceURL = "https://api.private.eu-fr2.mq2.cloud.ibm.com"
+const DefaultServiceURL = "https://api.private.eu-de.mq2.cloud.ibm.com"
 
 // DefaultServiceName is the default key used to find external configuration information.
 const DefaultServiceName = "mqcloud"
@@ -52,7 +52,7 @@ const DefaultServiceName = "mqcloud"
 const ParameterizedServiceURL = "https://api.private.{region}.mq2.cloud.ibm.com"
 
 var defaultUrlVariables = map[string]string{
-	"region": "eu-fr2",
+	"region": "eu-de",
 }
 
 // MqcloudV1Options : Service options

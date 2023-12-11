@@ -1,11 +1,6 @@
 
-| Travis |
-| ------ |
-| [![Build Status](https://v3.travis.ibm.com/mqoc/mqcloud-go-sdk.svg?token=xb8AgTFykN966eqXcU5v)](https://v3.travis.ibm.com/mqoc/mqcloud-go-sdk) |
-
-
-# IBM Cloud MQoC Services Go SDK 0.0.1
-Go client library to interact with the various [IBM Cloud MQoC APIs](https://cloud.ibm.com/apidocs).
+# IBM Cloud MQ on Cloud Services Go SDK Version 0.0.1
+Go client library to interact with the various [IBM Cloud MQ on Cloud APIs](https://cloud.ibm.com/apidocs/mq-on-cloud).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
 Changes might occur which impact applications that use this SDK.
@@ -23,7 +18,6 @@ Changes might occur which impact applications that use this SDK.
 
 <!-- toc -->
 
-- [IBM Cloud MQoC Services Go SDK 0.0.1](#ibm-cloud-mqoc-services-go-sdk-001)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Prerequisites](#prerequisites)
@@ -41,11 +35,11 @@ Changes might occur which impact applications that use this SDK.
 
 ## Overview
 
-The IBM Cloud MQoC Go SDK allows developers to programmatically interact with the following IBM Cloud services:
+The IBM Cloud MQ on Cloud Go SDK allows developers to programmatically interact with the following IBM Cloud services:
 
 Service Name | Package name 
 --- | --- 
-[MQoC](https://cloud.ibm.com/apidocs/example-service) | mqcloudv1
+[MQ on Cloud](https://github.ibm.com/cloud-api-docs/mq-on-cloud) | mqcloudv1
 
 ## Prerequisites
 
@@ -53,7 +47,7 @@ Service Name | Package name
 
 * An [IBM Cloud][ibm-cloud-onboarding] account.
 * An IAM API key to allow the SDK to access your account. Create one [here](https://cloud.ibm.com/iam/apikeys).
-* Go version 1.19 or above.
+* Go version 1.20 or above.
 
 ## Installation
 The current version of this SDK: 0.0.1

@@ -1,51 +1,25 @@
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
-*.o
-*.a
-*.so
-*.env
+.DS_Store
+.env
 
-# Folders
-_obj
-_test
-
-# Architecture specific extensions/prefixes
-*.[568vq]
-[568vq].out
-
-*.cgo1.go
-*.cgo2.c
-_cgo_defun.c
-_cgo_gotypes.go
-_cgo_export.*
-
-_testmain.go
-
-*.exe
-*.test
-*.prof
-
-# Don't commit vendor/ libs
+# ignore vendor/
 vendor/
 
-# Don't commit the built binaries
-/mqcloud-go-sdk
-/mqcloud-go-sdk-darwin-amd64
-/mqcloud-go-sdk-darwin-arm64
-/mqcloud-go-sdk-linux-amd64
-/mqcloud-go-sdk-windows-amd64
+# SDK generator
+.openapi-generator-ignore
+.openapi-generator/VERSION
+/.project
 
-# Don't commit common supporting binaries
-/cpctl-linux-amd64
-/jl-linux-amd64
-/kub-linux-amd64
+# credentials files
+*.env
 
-# Don't commit coverage
-cover.out
-cover.html
-*.coverprofile
-testoutput.log
+# IDE files
+*.idea
+.vscode/
+*.log
 
-# Ignore mac/vs files
-.vscode
-.DS_Store
-.history
+# coverage
+coverage.txt
+
+# files produced by "npm install" commands during build
+package-lock.json
+node_modules/

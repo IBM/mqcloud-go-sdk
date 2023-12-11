@@ -165,7 +165,7 @@ var _ = Describe(`MqcloudV1`, func() {
 	Describe(`Parameterized URL tests`, func() {
 		It(`Format parameterized URL with all default values`, func() {
 			constructedURL, err := mqcloudv1.ConstructServiceURL(nil)
-			Expect(constructedURL).To(Equal("https://api.private.eu-fr2.mq2.cloud.ibm.com"))
+			Expect(constructedURL).To(Equal("https://api.private.eu-de.mq2.cloud.ibm.com"))
 			Expect(constructedURL).ToNot(BeNil())
 			Expect(err).To(BeNil())
 		})
@@ -468,7 +468,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-fr-cluster-f884"], "sizes": ["lite"], "versions": ["Versions"]}`)
+					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["lite"], "versions": ["Versions"]}`)
 				}))
 			})
 			It(`Invoke GetOptions successfully with retries`, func() {
@@ -525,7 +525,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-fr-cluster-f884"], "sizes": ["lite"], "versions": ["Versions"]}`)
+					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["lite"], "versions": ["Versions"]}`)
 				}))
 			})
 			It(`Invoke GetOptions successfully`, func() {
@@ -653,7 +653,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel := new(mqcloudv1.CreateQueueManagerOptions)
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
-				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-fr-cluster-f884")
+				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
 				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
@@ -728,7 +728,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel := new(mqcloudv1.CreateQueueManagerOptions)
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
-				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-fr-cluster-f884")
+				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
 				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
@@ -811,7 +811,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel := new(mqcloudv1.CreateQueueManagerOptions)
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
-				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-fr-cluster-f884")
+				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
 				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
@@ -837,7 +837,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel := new(mqcloudv1.CreateQueueManagerOptions)
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
-				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-fr-cluster-f884")
+				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
 				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
@@ -884,7 +884,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel := new(mqcloudv1.CreateQueueManagerOptions)
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
-				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-fr-cluster-f884")
+				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
 				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
@@ -977,7 +977,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-fr-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListQueueManagers successfully with retries`, func() {
@@ -1038,7 +1038,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-fr-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListQueueManagers successfully`, func() {
@@ -1196,9 +1196,9 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-fr-cluster-f884","size":"lite","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"lite","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-fr-cluster-f884","size":"lite","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"lite","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -1324,7 +1324,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-fr-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetQueueManager successfully with retries`, func() {
@@ -1382,7 +1382,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-fr-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetQueueManager successfully`, func() {
@@ -7275,12 +7275,12 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateQueueManagerOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
 				createQueueManagerOptionsName := "testqm"
-				createQueueManagerOptionsLocation := "reserved-eu-fr-cluster-f884"
+				createQueueManagerOptionsLocation := "reserved-eu-de-cluster-f884"
 				createQueueManagerOptionsSize := "lite"
 				createQueueManagerOptionsModel := mqcloudService.NewCreateQueueManagerOptions(serviceInstanceGuid, createQueueManagerOptionsName, createQueueManagerOptionsLocation, createQueueManagerOptionsSize)
 				createQueueManagerOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.SetName("testqm")
-				createQueueManagerOptionsModel.SetLocation("reserved-eu-fr-cluster-f884")
+				createQueueManagerOptionsModel.SetLocation("reserved-eu-de-cluster-f884")
 				createQueueManagerOptionsModel.SetSize("lite")
 				createQueueManagerOptionsModel.SetDisplayName("A test queue manager")
 				createQueueManagerOptionsModel.SetVersion("9.3.2_2")
@@ -7289,7 +7289,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(createQueueManagerOptionsModel).ToNot(BeNil())
 				Expect(createQueueManagerOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(createQueueManagerOptionsModel.Name).To(Equal(core.StringPtr("testqm")))
-				Expect(createQueueManagerOptionsModel.Location).To(Equal(core.StringPtr("reserved-eu-fr-cluster-f884")))
+				Expect(createQueueManagerOptionsModel.Location).To(Equal(core.StringPtr("reserved-eu-de-cluster-f884")))
 				Expect(createQueueManagerOptionsModel.Size).To(Equal(core.StringPtr("lite")))
 				Expect(createQueueManagerOptionsModel.DisplayName).To(Equal(core.StringPtr("A test queue manager")))
 				Expect(createQueueManagerOptionsModel.Version).To(Equal(core.StringPtr("9.3.2_2")))
