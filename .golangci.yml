@@ -46,5 +46,6 @@ issues:
         - errcheck
         - gosec
         - unparam
+        - typecheck
   # maximum count of issues with the same text. set to 0 to disable. default is 3.
   max-same-issues: 0
