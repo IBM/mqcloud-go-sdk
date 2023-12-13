@@ -152,8 +152,8 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			createQueueManagerOptions := &mqcloudv1.CreateQueueManagerOptions{
 				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
 				Name:                core.StringPtr("int_test" + RandString(6)),
-				Location:            core.StringPtr("ibmcloud_eu_de"),
-				Size:                core.StringPtr("small"),
+				Location:            core.StringPtr("reserved-eu-de-cluster-f884"),
+				Size:                core.StringPtr("lite"),
 				DisplayName:         core.StringPtr("A test queue manager"),
 				Version:             core.StringPtr("9.3.3_3"),
 			}
@@ -255,7 +255,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 		It(`SetQueueManagerVersion(setQueueManagerVersionOptions *SetQueueManagerVersionOptions)`, func() {
 			WaitForQmStatusUpdate(queue_manager_id, mqcloudService, serviceinstance_guid)
-			fmt.Println(
+			fmt.Fprintf(GinkgoWriter,
 				"--------- Queue Manager is now in the running state ---------",
 			)
 			setQueueManagerVersionOptions := &mqcloudv1.SetQueueManagerVersionOptions{
@@ -560,7 +560,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			filePath := truststore_filepath // Replace with your file path
 			file, err := os.Open(filePath)
 			if err != nil {
-				fmt.Println("Error opening file:", err)
+				fmt.Println(GinkgoWriter, fmt.Errorf("Error opening file: %s", err))
 				return
 			}
 			defer file.Close()
@@ -663,7 +663,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			filePath := keystore_filepath // Replace with your file path
 			file, err := os.Open(filePath)
 			if err != nil {
-				fmt.Println("Error opening file:", err)
+				fmt.Println(GinkgoWriter, fmt.Errorf("Error opening file: %s", err))
 				return
 			}
 			defer file.Close()
