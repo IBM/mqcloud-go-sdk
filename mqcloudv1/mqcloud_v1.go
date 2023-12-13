@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.82.0-2aef8017-20231103-171818
+ * IBM OpenAPI SDK Code Generator Version: 3.83.0-adaf0721-20231212-210453
  */
 
 // Package mqcloudv1 : Operations and models for the MqcloudV1 service
@@ -41,6 +41,9 @@ import (
 // API Version: 1.0.0
 type MqcloudV1 struct {
 	Service *core.BaseService
+
+	// The acceptable list of languages supported in the client.
+	AcceptLanguage *string
 }
 
 // DefaultServiceURL is the default URL to make service requests to.
@@ -60,6 +63,9 @@ type MqcloudV1Options struct {
 	ServiceName   string
 	URL           string
 	Authenticator core.Authenticator
+
+	// The acceptable list of languages supported in the client.
+	AcceptLanguage *string
 }
 
 // NewMqcloudV1UsingExternalConfig : constructs an instance of MqcloudV1 with passed in options and external configuration.
@@ -98,6 +104,11 @@ func NewMqcloudV1(options *MqcloudV1Options) (service *MqcloudV1, err error) {
 		Authenticator: options.Authenticator,
 	}
 
+	err = core.ValidateStruct(options, "options")
+	if err != nil {
+		return
+	}
+
 	baseService, err := core.NewBaseService(serviceOptions)
 	if err != nil {
 		return
@@ -111,7 +122,8 @@ func NewMqcloudV1(options *MqcloudV1Options) (service *MqcloudV1, err error) {
 	}
 
 	service = &MqcloudV1{
-		Service: baseService,
+		Service:        baseService,
+		AcceptLanguage: options.AcceptLanguage,
 	}
 
 	return
@@ -211,8 +223,8 @@ func (mqcloud *MqcloudV1) GetUsageDetailsWithContext(ctx context.Context, getUsa
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getUsageDetailsOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getUsageDetailsOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -274,8 +286,8 @@ func (mqcloud *MqcloudV1) GetOptionsWithContext(ctx context.Context, getOptionsO
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getOptionsOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getOptionsOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -338,8 +350,8 @@ func (mqcloud *MqcloudV1) CreateQueueManagerWithContext(ctx context.Context, cre
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
-	if createQueueManagerOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*createQueueManagerOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	body := make(map[string]interface{})
@@ -422,8 +434,8 @@ func (mqcloud *MqcloudV1) ListQueueManagersWithContext(ctx context.Context, list
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if listQueueManagersOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*listQueueManagersOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	if listQueueManagersOptions.Offset != nil {
@@ -493,8 +505,8 @@ func (mqcloud *MqcloudV1) GetQueueManagerWithContext(ctx context.Context, getQue
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getQueueManagerOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getQueueManagerOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -557,8 +569,8 @@ func (mqcloud *MqcloudV1) DeleteQueueManagerWithContext(ctx context.Context, del
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if deleteQueueManagerOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*deleteQueueManagerOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -622,8 +634,8 @@ func (mqcloud *MqcloudV1) SetQueueManagerVersionWithContext(ctx context.Context,
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
-	if setQueueManagerVersionOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*setQueueManagerVersionOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	body := make(map[string]interface{})
@@ -695,8 +707,8 @@ func (mqcloud *MqcloudV1) GetQueueManagerAvailableUpgradeVersionsWithContext(ctx
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getQueueManagerAvailableUpgradeVersionsOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getQueueManagerAvailableUpgradeVersionsOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -759,8 +771,8 @@ func (mqcloud *MqcloudV1) GetQueueManagerConnectionInfoWithContext(ctx context.C
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getQueueManagerConnectionInfoOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getQueueManagerConnectionInfoOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -823,8 +835,8 @@ func (mqcloud *MqcloudV1) GetQueueManagerStatusWithContext(ctx context.Context, 
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getQueueManagerStatusOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getQueueManagerStatusOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -886,8 +898,8 @@ func (mqcloud *MqcloudV1) ListUsersWithContext(ctx context.Context, listUsersOpt
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if listUsersOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*listUsersOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	if listUsersOptions.Offset != nil {
@@ -957,8 +969,8 @@ func (mqcloud *MqcloudV1) CreateUserWithContext(ctx context.Context, createUserO
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
-	if createUserOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*createUserOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	body := make(map[string]interface{})
@@ -1033,8 +1045,8 @@ func (mqcloud *MqcloudV1) GetUserWithContext(ctx context.Context, getUserOptions
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getUserOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getUserOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1096,8 +1108,8 @@ func (mqcloud *MqcloudV1) DeleteUserWithContext(ctx context.Context, deleteUserO
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
-	if deleteUserOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*deleteUserOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1148,8 +1160,8 @@ func (mqcloud *MqcloudV1) ListApplicationsWithContext(ctx context.Context, listA
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if listApplicationsOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*listApplicationsOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	if listApplicationsOptions.Offset != nil {
@@ -1219,8 +1231,8 @@ func (mqcloud *MqcloudV1) CreateApplicationWithContext(ctx context.Context, crea
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
-	if createApplicationOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*createApplicationOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	body := make(map[string]interface{})
@@ -1292,8 +1304,8 @@ func (mqcloud *MqcloudV1) GetApplicationWithContext(ctx context.Context, getAppl
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getApplicationOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getApplicationOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1355,8 +1367,8 @@ func (mqcloud *MqcloudV1) DeleteApplicationWithContext(ctx context.Context, dele
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
-	if deleteApplicationOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*deleteApplicationOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1409,8 +1421,8 @@ func (mqcloud *MqcloudV1) CreateApplicationApikeyWithContext(ctx context.Context
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
-	if createApplicationApikeyOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*createApplicationApikeyOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	body := make(map[string]interface{})
@@ -1482,8 +1494,8 @@ func (mqcloud *MqcloudV1) CreateTrustStorePemCertificateWithContext(ctx context.
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if createTrustStorePemCertificateOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*createTrustStorePemCertificateOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	builder.AddFormData("label", "", "", fmt.Sprint(*createTrustStorePemCertificateOptions.Label))
@@ -1550,8 +1562,8 @@ func (mqcloud *MqcloudV1) ListTrustStoreCertificatesWithContext(ctx context.Cont
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if listTrustStoreCertificatesOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*listTrustStoreCertificatesOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1615,8 +1627,8 @@ func (mqcloud *MqcloudV1) GetTrustStoreCertificateWithContext(ctx context.Contex
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getTrustStoreCertificateOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getTrustStoreCertificateOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1679,8 +1691,8 @@ func (mqcloud *MqcloudV1) DeleteTrustStoreCertificateWithContext(ctx context.Con
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
-	if deleteTrustStoreCertificateOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*deleteTrustStoreCertificateOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1733,8 +1745,8 @@ func (mqcloud *MqcloudV1) DownloadTrustStoreCertificateWithContext(ctx context.C
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/octet-stream")
-	if downloadTrustStoreCertificateOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*downloadTrustStoreCertificateOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1786,8 +1798,8 @@ func (mqcloud *MqcloudV1) CreateKeyStorePemCertificateWithContext(ctx context.Co
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if createKeyStorePemCertificateOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*createKeyStorePemCertificateOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	builder.AddFormData("label", "", "", fmt.Sprint(*createKeyStorePemCertificateOptions.Label))
@@ -1854,8 +1866,8 @@ func (mqcloud *MqcloudV1) ListKeyStoreCertificatesWithContext(ctx context.Contex
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if listKeyStoreCertificatesOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*listKeyStoreCertificatesOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1919,8 +1931,8 @@ func (mqcloud *MqcloudV1) GetKeyStoreCertificateWithContext(ctx context.Context,
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getKeyStoreCertificateOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getKeyStoreCertificateOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -1983,8 +1995,8 @@ func (mqcloud *MqcloudV1) DeleteKeyStoreCertificateWithContext(ctx context.Conte
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
-	if deleteKeyStoreCertificateOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*deleteKeyStoreCertificateOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -2037,8 +2049,8 @@ func (mqcloud *MqcloudV1) DownloadKeyStoreCertificateWithContext(ctx context.Con
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/octet-stream")
-	if downloadKeyStoreCertificateOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*downloadKeyStoreCertificateOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -2091,8 +2103,8 @@ func (mqcloud *MqcloudV1) GetCertificateAmsChannelsWithContext(ctx context.Conte
 		builder.AddHeader(headerName, headerValue)
 	}
 	builder.AddHeader("Accept", "application/json")
-	if getCertificateAmsChannelsOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*getCertificateAmsChannelsOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	request, err := builder.Build()
@@ -2157,8 +2169,8 @@ func (mqcloud *MqcloudV1) SetCertificateAmsChannelsWithContext(ctx context.Conte
 	}
 	builder.AddHeader("Accept", "application/json")
 	builder.AddHeader("Content-Type", "application/json")
-	if setCertificateAmsChannelsOptions.AcceptLanguage != nil {
-		builder.AddHeader("Accept-Language", fmt.Sprint(*setCertificateAmsChannelsOptions.AcceptLanguage))
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
 	}
 
 	body := make(map[string]interface{})
@@ -2581,9 +2593,6 @@ type CreateApplicationApikeyOptions struct {
 	// The short name of the application api key - conforming to MQ rules.
 	Name *string `json:"name" validate:"required"`
 
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
-
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -2615,12 +2624,6 @@ func (_options *CreateApplicationApikeyOptions) SetName(name string) *CreateAppl
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *CreateApplicationApikeyOptions) SetAcceptLanguage(acceptLanguage string) *CreateApplicationApikeyOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *CreateApplicationApikeyOptions) SetHeaders(param map[string]string) *CreateApplicationApikeyOptions {
 	options.Headers = param
@@ -2634,9 +2637,6 @@ type CreateApplicationOptions struct {
 
 	// The name of the application - conforming to MQ rules.
 	Name *string `json:"name" validate:"required"`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2662,12 +2662,6 @@ func (_options *CreateApplicationOptions) SetName(name string) *CreateApplicatio
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *CreateApplicationOptions) SetAcceptLanguage(acceptLanguage string) *CreateApplicationOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *CreateApplicationOptions) SetHeaders(param map[string]string) *CreateApplicationOptions {
 	options.Headers = param
@@ -2687,9 +2681,6 @@ type CreateKeyStorePemCertificateOptions struct {
 
 	// The filename and path of the certificate to be uploaded.
 	CertificateFile io.ReadCloser `json:"certificate_file" validate:"required"`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2729,12 +2720,6 @@ func (_options *CreateKeyStorePemCertificateOptions) SetCertificateFile(certific
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *CreateKeyStorePemCertificateOptions) SetAcceptLanguage(acceptLanguage string) *CreateKeyStorePemCertificateOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *CreateKeyStorePemCertificateOptions) SetHeaders(param map[string]string) *CreateKeyStorePemCertificateOptions {
 	options.Headers = param
@@ -2761,9 +2746,6 @@ type CreateQueueManagerOptions struct {
 
 	// The IBM MQ version of the Queue Manager to deploy if not supplied the latest version will be deployed.
 	Version *string `json:"version,omitempty"`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2826,12 +2808,6 @@ func (_options *CreateQueueManagerOptions) SetVersion(version string) *CreateQue
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *CreateQueueManagerOptions) SetAcceptLanguage(acceptLanguage string) *CreateQueueManagerOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *CreateQueueManagerOptions) SetHeaders(param map[string]string) *CreateQueueManagerOptions {
 	options.Headers = param
@@ -2851,9 +2827,6 @@ type CreateTrustStorePemCertificateOptions struct {
 
 	// The filename and path of the certificate to be uploaded.
 	CertificateFile io.ReadCloser `json:"certificate_file" validate:"required"`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2893,12 +2866,6 @@ func (_options *CreateTrustStorePemCertificateOptions) SetCertificateFile(certif
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *CreateTrustStorePemCertificateOptions) SetAcceptLanguage(acceptLanguage string) *CreateTrustStorePemCertificateOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *CreateTrustStorePemCertificateOptions) SetHeaders(param map[string]string) *CreateTrustStorePemCertificateOptions {
 	options.Headers = param
@@ -2915,9 +2882,6 @@ type CreateUserOptions struct {
 
 	// The shortname of the user to be created.
 	Name *string `json:"name" validate:"required"`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2950,12 +2914,6 @@ func (_options *CreateUserOptions) SetName(name string) *CreateUserOptions {
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *CreateUserOptions) SetAcceptLanguage(acceptLanguage string) *CreateUserOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *CreateUserOptions) SetHeaders(param map[string]string) *CreateUserOptions {
 	options.Headers = param
@@ -2969,9 +2927,6 @@ type DeleteApplicationOptions struct {
 
 	// The id of the application.
 	ApplicationID *string `json:"application_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -2997,12 +2952,6 @@ func (_options *DeleteApplicationOptions) SetApplicationID(applicationID string)
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *DeleteApplicationOptions) SetAcceptLanguage(acceptLanguage string) *DeleteApplicationOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *DeleteApplicationOptions) SetHeaders(param map[string]string) *DeleteApplicationOptions {
 	options.Headers = param
@@ -3019,9 +2968,6 @@ type DeleteKeyStoreCertificateOptions struct {
 
 	// The id of the certificate.
 	CertificateID *string `json:"certificate_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3054,12 +3000,6 @@ func (_options *DeleteKeyStoreCertificateOptions) SetCertificateID(certificateID
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *DeleteKeyStoreCertificateOptions) SetAcceptLanguage(acceptLanguage string) *DeleteKeyStoreCertificateOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *DeleteKeyStoreCertificateOptions) SetHeaders(param map[string]string) *DeleteKeyStoreCertificateOptions {
 	options.Headers = param
@@ -3073,9 +3013,6 @@ type DeleteQueueManagerOptions struct {
 
 	// The id of the queue manager to retrieve its full details.
 	QueueManagerID *string `json:"queue_manager_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3101,12 +3038,6 @@ func (_options *DeleteQueueManagerOptions) SetQueueManagerID(queueManagerID stri
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *DeleteQueueManagerOptions) SetAcceptLanguage(acceptLanguage string) *DeleteQueueManagerOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *DeleteQueueManagerOptions) SetHeaders(param map[string]string) *DeleteQueueManagerOptions {
 	options.Headers = param
@@ -3123,9 +3054,6 @@ type DeleteTrustStoreCertificateOptions struct {
 
 	// The id of the certificate.
 	CertificateID *string `json:"certificate_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3158,12 +3086,6 @@ func (_options *DeleteTrustStoreCertificateOptions) SetCertificateID(certificate
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *DeleteTrustStoreCertificateOptions) SetAcceptLanguage(acceptLanguage string) *DeleteTrustStoreCertificateOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *DeleteTrustStoreCertificateOptions) SetHeaders(param map[string]string) *DeleteTrustStoreCertificateOptions {
 	options.Headers = param
@@ -3177,9 +3099,6 @@ type DeleteUserOptions struct {
 
 	// The id of the user.
 	UserID *string `json:"user_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3205,12 +3124,6 @@ func (_options *DeleteUserOptions) SetUserID(userID string) *DeleteUserOptions {
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *DeleteUserOptions) SetAcceptLanguage(acceptLanguage string) *DeleteUserOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *DeleteUserOptions) SetHeaders(param map[string]string) *DeleteUserOptions {
 	options.Headers = param
@@ -3227,9 +3140,6 @@ type DownloadKeyStoreCertificateOptions struct {
 
 	// The id of the certificate.
 	CertificateID *string `json:"certificate_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3262,12 +3172,6 @@ func (_options *DownloadKeyStoreCertificateOptions) SetCertificateID(certificate
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *DownloadKeyStoreCertificateOptions) SetAcceptLanguage(acceptLanguage string) *DownloadKeyStoreCertificateOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *DownloadKeyStoreCertificateOptions) SetHeaders(param map[string]string) *DownloadKeyStoreCertificateOptions {
 	options.Headers = param
@@ -3284,9 +3188,6 @@ type DownloadTrustStoreCertificateOptions struct {
 
 	// The id of the certificate.
 	CertificateID *string `json:"certificate_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3316,12 +3217,6 @@ func (_options *DownloadTrustStoreCertificateOptions) SetQueueManagerID(queueMan
 // SetCertificateID : Allow user to set CertificateID
 func (_options *DownloadTrustStoreCertificateOptions) SetCertificateID(certificateID string) *DownloadTrustStoreCertificateOptions {
 	_options.CertificateID = core.StringPtr(certificateID)
-	return _options
-}
-
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *DownloadTrustStoreCertificateOptions) SetAcceptLanguage(acceptLanguage string) *DownloadTrustStoreCertificateOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
 	return _options
 }
 
@@ -3356,9 +3251,6 @@ type GetApplicationOptions struct {
 	// The id of the application.
 	ApplicationID *string `json:"application_id" validate:"required,ne="`
 
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
-
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -3383,12 +3275,6 @@ func (_options *GetApplicationOptions) SetApplicationID(applicationID string) *G
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetApplicationOptions) SetAcceptLanguage(acceptLanguage string) *GetApplicationOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetApplicationOptions) SetHeaders(param map[string]string) *GetApplicationOptions {
 	options.Headers = param
@@ -3405,9 +3291,6 @@ type GetCertificateAmsChannelsOptions struct {
 
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3440,12 +3323,6 @@ func (_options *GetCertificateAmsChannelsOptions) SetServiceInstanceGuid(service
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetCertificateAmsChannelsOptions) SetAcceptLanguage(acceptLanguage string) *GetCertificateAmsChannelsOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetCertificateAmsChannelsOptions) SetHeaders(param map[string]string) *GetCertificateAmsChannelsOptions {
 	options.Headers = param
@@ -3462,9 +3339,6 @@ type GetKeyStoreCertificateOptions struct {
 
 	// The id of the certificate.
 	CertificateID *string `json:"certificate_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3497,12 +3371,6 @@ func (_options *GetKeyStoreCertificateOptions) SetCertificateID(certificateID st
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetKeyStoreCertificateOptions) SetAcceptLanguage(acceptLanguage string) *GetKeyStoreCertificateOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetKeyStoreCertificateOptions) SetHeaders(param map[string]string) *GetKeyStoreCertificateOptions {
 	options.Headers = param
@@ -3513,9 +3381,6 @@ func (options *GetKeyStoreCertificateOptions) SetHeaders(param map[string]string
 type GetOptionsOptions struct {
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3534,12 +3399,6 @@ func (_options *GetOptionsOptions) SetServiceInstanceGuid(serviceInstanceGuid st
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetOptionsOptions) SetAcceptLanguage(acceptLanguage string) *GetOptionsOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetOptionsOptions) SetHeaders(param map[string]string) *GetOptionsOptions {
 	options.Headers = param
@@ -3553,9 +3412,6 @@ type GetQueueManagerAvailableUpgradeVersionsOptions struct {
 
 	// The id of the queue manager to retrieve its full details.
 	QueueManagerID *string `json:"queue_manager_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3581,12 +3437,6 @@ func (_options *GetQueueManagerAvailableUpgradeVersionsOptions) SetQueueManagerI
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetQueueManagerAvailableUpgradeVersionsOptions) SetAcceptLanguage(acceptLanguage string) *GetQueueManagerAvailableUpgradeVersionsOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetQueueManagerAvailableUpgradeVersionsOptions) SetHeaders(param map[string]string) *GetQueueManagerAvailableUpgradeVersionsOptions {
 	options.Headers = param
@@ -3600,9 +3450,6 @@ type GetQueueManagerConnectionInfoOptions struct {
 
 	// The id of the queue manager to retrieve its full details.
 	QueueManagerID *string `json:"queue_manager_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3628,12 +3475,6 @@ func (_options *GetQueueManagerConnectionInfoOptions) SetQueueManagerID(queueMan
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetQueueManagerConnectionInfoOptions) SetAcceptLanguage(acceptLanguage string) *GetQueueManagerConnectionInfoOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetQueueManagerConnectionInfoOptions) SetHeaders(param map[string]string) *GetQueueManagerConnectionInfoOptions {
 	options.Headers = param
@@ -3647,9 +3488,6 @@ type GetQueueManagerOptions struct {
 
 	// The id of the queue manager to retrieve its full details.
 	QueueManagerID *string `json:"queue_manager_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3675,12 +3513,6 @@ func (_options *GetQueueManagerOptions) SetQueueManagerID(queueManagerID string)
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetQueueManagerOptions) SetAcceptLanguage(acceptLanguage string) *GetQueueManagerOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetQueueManagerOptions) SetHeaders(param map[string]string) *GetQueueManagerOptions {
 	options.Headers = param
@@ -3694,9 +3526,6 @@ type GetQueueManagerStatusOptions struct {
 
 	// The id of the queue manager to retrieve its full details.
 	QueueManagerID *string `json:"queue_manager_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3722,12 +3551,6 @@ func (_options *GetQueueManagerStatusOptions) SetQueueManagerID(queueManagerID s
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetQueueManagerStatusOptions) SetAcceptLanguage(acceptLanguage string) *GetQueueManagerStatusOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetQueueManagerStatusOptions) SetHeaders(param map[string]string) *GetQueueManagerStatusOptions {
 	options.Headers = param
@@ -3744,9 +3567,6 @@ type GetTrustStoreCertificateOptions struct {
 
 	// The id of the certificate.
 	CertificateID *string `json:"certificate_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3779,12 +3599,6 @@ func (_options *GetTrustStoreCertificateOptions) SetCertificateID(certificateID 
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetTrustStoreCertificateOptions) SetAcceptLanguage(acceptLanguage string) *GetTrustStoreCertificateOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetTrustStoreCertificateOptions) SetHeaders(param map[string]string) *GetTrustStoreCertificateOptions {
 	options.Headers = param
@@ -3795,9 +3609,6 @@ func (options *GetTrustStoreCertificateOptions) SetHeaders(param map[string]stri
 type GetUsageDetailsOptions struct {
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3816,12 +3627,6 @@ func (_options *GetUsageDetailsOptions) SetServiceInstanceGuid(serviceInstanceGu
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetUsageDetailsOptions) SetAcceptLanguage(acceptLanguage string) *GetUsageDetailsOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *GetUsageDetailsOptions) SetHeaders(param map[string]string) *GetUsageDetailsOptions {
 	options.Headers = param
@@ -3835,9 +3640,6 @@ type GetUserOptions struct {
 
 	// The id of the user.
 	UserID *string `json:"user_id" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -3860,12 +3662,6 @@ func (_options *GetUserOptions) SetServiceInstanceGuid(serviceInstanceGuid strin
 // SetUserID : Allow user to set UserID
 func (_options *GetUserOptions) SetUserID(userID string) *GetUserOptions {
 	_options.UserID = core.StringPtr(userID)
-	return _options
-}
-
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *GetUserOptions) SetAcceptLanguage(acceptLanguage string) *GetUserOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
 	return _options
 }
 
@@ -4018,9 +3814,6 @@ type ListApplicationsOptions struct {
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
-
 	// Pagination offset.
 	Offset *int64 `json:"offset,omitempty"`
 
@@ -4041,12 +3834,6 @@ func (*MqcloudV1) NewListApplicationsOptions(serviceInstanceGuid string) *ListAp
 // SetServiceInstanceGuid : Allow user to set ServiceInstanceGuid
 func (_options *ListApplicationsOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *ListApplicationsOptions {
 	_options.ServiceInstanceGuid = core.StringPtr(serviceInstanceGuid)
-	return _options
-}
-
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *ListApplicationsOptions) SetAcceptLanguage(acceptLanguage string) *ListApplicationsOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
 	return _options
 }
 
@@ -4076,9 +3863,6 @@ type ListKeyStoreCertificatesOptions struct {
 	// The id of the queue manager to retrieve its full details.
 	QueueManagerID *string `json:"queue_manager_id" validate:"required,ne="`
 
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
-
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -4103,12 +3887,6 @@ func (_options *ListKeyStoreCertificatesOptions) SetQueueManagerID(queueManagerI
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *ListKeyStoreCertificatesOptions) SetAcceptLanguage(acceptLanguage string) *ListKeyStoreCertificatesOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *ListKeyStoreCertificatesOptions) SetHeaders(param map[string]string) *ListKeyStoreCertificatesOptions {
 	options.Headers = param
@@ -4119,9 +3897,6 @@ func (options *ListKeyStoreCertificatesOptions) SetHeaders(param map[string]stri
 type ListQueueManagersOptions struct {
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Pagination offset.
 	Offset *int64 `json:"offset,omitempty"`
@@ -4143,12 +3918,6 @@ func (*MqcloudV1) NewListQueueManagersOptions(serviceInstanceGuid string) *ListQ
 // SetServiceInstanceGuid : Allow user to set ServiceInstanceGuid
 func (_options *ListQueueManagersOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *ListQueueManagersOptions {
 	_options.ServiceInstanceGuid = core.StringPtr(serviceInstanceGuid)
-	return _options
-}
-
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *ListQueueManagersOptions) SetAcceptLanguage(acceptLanguage string) *ListQueueManagersOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
 	return _options
 }
 
@@ -4178,9 +3947,6 @@ type ListTrustStoreCertificatesOptions struct {
 	// The id of the queue manager to retrieve its full details.
 	QueueManagerID *string `json:"queue_manager_id" validate:"required,ne="`
 
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
-
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -4205,12 +3971,6 @@ func (_options *ListTrustStoreCertificatesOptions) SetQueueManagerID(queueManage
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *ListTrustStoreCertificatesOptions) SetAcceptLanguage(acceptLanguage string) *ListTrustStoreCertificatesOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *ListTrustStoreCertificatesOptions) SetHeaders(param map[string]string) *ListTrustStoreCertificatesOptions {
 	options.Headers = param
@@ -4221,9 +3981,6 @@ func (options *ListTrustStoreCertificatesOptions) SetHeaders(param map[string]st
 type ListUsersOptions struct {
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Pagination offset.
 	Offset *int64 `json:"offset,omitempty"`
@@ -4245,12 +4002,6 @@ func (*MqcloudV1) NewListUsersOptions(serviceInstanceGuid string) *ListUsersOpti
 // SetServiceInstanceGuid : Allow user to set ServiceInstanceGuid
 func (_options *ListUsersOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *ListUsersOptions {
 	_options.ServiceInstanceGuid = core.StringPtr(serviceInstanceGuid)
-	return _options
-}
-
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *ListUsersOptions) SetAcceptLanguage(acceptLanguage string) *ListUsersOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
 	return _options
 }
 
@@ -4643,9 +4394,6 @@ type SetCertificateAmsChannelsOptions struct {
 	// Strategy for how the supplied channels should be applied.
 	UpdateStrategy *string `json:"update_strategy,omitempty"`
 
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
-
 	// Allows users to set headers on API requests
 	Headers map[string]string
 }
@@ -4697,12 +4445,6 @@ func (_options *SetCertificateAmsChannelsOptions) SetUpdateStrategy(updateStrate
 	return _options
 }
 
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *SetCertificateAmsChannelsOptions) SetAcceptLanguage(acceptLanguage string) *SetCertificateAmsChannelsOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
-	return _options
-}
-
 // SetHeaders : Allow user to set Headers
 func (options *SetCertificateAmsChannelsOptions) SetHeaders(param map[string]string) *SetCertificateAmsChannelsOptions {
 	options.Headers = param
@@ -4719,9 +4461,6 @@ type SetQueueManagerVersionOptions struct {
 
 	// The version upgrade to apply to the queue manager.
 	Version *string `json:"version" validate:"required"`
-
-	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string `json:"Accept-Language,omitempty"`
 
 	// Allows users to set headers on API requests
 	Headers map[string]string
@@ -4751,12 +4490,6 @@ func (_options *SetQueueManagerVersionOptions) SetQueueManagerID(queueManagerID 
 // SetVersion : Allow user to set Version
 func (_options *SetQueueManagerVersionOptions) SetVersion(version string) *SetQueueManagerVersionOptions {
 	_options.Version = core.StringPtr(version)
-	return _options
-}
-
-// SetAcceptLanguage : Allow user to set AcceptLanguage
-func (_options *SetQueueManagerVersionOptions) SetAcceptLanguage(acceptLanguage string) *SetQueueManagerVersionOptions {
-	_options.AcceptLanguage = core.StringPtr(acceptLanguage)
 	return _options
 }
 
