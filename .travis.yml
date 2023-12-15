@@ -19,11 +19,15 @@ env:
 before_install:
   - sudo apt-get update
   - pyenv global 3.8
+  - sudo apt-get install python
+  - npm install -g npm@6.x
 
 install:
   - curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -s -- -b $(go env GOPATH)/bin v1.55.2
   - curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
-
+  - pip install --user bumpversion
+  - npm install @semantic-release/exec
+  - npm install @semantic-release/git
 script:
   - make travis-ci
 

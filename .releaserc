@@ -1,6 +1,6 @@
 {
   "debug": true,
-  "branches": [ "main" ],
+  "branches": [ "main" , "sdk-changes"],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
