@@ -65,9 +65,11 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			}
 
 			os.Setenv("IBM_CREDENTIALS_FILE", externalConfigFile)
-			config = os.Getenv("IBMCLOUD_MQCLOUD_CONFIG_ENDPOINT")
-			if config == "" {
-				Skip("Unable to load service URL configuration property, skipping tests")
+			config, err = core.GetServiceProperties(mqcloudv1.DefaultServiceName)
+			if err != nil {
+				Skip("Error loading service properties, skipping examples: " + err.Error())
+			} else if len(config) == 0 {
+				Skip("Unable to load service properties, skipping examples")
 			}
 
 			shouldSkipTest = func() {}
