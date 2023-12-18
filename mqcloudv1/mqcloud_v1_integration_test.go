@@ -90,7 +90,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			apikey := os.Getenv("IC_API_KEY")
 			authenticator := &core.IamAuthenticator{
 				ApiKey: apikey,
-				URL:    "https://iam.test.cloud.ibm.com" + "/identity/token",
+				URL:    os.Getenv("IBMCLOUD_IAM_API_ENDPOINT") + "/identity/token",
 			}
 			acceptLanguage := "en-US"
 			if err != nil {
