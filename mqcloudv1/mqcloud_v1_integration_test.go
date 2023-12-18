@@ -825,6 +825,3 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 	})
 })
 
-//
-// Utility functions are declared in the unit test file
-//
