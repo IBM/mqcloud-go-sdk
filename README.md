@@ -37,9 +37,9 @@ Changes might occur which impact applications that use this SDK.
 
 The IBM Cloud MQ on Cloud Go SDK allows developers to programmatically interact with the following IBM Cloud services:
 
-Service Name | Package name 
---- | --- 
-[MQ on Cloud](https://github.ibm.com/cloud-api-docs/mq-on-cloud) | mqcloudv1
+Service Name | Package name
+--- | ---
+[MQ on Cloud](https://cloud.ibm.com/apidocs/mq-on-cloud) | mqcloudv1
 
 ## Prerequisites
 
@@ -53,7 +53,7 @@ Service Name | Package name
 The current version of this SDK: 0.0.3
 
 ### Go modules  
-If your application uses Go modules for dependency management (recommended), just add an import for each service 
+If your application uses Go modules for dependency management (recommended), just add an import for each service
 that you will use in your application.  
 Here is an example:
 
@@ -82,7 +82,7 @@ For general SDK usage information, please see [this link](https://github.com/IBM
 ## Questions
 
 If you are having difficulties using this SDK or have a question about the IBM Cloud services,
-please ask a question at 
+please ask a question at
 [Stack Overflow](http://stackoverflow.com/questions/ask?tags=ibm-cloud).
 
 ## Issues
