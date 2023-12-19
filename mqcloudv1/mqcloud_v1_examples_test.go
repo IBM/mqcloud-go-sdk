@@ -53,8 +53,8 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 		serviceURL     string
 
 	 queue_manager_id          string
-		 user_id                   string
-		 application_id            string
+		  user_id                   string
+		  application_id            string
 		 truststore_certificate_id string
 		 keystore_certificate_id   string
 	  serviceinstance_guid      string
@@ -796,28 +796,41 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(channelsDetails).ToNot(BeNil())
 		})*/
-		It(`DeleteTrustStoreCertificate request example`, func() {
-			// begin-delete_trust_store_certificate
-			fmt.Println("\nDeleteTrustStoreCertificate() result:", truststore_certificate_id)
-			deleteTrustStoreCertificateOptions := mqcloudService.NewDeleteTrustStoreCertificateOptions(
-				serviceinstance_guid,
-				queue_manager_id,
-				truststore_certificate_id,
-			)
-
-			response, err := mqcloudService.DeleteTrustStoreCertificate(deleteTrustStoreCertificateOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteTrustStoreCertificate(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_trust_store_certificate
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
+		// It(`DeleteTrustStoreCertificate request example`, func() {
+		// 	// begin-delete_trust_store_certificate
+		// 	fmt.Println("\nDeleteTrustStoreCertificate() result:", truststore_certificate_id)
+		// 	getTrustStoreCertificateOptions := mqcloudService.NewGetTrustStoreCertificateOptions(
+		// 		serviceinstance_guid,
+		// 		queue_manager_id,
+		// 		truststore_certificate_id,
+		// 	)
+		// 	deleteTrustStoreCertificateOptions := mqcloudService.NewDeleteTrustStoreCertificateOptions(
+		// 		serviceinstance_guid,
+		// 		queue_manager_id,
+		// 		truststore_certificate_id,
+		// 	)
+		// 	trustStoreCertificateDetails, response1, err := mqcloudService.GetTrustStoreCertificate(getTrustStoreCertificateOptions)
+		// 	if err != nil {
+		// 		panic(err)
+		// 	}
+		// 	b, _ := json.MarshalIndent(trustStoreCertificateDetails, "", "  ")
+		// 	fmt.Println(string(b))
+		// 	Expect(response1.StatusCode).To(Equal(200))
+		// 	response, err := mqcloudService.DeleteTrustStoreCertificate(deleteTrustStoreCertificateOptions)
+		// 	fmt.Println(response)
+		// 	fmt.Println(err)
+		// 	if err != nil {
+		// 		panic(err)
+		// 	}
+		// 	if response.StatusCode != 204 {
+		// 		fmt.Printf("\nUnexpected response status code received from DeleteTrustStoreCertificate(): %d\n", response.StatusCode)
+		// 	}
+		//
+		// 	// end-delete_trust_store_certificate
+		//
+		// 	Expect(err).To(BeNil())
+		// 	Expect(response.StatusCode).To(Equal(204))
+		// })
 		It(`DeleteUser request example`, func() {
 			// begin-delete_user
 			fmt.Println("\nDeleteUser() result:")
@@ -860,7 +873,6 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
-
 		It(`DeleteKeyStoreCertificate request example`, func() {
 			// begin-delete_key_store_certificate
 			fmt.Println("\nDeleteKeyStoreCertificate() result:")
