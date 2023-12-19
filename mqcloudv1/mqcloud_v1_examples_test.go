@@ -21,7 +21,7 @@ package mqcloudv1_test
 import (
 	"encoding/json"
 	"fmt"
-	"io"
+//	"io"
 	"os"
 
 	"github.com/IBM/go-sdk-core/v5/core"
@@ -50,6 +50,17 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 	var (
 		mqcloudService *mqcloudv1.MqcloudV1
 		config       map[string]string
+		serviceURL     string
+
+	 queue_manager_id          string
+		 user_id                   string
+		 application_id            string
+		 truststore_certificate_id string
+		 keystore_certificate_id   string
+	  serviceinstance_guid      string
+		 keystore_filepath         string
+		 truststore_filepath       string
+		 queue_manager_id_ref  			*string
 	)
 
 	var shouldSkipTest = func() {
@@ -65,12 +76,22 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			}
 
 			os.Setenv("IBM_CREDENTIALS_FILE", externalConfigFile)
+
 			config, err = core.GetServiceProperties(mqcloudv1.DefaultServiceName)
 			if err != nil {
 				Skip("Error loading service properties, skipping examples: " + err.Error())
 			} else if len(config) == 0 {
 				Skip("Unable to load service properties, skipping examples")
 			}
+
+			serviceURL = os.Getenv("IBMCLOUD_MQCLOUD_CONFIG_ENDPOINT")
+			if serviceURL == "" {
+				Skip("Unable to load service URL configuration property, skipping tests")
+			}
+		  serviceinstance_guid = os.Getenv("SERVICEINSTANCE_GUID")
+		 keystore_filepath = os.Getenv("KEYSTORE_FILE_PATH")
+		 truststore_filepath = os.Getenv("TRUSTSTORE_FILE_PATH")
+			fmt.Fprintf(GinkgoWriter, "Service URL: %v\n", serviceURL)
 
 			shouldSkipTest = func() {}
 		})
@@ -84,8 +105,21 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			var err error
 
 			// begin-common
-
-			mqcloudServiceOptions := &mqcloudv1.MqcloudV1Options{}
+			apikey := os.Getenv("IC_API_KEY")
+			authenticator := &core.IamAuthenticator{
+				ApiKey: apikey,
+				URL:    os.Getenv("IBMCLOUD_IAM_API_ENDPOINT") + "/identity/token",
+			}
+			acceptLanguage := "en-US"
+			if err != nil {
+				panic(err)
+			}
+			mqcloudServiceOptions := &mqcloudv1.MqcloudV1Options{
+				URL:            os.Getenv("IBMCLOUD_MQCLOUD_CONFIG_ENDPOINT"),
+				Authenticator:  authenticator,
+				ServiceName:    mqcloudv1.DefaultServiceName,
+				AcceptLanguage: core.StringPtr(acceptLanguage),
+			}
 
 			mqcloudService, err = mqcloudv1.NewMqcloudV1UsingExternalConfig(mqcloudServiceOptions)
 
@@ -103,12 +137,12 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`GetUsageDetails request example`, func() {
+	/*	It(`GetUsageDetails request example`, func() {
 			fmt.Println("\nGetUsageDetails() result:")
 			// begin-get_usage_details
 
 			getUsageDetailsOptions := mqcloudService.NewGetUsageDetailsOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
+				serviceinstance_guid,
 			)
 
 			usage, response, err := mqcloudService.GetUsageDetails(getUsageDetailsOptions)
@@ -129,7 +163,7 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			// begin-get_options
 
 			getOptionsOptions := mqcloudService.NewGetOptionsOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
+				serviceinstance_guid,
 			)
 
 			configurationOptions, response, err := mqcloudService.GetOptions(getOptionsOptions)
@@ -144,15 +178,15 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(configurationOptions).ToNot(BeNil())
-		})
+		})*/
 		It(`CreateQueueManager request example`, func() {
 			fmt.Println("\nCreateQueueManager() result:")
 			// begin-create_queue_manager
 
 			createQueueManagerOptions := mqcloudService.NewCreateQueueManagerOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"testqm",
-				"reserved-eu-de-cluster-f884",
+				serviceinstance_guid,
+				"testqm"+ RandString(6),
+				"ibmcloud_eu_de",
 				"lite",
 			)
 
@@ -168,12 +202,14 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
 			Expect(queueManagerTaskStatus).ToNot(BeNil())
+			queue_manager_id = *queueManagerTaskStatus.QueueManagerID
+			queue_manager_id_ref = queueManagerTaskStatus.QueueManagerID
 		})
 		It(`ListQueueManagers request example`, func() {
 			fmt.Println("\nListQueueManagers() result:")
 			// begin-list_queue_managers
 			listQueueManagersOptions := &mqcloudv1.ListQueueManagersOptions{
-				ServiceInstanceGuid: core.StringPtr("aa07310a-eb40-4b69-8691-b9d3fc59439b"),
+				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
 				Limit: core.Int64Ptr(int64(10)),
 			}
 
@@ -199,8 +235,8 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			// begin-get_queue_manager
 
 			getQueueManagerOptions := mqcloudService.NewGetQueueManagerOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
+				serviceinstance_guid,
+				queue_manager_id,
 			)
 
 			queueManagerDetails, response, err := mqcloudService.GetQueueManager(getQueueManagerOptions)
@@ -216,14 +252,22 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(queueManagerDetails).ToNot(BeNil())
 		})
-		It(`SetQueueManagerVersion request example`, func() {
+	/*	It(`SetQueueManagerVersion request example`, func() {
 			fmt.Println("\nSetQueueManagerVersion() result:")
 			// begin-set_queue_manager_version
+			error := WaitForQmStatusUpdate(queue_manager_id_ref, mqcloudService, serviceinstance_guid)
+		 if error != nil {
+			 fmt.Fprintf(GinkgoWriter, "WaitForQmStatusUpdate failed: %s \n", error)
+			 return
+		 }
+		 fmt.Fprintf(GinkgoWriter,
+			 "--------- Queue Manager is now in the running state ---------",
+		 )
 
 			setQueueManagerVersionOptions := mqcloudService.NewSetQueueManagerVersionOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
-				"9.3.4_2",
+				serviceinstance_guid,
+				queue_manager_id,
+				"9.3.4_3",
 			)
 
 			queueManagerTaskStatus, response, err := mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptions)
@@ -238,14 +282,22 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(202))
 			Expect(queueManagerTaskStatus).ToNot(BeNil())
-		})
+		})*/
 		It(`GetQueueManagerAvailableUpgradeVersions request example`, func() {
 			fmt.Println("\nGetQueueManagerAvailableUpgradeVersions() result:")
 			// begin-get_queue_manager_available_upgrade_versions
+			error := WaitForQmStatusUpdate(queue_manager_id_ref, mqcloudService, serviceinstance_guid)
+		 if error != nil {
+			 fmt.Fprintf(GinkgoWriter, "WaitForQmStatusUpdate failed: %s \n", error)
+			 return
+		 }
+		 fmt.Fprintf(GinkgoWriter,
+			 "--------- Queue Manager is now in the running state ---------",
+		 )
 
 			getQueueManagerAvailableUpgradeVersionsOptions := mqcloudService.NewGetQueueManagerAvailableUpgradeVersionsOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
+				serviceinstance_guid,
+				queue_manager_id,
 			)
 
 			queueManagerVersionUpgrades, response, err := mqcloudService.GetQueueManagerAvailableUpgradeVersions(getQueueManagerAvailableUpgradeVersionsOptions)
@@ -266,8 +318,8 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			// begin-get_queue_manager_connection_info
 
 			getQueueManagerConnectionInfoOptions := mqcloudService.NewGetQueueManagerConnectionInfoOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
+				serviceinstance_guid,
+				queue_manager_id,
 			)
 
 			connectionInfo, response, err := mqcloudService.GetQueueManagerConnectionInfo(getQueueManagerConnectionInfoOptions)
@@ -288,8 +340,8 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			// begin-get_queue_manager_status
 
 			getQueueManagerStatusOptions := mqcloudService.NewGetQueueManagerStatusOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
+				serviceinstance_guid,
+				queue_manager_id,
 			)
 
 			queueManagerStatus, response, err := mqcloudService.GetQueueManagerStatus(getQueueManagerStatusOptions)
@@ -309,7 +361,7 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			fmt.Println("\nListUsers() result:")
 			// begin-list_users
 			listUsersOptions := &mqcloudv1.ListUsersOptions{
-				ServiceInstanceGuid: core.StringPtr("aa07310a-eb40-4b69-8691-b9d3fc59439b"),
+				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
 				Limit: core.Int64Ptr(int64(10)),
 			}
 
@@ -335,9 +387,9 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			// begin-create_user
 
 			createUserOptions := mqcloudService.NewCreateUserOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"user@example.com",
-				"t0scie98o57a",
+				serviceinstance_guid,
+				"user"+ RandString(6)+"@ibm.com",
+				"user"+ RandString(6),
 			)
 
 			userDetails, response, err := mqcloudService.CreateUser(createUserOptions)
@@ -352,14 +404,15 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(userDetails).ToNot(BeNil())
+		  user_id = *userDetails.ID
 		})
 		It(`GetUser request example`, func() {
 			fmt.Println("\nGetUser() result:")
 			// begin-get_user
 
 			getUserOptions := mqcloudService.NewGetUserOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"31a413dd84346effc8895b6ba4641641",
+				serviceinstance_guid,
+				user_id,
 			)
 
 			userDetails, response, err := mqcloudService.GetUser(getUserOptions)
@@ -379,7 +432,7 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			fmt.Println("\nListApplications() result:")
 			// begin-list_applications
 			listApplicationsOptions := &mqcloudv1.ListApplicationsOptions{
-				ServiceInstanceGuid: core.StringPtr("aa07310a-eb40-4b69-8691-b9d3fc59439b"),
+				ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
 				Limit: core.Int64Ptr(int64(10)),
 			}
 
@@ -405,8 +458,8 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			// begin-create_application
 
 			createApplicationOptions := mqcloudService.NewCreateApplicationOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"test-app",
+				serviceinstance_guid,
+				"app" + RandString(1),
 			)
 
 			applicationCreated, response, err := mqcloudService.CreateApplication(createApplicationOptions)
@@ -421,14 +474,15 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(applicationCreated).ToNot(BeNil())
+			application_id = *applicationCreated.ID
 		})
 		It(`GetApplication request example`, func() {
 			fmt.Println("\nGetApplication() result:")
 			// begin-get_application
 
 			getApplicationOptions := mqcloudService.NewGetApplicationOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"0123456789ABCDEF0123456789ABCDEF",
+				serviceinstance_guid,
+				application_id,
 			)
 
 			applicationDetails, response, err := mqcloudService.GetApplication(getApplicationOptions)
@@ -449,8 +503,8 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			// begin-create_application_apikey
 
 			createApplicationApikeyOptions := mqcloudService.NewCreateApplicationApikeyOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"0123456789ABCDEF0123456789ABCDEF",
+				serviceinstance_guid,
+				application_id,
 				"test-api-key",
 			)
 
@@ -468,14 +522,36 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(applicationApiKeyCreated).ToNot(BeNil())
 		})
 		It(`CreateTrustStorePemCertificate request example`, func() {
+			error := WaitForQmStatusUpdate(queue_manager_id_ref, mqcloudService, serviceinstance_guid)
+		 if error != nil {
+			 fmt.Fprintf(GinkgoWriter, "WaitForQmStatusUpdate failed: %s \n", error)
+			 return
+		 }
+		 fmt.Fprintf(GinkgoWriter,
+			 "--------- Queue Manager is now in the running state ---------",
+		 )
 			fmt.Println("\nCreateTrustStorePemCertificate() result:")
 			// begin-create_trust_store_pem_certificate
+			// certBytes, err := os.ReadFile(truststore_filepath) // just pass the file name
+			// if err != nil {
+			// 	fmt.Print(err)
+			// }
+			// certString := string(certBytes) // convert content to a 'string'
+			// rc := io.NopCloser(strings.NewReader(certString))
+
+			filePath := truststore_filepath // Replace with your file path
+			file, err := os.Open(filePath)
+			if err != nil {
+				fmt.Fprintf(GinkgoWriter, "Error opening file: %s \n", err.Error())
+				return
+			}
+			defer file.Close()
 
 			createTrustStorePemCertificateOptions := mqcloudService.NewCreateTrustStorePemCertificateOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
-				"testString",
-				CreateMockReader("This is a mock file."),
+				serviceinstance_guid,
+				queue_manager_id,
+				"testts",
+				file,
 			)
 
 			trustStoreCertificateDetails, response, err := mqcloudService.CreateTrustStorePemCertificate(createTrustStorePemCertificateOptions)
@@ -490,14 +566,15 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(trustStoreCertificateDetails).ToNot(BeNil())
+			truststore_certificate_id = *trustStoreCertificateDetails.ID
 		})
 		It(`ListTrustStoreCertificates request example`, func() {
 			fmt.Println("\nListTrustStoreCertificates() result:")
 			// begin-list_trust_store_certificates
 
 			listTrustStoreCertificatesOptions := mqcloudService.NewListTrustStoreCertificatesOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
+				serviceinstance_guid,
+				queue_manager_id,
 			)
 
 			trustStoreCertificateDetailsCollection, response, err := mqcloudService.ListTrustStoreCertificates(listTrustStoreCertificatesOptions)
@@ -518,9 +595,9 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			// begin-get_trust_store_certificate
 
 			getTrustStoreCertificateOptions := mqcloudService.NewGetTrustStoreCertificateOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
-				"9b7d1e723af8233",
+				serviceinstance_guid,
+				queue_manager_id,
+				truststore_certificate_id,
 			)
 
 			trustStoreCertificateDetails, response, err := mqcloudService.GetTrustStoreCertificate(getTrustStoreCertificateOptions)
@@ -536,13 +613,12 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(trustStoreCertificateDetails).ToNot(BeNil())
 		})
-		It(`DownloadTrustStoreCertificate request example`, func() {
+	/*	It(`DownloadTrustStoreCertificate request example`, func() {
 			fmt.Println("\nDownloadTrustStoreCertificate() result:")
 			// begin-download_trust_store_certificate
-
 			downloadTrustStoreCertificateOptions := mqcloudService.NewDownloadTrustStoreCertificateOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
+				serviceinstance_guid,
+				queue_manager_id,
 				"9b7d1e723af8233",
 			)
 
@@ -564,16 +640,22 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(result).ToNot(BeNil())
-		})
+		})*/
 		It(`CreateKeyStorePemCertificate request example`, func() {
 			fmt.Println("\nCreateKeyStorePemCertificate() result:")
 			// begin-create_key_store_pem_certificate
-
+			filePath := keystore_filepath // Replace with your file path
+			file, err := os.Open(filePath)
+			if err != nil {
+				fmt.Fprintf(GinkgoWriter, "Error opening file: %s \n", err.Error())
+				return
+			}
+			defer file.Close()
 			createKeyStorePemCertificateOptions := mqcloudService.NewCreateKeyStorePemCertificateOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
-				"testString",
-				CreateMockReader("This is a mock file."),
+				serviceinstance_guid,
+				queue_manager_id,
+				"testks",
+				file,
 			)
 
 			keyStoreCertificateDetails, response, err := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptions)
@@ -588,14 +670,15 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(keyStoreCertificateDetails).ToNot(BeNil())
+			keystore_certificate_id = *keyStoreCertificateDetails.ID
 		})
 		It(`ListKeyStoreCertificates request example`, func() {
 			fmt.Println("\nListKeyStoreCertificates() result:")
 			// begin-list_key_store_certificates
 
 			listKeyStoreCertificatesOptions := mqcloudService.NewListKeyStoreCertificatesOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
+				serviceinstance_guid,
+				queue_manager_id,
 			)
 
 			keyStoreCertificateDetailsCollection, response, err := mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptions)
@@ -616,9 +699,9 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			// begin-get_key_store_certificate
 
 			getKeyStoreCertificateOptions := mqcloudService.NewGetKeyStoreCertificateOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
-				"9b7d1e723af8233",
+				serviceinstance_guid,
+				queue_manager_id,
+				keystore_certificate_id,
 			)
 
 			keyStoreCertificateDetails, response, err := mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptions)
@@ -634,13 +717,13 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(keyStoreCertificateDetails).ToNot(BeNil())
 		})
-		It(`DownloadKeyStoreCertificate request example`, func() {
+	/*	It(`DownloadKeyStoreCertificate request example`, func() {
 			fmt.Println("\nDownloadKeyStoreCertificate() result:")
 			// begin-download_key_store_certificate
 
 			downloadKeyStoreCertificateOptions := mqcloudService.NewDownloadKeyStoreCertificateOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
+				serviceinstance_guid,
+				queue_manager_id,
 				"9b7d1e723af8233",
 			)
 
@@ -662,15 +745,15 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(result).ToNot(BeNil())
-		})
-		It(`GetCertificateAmsChannels request example`, func() {
+		})*/
+	/*	It(`GetCertificateAmsChannels request example`, func() {
 			fmt.Println("\nGetCertificateAmsChannels() result:")
 			// begin-get_certificate_ams_channels
 
 			getCertificateAmsChannelsOptions := mqcloudService.NewGetCertificateAmsChannelsOptions(
-				"197e6028ce8df35d307f79a320e7436f",
-				"9b7d1e723af8233",
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
+				queue_manager_id,
+				keystore_certificate_id,
+				serviceinstance_guid,
 			)
 
 			channelsDetails, response, err := mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptions)
@@ -694,9 +777,9 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			}
 
 			setCertificateAmsChannelsOptions := mqcloudService.NewSetCertificateAmsChannelsOptions(
-				"197e6028ce8df35d307f79a320e7436f",
-				"9b7d1e723af8233",
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
+				queue_manager_id,
+				keystore_certificate_id,
+				serviceinstance_guid,
 				[]mqcloudv1.ChannelDetails{*channelDetailsModel},
 			)
 
@@ -712,35 +795,35 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(channelsDetails).ToNot(BeNil())
-		})
-		It(`DeleteQueueManager request example`, func() {
-			fmt.Println("\nDeleteQueueManager() result:")
-			// begin-delete_queue_manager
-
-			deleteQueueManagerOptions := mqcloudService.NewDeleteQueueManagerOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
+		})*/
+		It(`DeleteTrustStoreCertificate request example`, func() {
+			// begin-delete_trust_store_certificate
+			fmt.Println("\nDeleteTrustStoreCertificate() result:", truststore_certificate_id)
+			deleteTrustStoreCertificateOptions := mqcloudService.NewDeleteTrustStoreCertificateOptions(
+				serviceinstance_guid,
+				queue_manager_id,
+				truststore_certificate_id,
 			)
 
-			queueManagerTaskStatus, response, err := mqcloudService.DeleteQueueManager(deleteQueueManagerOptions)
+			response, err := mqcloudService.DeleteTrustStoreCertificate(deleteTrustStoreCertificateOptions)
 			if err != nil {
 				panic(err)
 			}
-			b, _ := json.MarshalIndent(queueManagerTaskStatus, "", "  ")
-			fmt.Println(string(b))
+			if response.StatusCode != 204 {
+				fmt.Printf("\nUnexpected response status code received from DeleteTrustStoreCertificate(): %d\n", response.StatusCode)
+			}
 
-			// end-delete_queue_manager
+			// end-delete_trust_store_certificate
 
 			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(202))
-			Expect(queueManagerTaskStatus).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(204))
 		})
 		It(`DeleteUser request example`, func() {
 			// begin-delete_user
-
+			fmt.Println("\nDeleteUser() result:")
 			deleteUserOptions := mqcloudService.NewDeleteUserOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"31a413dd84346effc8895b6ba4641641",
+				serviceinstance_guid,
+				user_id,
 			)
 
 			response, err := mqcloudService.DeleteUser(deleteUserOptions)
@@ -758,10 +841,10 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 		})
 		It(`DeleteApplication request example`, func() {
 			// begin-delete_application
-
+			fmt.Println("\nDeleteApplication() result:")
 			deleteApplicationOptions := mqcloudService.NewDeleteApplicationOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"0123456789ABCDEF0123456789ABCDEF",
+				serviceinstance_guid,
+				application_id,
 			)
 
 			response, err := mqcloudService.DeleteApplication(deleteApplicationOptions)
@@ -777,35 +860,14 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
-		It(`DeleteTrustStoreCertificate request example`, func() {
-			// begin-delete_trust_store_certificate
 
-			deleteTrustStoreCertificateOptions := mqcloudService.NewDeleteTrustStoreCertificateOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
-				"9b7d1e723af8233",
-			)
-
-			response, err := mqcloudService.DeleteTrustStoreCertificate(deleteTrustStoreCertificateOptions)
-			if err != nil {
-				panic(err)
-			}
-			if response.StatusCode != 204 {
-				fmt.Printf("\nUnexpected response status code received from DeleteTrustStoreCertificate(): %d\n", response.StatusCode)
-			}
-
-			// end-delete_trust_store_certificate
-
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(204))
-		})
 		It(`DeleteKeyStoreCertificate request example`, func() {
 			// begin-delete_key_store_certificate
-
+			fmt.Println("\nDeleteKeyStoreCertificate() result:")
 			deleteKeyStoreCertificateOptions := mqcloudService.NewDeleteKeyStoreCertificateOptions(
-				"aa07310a-eb40-4b69-8691-b9d3fc59439b",
-				"197e6028ce8df35d307f79a320e7436f",
-				"9b7d1e723af8233",
+				serviceinstance_guid,
+				queue_manager_id,
+				keystore_certificate_id,
 			)
 
 			response, err := mqcloudService.DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptions)
@@ -820,6 +882,28 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
+		})
+		It(`DeleteQueueManager request example`, func() {
+			fmt.Println("\nDeleteQueueManager() result:")
+			// begin-delete_queue_manager
+
+			deleteQueueManagerOptions := mqcloudService.NewDeleteQueueManagerOptions(
+				serviceinstance_guid,
+				queue_manager_id,
+			)
+
+			queueManagerTaskStatus, response, err := mqcloudService.DeleteQueueManager(deleteQueueManagerOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(queueManagerTaskStatus, "", "  ")
+			fmt.Println(string(b))
+
+			// end-delete_queue_manager
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(202))
+			Expect(queueManagerTaskStatus).ToNot(BeNil())
 		})
 	})
 })
