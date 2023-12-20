@@ -45,7 +45,7 @@ import (
 //
 var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 
-	const externalConfigFile = "../mqcloud_v1.env"
+	const externalConfigFile = "../ibm-credentials.env"
 
 	var (
 		mqcloudService *mqcloudv1.MqcloudV1
