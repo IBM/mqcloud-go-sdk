@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2023.
+ * (C) Copyright IBM Corp. 2024.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import (
 	"bytes"
 	"context"
 	"crypto/rand"
+	"encoding/json"
 	"fmt"
 	"io"
 	"math/big"
@@ -179,7 +180,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetUsageDetails(getUsageDetailsOptions *GetUsageDetailsOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getUsageDetailsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/usage"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -190,7 +191,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getUsageDetailsPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -228,7 +229,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetUsageDetails(getUsageDetailsOptions *GetUsageDetailsOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getUsageDetailsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/usage"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -240,7 +241,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -300,7 +301,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -404,7 +405,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetOptions(getOptionsOptions *GetOptionsOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getOptionsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/options"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -415,7 +416,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getOptionsPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -453,7 +454,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetOptions(getOptionsOptions *GetOptionsOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getOptionsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/options"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -465,14 +466,14 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["lite"], "versions": ["Versions"]}`)
+					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["xsmall"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
 				}))
 			})
 			It(`Invoke GetOptions successfully with retries`, func() {
@@ -525,11 +526,11 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["lite"], "versions": ["Versions"]}`)
+					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["xsmall"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
 				}))
 			})
 			It(`Invoke GetOptions successfully`, func() {
@@ -629,7 +630,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateQueueManager(createQueueManagerOptions *CreateQueueManagerOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createQueueManagerPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -640,7 +641,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(createQueueManagerPath))
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -660,7 +661,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
+				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -683,7 +684,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateQueueManager(createQueueManagerOptions *CreateQueueManagerOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createQueueManagerPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -711,7 +712,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -736,7 +737,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
+				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -792,7 +793,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
@@ -819,7 +820,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
+				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -845,7 +846,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
+				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -892,7 +893,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("lite")
+				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -911,7 +912,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListQueueManagers(listQueueManagersOptions *ListQueueManagersOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listQueueManagersPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -922,7 +923,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listQueueManagersPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
@@ -964,7 +965,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListQueueManagers(listQueueManagersOptions *ListQueueManagersOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listQueueManagersPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -976,7 +977,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Sleep a short time to support a timeout test
@@ -985,7 +986,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "xsmall", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListQueueManagers successfully with retries`, func() {
@@ -1040,13 +1041,13 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "xsmall", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListQueueManagers successfully`, func() {
@@ -1204,9 +1205,9 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"lite","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"xsmall","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"lite","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"xsmall","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -1265,7 +1266,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetQueueManager(getQueueManagerOptions *GetQueueManagerOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getQueueManagerPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -1276,7 +1277,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -1315,7 +1316,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetQueueManager(getQueueManagerOptions *GetQueueManagerOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getQueueManagerPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -1327,14 +1328,14 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "xsmall", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetQueueManager successfully with retries`, func() {
@@ -1388,11 +1389,11 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "lite", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "xsmall", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetQueueManager successfully`, func() {
@@ -1495,7 +1496,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`DeleteQueueManager(deleteQueueManagerOptions *DeleteQueueManagerOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		deleteQueueManagerPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -1506,7 +1507,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(deleteQueueManagerPath))
 					Expect(req.Method).To(Equal("DELETE"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -1545,7 +1546,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`DeleteQueueManager(deleteQueueManagerOptions *DeleteQueueManagerOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		deleteQueueManagerPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -1557,7 +1558,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("DELETE"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -1618,7 +1619,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("DELETE"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
@@ -1725,7 +1726,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`SetQueueManagerVersion(setQueueManagerVersionOptions *SetQueueManagerVersionOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		setQueueManagerVersionPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/version"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -1736,7 +1737,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(setQueueManagerVersionPath))
 					Expect(req.Method).To(Equal("PUT"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -1776,7 +1777,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`SetQueueManagerVersion(setQueueManagerVersionOptions *SetQueueManagerVersionOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		setQueueManagerVersionPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/version"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -1804,7 +1805,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -1882,7 +1883,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
@@ -1992,7 +1993,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetQueueManagerAvailableUpgradeVersions(getQueueManagerAvailableUpgradeVersionsOptions *GetQueueManagerAvailableUpgradeVersionsOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getQueueManagerAvailableUpgradeVersionsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/available_versions"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -2003,7 +2004,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerAvailableUpgradeVersionsPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -2042,7 +2043,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetQueueManagerAvailableUpgradeVersions(getQueueManagerAvailableUpgradeVersionsOptions *GetQueueManagerAvailableUpgradeVersionsOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getQueueManagerAvailableUpgradeVersionsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/available_versions"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -2054,7 +2055,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -2115,7 +2116,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -2222,7 +2223,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetQueueManagerConnectionInfo(getQueueManagerConnectionInfoOptions *GetQueueManagerConnectionInfoOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getQueueManagerConnectionInfoPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/connection_info"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -2233,7 +2234,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerConnectionInfoPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -2272,7 +2273,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetQueueManagerConnectionInfo(getQueueManagerConnectionInfoOptions *GetQueueManagerConnectionInfoOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getQueueManagerConnectionInfoPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/connection_info"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -2284,7 +2285,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -2345,7 +2346,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -2452,7 +2453,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetQueueManagerStatus(getQueueManagerStatusOptions *GetQueueManagerStatusOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getQueueManagerStatusPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/status"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -2463,7 +2464,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerStatusPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -2502,7 +2503,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetQueueManagerStatus(getQueueManagerStatusOptions *GetQueueManagerStatusOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getQueueManagerStatusPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/status"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -2514,7 +2515,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -2575,7 +2576,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -2682,7 +2683,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListUsers(listUsersOptions *ListUsersOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listUsersPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -2693,7 +2694,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listUsersPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
@@ -2735,7 +2736,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListUsers(listUsersOptions *ListUsersOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listUsersPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -2747,7 +2748,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Sleep a short time to support a timeout test
@@ -2811,7 +2812,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Set mock response
@@ -3036,7 +3037,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateUser(createUserOptions *CreateUserOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createUserPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -3047,7 +3048,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(createUserPath))
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -3065,8 +3066,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateUserOptions model
 				createUserOptionsModel := new(mqcloudv1.CreateUserOptions)
 				createUserOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createUserOptionsModel.Email = core.StringPtr("user@example.com")
-				createUserOptionsModel.Name = core.StringPtr("t0scie98o57a")
+				createUserOptionsModel.Email = core.StringPtr("testuser@ibm.com")
+				createUserOptionsModel.Name = core.StringPtr("testuser")
 				createUserOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := mqcloudService.CreateUser(createUserOptionsModel)
@@ -3087,7 +3088,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateUser(createUserOptions *CreateUserOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createUserPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -3115,7 +3116,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -3138,8 +3139,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateUserOptions model
 				createUserOptionsModel := new(mqcloudv1.CreateUserOptions)
 				createUserOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createUserOptionsModel.Email = core.StringPtr("user@example.com")
-				createUserOptionsModel.Name = core.StringPtr("t0scie98o57a")
+				createUserOptionsModel.Email = core.StringPtr("testuser@ibm.com")
+				createUserOptionsModel.Name = core.StringPtr("testuser")
 				createUserOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -3193,7 +3194,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -3218,8 +3219,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateUserOptions model
 				createUserOptionsModel := new(mqcloudv1.CreateUserOptions)
 				createUserOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createUserOptionsModel.Email = core.StringPtr("user@example.com")
-				createUserOptionsModel.Name = core.StringPtr("t0scie98o57a")
+				createUserOptionsModel.Email = core.StringPtr("testuser@ibm.com")
+				createUserOptionsModel.Name = core.StringPtr("testuser")
 				createUserOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -3241,8 +3242,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateUserOptions model
 				createUserOptionsModel := new(mqcloudv1.CreateUserOptions)
 				createUserOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createUserOptionsModel.Email = core.StringPtr("user@example.com")
-				createUserOptionsModel.Name = core.StringPtr("t0scie98o57a")
+				createUserOptionsModel.Email = core.StringPtr("testuser@ibm.com")
+				createUserOptionsModel.Name = core.StringPtr("testuser")
 				createUserOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := mqcloudService.SetServiceURL("")
@@ -3285,8 +3286,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateUserOptions model
 				createUserOptionsModel := new(mqcloudv1.CreateUserOptions)
 				createUserOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createUserOptionsModel.Email = core.StringPtr("user@example.com")
-				createUserOptionsModel.Name = core.StringPtr("t0scie98o57a")
+				createUserOptionsModel.Email = core.StringPtr("testuser@ibm.com")
+				createUserOptionsModel.Name = core.StringPtr("testuser")
 				createUserOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -3303,7 +3304,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetUser(getUserOptions *GetUserOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getUserPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users/31a413dd84346effc8895b6ba4641641"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -3314,7 +3315,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getUserPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -3353,7 +3354,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetUser(getUserOptions *GetUserOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getUserPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users/31a413dd84346effc8895b6ba4641641"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -3365,7 +3366,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -3426,7 +3427,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -3533,7 +3534,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`DeleteUser(deleteUserOptions *DeleteUserOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		deleteUserPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users/31a413dd84346effc8895b6ba4641641"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
@@ -3545,7 +3546,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("DELETE"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.WriteHeader(204)
 				}))
 			})
@@ -3608,7 +3609,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListApplications(listApplicationsOptions *ListApplicationsOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listApplicationsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -3619,7 +3620,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listApplicationsPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
@@ -3661,7 +3662,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListApplications(listApplicationsOptions *ListApplicationsOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listApplicationsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -3673,7 +3674,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Sleep a short time to support a timeout test
@@ -3737,7 +3738,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Set mock response
@@ -3962,7 +3963,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateApplication(createApplicationOptions *CreateApplicationOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createApplicationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -3973,7 +3974,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(createApplicationPath))
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -4012,7 +4013,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateApplication(createApplicationOptions *CreateApplicationOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createApplicationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -4040,7 +4041,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -4117,7 +4118,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -4224,7 +4225,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetApplication(getApplicationOptions *GetApplicationOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getApplicationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -4235,7 +4236,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getApplicationPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -4274,7 +4275,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetApplication(getApplicationOptions *GetApplicationOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getApplicationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -4286,7 +4287,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -4347,7 +4348,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -4454,7 +4455,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`DeleteApplication(deleteApplicationOptions *DeleteApplicationOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		deleteApplicationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
@@ -4466,7 +4467,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("DELETE"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.WriteHeader(204)
 				}))
 			})
@@ -4529,7 +4530,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateApplicationApikey(createApplicationApikeyOptions *CreateApplicationApikeyOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createApplicationApikeyPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF/api_key"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -4540,7 +4541,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(createApplicationApikeyPath))
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -4580,7 +4581,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateApplicationApikey(createApplicationApikeyOptions *CreateApplicationApikeyOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createApplicationApikeyPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF/api_key"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -4608,7 +4609,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -4686,7 +4687,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -4796,7 +4797,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateTrustStorePemCertificate(createTrustStorePemCertificateOptions *CreateTrustStorePemCertificateOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createTrustStorePemCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/trust_store"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -4807,7 +4808,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(createTrustStorePemCertificatePath))
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -4826,7 +4827,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createTrustStorePemCertificateOptionsModel := new(mqcloudv1.CreateTrustStorePemCertificateOptions)
 				createTrustStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createTrustStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createTrustStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createTrustStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -4848,7 +4849,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateTrustStorePemCertificate(createTrustStorePemCertificateOptions *CreateTrustStorePemCertificateOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createTrustStorePemCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/trust_store"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -4860,7 +4861,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("POST"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -4884,7 +4885,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createTrustStorePemCertificateOptionsModel := new(mqcloudv1.CreateTrustStorePemCertificateOptions)
 				createTrustStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createTrustStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createTrustStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createTrustStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -4923,7 +4924,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("POST"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -4949,7 +4950,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createTrustStorePemCertificateOptionsModel := new(mqcloudv1.CreateTrustStorePemCertificateOptions)
 				createTrustStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createTrustStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createTrustStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createTrustStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -4973,7 +4974,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createTrustStorePemCertificateOptionsModel := new(mqcloudv1.CreateTrustStorePemCertificateOptions)
 				createTrustStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createTrustStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createTrustStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createTrustStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -5018,7 +5019,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createTrustStorePemCertificateOptionsModel := new(mqcloudv1.CreateTrustStorePemCertificateOptions)
 				createTrustStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createTrustStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createTrustStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createTrustStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createTrustStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -5036,7 +5037,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListTrustStoreCertificates(listTrustStoreCertificatesOptions *ListTrustStoreCertificatesOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listTrustStoreCertificatesPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/trust_store"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -5047,7 +5048,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listTrustStoreCertificatesPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -5086,7 +5087,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListTrustStoreCertificates(listTrustStoreCertificatesOptions *ListTrustStoreCertificatesOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listTrustStoreCertificatesPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/trust_store"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -5098,7 +5099,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -5159,7 +5160,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -5266,7 +5267,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetTrustStoreCertificate(getTrustStoreCertificateOptions *GetTrustStoreCertificateOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getTrustStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/trust_store/9b7d1e723af8233"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -5277,7 +5278,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getTrustStoreCertificatePath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -5317,7 +5318,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetTrustStoreCertificate(getTrustStoreCertificateOptions *GetTrustStoreCertificateOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getTrustStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/trust_store/9b7d1e723af8233"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -5329,7 +5330,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -5391,7 +5392,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -5501,7 +5502,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`DeleteTrustStoreCertificate(deleteTrustStoreCertificateOptions *DeleteTrustStoreCertificateOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		deleteTrustStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/trust_store/9b7d1e723af8233"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
@@ -5513,7 +5514,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("DELETE"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.WriteHeader(204)
 				}))
 			})
@@ -5578,7 +5579,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`DownloadTrustStoreCertificate(downloadTrustStoreCertificateOptions *DownloadTrustStoreCertificateOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		downloadTrustStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/trust_store/9b7d1e723af8233/download"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -5590,7 +5591,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -5652,7 +5653,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/octet-stream")
 					res.WriteHeader(200)
@@ -5766,7 +5767,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateKeyStorePemCertificate(createKeyStorePemCertificateOptions *CreateKeyStorePemCertificateOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createKeyStorePemCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -5777,7 +5778,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(createKeyStorePemCertificatePath))
 					Expect(req.Method).To(Equal("POST"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -5796,7 +5797,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
 				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
@@ -5818,7 +5819,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`CreateKeyStorePemCertificate(createKeyStorePemCertificateOptions *CreateKeyStorePemCertificateOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		createKeyStorePemCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -5830,14 +5831,14 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("POST"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}`)
 				}))
 			})
 			It(`Invoke CreateKeyStorePemCertificate successfully with retries`, func() {
@@ -5854,7 +5855,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
 				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -5893,11 +5894,11 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("POST"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}`)
 				}))
 			})
 			It(`Invoke CreateKeyStorePemCertificate successfully`, func() {
@@ -5919,7 +5920,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
 				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -5943,7 +5944,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
 				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
@@ -5988,7 +5989,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
 				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("testString")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
 				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
 				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
@@ -6006,7 +6007,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListKeyStoreCertificates(listKeyStoreCertificatesOptions *ListKeyStoreCertificatesOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listKeyStoreCertificatesPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -6017,7 +6018,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(listKeyStoreCertificatesPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -6056,7 +6057,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`ListKeyStoreCertificates(listKeyStoreCertificatesOptions *ListKeyStoreCertificatesOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		listKeyStoreCertificatesPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -6068,14 +6069,14 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"total_count": 1, "key_store": [{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"total_count": 1, "key_store": [{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}]}`)
 				}))
 			})
 			It(`Invoke ListKeyStoreCertificates successfully with retries`, func() {
@@ -6129,11 +6130,11 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"total_count": 1, "key_store": [{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"total_count": 1, "key_store": [{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}]}`)
 				}))
 			})
 			It(`Invoke ListKeyStoreCertificates successfully`, func() {
@@ -6236,7 +6237,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetKeyStoreCertificate(getKeyStoreCertificateOptions *GetKeyStoreCertificateOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -6247,7 +6248,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getKeyStoreCertificatePath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -6287,7 +6288,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetKeyStoreCertificate(getKeyStoreCertificateOptions *GetKeyStoreCertificateOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -6299,14 +6300,14 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}`)
 				}))
 			})
 			It(`Invoke GetKeyStoreCertificate successfully with retries`, func() {
@@ -6361,11 +6362,11 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}`)
 				}))
 			})
 			It(`Invoke GetKeyStoreCertificate successfully`, func() {
@@ -6471,7 +6472,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptions *DeleteKeyStoreCertificateOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		deleteKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233"
 		Context(`Using mock server endpoint`, func() {
 			BeforeEach(func() {
@@ -6483,7 +6484,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("DELETE"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.WriteHeader(204)
 				}))
 			})
@@ -6548,7 +6549,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptions *DownloadKeyStoreCertificateOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		downloadKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/download"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -6560,7 +6561,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -6622,7 +6623,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/octet-stream")
 					res.WriteHeader(200)
@@ -6736,7 +6737,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetCertificateAmsChannels(getCertificateAmsChannelsOptions *GetCertificateAmsChannelsOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -6747,7 +6748,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(getCertificateAmsChannelsPath))
 					Expect(req.Method).To(Equal("GET"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -6787,7 +6788,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`GetCertificateAmsChannels(getCertificateAmsChannelsOptions *GetCertificateAmsChannelsOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		getCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -6799,7 +6800,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -6861,7 +6862,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Method).To(Equal("GET"))
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -6971,7 +6972,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`SetCertificateAmsChannels(setCertificateAmsChannelsOptions *SetCertificateAmsChannelsOptions) - Operation response error`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		setCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
@@ -6982,7 +6983,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.EscapedPath()).To(Equal(setCertificateAmsChannelsPath))
 					Expect(req.Method).To(Equal("PUT"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -7028,7 +7029,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 	})
 	Describe(`SetCertificateAmsChannels(setCertificateAmsChannelsOptions *SetCertificateAmsChannelsOptions)`, func() {
-		acceptLanguage := "testString"
+		acceptLanguage := "en-US,en;q=0.5"
 		setCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
@@ -7056,7 +7057,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -7140,7 +7141,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "testString")))
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -7269,7 +7270,7 @@ var _ = Describe(`MqcloudV1`, func() {
 	})
 	Describe(`Model constructor tests`, func() {
 		Context(`Using a service client instance`, func() {
-			acceptLanguage := "testString"
+			acceptLanguage := "en-US,en;q=0.5"
 			mqcloudService, _ := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 				URL:            "http://mqcloudv1modelgenerator.com",
 				Authenticator:  &core.NoAuthAuthenticator{},
@@ -7308,18 +7309,18 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateKeyStorePemCertificateOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
 				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
-				label := "testString"
+				label := "certlabel"
 				certificateFile := CreateMockReader("This is a mock file.")
 				createKeyStorePemCertificateOptionsModel := mqcloudService.NewCreateKeyStorePemCertificateOptions(serviceInstanceGuid, queueManagerID, label, certificateFile)
 				createKeyStorePemCertificateOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createKeyStorePemCertificateOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.SetLabel("testString")
+				createKeyStorePemCertificateOptionsModel.SetLabel("certlabel")
 				createKeyStorePemCertificateOptionsModel.SetCertificateFile(CreateMockReader("This is a mock file."))
 				createKeyStorePemCertificateOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createKeyStorePemCertificateOptionsModel).ToNot(BeNil())
 				Expect(createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(createKeyStorePemCertificateOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
-				Expect(createKeyStorePemCertificateOptionsModel.Label).To(Equal(core.StringPtr("testString")))
+				Expect(createKeyStorePemCertificateOptionsModel.Label).To(Equal(core.StringPtr("certlabel")))
 				Expect(createKeyStorePemCertificateOptionsModel.CertificateFile).To(Equal(CreateMockReader("This is a mock file.")))
 				Expect(createKeyStorePemCertificateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
@@ -7328,12 +7329,12 @@ var _ = Describe(`MqcloudV1`, func() {
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
 				createQueueManagerOptionsName := "testqm"
 				createQueueManagerOptionsLocation := "reserved-eu-de-cluster-f884"
-				createQueueManagerOptionsSize := "lite"
+				createQueueManagerOptionsSize := "xsmall"
 				createQueueManagerOptionsModel := mqcloudService.NewCreateQueueManagerOptions(serviceInstanceGuid, createQueueManagerOptionsName, createQueueManagerOptionsLocation, createQueueManagerOptionsSize)
 				createQueueManagerOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.SetName("testqm")
 				createQueueManagerOptionsModel.SetLocation("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.SetSize("lite")
+				createQueueManagerOptionsModel.SetSize("xsmall")
 				createQueueManagerOptionsModel.SetDisplayName("A test queue manager")
 				createQueueManagerOptionsModel.SetVersion("9.3.2_2")
 				createQueueManagerOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
@@ -7341,7 +7342,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(createQueueManagerOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(createQueueManagerOptionsModel.Name).To(Equal(core.StringPtr("testqm")))
 				Expect(createQueueManagerOptionsModel.Location).To(Equal(core.StringPtr("reserved-eu-de-cluster-f884")))
-				Expect(createQueueManagerOptionsModel.Size).To(Equal(core.StringPtr("lite")))
+				Expect(createQueueManagerOptionsModel.Size).To(Equal(core.StringPtr("xsmall")))
 				Expect(createQueueManagerOptionsModel.DisplayName).To(Equal(core.StringPtr("A test queue manager")))
 				Expect(createQueueManagerOptionsModel.Version).To(Equal(core.StringPtr("9.3.2_2")))
 				Expect(createQueueManagerOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -7350,35 +7351,35 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateTrustStorePemCertificateOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
 				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
-				label := "testString"
+				label := "certlabel"
 				certificateFile := CreateMockReader("This is a mock file.")
 				createTrustStorePemCertificateOptionsModel := mqcloudService.NewCreateTrustStorePemCertificateOptions(serviceInstanceGuid, queueManagerID, label, certificateFile)
 				createTrustStorePemCertificateOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createTrustStorePemCertificateOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
-				createTrustStorePemCertificateOptionsModel.SetLabel("testString")
+				createTrustStorePemCertificateOptionsModel.SetLabel("certlabel")
 				createTrustStorePemCertificateOptionsModel.SetCertificateFile(CreateMockReader("This is a mock file."))
 				createTrustStorePemCertificateOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createTrustStorePemCertificateOptionsModel).ToNot(BeNil())
 				Expect(createTrustStorePemCertificateOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(createTrustStorePemCertificateOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
-				Expect(createTrustStorePemCertificateOptionsModel.Label).To(Equal(core.StringPtr("testString")))
+				Expect(createTrustStorePemCertificateOptionsModel.Label).To(Equal(core.StringPtr("certlabel")))
 				Expect(createTrustStorePemCertificateOptionsModel.CertificateFile).To(Equal(CreateMockReader("This is a mock file.")))
 				Expect(createTrustStorePemCertificateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateUserOptions successfully`, func() {
 				// Construct an instance of the CreateUserOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
-				createUserOptionsEmail := "user@example.com"
-				createUserOptionsName := "t0scie98o57a"
+				createUserOptionsEmail := "testuser@ibm.com"
+				createUserOptionsName := "testuser"
 				createUserOptionsModel := mqcloudService.NewCreateUserOptions(serviceInstanceGuid, createUserOptionsEmail, createUserOptionsName)
 				createUserOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createUserOptionsModel.SetEmail("user@example.com")
-				createUserOptionsModel.SetName("t0scie98o57a")
+				createUserOptionsModel.SetEmail("testuser@ibm.com")
+				createUserOptionsModel.SetName("testuser")
 				createUserOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createUserOptionsModel).ToNot(BeNil())
 				Expect(createUserOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
-				Expect(createUserOptionsModel.Email).To(Equal(core.StringPtr("user@example.com")))
-				Expect(createUserOptionsModel.Name).To(Equal(core.StringPtr("t0scie98o57a")))
+				Expect(createUserOptionsModel.Email).To(Equal(core.StringPtr("testuser@ibm.com")))
+				Expect(createUserOptionsModel.Name).To(Equal(core.StringPtr("testuser")))
 				Expect(createUserOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteApplicationOptions successfully`, func() {
@@ -7743,6 +7744,26 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
+	Describe(`Model unmarshaling tests`, func() {
+		It(`Invoke UnmarshalChannelDetails successfully`, func() {
+			// Construct an instance of the model.
+			model := new(mqcloudv1.ChannelDetails)
+			model.Name = core.StringPtr("testString")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *mqcloudv1.ChannelDetails
+			err = mqcloudv1.UnmarshalChannelDetails(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+	})
 	Describe(`Utility function tests`, func() {
 		It(`Invoke CreateMockByteArray() successfully`, func() {
 			mockByteArray := CreateMockByteArray("This is a test")
@@ -7772,8 +7793,7 @@ var _ = Describe(`MqcloudV1`, func() {
 //
 
 func CreateMockByteArray(mockData string) *[]byte {
-	ba := make([]byte, 0)
-	ba = append(ba, mockData...)
+	ba := []byte(mockData)
 	return &ba
 }
 
@@ -7814,7 +7834,19 @@ func ClearTestEnvironment(testEnvironment map[string]string) {
 	}
 }
 
-func WaitForQmStatusUpdate(qmid *string, mqcloudService *mqcloudv1.MqcloudV1, serviceinstance_guid string) error {
+func SkipTestIfQmIsNotRunning(queue_manager_id string, mqcloudService *mqcloudv1.MqcloudV1, service_instance_guid string) {
+	error := WaitForQmStatus(queue_manager_id, mqcloudService, service_instance_guid)
+	if error != nil {
+		fmt.Fprintf(GinkgoWriter, "WaitForQmStatusUpdate failed: %s \n", error)
+		Skip("WaitForQmStatus Failed: Queue Manager is not in the running state")
+	} else {
+		fmt.Fprintf(GinkgoWriter,
+			"--------- Queue Manager is now in the running state ---------",
+		)
+	}
+}
+
+func WaitForQmStatus(queue_manager_id string, mqcloudService *mqcloudv1.MqcloudV1, service_instance_guid string) error {
 	startTime := time.Now()
 	timeout := 5 * time.Minute
 
@@ -7827,12 +7859,12 @@ func WaitForQmStatusUpdate(qmid *string, mqcloudService *mqcloudv1.MqcloudV1, se
 		}
 
 		getQueueManagerStatusOptions := &mqcloudv1.GetQueueManagerStatusOptions{
-			ServiceInstanceGuid: core.StringPtr(serviceinstance_guid),
-			QueueManagerID:      qmid,
+			ServiceInstanceGuid: core.StringPtr(service_instance_guid),
+			QueueManagerID:      core.StringPtr(queue_manager_id),
 		}
 
 		queueManagerStatus, response, err := mqcloudService.GetQueueManagerStatus(getQueueManagerStatusOptions)
-		fmt.Println(*queueManagerStatus.Status)
+		fmt.Println("---- Queue Manager is now in the", *queueManagerStatus.Status, "state ----")
 		if err != nil {
 			return err
 		}
