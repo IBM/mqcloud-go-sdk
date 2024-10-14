@@ -20,6 +20,7 @@ import (
 	"bytes"
 	"context"
 	"crypto/rand"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -7268,6 +7269,961 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
+	Describe(`CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptions *CreateVirtualPrivateEndpointGatewayOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		createVirtualPrivateEndpointGatewayPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/virtual_private_endpoint_gateway"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createVirtualPrivateEndpointGatewayPath))
+					Expect(req.Method).To(Equal("POST"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateVirtualPrivateEndpointGateway with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
+				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
+				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptions *CreateVirtualPrivateEndpointGatewayOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		createVirtualPrivateEndpointGatewayPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/virtual_private_endpoint_gateway"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createVirtualPrivateEndpointGatewayPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
+				}))
+			})
+			It(`Invoke CreateVirtualPrivateEndpointGateway successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
+				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
+				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.CreateVirtualPrivateEndpointGatewayWithContext(ctx, createVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.CreateVirtualPrivateEndpointGatewayWithContext(ctx, createVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createVirtualPrivateEndpointGatewayPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
+				}))
+			})
+			It(`Invoke CreateVirtualPrivateEndpointGateway successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.CreateVirtualPrivateEndpointGateway(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
+				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
+				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateVirtualPrivateEndpointGateway with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
+				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
+				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateVirtualPrivateEndpointGatewayOptions model with no property values
+				createVirtualPrivateEndpointGatewayOptionsModelNew := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateVirtualPrivateEndpointGateway successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
+				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
+				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptions *ListVirtualPrivateEndpointGatewaysOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		listVirtualPrivateEndpointGatewaysPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/virtual_private_endpoint_gateway"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listVirtualPrivateEndpointGatewaysPath))
+					Expect(req.Method).To(Equal("GET"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.URL.Query()["start"]).To(Equal([]string{"r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"}))
+					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ListVirtualPrivateEndpointGateways with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
+				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
+				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptions *ListVirtualPrivateEndpointGatewaysOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		listVirtualPrivateEndpointGatewaysPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/virtual_private_endpoint_gateway"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listVirtualPrivateEndpointGatewaysPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.URL.Query()["start"]).To(Equal([]string{"r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"}))
+					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "virtual_private_endpoint_gateways": [{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}]}`)
+				}))
+			})
+			It(`Invoke ListVirtualPrivateEndpointGateways successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
+				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
+				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.ListVirtualPrivateEndpointGatewaysWithContext(ctx, listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.ListVirtualPrivateEndpointGatewaysWithContext(ctx, listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listVirtualPrivateEndpointGatewaysPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.URL.Query()["start"]).To(Equal([]string{"r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"}))
+					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "virtual_private_endpoint_gateways": [{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}]}`)
+				}))
+			})
+			It(`Invoke ListVirtualPrivateEndpointGateways successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.ListVirtualPrivateEndpointGateways(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
+				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
+				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ListVirtualPrivateEndpointGateways with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
+				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
+				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the ListVirtualPrivateEndpointGatewaysOptions model with no property values
+				listVirtualPrivateEndpointGatewaysOptionsModelNew := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke ListVirtualPrivateEndpointGateways successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
+				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
+				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Test pagination helper method on response`, func() {
+			It(`Invoke GetNextStart successfully`, func() {
+				responseObject := new(mqcloudv1.VirtualPrivateEndpointGatewayDetailsCollection)
+				nextObject := new(mqcloudv1.Next)
+				nextObject.Href = core.StringPtr("ibm.com?start=abc-123")
+				responseObject.Next = nextObject
+
+				value, err := responseObject.GetNextStart()
+				Expect(err).To(BeNil())
+				Expect(value).To(Equal(core.StringPtr("abc-123")))
+			})
+			It(`Invoke GetNextStart without a "Next" property in the response`, func() {
+				responseObject := new(mqcloudv1.VirtualPrivateEndpointGatewayDetailsCollection)
+
+				value, err := responseObject.GetNextStart()
+				Expect(err).To(BeNil())
+				Expect(value).To(BeNil())
+			})
+			It(`Invoke GetNextStart without any query params in the "Next" URL`, func() {
+				responseObject := new(mqcloudv1.VirtualPrivateEndpointGatewayDetailsCollection)
+				nextObject := new(mqcloudv1.Next)
+				nextObject.Href = core.StringPtr("ibm.com")
+				responseObject.Next = nextObject
+
+				value, err := responseObject.GetNextStart()
+				Expect(err).To(BeNil())
+				Expect(value).To(BeNil())
+			})
+		})
+		Context(`Using mock server endpoint - paginated response`, func() {
+			BeforeEach(func() {
+				var requestNumber int = 0
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listVirtualPrivateEndpointGatewaysPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					requestNumber++
+					if requestNumber == 1 {
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?start=1"},"total_count":2,"limit":1,"virtual_private_endpoint_gateways":[{"href":"Href","id":"ID","name":"Name","target_crn":"TargetCrn","status":"Status"}]}`)
+					} else if requestNumber == 2 {
+						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"virtual_private_endpoint_gateways":[{"href":"Href","id":"ID","name":"Name","target_crn":"TargetCrn","status":"Status"}]}`)
+					} else {
+						res.WriteHeader(400)
+					}
+				}))
+			})
+			It(`Use VirtualPrivateEndpointGatewaysPager.GetNext successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				listVirtualPrivateEndpointGatewaysOptionsModel := &mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions{
+					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
+					TrustedProfile:      core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud"),
+					Limit:               core.Int64Ptr(int64(10)),
+				}
+
+				pager, err := mqcloudService.NewVirtualPrivateEndpointGatewaysPager(listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(err).To(BeNil())
+				Expect(pager).ToNot(BeNil())
+
+				var allResults []mqcloudv1.VirtualPrivateEndpointGatewayDetails
+				for pager.HasNext() {
+					nextPage, err := pager.GetNext()
+					Expect(err).To(BeNil())
+					Expect(nextPage).ToNot(BeNil())
+					allResults = append(allResults, nextPage...)
+				}
+				Expect(len(allResults)).To(Equal(2))
+			})
+			It(`Use VirtualPrivateEndpointGatewaysPager.GetAll successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				listVirtualPrivateEndpointGatewaysOptionsModel := &mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions{
+					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
+					TrustedProfile:      core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud"),
+					Limit:               core.Int64Ptr(int64(10)),
+				}
+
+				pager, err := mqcloudService.NewVirtualPrivateEndpointGatewaysPager(listVirtualPrivateEndpointGatewaysOptionsModel)
+				Expect(err).To(BeNil())
+				Expect(pager).ToNot(BeNil())
+
+				allResults, err := pager.GetAll()
+				Expect(err).To(BeNil())
+				Expect(allResults).ToNot(BeNil())
+				Expect(len(allResults)).To(Equal(2))
+			})
+		})
+	})
+	Describe(`GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptions *GetVirtualPrivateEndpointGatewayOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getVirtualPrivateEndpointGatewayPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/virtual_private_endpoint_gateway/r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getVirtualPrivateEndpointGatewayPath))
+					Expect(req.Method).To(Equal("GET"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetVirtualPrivateEndpointGateway with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetVirtualPrivateEndpointGatewayOptions model
+				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
+				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptions *GetVirtualPrivateEndpointGatewayOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getVirtualPrivateEndpointGatewayPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/virtual_private_endpoint_gateway/r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getVirtualPrivateEndpointGatewayPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
+				}))
+			})
+			It(`Invoke GetVirtualPrivateEndpointGateway successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetVirtualPrivateEndpointGatewayOptions model
+				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
+				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.GetVirtualPrivateEndpointGatewayWithContext(ctx, getVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.GetVirtualPrivateEndpointGatewayWithContext(ctx, getVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getVirtualPrivateEndpointGatewayPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
+				}))
+			})
+			It(`Invoke GetVirtualPrivateEndpointGateway successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.GetVirtualPrivateEndpointGateway(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetVirtualPrivateEndpointGatewayOptions model
+				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
+				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetVirtualPrivateEndpointGateway with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetVirtualPrivateEndpointGatewayOptions model
+				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
+				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetVirtualPrivateEndpointGatewayOptions model with no property values
+				getVirtualPrivateEndpointGatewayOptionsModelNew := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetVirtualPrivateEndpointGateway successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetVirtualPrivateEndpointGatewayOptions model
+				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
+				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteVirtualPrivateEndpointGateway(deleteVirtualPrivateEndpointGatewayOptions *DeleteVirtualPrivateEndpointGatewayOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		deleteVirtualPrivateEndpointGatewayPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/virtual_private_endpoint_gateway/r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteVirtualPrivateEndpointGatewayPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke DeleteVirtualPrivateEndpointGateway successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := mqcloudService.DeleteVirtualPrivateEndpointGateway(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the DeleteVirtualPrivateEndpointGatewayOptions model
+				deleteVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.DeleteVirtualPrivateEndpointGatewayOptions)
+				deleteVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = mqcloudService.DeleteVirtualPrivateEndpointGateway(deleteVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke DeleteVirtualPrivateEndpointGateway with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteVirtualPrivateEndpointGatewayOptions model
+				deleteVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.DeleteVirtualPrivateEndpointGatewayOptions)
+				deleteVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := mqcloudService.DeleteVirtualPrivateEndpointGateway(deleteVirtualPrivateEndpointGatewayOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the DeleteVirtualPrivateEndpointGatewayOptions model with no property values
+				deleteVirtualPrivateEndpointGatewayOptionsModelNew := new(mqcloudv1.DeleteVirtualPrivateEndpointGatewayOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = mqcloudService.DeleteVirtualPrivateEndpointGateway(deleteVirtualPrivateEndpointGatewayOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`Model constructor tests`, func() {
 		Context(`Using a service client instance`, func() {
 			acceptLanguage := "en-US,en;q=0.5"
@@ -7382,6 +8338,24 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(createUserOptionsModel.Name).To(Equal(core.StringPtr("testuser")))
 				Expect(createUserOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewCreateVirtualPrivateEndpointGatewayOptions successfully`, func() {
+				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				createVirtualPrivateEndpointGatewayOptionsName := "vpe_gateway1-to-vpe_gateway2"
+				createVirtualPrivateEndpointGatewayOptionsTargetCrn := "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud"
+				createVirtualPrivateEndpointGatewayOptionsModel := mqcloudService.NewCreateVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid, createVirtualPrivateEndpointGatewayOptionsName, createVirtualPrivateEndpointGatewayOptionsTargetCrn)
+				createVirtualPrivateEndpointGatewayOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createVirtualPrivateEndpointGatewayOptionsModel.SetName("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.SetTargetCrn("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createVirtualPrivateEndpointGatewayOptionsModel).ToNot(BeNil())
+				Expect(createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(createVirtualPrivateEndpointGatewayOptionsModel.Name).To(Equal(core.StringPtr("vpe_gateway1-to-vpe_gateway2")))
+				Expect(createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+				Expect(createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+				Expect(createVirtualPrivateEndpointGatewayOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewDeleteApplicationOptions successfully`, func() {
 				// Construct an instance of the DeleteApplicationOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
@@ -7452,6 +8426,21 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(deleteUserOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(deleteUserOptionsModel.UserID).To(Equal(core.StringPtr("31a413dd84346effc8895b6ba4641641")))
 				Expect(deleteUserOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewDeleteVirtualPrivateEndpointGatewayOptions successfully`, func() {
+				// Construct an instance of the DeleteVirtualPrivateEndpointGatewayOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				virtualPrivateEndpointGatewayGuid := "r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"
+				deleteVirtualPrivateEndpointGatewayOptionsModel := mqcloudService.NewDeleteVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid, virtualPrivateEndpointGatewayGuid)
+				deleteVirtualPrivateEndpointGatewayOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.SetVirtualPrivateEndpointGatewayGuid("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel).ToNot(BeNil())
+				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid).To(Equal(core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")))
+				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDownloadKeyStoreCertificateOptions successfully`, func() {
 				// Construct an instance of the DownloadKeyStoreCertificateOptions model
@@ -7631,6 +8620,21 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(getUserOptionsModel.UserID).To(Equal(core.StringPtr("31a413dd84346effc8895b6ba4641641")))
 				Expect(getUserOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetVirtualPrivateEndpointGatewayOptions successfully`, func() {
+				// Construct an instance of the GetVirtualPrivateEndpointGatewayOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				virtualPrivateEndpointGatewayGuid := "r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"
+				getVirtualPrivateEndpointGatewayOptionsModel := mqcloudService.NewGetVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid, virtualPrivateEndpointGatewayGuid)
+				getVirtualPrivateEndpointGatewayOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getVirtualPrivateEndpointGatewayOptionsModel.SetVirtualPrivateEndpointGatewayGuid("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				getVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getVirtualPrivateEndpointGatewayOptionsModel).ToNot(BeNil())
+				Expect(getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid).To(Equal(core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")))
+				Expect(getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+				Expect(getVirtualPrivateEndpointGatewayOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewListApplicationsOptions successfully`, func() {
 				// Construct an instance of the ListApplicationsOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
@@ -7699,6 +8703,22 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(listUsersOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listUsersOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewListVirtualPrivateEndpointGatewaysOptions successfully`, func() {
+				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				listVirtualPrivateEndpointGatewaysOptionsModel := mqcloudService.NewListVirtualPrivateEndpointGatewaysOptions(serviceInstanceGuid)
+				listVirtualPrivateEndpointGatewaysOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listVirtualPrivateEndpointGatewaysOptionsModel.SetTrustedProfile("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.SetStart("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
+				listVirtualPrivateEndpointGatewaysOptionsModel.SetLimit(int64(10))
+				listVirtualPrivateEndpointGatewaysOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(listVirtualPrivateEndpointGatewaysOptionsModel).ToNot(BeNil())
+				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Start).To(Equal(core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")))
+				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
+				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewSetCertificateAmsChannelsOptions successfully`, func() {
 				// Construct an instance of the ChannelDetails model
 				channelDetailsModel := new(mqcloudv1.ChannelDetails)
@@ -7766,7 +8786,7 @@ var _ = Describe(`MqcloudV1`, func() {
 	})
 	Describe(`Utility function tests`, func() {
 		It(`Invoke CreateMockByteArray() successfully`, func() {
-			mockByteArray := CreateMockByteArray("This is a test")
+			mockByteArray := CreateMockByteArray("VGhpcyBpcyBhIHRlc3Qgb2YgdGhlIGVtZXJnZW5jeSBicm9hZGNhc3Qgc3lzdGVt")
 			Expect(mockByteArray).ToNot(BeNil())
 		})
 		It(`Invoke CreateMockUUID() successfully`, func() {
@@ -7792,8 +8812,11 @@ var _ = Describe(`MqcloudV1`, func() {
 // Utility functions used by the generated test code
 //
 
-func CreateMockByteArray(mockData string) *[]byte {
-	ba := []byte(mockData)
+func CreateMockByteArray(encodedString string) *[]byte {
+	ba, err := base64.StdEncoding.DecodeString(encodedString)
+	if err != nil {
+		panic(err)
+	}
 	return &ba
 }
 
@@ -7833,7 +8856,6 @@ func ClearTestEnvironment(testEnvironment map[string]string) {
 		os.Unsetenv(key)
 	}
 }
-
 func SkipTestIfQmIsNotRunning(queue_manager_id string, mqcloudService *mqcloudv1.MqcloudV1, service_instance_guid string) {
 	error := WaitForQmStatus(queue_manager_id, mqcloudService, service_instance_guid)
 	if error != nil {
