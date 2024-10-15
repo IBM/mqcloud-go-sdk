@@ -38,7 +38,7 @@ import (
 
 // MqcloudV1 : The MQ on Cloud API defines a REST API interface to work with MQ on Cloud service in IBM Cloud.
 //
-// API Version: 1.0.1
+// API Version: 1.1.0
 type MqcloudV1 struct {
 	Service *core.BaseService
 
@@ -2808,7 +2808,7 @@ func (mqcloud *MqcloudV1) DeleteVirtualPrivateEndpointGatewayWithContext(ctx con
 	return
 }
 func getServiceComponentInfo() *core.ProblemComponent {
-	return core.NewProblemComponent(DefaultServiceName, "1.0.1")
+	return core.NewProblemComponent(DefaultServiceName, "1.1.0")
 }
 
 // ApplicationAPIKeyCreated : A response to creating a new api key, giving the only chance to collect the new apikey.
