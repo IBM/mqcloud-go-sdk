@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/IBM/mqcloud-go-sdk/compare/v0.1.0...v0.2.0) (2024-11-26)
+
+
+### Features
+
+* Add virtual-private-endpoint-gateways to project ([8a1854a](https://github.com/IBM/mqcloud-go-sdk/commit/8a1854a0b5bd0d20d5275ebdec3b164e51406a0c))
+
 # [0.1.0](https://github.com/IBM/mqcloud-go-sdk/compare/v0.0.4...v0.1.0) (2024-06-05)
 
 
