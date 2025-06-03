@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2024.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.96.0-d6dec9d7-20241008-212902
+ * IBM OpenAPI SDK Code Generator Version: 3.104.0-b4a47c49-20250418-184351
  */
 
 // Package mqcloudv1 : Operations and models for the MqcloudV1 service
@@ -1264,6 +1264,90 @@ func (mqcloud *MqcloudV1) DeleteUserWithContext(ctx context.Context, deleteUserO
 	return
 }
 
+// SetUserShortname : Update the shortname for a user
+// Update the shortname assigned to an MQ SaaS user.
+func (mqcloud *MqcloudV1) SetUserShortname(setUserShortnameOptions *SetUserShortnameOptions) (result *UserDetails, response *core.DetailedResponse, err error) {
+	result, response, err = mqcloud.SetUserShortnameWithContext(context.Background(), setUserShortnameOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// SetUserShortnameWithContext is an alternate form of the SetUserShortname method which supports a Context parameter
+func (mqcloud *MqcloudV1) SetUserShortnameWithContext(ctx context.Context, setUserShortnameOptions *SetUserShortnameOptions) (result *UserDetails, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(setUserShortnameOptions, "setUserShortnameOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(setUserShortnameOptions, "setUserShortnameOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"service_instance_guid": *setUserShortnameOptions.ServiceInstanceGuid,
+		"user_id":               *setUserShortnameOptions.UserID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = mqcloud.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(mqcloud.Service.Options.URL, `/v1/{service_instance_guid}/users/{user_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range setUserShortnameOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("mqcloud", "V1", "SetUserShortname")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
+	}
+
+	body := make(map[string]interface{})
+	if setUserShortnameOptions.Shortname != nil {
+		body["shortname"] = setUserShortnameOptions.Shortname
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = mqcloud.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "set_user_shortname", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalUserDetails)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
 // ListApplications : Get a list of applications for an instance
 // Get a list of applications for an instance.
 func (mqcloud *MqcloudV1) ListApplications(listApplicationsOptions *ListApplicationsOptions) (result *ApplicationDetailsCollection, response *core.DetailedResponse, err error) {
@@ -1557,6 +1641,90 @@ func (mqcloud *MqcloudV1) DeleteApplicationWithContext(ctx context.Context, dele
 		core.EnrichHTTPProblem(err, "delete_application", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
+	}
+
+	return
+}
+
+// SetApplicationShortname : Update the shortname for an application
+// Update the application assigned to an MQ SaaS application.
+func (mqcloud *MqcloudV1) SetApplicationShortname(setApplicationShortnameOptions *SetApplicationShortnameOptions) (result *ApplicationDetails, response *core.DetailedResponse, err error) {
+	result, response, err = mqcloud.SetApplicationShortnameWithContext(context.Background(), setApplicationShortnameOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// SetApplicationShortnameWithContext is an alternate form of the SetApplicationShortname method which supports a Context parameter
+func (mqcloud *MqcloudV1) SetApplicationShortnameWithContext(ctx context.Context, setApplicationShortnameOptions *SetApplicationShortnameOptions) (result *ApplicationDetails, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(setApplicationShortnameOptions, "setApplicationShortnameOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(setApplicationShortnameOptions, "setApplicationShortnameOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"service_instance_guid": *setApplicationShortnameOptions.ServiceInstanceGuid,
+		"application_id":        *setApplicationShortnameOptions.ApplicationID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = mqcloud.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(mqcloud.Service.Options.URL, `/v1/{service_instance_guid}/applications/{application_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range setApplicationShortnameOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("mqcloud", "V1", "SetApplicationShortname")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
+	}
+
+	body := make(map[string]interface{})
+	if setApplicationShortnameOptions.Shortname != nil {
+		body["shortname"] = setApplicationShortnameOptions.Shortname
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = mqcloud.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "set_application_shortname", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalApplicationDetails)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
 	}
 
 	return
@@ -2938,6 +3106,9 @@ type ApplicationDetails struct {
 	// The name of the application - conforming to MQ rules.
 	Name *string `json:"name" validate:"required"`
 
+	// The IAM ID of the application.
+	IamServiceID *string `json:"iam_service_id" validate:"required"`
+
 	// The URI to create a new apikey for the application.
 	CreateApiKeyURI *string `json:"create_api_key_uri" validate:"required"`
 
@@ -2956,6 +3127,11 @@ func UnmarshalApplicationDetails(m map[string]json.RawMessage, result interface{
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "iam_service_id", &obj.IamServiceID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "iam_service_id-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "create_api_key_uri", &obj.CreateApiKeyURI)
@@ -3614,7 +3790,8 @@ type CreateVirtualPrivateEndpointGatewayOptions struct {
 	// The CRN of the target reserved capacity service instance.
 	TargetCrn *string `json:"target_crn" validate:"required"`
 
-	// The CRN of the trusted profile to assume for this request.
+	// The CRN of the trusted profile to assume for this request. This can only be retrieved using the CLI using `ibmcloud
+	// iam tp <profile_id> -o json`.
 	TrustedProfile *string `json:"Trusted-Profile,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -3878,7 +4055,8 @@ type DeleteVirtualPrivateEndpointGatewayOptions struct {
 	// The id of the virtual private endpoint gateway.
 	VirtualPrivateEndpointGatewayGuid *string `json:"virtual_private_endpoint_gateway_guid" validate:"required,ne="`
 
-	// The CRN of the trusted profile to assume for this request.
+	// The CRN of the trusted profile to assume for this request. This can only be retrieved using the CLI using `ibmcloud
+	// iam tp <profile_id> -o json`.
 	TrustedProfile *string `json:"Trusted-Profile,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -4467,7 +4645,8 @@ type GetVirtualPrivateEndpointGatewayOptions struct {
 	// The id of the virtual private endpoint gateway.
 	VirtualPrivateEndpointGatewayGuid *string `json:"virtual_private_endpoint_gateway_guid" validate:"required,ne="`
 
-	// The CRN of the trusted profile to assume for this request.
+	// The CRN of the trusted profile to assume for this request. This can only be retrieved using the CLI using `ibmcloud
+	// iam tp <profile_id> -o json`.
 	TrustedProfile *string `json:"Trusted-Profile,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -4887,7 +5066,8 @@ type ListVirtualPrivateEndpointGatewaysOptions struct {
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
-	// The CRN of the trusted profile to assume for this request.
+	// The CRN of the trusted profile to assume for this request. This can only be retrieved using the CLI using `ibmcloud
+	// iam tp <profile_id> -o json`.
 	TrustedProfile *string `json:"Trusted-Profile,omitempty"`
 
 	// A server-provided token determining what resource to start the page on.
@@ -5323,6 +5503,54 @@ func UnmarshalQueueManagerVersionUpgrades(m map[string]json.RawMessage, result i
 	return
 }
 
+// SetApplicationShortnameOptions : The SetApplicationShortname options.
+type SetApplicationShortnameOptions struct {
+	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
+
+	// The id of the application.
+	ApplicationID *string `json:"application_id" validate:"required,ne="`
+
+	// The new shortname to update the application with.
+	Shortname *string `json:"shortname" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewSetApplicationShortnameOptions : Instantiate SetApplicationShortnameOptions
+func (*MqcloudV1) NewSetApplicationShortnameOptions(serviceInstanceGuid string, applicationID string, shortname string) *SetApplicationShortnameOptions {
+	return &SetApplicationShortnameOptions{
+		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
+		ApplicationID:       core.StringPtr(applicationID),
+		Shortname:           core.StringPtr(shortname),
+	}
+}
+
+// SetServiceInstanceGuid : Allow user to set ServiceInstanceGuid
+func (_options *SetApplicationShortnameOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *SetApplicationShortnameOptions {
+	_options.ServiceInstanceGuid = core.StringPtr(serviceInstanceGuid)
+	return _options
+}
+
+// SetApplicationID : Allow user to set ApplicationID
+func (_options *SetApplicationShortnameOptions) SetApplicationID(applicationID string) *SetApplicationShortnameOptions {
+	_options.ApplicationID = core.StringPtr(applicationID)
+	return _options
+}
+
+// SetShortname : Allow user to set Shortname
+func (_options *SetApplicationShortnameOptions) SetShortname(shortname string) *SetApplicationShortnameOptions {
+	_options.Shortname = core.StringPtr(shortname)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *SetApplicationShortnameOptions) SetHeaders(param map[string]string) *SetApplicationShortnameOptions {
+	options.Headers = param
+	return options
+}
+
 // SetCertificateAmsChannelsOptions : The SetCertificateAmsChannels options.
 type SetCertificateAmsChannelsOptions struct {
 	// The id of the queue manager to retrieve its full details.
@@ -5441,6 +5669,54 @@ func (_options *SetQueueManagerVersionOptions) SetVersion(version string) *SetQu
 
 // SetHeaders : Allow user to set Headers
 func (options *SetQueueManagerVersionOptions) SetHeaders(param map[string]string) *SetQueueManagerVersionOptions {
+	options.Headers = param
+	return options
+}
+
+// SetUserShortnameOptions : The SetUserShortname options.
+type SetUserShortnameOptions struct {
+	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
+
+	// The id of the user.
+	UserID *string `json:"user_id" validate:"required,ne="`
+
+	// The new shortname to update the user with.
+	Shortname *string `json:"shortname" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewSetUserShortnameOptions : Instantiate SetUserShortnameOptions
+func (*MqcloudV1) NewSetUserShortnameOptions(serviceInstanceGuid string, userID string, shortname string) *SetUserShortnameOptions {
+	return &SetUserShortnameOptions{
+		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
+		UserID:              core.StringPtr(userID),
+		Shortname:           core.StringPtr(shortname),
+	}
+}
+
+// SetServiceInstanceGuid : Allow user to set ServiceInstanceGuid
+func (_options *SetUserShortnameOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *SetUserShortnameOptions {
+	_options.ServiceInstanceGuid = core.StringPtr(serviceInstanceGuid)
+	return _options
+}
+
+// SetUserID : Allow user to set UserID
+func (_options *SetUserShortnameOptions) SetUserID(userID string) *SetUserShortnameOptions {
+	_options.UserID = core.StringPtr(userID)
+	return _options
+}
+
+// SetShortname : Allow user to set Shortname
+func (_options *SetUserShortnameOptions) SetShortname(shortname string) *SetUserShortnameOptions {
+	_options.Shortname = core.StringPtr(shortname)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *SetUserShortnameOptions) SetHeaders(param map[string]string) *SetUserShortnameOptions {
 	options.Headers = param
 	return options
 }
@@ -5639,6 +5915,9 @@ type UserDetails struct {
 	// The email of the user.
 	Email *string `json:"email" validate:"required"`
 
+	// The IAM ID of the user.
+	IamServiceID *string `json:"iam_service_id" validate:"required"`
+
 	// The URL for the user details.
 	Href *string `json:"href" validate:"required"`
 }
@@ -5659,6 +5938,11 @@ func UnmarshalUserDetails(m map[string]json.RawMessage, result interface{}) (err
 	err = core.UnmarshalPrimitive(m, "email", &obj.Email)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "email-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "iam_service_id", &obj.IamServiceID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "iam_service_id-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)

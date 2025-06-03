@@ -1,7 +1,7 @@
 //go:build examples
 
 /**
- * (C) Copyright IBM Corp. 2024.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -380,6 +380,29 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(userDetails).ToNot(BeNil())
 		})
+		It(`SetUserShortname request example`, func() {
+			fmt.Println("\nSetUserShortname() result:")
+			// begin-set_user_shortname
+
+			setUserShortnameOptions := mqcloudService.NewSetUserShortnameOptions(
+				config["SERVICE_INSTANCE_DEPLOYMENT_GUID"],
+				config["USER_ID"],
+				"testshortnameupdated",
+			)
+
+			userDetails, response, err := mqcloudService.SetUserShortname(setUserShortnameOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(userDetails, "", "  ")
+			fmt.Println(string(b))
+
+			// end-set_user_shortname
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(userDetails).ToNot(BeNil())
+		})
 		It(`ListApplications request example`, func() {
 			fmt.Println("\nListApplications() result:")
 			// begin-list_applications
@@ -445,6 +468,29 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			fmt.Println(string(b))
 
 			// end-get_application
+
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(applicationDetails).ToNot(BeNil())
+		})
+		It(`SetApplicationShortname request example`, func() {
+			fmt.Println("\nSetApplicationShortname() result:")
+			// begin-set_application_shortname
+
+			setApplicationShortnameOptions := mqcloudService.NewSetApplicationShortnameOptions(
+				config["SERVICE_INSTANCE_DEPLOYMENT_GUID"],
+				config["APPLICATION_ID"],
+				"testshortnameupdated",
+			)
+
+			applicationDetails, response, err := mqcloudService.SetApplicationShortname(setApplicationShortnameOptions)
+			if err != nil {
+				panic(err)
+			}
+			b, _ := json.MarshalIndent(applicationDetails, "", "  ")
+			fmt.Println(string(b))
+
+			// end-set_application_shortname
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))

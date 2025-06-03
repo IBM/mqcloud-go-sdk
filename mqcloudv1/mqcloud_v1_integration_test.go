@@ -1,7 +1,7 @@
 //go:build integration
 
 /**
- * (C) Copyright IBM Corp. 2024.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -398,6 +398,24 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`SetUserShortname - Update the shortname for a user`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`SetUserShortname(setUserShortnameOptions *SetUserShortnameOptions)`, func() {
+			setUserShortnameOptions := &mqcloudv1.SetUserShortnameOptions{
+				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
+				UserID:              core.StringPtr(config["USER_ID"]),
+				Shortname:           core.StringPtr("testshortnameupdated"),
+			}
+
+			userDetails, response, err := mqcloudService.SetUserShortname(setUserShortnameOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(userDetails).ToNot(BeNil())
+		})
+	})
+
 	Describe(`ListApplications - Get a list of applications for an instance`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -429,24 +447,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			}
 			fmt.Fprintf(GinkgoWriter, "Retrieved a total of %d item(s) with pagination.\n", len(allResults))
 		})
-		Describe(`CreateApplication - Add an application to an instance`, func() {
-			BeforeEach(func() {
-				shouldSkipTest()
-			})
-			It(`CreateApplication(createApplicationOptions *CreateApplicationOptions)`, func() {
-				createApplicationOptions := &mqcloudv1.CreateApplicationOptions{
-					ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-					Name:                core.StringPtr("test-app"),
-				}
-
-				applicationCreated, response, err := mqcloudService.CreateApplication(createApplicationOptions)
-				Expect(err).To(BeNil())
-				config["APPLICATION_ID"] = *applicationCreated.ID
-				Expect(response.StatusCode).To(Equal(201))
-				Expect(applicationCreated).ToNot(BeNil())
-			})
-		})
-
 		It(`ListApplications(listApplicationsOptions *ListApplicationsOptions) using ApplicationsPager`, func() {
 			listApplicationsOptions := &mqcloudv1.ListApplicationsOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
@@ -480,6 +480,23 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`CreateApplication - Add an application to an instance`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`CreateApplication(createApplicationOptions *CreateApplicationOptions)`, func() {
+			createApplicationOptions := &mqcloudv1.CreateApplicationOptions{
+				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
+				Name:                core.StringPtr("test-app"),
+			}
+
+			applicationCreated, response, err := mqcloudService.CreateApplication(createApplicationOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(applicationCreated).ToNot(BeNil())
+		})
+	})
+
 	Describe(`GetApplication - Get an application for an instance`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -491,6 +508,24 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			}
 
 			applicationDetails, response, err := mqcloudService.GetApplication(getApplicationOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(applicationDetails).ToNot(BeNil())
+		})
+	})
+
+	Describe(`SetApplicationShortname - Update the shortname for an application`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`SetApplicationShortname(setApplicationShortnameOptions *SetApplicationShortnameOptions)`, func() {
+			setApplicationShortnameOptions := &mqcloudv1.SetApplicationShortnameOptions{
+				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
+				ApplicationID:       core.StringPtr(config["APPLICATION_ID"]),
+				Shortname:           core.StringPtr("testshortnameupdated"),
+			}
+
+			applicationDetails, response, err := mqcloudService.SetApplicationShortname(setApplicationShortnameOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(applicationDetails).ToNot(BeNil())
@@ -842,6 +877,23 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`DeleteQueueManager - Delete a queue manager`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`DeleteQueueManager(deleteQueueManagerOptions *DeleteQueueManagerOptions)`, func() {
+			deleteQueueManagerOptions := &mqcloudv1.DeleteQueueManagerOptions{
+				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
+				QueueManagerID:      core.StringPtr(config["QUEUE_MANAGER_ID"]),
+			}
+
+			queueManagerTaskStatus, response, err := mqcloudService.DeleteQueueManager(deleteQueueManagerOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(202))
+			Expect(queueManagerTaskStatus).ToNot(BeNil())
+		})
+	})
+
 	Describe(`DeleteUser - Delete a user for an instance`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -905,23 +957,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			response, err := mqcloudService.DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
-		})
-	})
-
-	Describe(`DeleteQueueManager - Delete a queue manager`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`DeleteQueueManager(deleteQueueManagerOptions *DeleteQueueManagerOptions)`, func() {
-			deleteQueueManagerOptions := &mqcloudv1.DeleteQueueManagerOptions{
-				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-				QueueManagerID:      core.StringPtr(config["QUEUE_MANAGER_ID"]),
-			}
-
-			queueManagerTaskStatus, response, err := mqcloudService.DeleteQueueManager(deleteQueueManagerOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(202))
-			Expect(queueManagerTaskStatus).ToNot(BeNil())
 		})
 	})
 
