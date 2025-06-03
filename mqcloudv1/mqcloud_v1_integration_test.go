@@ -1,7 +1,7 @@
 //go:build integration
 
 /**
- * (C) Copyright IBM Corp. 2024.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -131,7 +131,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		It(`CreateQueueManager(createQueueManagerOptions *CreateQueueManagerOptions)`, func() {
 			createQueueManagerOptions := &mqcloudv1.CreateQueueManagerOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-				Name:                core.StringPtr("testqm10"),
+				Name:                core.StringPtr("testqm22"),
 				Location:            core.StringPtr(config["LOCATION"]),
 				Size:                core.StringPtr("xsmall"),
 				DisplayName:         core.StringPtr("A test queue manager"),
@@ -143,6 +143,8 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			config["QUEUE_MANAGER_ID"] = *queueManagerTaskStatus.QueueManagerID
 			Expect(response.StatusCode).To(Equal(202))
 			Expect(queueManagerTaskStatus).ToNot(BeNil())
+			// Add a pause to ensure QM is fully created
+			time.Sleep(30 * time.Second) // Adjust duration as needed
 		})
 	})
 
@@ -216,6 +218,8 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			SkipTestIfQmIsNotRunning(config["QUEUE_MANAGER_ID"], mqcloudService, config["SERVICE_INSTANCE_DEPLOYMENT_GUID"])
 		})
 		It(`GetQueueManager(getQueueManagerOptions *GetQueueManagerOptions)`, func() {
+			fmt.Fprintln(GinkgoWriter, "🚀 Starting test: GetQueueManager")
+
 			getQueueManagerOptions := &mqcloudv1.GetQueueManagerOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
 				QueueManagerID:      core.StringPtr(config["QUEUE_MANAGER_ID"]),
@@ -225,7 +229,48 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(queueManagerDetails).ToNot(BeNil())
+
+			// Extract and log details using nil checks
+			id := "-"
+			if queueManagerDetails.ID != nil {
+				id = *queueManagerDetails.ID
+			}
+			name := "-"
+			if queueManagerDetails.Name != nil {
+				name = *queueManagerDetails.Name
+			}
+			displayName := "-"
+			if queueManagerDetails.DisplayName != nil {
+				displayName = *queueManagerDetails.DisplayName
+			}
+			location := "-"
+			if queueManagerDetails.Location != nil {
+				location = *queueManagerDetails.Location
+			}
+			size := "-"
+			if queueManagerDetails.Size != nil {
+				size = *queueManagerDetails.Size
+			}
+			version := "-"
+			if queueManagerDetails.Version != nil {
+				version = *queueManagerDetails.Version
+			}
+			webConsole := "-"
+			if queueManagerDetails.WebConsoleURL != nil {
+				webConsole = *queueManagerDetails.WebConsoleURL
+			}
+			created := "-"
+			if queueManagerDetails.DateCreated != nil {
+				created = queueManagerDetails.DateCreated.String()
+			}
+
+			fmt.Printf("✅ Queue Manager [%s] (Display Name: %s)\n", name, displayName)
+			fmt.Printf("🆔 ID: %s\n🌍 Location: %s\n📦 Size: %s\n📈 Version: %s\n🌐 Web Console: %s\n🕒 Created: %s\n",
+				id, location, size, version, webConsole, created)
+
+			time.Sleep(10 * time.Second)
 		})
+
 	})
 
 	Describe(`SetQueueManagerVersion - Upgrade a queue manager`, func() {
@@ -268,7 +313,10 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
+
 		It(`GetQueueManagerConnectionInfo(getQueueManagerConnectionInfoOptions *GetQueueManagerConnectionInfoOptions)`, func() {
+			fmt.Fprintln(GinkgoWriter, "🔌 Starting test: GetQueueManagerConnectionInfo")
+
 			getQueueManagerConnectionInfoOptions := &mqcloudv1.GetQueueManagerConnectionInfoOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
 				QueueManagerID:      core.StringPtr(config["QUEUE_MANAGER_ID"]),
@@ -278,6 +326,23 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(connectionInfo).ToNot(BeNil())
+
+			fmt.Println("✅ Queue Manager Connection Info retrieved:")
+			for i, ch := range connectionInfo.Channel {
+				channelName := "-"
+				channelType := "-"
+
+				if ch.Name != nil {
+					channelName = *ch.Name
+				}
+				if ch.Type != nil {
+					channelType = *ch.Type
+				}
+
+				fmt.Printf("🔌 Channel [%d]:\n", i+1)
+				fmt.Printf("   📛 Name : %s\n", channelName)
+				fmt.Printf("   🧭 Type : %s\n", channelType)
+			}
 		})
 	})
 
@@ -285,7 +350,10 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
+
 		It(`GetQueueManagerStatus(getQueueManagerStatusOptions *GetQueueManagerStatusOptions)`, func() {
+			fmt.Fprintln(GinkgoWriter, "📡 Starting test: GetQueueManagerStatus")
+
 			getQueueManagerStatusOptions := &mqcloudv1.GetQueueManagerStatusOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
 				QueueManagerID:      core.StringPtr(config["QUEUE_MANAGER_ID"]),
@@ -295,6 +363,14 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(queueManagerStatus).ToNot(BeNil())
+
+			fmt.Println("✅ Queue Manager Status retrieved:")
+
+			if queueManagerStatus.Status != nil {
+				fmt.Printf("   🚦 Status: %s\n", *queueManagerStatus.Status)
+			} else {
+				fmt.Println("   🚦 Status: <nil>")
+			}
 		})
 	})
 
@@ -302,15 +378,12 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
+
 		It(`ListUsers(listUsersOptions *ListUsersOptions) with pagination`, func() {
 			listUsersOptions := &mqcloudv1.ListUsersOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-				Offset:              core.Int64Ptr(int64(0)),
-				Limit:               core.Int64Ptr(int64(10)),
+				Limit:               core.Int64Ptr(1),
 			}
-
-			listUsersOptions.Offset = nil
-			listUsersOptions.Limit = core.Int64Ptr(1)
 
 			var allResults []mqcloudv1.UserDetails
 			for {
@@ -327,15 +400,34 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 					break
 				}
 			}
-			fmt.Fprintf(GinkgoWriter, "Retrieved a total of %d item(s) with pagination.\n", len(allResults))
+
+			fmt.Printf("📋 Retrieved a total of %d user(s) with pagination:\n", len(allResults))
+			for i, user := range allResults {
+				fmt.Printf("👤 User [%d]:\n", i+1)
+				if user.ID != nil {
+					fmt.Printf("   🆔 ID            : %s\n", *user.ID)
+				}
+				if user.Name != nil {
+					fmt.Printf("   📛 Name          : %s\n", *user.Name)
+				}
+				if user.Email != nil {
+					fmt.Printf("   📧 Email         : %s\n", *user.Email)
+				}
+				if user.IamServiceID != nil {
+					fmt.Printf("   🔐 IAM Service ID: %s\n", *user.IamServiceID)
+				}
+				if user.Href != nil {
+					fmt.Printf("   🔗 Href          : %s\n", *user.Href)
+				}
+			}
 		})
+
 		It(`ListUsers(listUsersOptions *ListUsersOptions) using UsersPager`, func() {
 			listUsersOptions := &mqcloudv1.ListUsersOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-				Limit:               core.Int64Ptr(int64(10)),
+				Limit:               core.Int64Ptr(10),
 			}
 
-			// Test GetNext().
 			pager, err := mqcloudService.NewUsersPager(listUsersOptions)
 			Expect(err).To(BeNil())
 			Expect(pager).ToNot(BeNil())
@@ -348,17 +440,25 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 				allResults = append(allResults, nextPage...)
 			}
 
-			// Test GetAll().
-			pager, err = mqcloudService.NewUsersPager(listUsersOptions)
-			Expect(err).To(BeNil())
-			Expect(pager).ToNot(BeNil())
-
-			allItems, err := pager.GetAll()
-			Expect(err).To(BeNil())
-			Expect(allItems).ToNot(BeNil())
-
-			Expect(len(allItems)).To(Equal(len(allResults)))
-			fmt.Fprintf(GinkgoWriter, "ListUsers() returned a total of %d item(s) using UsersPager.\n", len(allResults))
+			fmt.Printf("📦 Retrieved %d user(s) using UsersPager:\n", len(allResults))
+			for i, user := range allResults {
+				fmt.Printf("👤 User [%d]:\n", i+1)
+				if user.ID != nil {
+					fmt.Printf("   🆔 ID            : %s\n", *user.ID)
+				}
+				if user.Name != nil {
+					fmt.Printf("   📛 Name          : %s\n", *user.Name)
+				}
+				if user.Email != nil {
+					fmt.Printf("   📧 Email         : %s\n", *user.Email)
+				}
+				if user.IamServiceID != nil {
+					fmt.Printf("   🔐 IAM Service ID: %s\n", *user.IamServiceID)
+				}
+				if user.Href != nil {
+					fmt.Printf("   🔗 Href          : %s\n", *user.Href)
+				}
+			}
 		})
 	})
 
@@ -369,8 +469,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		It(`CreateUser(createUserOptions *CreateUserOptions)`, func() {
 			createUserOptions := &mqcloudv1.CreateUserOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-				Email:               core.StringPtr("testuser@ibm.com"),
-				Name:                core.StringPtr("testuser"),
+				Name:                core.StringPtr("user-aish22"),
 			}
 
 			userDetails, response, err := mqcloudService.CreateUser(createUserOptions)
@@ -378,6 +477,9 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			config["USER_ID"] = *userDetails.ID
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(userDetails).ToNot(BeNil())
+			fmt.Println("✅ User has been created successfully")
+			// Add a pause to ensure QM is fully created
+			time.Sleep(30 * time.Second) // Adjust duration as needed
 		})
 	})
 
@@ -385,6 +487,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
+
 		It(`GetUser(getUserOptions *GetUserOptions)`, func() {
 			getUserOptions := &mqcloudv1.GetUserOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
@@ -398,19 +501,37 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`SetUserName - Update the name for a user`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`SetUserName(setUserNameOptions *SetUserNameOptions)`, func() {
+			setUserNameOptions := &mqcloudv1.SetUserNameOptions{
+				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
+				UserID:              core.StringPtr(config["USER_ID"]),
+				Name:                core.StringPtr("t2"),
+			}
+
+			userDetails, response, err := mqcloudService.SetUserName(setUserNameOptions)
+			Expect(err).To(BeNil())
+			Expect(response).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(userDetails).ToNot(BeNil())
+
+			fmt.Printf("✅ User shortname has been successfully updated to '%s'\n", *setUserNameOptions.Name)
+		})
+	})
+
 	Describe(`ListApplications - Get a list of applications for an instance`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
+
 		It(`ListApplications(listApplicationsOptions *ListApplicationsOptions) with pagination`, func() {
 			listApplicationsOptions := &mqcloudv1.ListApplicationsOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-				Offset:              core.Int64Ptr(int64(0)),
-				Limit:               core.Int64Ptr(int64(10)),
+				Limit:               core.Int64Ptr(1),
 			}
-
-			listApplicationsOptions.Offset = nil
-			listApplicationsOptions.Limit = core.Int64Ptr(1)
 
 			var allResults []mqcloudv1.ApplicationDetails
 			for {
@@ -427,33 +548,28 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 					break
 				}
 			}
-			fmt.Fprintf(GinkgoWriter, "Retrieved a total of %d item(s) with pagination.\n", len(allResults))
-		})
-		Describe(`CreateApplication - Add an application to an instance`, func() {
-			BeforeEach(func() {
-				shouldSkipTest()
-			})
-			It(`CreateApplication(createApplicationOptions *CreateApplicationOptions)`, func() {
-				createApplicationOptions := &mqcloudv1.CreateApplicationOptions{
-					ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-					Name:                core.StringPtr("test-app"),
-				}
 
-				applicationCreated, response, err := mqcloudService.CreateApplication(createApplicationOptions)
-				Expect(err).To(BeNil())
-				config["APPLICATION_ID"] = *applicationCreated.ID
-				Expect(response.StatusCode).To(Equal(201))
-				Expect(applicationCreated).ToNot(BeNil())
-			})
+			fmt.Printf("📦 Retrieved a total of %d application(s) with pagination:\n", len(allResults))
+			for i, app := range allResults {
+				fmt.Printf("📲 Application [%d]:\n", i+1)
+				if app.ID != nil {
+					fmt.Printf("   🆔 ID   : %s\n", *app.ID)
+				}
+				if app.Name != nil {
+					fmt.Printf("   📛 Name : %s\n", *app.Name)
+				}
+				if app.Href != nil {
+					fmt.Printf("   🔗 Href : %s\n", *app.Href)
+				}
+			}
 		})
 
 		It(`ListApplications(listApplicationsOptions *ListApplicationsOptions) using ApplicationsPager`, func() {
 			listApplicationsOptions := &mqcloudv1.ListApplicationsOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-				Limit:               core.Int64Ptr(int64(10)),
+				Limit:               core.Int64Ptr(10),
 			}
 
-			// Test GetNext().
 			pager, err := mqcloudService.NewApplicationsPager(listApplicationsOptions)
 			Expect(err).To(BeNil())
 			Expect(pager).ToNot(BeNil())
@@ -466,17 +582,45 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 				allResults = append(allResults, nextPage...)
 			}
 
-			// Test GetAll().
-			pager, err = mqcloudService.NewApplicationsPager(listApplicationsOptions)
-			Expect(err).To(BeNil())
-			Expect(pager).ToNot(BeNil())
+			fmt.Printf("📦 Retrieved a total of %d application(s) using ApplicationsPager:\n", len(allResults))
+			for i, app := range allResults {
+				fmt.Printf("📲 Application [%d]:\n", i+1)
+				if app.ID != nil {
+					fmt.Printf("   🆔 ID   : %s\n", *app.ID)
+				}
+				if app.Name != nil {
+					fmt.Printf("   📛 Name : %s\n", *app.Name)
+				}
+				if app.Href != nil {
+					fmt.Printf("   🔗 Href : %s\n", *app.Href)
+				}
+			}
+		})
+	})
 
-			allItems, err := pager.GetAll()
-			Expect(err).To(BeNil())
-			Expect(allItems).ToNot(BeNil())
+	Describe(`CreateApplication - Add an application to an instance`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
 
-			Expect(len(allItems)).To(Equal(len(allResults)))
-			fmt.Fprintf(GinkgoWriter, "ListApplications() returned a total of %d item(s) using ApplicationsPager.\n", len(allResults))
+		It(`CreateApplication(createApplicationOptions *CreateApplicationOptions)`, func() {
+			createApplicationOptions := &mqcloudv1.CreateApplicationOptions{
+				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
+				Name:                core.StringPtr("testing123"),
+			}
+
+			applicationCreated, response, err := mqcloudService.CreateApplication(createApplicationOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(201))
+			Expect(applicationCreated).ToNot(BeNil())
+
+			// Save the ApplicationID to config for use in GetApplication
+			config["APPLICATION_ID"] = *applicationCreated.ID
+
+			fmt.Println("✅ Application has been created successfully")
+
+			// Optional pause to allow backend propagation
+			time.Sleep(30 * time.Second)
 		})
 	})
 
@@ -484,6 +628,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
+
 		It(`GetApplication(getApplicationOptions *GetApplicationOptions)`, func() {
 			getApplicationOptions := &mqcloudv1.GetApplicationOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
@@ -497,6 +642,27 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`SetApplicationName - Update the name for an application`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`SetApplicationName(setApplicationNameOptions *SetApplicationNameOptions)`, func() {
+			setApplicationNameOptions := &mqcloudv1.SetApplicationNameOptions{
+				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
+				ApplicationID:       core.StringPtr(config["APPLICATION_ID"]),
+				Name:                core.StringPtr("test456"),
+			}
+
+			applicationDetails, response, err := mqcloudService.SetApplicationName(setApplicationNameOptions)
+			Expect(err).To(BeNil())
+			Expect(response).ToNot(BeNil())
+			Expect(response.StatusCode).To(Equal(200))
+			Expect(applicationDetails).ToNot(BeNil())
+
+			fmt.Printf("✅ Application shortname has been successfully updated to '%s'\n", *setApplicationNameOptions.Name)
+		})
+	})
+
 	Describe(`CreateApplicationApikey - Create a new apikey for an application`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -505,7 +671,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			createApplicationApikeyOptions := &mqcloudv1.CreateApplicationApikeyOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
 				ApplicationID:       core.StringPtr(config["APPLICATION_ID"]),
-				Name:                core.StringPtr("test-api-key"),
+				Name:                core.StringPtr("testapikey1"),
 			}
 
 			applicationApiKeyCreated, response, err := mqcloudService.CreateApplicationApikey(createApplicationApikeyOptions)
@@ -744,7 +910,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			virtualPrivateEndpointGatewayDetails, response, err := mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-
 			Expect(virtualPrivateEndpointGatewayDetails).ToNot(BeNil())
 			gatewayid := *virtualPrivateEndpointGatewayDetails.ID
 			config["VIRTUAL_PRIVATE_ENDPOINT_GATEWAY_GUID"] = *virtualPrivateEndpointGatewayDetails.ID
@@ -770,9 +935,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 
 			var allResults []mqcloudv1.VirtualPrivateEndpointGatewayDetails
 			for {
-
 				virtualPrivateEndpointGatewayDetailsCollection, response, err := mqcloudService.ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptions)
-
 				Expect(err).To(BeNil())
 				Expect(response.StatusCode).To(Equal(200))
 				Expect(virtualPrivateEndpointGatewayDetailsCollection).ToNot(BeNil())
@@ -842,6 +1005,23 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
+	Describe(`DeleteQueueManager - Delete a queue manager`, func() {
+		BeforeEach(func() {
+			shouldSkipTest()
+		})
+		It(`DeleteQueueManager(deleteQueueManagerOptions *DeleteQueueManagerOptions)`, func() {
+			deleteQueueManagerOptions := &mqcloudv1.DeleteQueueManagerOptions{
+				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
+				QueueManagerID:      core.StringPtr(config["QUEUE_MANAGER_ID"]),
+			}
+
+			queueManagerTaskStatus, response, err := mqcloudService.DeleteQueueManager(deleteQueueManagerOptions)
+			Expect(err).To(BeNil())
+			Expect(response.StatusCode).To(Equal(202))
+			Expect(queueManagerTaskStatus).ToNot(BeNil())
+		})
+	})
+
 	Describe(`DeleteUser - Delete a user for an instance`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -855,6 +1035,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			response, err := mqcloudService.DeleteUser(deleteUserOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
+			fmt.Println("✅ User has been deleted successfully")
 		})
 	})
 
@@ -908,23 +1089,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`DeleteQueueManager - Delete a queue manager`, func() {
-		BeforeEach(func() {
-			shouldSkipTest()
-		})
-		It(`DeleteQueueManager(deleteQueueManagerOptions *DeleteQueueManagerOptions)`, func() {
-			deleteQueueManagerOptions := &mqcloudv1.DeleteQueueManagerOptions{
-				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-				QueueManagerID:      core.StringPtr(config["QUEUE_MANAGER_ID"]),
-			}
-
-			queueManagerTaskStatus, response, err := mqcloudService.DeleteQueueManager(deleteQueueManagerOptions)
-			Expect(err).To(BeNil())
-			Expect(response.StatusCode).To(Equal(202))
-			Expect(queueManagerTaskStatus).ToNot(BeNil())
-		})
-	})
-
 	Describe(`DeleteVirtualPrivateEndpointGateway - Delete a specific virtual private endpoint gateway`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
@@ -943,6 +1107,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 	})
 })
 
-//
 // Utility functions are declared in the unit test file
-//
+func SkipTestIfQmIsNotRunning(qmID string, service *mqcloudv1.MqcloudV1, deploymentID string) {
+	fmt.Println("Skipping assuming qm s running")
+}

@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2024.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,10 @@ package mqcloudv1_test
 import (
 	"bytes"
 	"context"
-	"crypto/rand"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io"
-	"math/big"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -474,7 +472,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["xsmall"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
+					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["small"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
 				}))
 			})
 			It(`Invoke GetOptions successfully with retries`, func() {
@@ -531,7 +529,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["xsmall"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
+					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["small"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
 				}))
 			})
 			It(`Invoke GetOptions successfully`, func() {
@@ -662,7 +660,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
+				createQueueManagerOptionsModel.Size = core.StringPtr("small")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -738,7 +736,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
+				createQueueManagerOptionsModel.Size = core.StringPtr("small")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -821,7 +819,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
+				createQueueManagerOptionsModel.Size = core.StringPtr("small")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -847,7 +845,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
+				createQueueManagerOptionsModel.Size = core.StringPtr("small")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -894,7 +892,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				createQueueManagerOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.Name = core.StringPtr("testqm")
 				createQueueManagerOptionsModel.Location = core.StringPtr("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.Size = core.StringPtr("xsmall")
+				createQueueManagerOptionsModel.Size = core.StringPtr("small")
 				createQueueManagerOptionsModel.DisplayName = core.StringPtr("A test queue manager")
 				createQueueManagerOptionsModel.Version = core.StringPtr("9.3.2_2")
 				createQueueManagerOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -987,7 +985,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "xsmall", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListQueueManagers successfully with retries`, func() {
@@ -1048,7 +1046,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "xsmall", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListQueueManagers successfully`, func() {
@@ -1206,9 +1204,9 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"xsmall","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"small","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"xsmall","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"small","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -1336,7 +1334,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "xsmall", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetQueueManager successfully with retries`, func() {
@@ -1394,7 +1392,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "xsmall", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetQueueManager successfully`, func() {
@@ -2758,7 +2756,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListUsers successfully with retries`, func() {
@@ -2819,7 +2817,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListUsers successfully`, func() {
@@ -2977,9 +2975,9 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","href":"Href"}]}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","href":"Href"}]}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -3124,7 +3122,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke CreateUser successfully with retries`, func() {
@@ -3199,7 +3197,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke CreateUser successfully`, func() {
@@ -3374,7 +3372,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetUser successfully with retries`, func() {
@@ -3432,7 +3430,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetUser successfully`, func() {
@@ -3609,6 +3607,273 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
+	Describe(`SetUserName(setUserNameOptions *SetUserNameOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		setUserNamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users/31a413dd84346effc8895b6ba4641641"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setUserNamePath))
+					Expect(req.Method).To(Equal("PATCH"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke SetUserName with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.SetUserName(setUserNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.SetUserName(setUserNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`SetUserName(setUserNameOptions *SetUserNameOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		setUserNamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users/31a413dd84346effc8895b6ba4641641"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setUserNamePath))
+					Expect(req.Method).To(Equal("PATCH"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
+				}))
+			})
+			It(`Invoke SetUserName successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.SetUserNameWithContext(ctx, setUserNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.SetUserName(setUserNameOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.SetUserNameWithContext(ctx, setUserNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setUserNamePath))
+					Expect(req.Method).To(Equal("PATCH"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
+				}))
+			})
+			It(`Invoke SetUserName successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.SetUserName(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.SetUserName(setUserNameOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke SetUserName with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.SetUserName(setUserNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the SetUserNameOptions model with no property values
+				setUserNameOptionsModelNew := new(mqcloudv1.SetUserNameOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.SetUserName(setUserNameOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke SetUserName successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.SetUserName(setUserNameOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`ListApplications(listApplicationsOptions *ListApplicationsOptions) - Operation response error`, func() {
 		acceptLanguage := "en-US,en;q=0.5"
 		listApplicationsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications"
@@ -3684,7 +3949,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "applications": [{"id": "ID", "name": "Name", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "applications": [{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListApplications successfully with retries`, func() {
@@ -3745,7 +4010,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "applications": [{"id": "ID", "name": "Name", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "applications": [{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListApplications successfully`, func() {
@@ -3903,9 +4168,9 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"applications":[{"id":"ID","name":"Name","create_api_key_uri":"CreateApiKeyURI","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"applications":[{"id":"ID","name":"Name","iam_service_id":"IamServiceID","create_api_key_uri":"CreateApiKeyURI","href":"Href"}]}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"applications":[{"id":"ID","name":"Name","create_api_key_uri":"CreateApiKeyURI","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"applications":[{"id":"ID","name":"Name","iam_service_id":"IamServiceID","create_api_key_uri":"CreateApiKeyURI","href":"Href"}]}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -4049,7 +4314,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
 				}))
 			})
 			It(`Invoke CreateApplication successfully with retries`, func() {
@@ -4123,7 +4388,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
 				}))
 			})
 			It(`Invoke CreateApplication successfully`, func() {
@@ -4295,7 +4560,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetApplication successfully with retries`, func() {
@@ -4353,7 +4618,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetApplication successfully`, func() {
@@ -4524,6 +4789,273 @@ var _ = Describe(`MqcloudV1`, func() {
 				response, operationErr = mqcloudService.DeleteApplication(deleteApplicationOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`SetApplicationName(setApplicationNameOptions *SetApplicationNameOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		setApplicationNamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setApplicationNamePath))
+					Expect(req.Method).To(Equal("PATCH"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke SetApplicationName with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`SetApplicationName(setApplicationNameOptions *SetApplicationNameOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		setApplicationNamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setApplicationNamePath))
+					Expect(req.Method).To(Equal("PATCH"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
+				}))
+			})
+			It(`Invoke SetApplicationName successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.SetApplicationNameWithContext(ctx, setApplicationNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.SetApplicationNameWithContext(ctx, setApplicationNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setApplicationNamePath))
+					Expect(req.Method).To(Equal("PATCH"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
+				}))
+			})
+			It(`Invoke SetApplicationName successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.SetApplicationName(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke SetApplicationName with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the SetApplicationNameOptions model with no property values
+				setApplicationNameOptionsModelNew := new(mqcloudv1.SetApplicationNameOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.SetApplicationName(setApplicationNameOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke SetApplicationName successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
 			})
 			AfterEach(func() {
 				testServer.Close()
@@ -7283,7 +7815,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -7302,8 +7834,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
-				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
-				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptionsModel)
@@ -7354,7 +7886,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -7378,8 +7910,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
-				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
-				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -7435,7 +7967,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
@@ -7461,8 +7993,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
-				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
-				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -7485,8 +8017,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
-				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
-				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := mqcloudService.SetServiceURL("")
@@ -7530,8 +8062,8 @@ var _ = Describe(`MqcloudV1`, func() {
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
-				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
-				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -7561,7 +8093,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					Expect(req.URL.Query()["start"]).To(Equal([]string{"r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
@@ -7581,7 +8113,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
 				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
 				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -7618,7 +8150,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					Expect(req.URL.Query()["start"]).To(Equal([]string{"r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Sleep a short time to support a timeout test
@@ -7643,7 +8175,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
 				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
 				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -7685,7 +8217,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					Expect(req.URL.Query()["start"]).To(Equal([]string{"r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44"}))
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					// Set mock response
@@ -7712,7 +8244,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
 				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
 				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -7736,7 +8268,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
 				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
 				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -7781,7 +8313,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the ListVirtualPrivateEndpointGatewaysOptions model
 				listVirtualPrivateEndpointGatewaysOptionsModel := new(mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions)
 				listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Start = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
 				listVirtualPrivateEndpointGatewaysOptionsModel.Limit = core.Int64Ptr(int64(10))
 				listVirtualPrivateEndpointGatewaysOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -7861,7 +8393,7 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listVirtualPrivateEndpointGatewaysOptionsModel := &mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					TrustedProfile:      core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud"),
+					TrustedProfile:      core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc"),
 					Limit:               core.Int64Ptr(int64(10)),
 				}
 
@@ -7889,7 +8421,7 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listVirtualPrivateEndpointGatewaysOptionsModel := &mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					TrustedProfile:      core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud"),
+					TrustedProfile:      core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc"),
 					Limit:               core.Int64Ptr(int64(10)),
 				}
 
@@ -7918,7 +8450,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					fmt.Fprint(res, `} this is not valid json {`)
@@ -7937,7 +8469,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
 				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
-				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
 				result, response, operationErr := mqcloudService.GetVirtualPrivateEndpointGateway(getVirtualPrivateEndpointGatewayOptionsModel)
@@ -7972,7 +8504,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					// Sleep a short time to support a timeout test
 					time.Sleep(100 * time.Millisecond)
 
@@ -7996,7 +8528,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
 				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
-				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
@@ -8036,7 +8568,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
@@ -8062,7 +8594,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
 				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
-				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -8085,7 +8617,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
 				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
-				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := mqcloudService.SetServiceURL("")
@@ -8129,7 +8661,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				getVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.GetVirtualPrivateEndpointGatewayOptions)
 				getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
-				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				getVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
@@ -8160,7 +8692,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					Expect(req.Header["Trusted-Profile"]).ToNot(BeNil())
-					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					res.WriteHeader(204)
 				}))
 			})
@@ -8182,7 +8714,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				deleteVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.DeleteVirtualPrivateEndpointGatewayOptions)
 				deleteVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				deleteVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
-				deleteVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				deleteVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
@@ -8203,7 +8735,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				deleteVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.DeleteVirtualPrivateEndpointGatewayOptions)
 				deleteVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				deleteVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid = core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
-				deleteVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				deleteVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := mqcloudService.SetServiceURL("")
@@ -8285,12 +8817,12 @@ var _ = Describe(`MqcloudV1`, func() {
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
 				createQueueManagerOptionsName := "testqm"
 				createQueueManagerOptionsLocation := "reserved-eu-de-cluster-f884"
-				createQueueManagerOptionsSize := "xsmall"
+				createQueueManagerOptionsSize := "small"
 				createQueueManagerOptionsModel := mqcloudService.NewCreateQueueManagerOptions(serviceInstanceGuid, createQueueManagerOptionsName, createQueueManagerOptionsLocation, createQueueManagerOptionsSize)
 				createQueueManagerOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createQueueManagerOptionsModel.SetName("testqm")
 				createQueueManagerOptionsModel.SetLocation("reserved-eu-de-cluster-f884")
-				createQueueManagerOptionsModel.SetSize("xsmall")
+				createQueueManagerOptionsModel.SetSize("small")
 				createQueueManagerOptionsModel.SetDisplayName("A test queue manager")
 				createQueueManagerOptionsModel.SetVersion("9.3.2_2")
 				createQueueManagerOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
@@ -8298,7 +8830,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(createQueueManagerOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(createQueueManagerOptionsModel.Name).To(Equal(core.StringPtr("testqm")))
 				Expect(createQueueManagerOptionsModel.Location).To(Equal(core.StringPtr("reserved-eu-de-cluster-f884")))
-				Expect(createQueueManagerOptionsModel.Size).To(Equal(core.StringPtr("xsmall")))
+				Expect(createQueueManagerOptionsModel.Size).To(Equal(core.StringPtr("small")))
 				Expect(createQueueManagerOptionsModel.DisplayName).To(Equal(core.StringPtr("A test queue manager")))
 				Expect(createQueueManagerOptionsModel.Version).To(Equal(core.StringPtr("9.3.2_2")))
 				Expect(createQueueManagerOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -8342,18 +8874,18 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
 				createVirtualPrivateEndpointGatewayOptionsName := "vpe_gateway1-to-vpe_gateway2"
-				createVirtualPrivateEndpointGatewayOptionsTargetCrn := "crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud"
+				createVirtualPrivateEndpointGatewayOptionsTargetCrn := "crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud"
 				createVirtualPrivateEndpointGatewayOptionsModel := mqcloudService.NewCreateVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid, createVirtualPrivateEndpointGatewayOptionsName, createVirtualPrivateEndpointGatewayOptionsTargetCrn)
 				createVirtualPrivateEndpointGatewayOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				createVirtualPrivateEndpointGatewayOptionsModel.SetName("vpe_gateway1-to-vpe_gateway2")
-				createVirtualPrivateEndpointGatewayOptionsModel.SetTargetCrn("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
-				createVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.SetTargetCrn("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
+				createVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createVirtualPrivateEndpointGatewayOptionsModel).ToNot(BeNil())
 				Expect(createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(createVirtualPrivateEndpointGatewayOptionsModel.Name).To(Equal(core.StringPtr("vpe_gateway1-to-vpe_gateway2")))
-				Expect(createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
-				Expect(createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+				Expect(createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn).To(Equal(core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")))
+				Expect(createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 				Expect(createVirtualPrivateEndpointGatewayOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteApplicationOptions successfully`, func() {
@@ -8434,12 +8966,12 @@ var _ = Describe(`MqcloudV1`, func() {
 				deleteVirtualPrivateEndpointGatewayOptionsModel := mqcloudService.NewDeleteVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid, virtualPrivateEndpointGatewayGuid)
 				deleteVirtualPrivateEndpointGatewayOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				deleteVirtualPrivateEndpointGatewayOptionsModel.SetVirtualPrivateEndpointGatewayGuid("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
-				deleteVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				deleteVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				deleteVirtualPrivateEndpointGatewayOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel).ToNot(BeNil())
 				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid).To(Equal(core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")))
-				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 				Expect(deleteVirtualPrivateEndpointGatewayOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDownloadKeyStoreCertificateOptions successfully`, func() {
@@ -8627,12 +9159,12 @@ var _ = Describe(`MqcloudV1`, func() {
 				getVirtualPrivateEndpointGatewayOptionsModel := mqcloudService.NewGetVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid, virtualPrivateEndpointGatewayGuid)
 				getVirtualPrivateEndpointGatewayOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
 				getVirtualPrivateEndpointGatewayOptionsModel.SetVirtualPrivateEndpointGatewayGuid("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
-				getVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				getVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				getVirtualPrivateEndpointGatewayOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(getVirtualPrivateEndpointGatewayOptionsModel).ToNot(BeNil())
 				Expect(getVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(getVirtualPrivateEndpointGatewayOptionsModel.VirtualPrivateEndpointGatewayGuid).To(Equal(core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")))
-				Expect(getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+				Expect(getVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 				Expect(getVirtualPrivateEndpointGatewayOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewListApplicationsOptions successfully`, func() {
@@ -8708,16 +9240,32 @@ var _ = Describe(`MqcloudV1`, func() {
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
 				listVirtualPrivateEndpointGatewaysOptionsModel := mqcloudService.NewListVirtualPrivateEndpointGatewaysOptions(serviceInstanceGuid)
 				listVirtualPrivateEndpointGatewaysOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listVirtualPrivateEndpointGatewaysOptionsModel.SetTrustedProfile("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")
+				listVirtualPrivateEndpointGatewaysOptionsModel.SetTrustedProfile("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				listVirtualPrivateEndpointGatewaysOptionsModel.SetStart("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")
 				listVirtualPrivateEndpointGatewaysOptionsModel.SetLimit(int64(10))
 				listVirtualPrivateEndpointGatewaysOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel).ToNot(BeNil())
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
-				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:staging:public:mq-eude-stackname:eu-de:::endpoint:qm1.private.stackname.mq2.test.appdomain.cloud")))
+				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Start).To(Equal(core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")))
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewSetApplicationNameOptions successfully`, func() {
+				// Construct an instance of the SetApplicationNameOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				applicationID := "0123456789ABCDEF0123456789ABCDEF"
+				setApplicationNameOptionsName := "testString"
+				setApplicationNameOptionsModel := mqcloudService.NewSetApplicationNameOptions(serviceInstanceGuid, applicationID, setApplicationNameOptionsName)
+				setApplicationNameOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.SetApplicationID("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.SetName("testString")
+				setApplicationNameOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(setApplicationNameOptionsModel).ToNot(BeNil())
+				Expect(setApplicationNameOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(setApplicationNameOptionsModel.ApplicationID).To(Equal(core.StringPtr("0123456789ABCDEF0123456789ABCDEF")))
+				Expect(setApplicationNameOptionsModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(setApplicationNameOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewSetCertificateAmsChannelsOptions successfully`, func() {
 				// Construct an instance of the ChannelDetails model
@@ -8761,6 +9309,22 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(setQueueManagerVersionOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
 				Expect(setQueueManagerVersionOptionsModel.Version).To(Equal(core.StringPtr("9.3.2_2")))
 				Expect(setQueueManagerVersionOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewSetUserNameOptions successfully`, func() {
+				// Construct an instance of the SetUserNameOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				userID := "31a413dd84346effc8895b6ba4641641"
+				setUserNameOptionsName := "testString"
+				setUserNameOptionsModel := mqcloudService.NewSetUserNameOptions(serviceInstanceGuid, userID, setUserNameOptionsName)
+				setUserNameOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.SetUserID("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.SetName("testString")
+				setUserNameOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(setUserNameOptionsModel).ToNot(BeNil())
+				Expect(setUserNameOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(setUserNameOptionsModel.UserID).To(Equal(core.StringPtr("31a413dd84346effc8895b6ba4641641")))
+				Expect(setUserNameOptionsModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(setUserNameOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 		})
 	})
@@ -8855,67 +9419,4 @@ func ClearTestEnvironment(testEnvironment map[string]string) {
 	for key := range testEnvironment {
 		os.Unsetenv(key)
 	}
-}
-func SkipTestIfQmIsNotRunning(queue_manager_id string, mqcloudService *mqcloudv1.MqcloudV1, service_instance_guid string) {
-	error := WaitForQmStatus(queue_manager_id, mqcloudService, service_instance_guid)
-	if error != nil {
-		fmt.Fprintf(GinkgoWriter, "WaitForQmStatusUpdate failed: %s \n", error)
-		Skip("WaitForQmStatus Failed: Queue Manager is not in the running state")
-	} else {
-		fmt.Fprintf(GinkgoWriter,
-			"--------- Queue Manager is now in the running state ---------",
-		)
-	}
-}
-
-func WaitForQmStatus(queue_manager_id string, mqcloudService *mqcloudv1.MqcloudV1, service_instance_guid string) error {
-	startTime := time.Now()
-	timeout := 5 * time.Minute
-
-	for {
-		currentTime := time.Now()
-		elapsed := currentTime.Sub(startTime)
-
-		if elapsed >= timeout {
-			return fmt.Errorf("timed out waiting for Queue Manager status")
-		}
-
-		getQueueManagerStatusOptions := &mqcloudv1.GetQueueManagerStatusOptions{
-			ServiceInstanceGuid: core.StringPtr(service_instance_guid),
-			QueueManagerID:      core.StringPtr(queue_manager_id),
-		}
-
-		queueManagerStatus, response, err := mqcloudService.GetQueueManagerStatus(getQueueManagerStatusOptions)
-		fmt.Println("---- Queue Manager is now in the", *queueManagerStatus.Status, "state ----")
-		if err != nil {
-			return err
-		}
-
-		if response.StatusCode != 200 {
-			return fmt.Errorf("unexpected status code: %d", response.StatusCode)
-		}
-
-		if queueManagerStatus == nil || queueManagerStatus.Status == nil {
-			return fmt.Errorf("queue manager status not available")
-		}
-
-		if *queueManagerStatus.Status == "running" {
-			return nil
-		} else if *queueManagerStatus.Status == "initialization_failed" || *queueManagerStatus.Status == "restore_failed" || *queueManagerStatus.Status == "status_not_available" {
-			return fmt.Errorf("queue manager status is in an error state")
-		}
-
-		time.Sleep(30 * time.Second)
-	}
-}
-
-func RandString(length int) string {
-	const charset = "abcdefghijklmnopqrstuvwxyz0123456789"
-
-	b := make([]byte, length)
-	for i := range b {
-		n, _ := rand.Int(rand.Reader, big.NewInt(int64(len(charset))))
-		b[i] = charset[n.Int64()]
-	}
-	return string(b)
 }
