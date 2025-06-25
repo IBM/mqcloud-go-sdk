@@ -1264,30 +1264,30 @@ func (mqcloud *MqcloudV1) DeleteUserWithContext(ctx context.Context, deleteUserO
 	return
 }
 
-// SetUserShortname : Update the shortname for a user
-// Update the shortname assigned to an MQ SaaS user.
-func (mqcloud *MqcloudV1) SetUserShortname(setUserShortnameOptions *SetUserShortnameOptions) (result *UserDetails, response *core.DetailedResponse, err error) {
-	result, response, err = mqcloud.SetUserShortnameWithContext(context.Background(), setUserShortnameOptions)
+// SetUserName : Update the name for a user
+// Update the name assigned to an MQ SaaS user.
+func (mqcloud *MqcloudV1) SetUserName(setUserNameOptions *SetUserNameOptions) (result *UserDetails, response *core.DetailedResponse, err error) {
+	result, response, err = mqcloud.SetUserNameWithContext(context.Background(), setUserNameOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// SetUserShortnameWithContext is an alternate form of the SetUserShortname method which supports a Context parameter
-func (mqcloud *MqcloudV1) SetUserShortnameWithContext(ctx context.Context, setUserShortnameOptions *SetUserShortnameOptions) (result *UserDetails, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(setUserShortnameOptions, "setUserShortnameOptions cannot be nil")
+// SetUserNameWithContext is an alternate form of the SetUserName method which supports a Context parameter
+func (mqcloud *MqcloudV1) SetUserNameWithContext(ctx context.Context, setUserNameOptions *SetUserNameOptions) (result *UserDetails, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(setUserNameOptions, "setUserNameOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(setUserShortnameOptions, "setUserShortnameOptions")
+	err = core.ValidateStruct(setUserNameOptions, "setUserNameOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"service_instance_guid": *setUserShortnameOptions.ServiceInstanceGuid,
-		"user_id": *setUserShortnameOptions.UserID,
+		"service_instance_guid": *setUserNameOptions.ServiceInstanceGuid,
+		"user_id": *setUserNameOptions.UserID,
 	}
 
 	builder := core.NewRequestBuilder(core.PATCH)
@@ -1299,11 +1299,11 @@ func (mqcloud *MqcloudV1) SetUserShortnameWithContext(ctx context.Context, setUs
 		return
 	}
 
-	for headerName, headerValue := range setUserShortnameOptions.Headers {
+	for headerName, headerValue := range setUserNameOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("mqcloud", "V1", "SetUserShortname")
+	sdkHeaders := common.GetSdkHeaders("mqcloud", "V1", "SetUserName")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -1314,8 +1314,8 @@ func (mqcloud *MqcloudV1) SetUserShortnameWithContext(ctx context.Context, setUs
 	}
 
 	body := make(map[string]interface{})
-	if setUserShortnameOptions.Name != nil {
-		body["name"] = setUserShortnameOptions.Name
+	if setUserNameOptions.Name != nil {
+		body["name"] = setUserNameOptions.Name
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -1332,7 +1332,7 @@ func (mqcloud *MqcloudV1) SetUserShortnameWithContext(ctx context.Context, setUs
 	var rawResponse map[string]json.RawMessage
 	response, err = mqcloud.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "set_user_shortname", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "set_user_name", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
@@ -1646,30 +1646,30 @@ func (mqcloud *MqcloudV1) DeleteApplicationWithContext(ctx context.Context, dele
 	return
 }
 
-// SetApplicationShortname : Update the shortname for an application
+// SetApplicationName : Update the name for an application
 // Update the application assigned to an MQ SaaS application.
-func (mqcloud *MqcloudV1) SetApplicationShortname(setApplicationShortnameOptions *SetApplicationShortnameOptions) (result *ApplicationDetails, response *core.DetailedResponse, err error) {
-	result, response, err = mqcloud.SetApplicationShortnameWithContext(context.Background(), setApplicationShortnameOptions)
+func (mqcloud *MqcloudV1) SetApplicationName(setApplicationNameOptions *SetApplicationNameOptions) (result *ApplicationDetails, response *core.DetailedResponse, err error) {
+	result, response, err = mqcloud.SetApplicationNameWithContext(context.Background(), setApplicationNameOptions)
 	err = core.RepurposeSDKProblem(err, "")
 	return
 }
 
-// SetApplicationShortnameWithContext is an alternate form of the SetApplicationShortname method which supports a Context parameter
-func (mqcloud *MqcloudV1) SetApplicationShortnameWithContext(ctx context.Context, setApplicationShortnameOptions *SetApplicationShortnameOptions) (result *ApplicationDetails, response *core.DetailedResponse, err error) {
-	err = core.ValidateNotNil(setApplicationShortnameOptions, "setApplicationShortnameOptions cannot be nil")
+// SetApplicationNameWithContext is an alternate form of the SetApplicationName method which supports a Context parameter
+func (mqcloud *MqcloudV1) SetApplicationNameWithContext(ctx context.Context, setApplicationNameOptions *SetApplicationNameOptions) (result *ApplicationDetails, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(setApplicationNameOptions, "setApplicationNameOptions cannot be nil")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
 		return
 	}
-	err = core.ValidateStruct(setApplicationShortnameOptions, "setApplicationShortnameOptions")
+	err = core.ValidateStruct(setApplicationNameOptions, "setApplicationNameOptions")
 	if err != nil {
 		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
 		return
 	}
 
 	pathParamsMap := map[string]string{
-		"service_instance_guid": *setApplicationShortnameOptions.ServiceInstanceGuid,
-		"application_id": *setApplicationShortnameOptions.ApplicationID,
+		"service_instance_guid": *setApplicationNameOptions.ServiceInstanceGuid,
+		"application_id": *setApplicationNameOptions.ApplicationID,
 	}
 
 	builder := core.NewRequestBuilder(core.PATCH)
@@ -1681,11 +1681,11 @@ func (mqcloud *MqcloudV1) SetApplicationShortnameWithContext(ctx context.Context
 		return
 	}
 
-	for headerName, headerValue := range setApplicationShortnameOptions.Headers {
+	for headerName, headerValue := range setApplicationNameOptions.Headers {
 		builder.AddHeader(headerName, headerValue)
 	}
 
-	sdkHeaders := common.GetSdkHeaders("mqcloud", "V1", "SetApplicationShortname")
+	sdkHeaders := common.GetSdkHeaders("mqcloud", "V1", "SetApplicationName")
 	for headerName, headerValue := range sdkHeaders {
 		builder.AddHeader(headerName, headerValue)
 	}
@@ -1696,8 +1696,8 @@ func (mqcloud *MqcloudV1) SetApplicationShortnameWithContext(ctx context.Context
 	}
 
 	body := make(map[string]interface{})
-	if setApplicationShortnameOptions.Name != nil {
-		body["name"] = setApplicationShortnameOptions.Name
+	if setApplicationNameOptions.Name != nil {
+		body["name"] = setApplicationNameOptions.Name
 	}
 	_, err = builder.SetBodyContentJSON(body)
 	if err != nil {
@@ -1714,7 +1714,7 @@ func (mqcloud *MqcloudV1) SetApplicationShortnameWithContext(ctx context.Context
 	var rawResponse map[string]json.RawMessage
 	response, err = mqcloud.Service.Request(request, &rawResponse)
 	if err != nil {
-		core.EnrichHTTPProblem(err, "set_application_shortname", getServiceComponentInfo())
+		core.EnrichHTTPProblem(err, "set_application_name", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
 	}
@@ -5511,8 +5511,8 @@ func UnmarshalQueueManagerVersionUpgrades(m map[string]json.RawMessage, result i
 	return
 }
 
-// SetApplicationShortnameOptions : The SetApplicationShortname options.
-type SetApplicationShortnameOptions struct {
+// SetApplicationNameOptions : The SetApplicationName options.
+type SetApplicationNameOptions struct {
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
@@ -5526,9 +5526,9 @@ type SetApplicationShortnameOptions struct {
 	Headers map[string]string
 }
 
-// NewSetApplicationShortnameOptions : Instantiate SetApplicationShortnameOptions
-func (*MqcloudV1) NewSetApplicationShortnameOptions(serviceInstanceGuid string, applicationID string, name string) *SetApplicationShortnameOptions {
-	return &SetApplicationShortnameOptions{
+// NewSetApplicationNameOptions : Instantiate SetApplicationNameOptions
+func (*MqcloudV1) NewSetApplicationNameOptions(serviceInstanceGuid string, applicationID string, name string) *SetApplicationNameOptions {
+	return &SetApplicationNameOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
 		ApplicationID: core.StringPtr(applicationID),
 		Name: core.StringPtr(name),
@@ -5536,25 +5536,25 @@ func (*MqcloudV1) NewSetApplicationShortnameOptions(serviceInstanceGuid string, 
 }
 
 // SetServiceInstanceGuid : Allow user to set ServiceInstanceGuid
-func (_options *SetApplicationShortnameOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *SetApplicationShortnameOptions {
+func (_options *SetApplicationNameOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *SetApplicationNameOptions {
 	_options.ServiceInstanceGuid = core.StringPtr(serviceInstanceGuid)
 	return _options
 }
 
 // SetApplicationID : Allow user to set ApplicationID
-func (_options *SetApplicationShortnameOptions) SetApplicationID(applicationID string) *SetApplicationShortnameOptions {
+func (_options *SetApplicationNameOptions) SetApplicationID(applicationID string) *SetApplicationNameOptions {
 	_options.ApplicationID = core.StringPtr(applicationID)
 	return _options
 }
 
 // SetName : Allow user to set Name
-func (_options *SetApplicationShortnameOptions) SetName(name string) *SetApplicationShortnameOptions {
+func (_options *SetApplicationNameOptions) SetName(name string) *SetApplicationNameOptions {
 	_options.Name = core.StringPtr(name)
 	return _options
 }
 
 // SetHeaders : Allow user to set Headers
-func (options *SetApplicationShortnameOptions) SetHeaders(param map[string]string) *SetApplicationShortnameOptions {
+func (options *SetApplicationNameOptions) SetHeaders(param map[string]string) *SetApplicationNameOptions {
 	options.Headers = param
 	return options
 }
@@ -5681,8 +5681,8 @@ func (options *SetQueueManagerVersionOptions) SetHeaders(param map[string]string
 	return options
 }
 
-// SetUserShortnameOptions : The SetUserShortname options.
-type SetUserShortnameOptions struct {
+// SetUserNameOptions : The SetUserName options.
+type SetUserNameOptions struct {
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
@@ -5696,9 +5696,9 @@ type SetUserShortnameOptions struct {
 	Headers map[string]string
 }
 
-// NewSetUserShortnameOptions : Instantiate SetUserShortnameOptions
-func (*MqcloudV1) NewSetUserShortnameOptions(serviceInstanceGuid string, userID string, name string) *SetUserShortnameOptions {
-	return &SetUserShortnameOptions{
+// NewSetUserNameOptions : Instantiate SetUserNameOptions
+func (*MqcloudV1) NewSetUserNameOptions(serviceInstanceGuid string, userID string, name string) *SetUserNameOptions {
+	return &SetUserNameOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
 		UserID: core.StringPtr(userID),
 		Name: core.StringPtr(name),
@@ -5706,25 +5706,25 @@ func (*MqcloudV1) NewSetUserShortnameOptions(serviceInstanceGuid string, userID 
 }
 
 // SetServiceInstanceGuid : Allow user to set ServiceInstanceGuid
-func (_options *SetUserShortnameOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *SetUserShortnameOptions {
+func (_options *SetUserNameOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *SetUserNameOptions {
 	_options.ServiceInstanceGuid = core.StringPtr(serviceInstanceGuid)
 	return _options
 }
 
 // SetUserID : Allow user to set UserID
-func (_options *SetUserShortnameOptions) SetUserID(userID string) *SetUserShortnameOptions {
+func (_options *SetUserNameOptions) SetUserID(userID string) *SetUserNameOptions {
 	_options.UserID = core.StringPtr(userID)
 	return _options
 }
 
 // SetName : Allow user to set Name
-func (_options *SetUserShortnameOptions) SetName(name string) *SetUserShortnameOptions {
+func (_options *SetUserNameOptions) SetName(name string) *SetUserNameOptions {
 	_options.Name = core.StringPtr(name)
 	return _options
 }
 
 // SetHeaders : Allow user to set Headers
-func (options *SetUserShortnameOptions) SetHeaders(param map[string]string) *SetUserShortnameOptions {
+func (options *SetUserNameOptions) SetHeaders(param map[string]string) *SetUserNameOptions {
 	options.Headers = param
 	return options
 }
