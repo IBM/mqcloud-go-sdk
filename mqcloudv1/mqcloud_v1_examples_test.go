@@ -380,24 +380,24 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(userDetails).ToNot(BeNil())
 		})
-		It(`SetUserShortname request example`, func() {
-			fmt.Println("\nSetUserShortname() result:")
-			// begin-set_user_shortname
+		It(`SetUserName request example`, func() {
+			fmt.Println("\nSetUserName() result:")
+			// begin-set_user_name
 
-			setUserShortnameOptions := mqcloudService.NewSetUserShortnameOptions(
+			setUserNameOptions := mqcloudService.NewSetUserNameOptions(
 				config["SERVICE_INSTANCE_DEPLOYMENT_GUID"],
 				config["USER_ID"],
-				"testshortnameupdated",
+				"testString",
 			)
 
-			userDetails, response, err := mqcloudService.SetUserShortname(setUserShortnameOptions)
+			userDetails, response, err := mqcloudService.SetUserName(setUserNameOptions)
 			if err != nil {
 				panic(err)
 			}
 			b, _ := json.MarshalIndent(userDetails, "", "  ")
 			fmt.Println(string(b))
 
-			// end-set_user_shortname
+			// end-set_user_name
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
@@ -473,24 +473,24 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(applicationDetails).ToNot(BeNil())
 		})
-		It(`SetApplicationShortname request example`, func() {
-			fmt.Println("\nSetApplicationShortname() result:")
-			// begin-set_application_shortname
+		It(`SetApplicationName request example`, func() {
+			fmt.Println("\nSetApplicationName() result:")
+			// begin-set_application_name
 
-			setApplicationShortnameOptions := mqcloudService.NewSetApplicationShortnameOptions(
+			setApplicationNameOptions := mqcloudService.NewSetApplicationNameOptions(
 				config["SERVICE_INSTANCE_DEPLOYMENT_GUID"],
 				config["APPLICATION_ID"],
-				"testshortnameupdated",
+				"testString",
 			)
 
-			applicationDetails, response, err := mqcloudService.SetApplicationShortname(setApplicationShortnameOptions)
+			applicationDetails, response, err := mqcloudService.SetApplicationName(setApplicationNameOptions)
 			if err != nil {
 				panic(err)
 			}
 			b, _ := json.MarshalIndent(applicationDetails, "", "  ")
 			fmt.Println(string(b))
 
-			// end-set_application_shortname
+			// end-set_application_name
 
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
@@ -647,6 +647,7 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 				"keystore",
 				file,
 			)
+
 			keyStoreCertificateDetails, response, err := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptions)
 			if err != nil {
 				panic(err)
@@ -885,7 +886,6 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(204))
 		})
-
 		It(`DeleteUser request example`, func() {
 			// begin-delete_user
 
@@ -936,6 +936,7 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 				config["QUEUE_MANAGER_ID"],
 				config["TRUST_STORE_CERTIFICATE_ID"],
 			)
+
 			response, err := mqcloudService.DeleteTrustStoreCertificate(deleteTrustStoreCertificateOptions)
 			if err != nil {
 				panic(err)
@@ -951,6 +952,7 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 		})
 		It(`DeleteKeyStoreCertificate request example`, func() {
 			// begin-delete_key_store_certificate
+
 			deleteKeyStoreCertificateOptions := mqcloudService.NewDeleteKeyStoreCertificateOptions(
 				config["SERVICE_INSTANCE_DEPLOYMENT_GUID"],
 				config["QUEUE_MANAGER_ID"],

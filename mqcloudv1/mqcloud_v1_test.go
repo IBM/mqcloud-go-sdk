@@ -3607,16 +3607,16 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
-	Describe(`SetUserShortname(setUserShortnameOptions *SetUserShortnameOptions) - Operation response error`, func() {
+	Describe(`SetUserName(setUserNameOptions *SetUserNameOptions) - Operation response error`, func() {
 		acceptLanguage := "en-US,en;q=0.5"
-		setUserShortnamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users/31a413dd84346effc8895b6ba4641641"
+		setUserNamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users/31a413dd84346effc8895b6ba4641641"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setUserShortnamePath))
+					Expect(req.URL.EscapedPath()).To(Equal(setUserNamePath))
 					Expect(req.Method).To(Equal("PATCH"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -3625,7 +3625,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
-			It(`Invoke SetUserShortname with error: Operation response processing error`, func() {
+			It(`Invoke SetUserName with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -3634,21 +3634,21 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(mqcloudService).ToNot(BeNil())
 
-				// Construct an instance of the SetUserShortnameOptions model
-				setUserShortnameOptionsModel := new(mqcloudv1.SetUserShortnameOptions)
-				setUserShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setUserShortnameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
-				setUserShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setUserShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := mqcloudService.SetUserShortname(setUserShortnameOptionsModel)
+				result, response, operationErr := mqcloudService.SetUserName(setUserNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
 
 				// Enable retries and test again
 				mqcloudService.EnableRetries(0, 0)
-				result, response, operationErr = mqcloudService.SetUserShortname(setUserShortnameOptionsModel)
+				result, response, operationErr = mqcloudService.SetUserName(setUserNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
@@ -3658,16 +3658,16 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
-	Describe(`SetUserShortname(setUserShortnameOptions *SetUserShortnameOptions)`, func() {
+	Describe(`SetUserName(setUserNameOptions *SetUserNameOptions)`, func() {
 		acceptLanguage := "en-US,en;q=0.5"
-		setUserShortnamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users/31a413dd84346effc8895b6ba4641641"
+		setUserNamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users/31a413dd84346effc8895b6ba4641641"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setUserShortnamePath))
+					Expect(req.URL.EscapedPath()).To(Equal(setUserNamePath))
 					Expect(req.Method).To(Equal("PATCH"))
 
 					// For gzip-disabled operation, verify Content-Encoding is not set.
@@ -3697,7 +3697,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
 				}))
 			})
-			It(`Invoke SetUserShortname successfully with retries`, func() {
+			It(`Invoke SetUserName successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -3707,23 +3707,23 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(mqcloudService).ToNot(BeNil())
 				mqcloudService.EnableRetries(0, 0)
 
-				// Construct an instance of the SetUserShortnameOptions model
-				setUserShortnameOptionsModel := new(mqcloudv1.SetUserShortnameOptions)
-				setUserShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setUserShortnameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
-				setUserShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setUserShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
 				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc()
-				_, _, operationErr := mqcloudService.SetUserShortnameWithContext(ctx, setUserShortnameOptionsModel)
+				_, _, operationErr := mqcloudService.SetUserNameWithContext(ctx, setUserNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 
 				// Disable retries and test again
 				mqcloudService.DisableRetries()
-				result, response, operationErr := mqcloudService.SetUserShortname(setUserShortnameOptionsModel)
+				result, response, operationErr := mqcloudService.SetUserName(setUserNameOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
@@ -3731,7 +3731,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Re-test the timeout error with retries disabled
 				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc2()
-				_, _, operationErr = mqcloudService.SetUserShortnameWithContext(ctx, setUserShortnameOptionsModel)
+				_, _, operationErr = mqcloudService.SetUserNameWithContext(ctx, setUserNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 			})
@@ -3745,7 +3745,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setUserShortnamePath))
+					Expect(req.URL.EscapedPath()).To(Equal(setUserNamePath))
 					Expect(req.Method).To(Equal("PATCH"))
 
 					// For gzip-disabled operation, verify Content-Encoding is not set.
@@ -3772,7 +3772,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
 				}))
 			})
-			It(`Invoke SetUserShortname successfully`, func() {
+			It(`Invoke SetUserName successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -3782,26 +3782,26 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(mqcloudService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := mqcloudService.SetUserShortname(nil)
+				result, response, operationErr := mqcloudService.SetUserName(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the SetUserShortnameOptions model
-				setUserShortnameOptionsModel := new(mqcloudv1.SetUserShortnameOptions)
-				setUserShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setUserShortnameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
-				setUserShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setUserShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = mqcloudService.SetUserShortname(setUserShortnameOptionsModel)
+				result, response, operationErr = mqcloudService.SetUserName(setUserNameOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
 			})
-			It(`Invoke SetUserShortname with error: Operation validation and request error`, func() {
+			It(`Invoke SetUserName with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -3810,24 +3810,24 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(mqcloudService).ToNot(BeNil())
 
-				// Construct an instance of the SetUserShortnameOptions model
-				setUserShortnameOptionsModel := new(mqcloudv1.SetUserShortnameOptions)
-				setUserShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setUserShortnameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
-				setUserShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setUserShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := mqcloudService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := mqcloudService.SetUserShortname(setUserShortnameOptionsModel)
+				result, response, operationErr := mqcloudService.SetUserName(setUserNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
-				// Construct a second instance of the SetUserShortnameOptions model with no property values
-				setUserShortnameOptionsModelNew := new(mqcloudv1.SetUserShortnameOptions)
+				// Construct a second instance of the SetUserNameOptions model with no property values
+				setUserNameOptionsModelNew := new(mqcloudv1.SetUserNameOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = mqcloudService.SetUserShortname(setUserShortnameOptionsModelNew)
+				result, response, operationErr = mqcloudService.SetUserName(setUserNameOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
@@ -3845,7 +3845,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.WriteHeader(200)
 				}))
 			})
-			It(`Invoke SetUserShortname successfully`, func() {
+			It(`Invoke SetUserName successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -3854,15 +3854,15 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(mqcloudService).ToNot(BeNil())
 
-				// Construct an instance of the SetUserShortnameOptions model
-				setUserShortnameOptionsModel := new(mqcloudv1.SetUserShortnameOptions)
-				setUserShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setUserShortnameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
-				setUserShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setUserShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetUserNameOptions model
+				setUserNameOptionsModel := new(mqcloudv1.SetUserNameOptions)
+				setUserNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.UserID = core.StringPtr("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.Name = core.StringPtr("testString")
+				setUserNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
-				result, response, operationErr := mqcloudService.SetUserShortname(setUserShortnameOptionsModel)
+				result, response, operationErr := mqcloudService.SetUserName(setUserNameOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -4314,7 +4314,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
 				}))
 			})
 			It(`Invoke CreateApplication successfully with retries`, func() {
@@ -4388,7 +4388,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
 				}))
 			})
 			It(`Invoke CreateApplication successfully`, func() {
@@ -4795,16 +4795,16 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
-	Describe(`SetApplicationShortname(setApplicationShortnameOptions *SetApplicationShortnameOptions) - Operation response error`, func() {
+	Describe(`SetApplicationName(setApplicationNameOptions *SetApplicationNameOptions) - Operation response error`, func() {
 		acceptLanguage := "en-US,en;q=0.5"
-		setApplicationShortnamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF"
+		setApplicationNamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF"
 		Context(`Using mock server endpoint with invalid JSON response`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setApplicationShortnamePath))
+					Expect(req.URL.EscapedPath()).To(Equal(setApplicationNamePath))
 					Expect(req.Method).To(Equal("PATCH"))
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -4813,7 +4813,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
-			It(`Invoke SetApplicationShortname with error: Operation response processing error`, func() {
+			It(`Invoke SetApplicationName with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -4822,21 +4822,21 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(mqcloudService).ToNot(BeNil())
 
-				// Construct an instance of the SetApplicationShortnameOptions model
-				setApplicationShortnameOptionsModel := new(mqcloudv1.SetApplicationShortnameOptions)
-				setApplicationShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setApplicationShortnameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
-				setApplicationShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setApplicationShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := mqcloudService.SetApplicationShortname(setApplicationShortnameOptionsModel)
+				result, response, operationErr := mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
 
 				// Enable retries and test again
 				mqcloudService.EnableRetries(0, 0)
-				result, response, operationErr = mqcloudService.SetApplicationShortname(setApplicationShortnameOptionsModel)
+				result, response, operationErr = mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).To(BeNil())
@@ -4846,16 +4846,16 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
-	Describe(`SetApplicationShortname(setApplicationShortnameOptions *SetApplicationShortnameOptions)`, func() {
+	Describe(`SetApplicationName(setApplicationNameOptions *SetApplicationNameOptions)`, func() {
 		acceptLanguage := "en-US,en;q=0.5"
-		setApplicationShortnamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF"
+		setApplicationNamePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/applications/0123456789ABCDEF0123456789ABCDEF"
 		Context(`Using mock server endpoint with timeout`, func() {
 			BeforeEach(func() {
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setApplicationShortnamePath))
+					Expect(req.URL.EscapedPath()).To(Equal(setApplicationNamePath))
 					Expect(req.Method).To(Equal("PATCH"))
 
 					// For gzip-disabled operation, verify Content-Encoding is not set.
@@ -4885,7 +4885,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
 				}))
 			})
-			It(`Invoke SetApplicationShortname successfully with retries`, func() {
+			It(`Invoke SetApplicationName successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -4895,23 +4895,23 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(mqcloudService).ToNot(BeNil())
 				mqcloudService.EnableRetries(0, 0)
 
-				// Construct an instance of the SetApplicationShortnameOptions model
-				setApplicationShortnameOptionsModel := new(mqcloudv1.SetApplicationShortnameOptions)
-				setApplicationShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setApplicationShortnameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
-				setApplicationShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setApplicationShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with a Context to test a timeout error
 				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc()
-				_, _, operationErr := mqcloudService.SetApplicationShortnameWithContext(ctx, setApplicationShortnameOptionsModel)
+				_, _, operationErr := mqcloudService.SetApplicationNameWithContext(ctx, setApplicationNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 
 				// Disable retries and test again
 				mqcloudService.DisableRetries()
-				result, response, operationErr := mqcloudService.SetApplicationShortname(setApplicationShortnameOptionsModel)
+				result, response, operationErr := mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
@@ -4919,7 +4919,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Re-test the timeout error with retries disabled
 				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
 				defer cancelFunc2()
-				_, _, operationErr = mqcloudService.SetApplicationShortnameWithContext(ctx, setApplicationShortnameOptionsModel)
+				_, _, operationErr = mqcloudService.SetApplicationNameWithContext(ctx, setApplicationNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
 			})
@@ -4933,7 +4933,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					defer GinkgoRecover()
 
 					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setApplicationShortnamePath))
+					Expect(req.URL.EscapedPath()).To(Equal(setApplicationNamePath))
 					Expect(req.Method).To(Equal("PATCH"))
 
 					// For gzip-disabled operation, verify Content-Encoding is not set.
@@ -4960,7 +4960,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
 				}))
 			})
-			It(`Invoke SetApplicationShortname successfully`, func() {
+			It(`Invoke SetApplicationName successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -4970,26 +4970,26 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(mqcloudService).ToNot(BeNil())
 
 				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := mqcloudService.SetApplicationShortname(nil)
+				result, response, operationErr := mqcloudService.SetApplicationName(nil)
 				Expect(operationErr).NotTo(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
 
-				// Construct an instance of the SetApplicationShortnameOptions model
-				setApplicationShortnameOptionsModel := new(mqcloudv1.SetApplicationShortnameOptions)
-				setApplicationShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setApplicationShortnameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
-				setApplicationShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setApplicationShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = mqcloudService.SetApplicationShortname(setApplicationShortnameOptionsModel)
+				result, response, operationErr = mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
 			})
-			It(`Invoke SetApplicationShortname with error: Operation validation and request error`, func() {
+			It(`Invoke SetApplicationName with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -4998,24 +4998,24 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(mqcloudService).ToNot(BeNil())
 
-				// Construct an instance of the SetApplicationShortnameOptions model
-				setApplicationShortnameOptionsModel := new(mqcloudv1.SetApplicationShortnameOptions)
-				setApplicationShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setApplicationShortnameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
-				setApplicationShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setApplicationShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 				// Invoke operation with empty URL (negative test)
 				err := mqcloudService.SetServiceURL("")
 				Expect(err).To(BeNil())
-				result, response, operationErr := mqcloudService.SetApplicationShortname(setApplicationShortnameOptionsModel)
+				result, response, operationErr := mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
-				// Construct a second instance of the SetApplicationShortnameOptions model with no property values
-				setApplicationShortnameOptionsModelNew := new(mqcloudv1.SetApplicationShortnameOptions)
+				// Construct a second instance of the SetApplicationNameOptions model with no property values
+				setApplicationNameOptionsModelNew := new(mqcloudv1.SetApplicationNameOptions)
 				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = mqcloudService.SetApplicationShortname(setApplicationShortnameOptionsModelNew)
+				result, response, operationErr = mqcloudService.SetApplicationName(setApplicationNameOptionsModelNew)
 				Expect(operationErr).ToNot(BeNil())
 				Expect(response).To(BeNil())
 				Expect(result).To(BeNil())
@@ -5033,7 +5033,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.WriteHeader(200)
 				}))
 			})
-			It(`Invoke SetApplicationShortname successfully`, func() {
+			It(`Invoke SetApplicationName successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
 					URL:            testServer.URL,
 					Authenticator:  &core.NoAuthAuthenticator{},
@@ -5042,15 +5042,15 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(serviceErr).To(BeNil())
 				Expect(mqcloudService).ToNot(BeNil())
 
-				// Construct an instance of the SetApplicationShortnameOptions model
-				setApplicationShortnameOptionsModel := new(mqcloudv1.SetApplicationShortnameOptions)
-				setApplicationShortnameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setApplicationShortnameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
-				setApplicationShortnameOptionsModel.Shortname = core.StringPtr("testString")
-				setApplicationShortnameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Construct an instance of the SetApplicationNameOptions model
+				setApplicationNameOptionsModel := new(mqcloudv1.SetApplicationNameOptions)
+				setApplicationNameOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.ApplicationID = core.StringPtr("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.Name = core.StringPtr("testString")
+				setApplicationNameOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
 
 				// Invoke operation
-				result, response, operationErr := mqcloudService.SetApplicationShortname(setApplicationShortnameOptionsModel)
+				result, response, operationErr := mqcloudService.SetApplicationName(setApplicationNameOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
 
@@ -9251,21 +9251,21 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
-			It(`Invoke NewSetApplicationShortnameOptions successfully`, func() {
-				// Construct an instance of the SetApplicationShortnameOptions model
+			It(`Invoke NewSetApplicationNameOptions successfully`, func() {
+				// Construct an instance of the SetApplicationNameOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
 				applicationID := "0123456789ABCDEF0123456789ABCDEF"
-				setApplicationShortnameOptionsShortname := "testString"
-				setApplicationShortnameOptionsModel := mqcloudService.NewSetApplicationShortnameOptions(serviceInstanceGuid, applicationID, setApplicationShortnameOptionsShortname)
-				setApplicationShortnameOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setApplicationShortnameOptionsModel.SetApplicationID("0123456789ABCDEF0123456789ABCDEF")
-				setApplicationShortnameOptionsModel.SetShortname("testString")
-				setApplicationShortnameOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(setApplicationShortnameOptionsModel).ToNot(BeNil())
-				Expect(setApplicationShortnameOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
-				Expect(setApplicationShortnameOptionsModel.ApplicationID).To(Equal(core.StringPtr("0123456789ABCDEF0123456789ABCDEF")))
-				Expect(setApplicationShortnameOptionsModel.Shortname).To(Equal(core.StringPtr("testString")))
-				Expect(setApplicationShortnameOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+				setApplicationNameOptionsName := "testString"
+				setApplicationNameOptionsModel := mqcloudService.NewSetApplicationNameOptions(serviceInstanceGuid, applicationID, setApplicationNameOptionsName)
+				setApplicationNameOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setApplicationNameOptionsModel.SetApplicationID("0123456789ABCDEF0123456789ABCDEF")
+				setApplicationNameOptionsModel.SetName("testString")
+				setApplicationNameOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(setApplicationNameOptionsModel).ToNot(BeNil())
+				Expect(setApplicationNameOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(setApplicationNameOptionsModel.ApplicationID).To(Equal(core.StringPtr("0123456789ABCDEF0123456789ABCDEF")))
+				Expect(setApplicationNameOptionsModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(setApplicationNameOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewSetCertificateAmsChannelsOptions successfully`, func() {
 				// Construct an instance of the ChannelDetails model
@@ -9310,21 +9310,21 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(setQueueManagerVersionOptionsModel.Version).To(Equal(core.StringPtr("9.3.2_2")))
 				Expect(setQueueManagerVersionOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
-			It(`Invoke NewSetUserShortnameOptions successfully`, func() {
-				// Construct an instance of the SetUserShortnameOptions model
+			It(`Invoke NewSetUserNameOptions successfully`, func() {
+				// Construct an instance of the SetUserNameOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
 				userID := "31a413dd84346effc8895b6ba4641641"
-				setUserShortnameOptionsShortname := "testString"
-				setUserShortnameOptionsModel := mqcloudService.NewSetUserShortnameOptions(serviceInstanceGuid, userID, setUserShortnameOptionsShortname)
-				setUserShortnameOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setUserShortnameOptionsModel.SetUserID("31a413dd84346effc8895b6ba4641641")
-				setUserShortnameOptionsModel.SetShortname("testString")
-				setUserShortnameOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
-				Expect(setUserShortnameOptionsModel).ToNot(BeNil())
-				Expect(setUserShortnameOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
-				Expect(setUserShortnameOptionsModel.UserID).To(Equal(core.StringPtr("31a413dd84346effc8895b6ba4641641")))
-				Expect(setUserShortnameOptionsModel.Shortname).To(Equal(core.StringPtr("testString")))
-				Expect(setUserShortnameOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+				setUserNameOptionsName := "testString"
+				setUserNameOptionsModel := mqcloudService.NewSetUserNameOptions(serviceInstanceGuid, userID, setUserNameOptionsName)
+				setUserNameOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setUserNameOptionsModel.SetUserID("31a413dd84346effc8895b6ba4641641")
+				setUserNameOptionsModel.SetName("testString")
+				setUserNameOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(setUserNameOptionsModel).ToNot(BeNil())
+				Expect(setUserNameOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(setUserNameOptionsModel.UserID).To(Equal(core.StringPtr("31a413dd84346effc8895b6ba4641641")))
+				Expect(setUserNameOptionsModel.Name).To(Equal(core.StringPtr("testString")))
+				Expect(setUserNameOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 		})
 	})

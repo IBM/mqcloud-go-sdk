@@ -398,18 +398,18 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`SetUserShortname - Update the shortname for a user`, func() {
+	Describe(`SetUserName - Update the name for a user`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`SetUserShortname(setUserShortnameOptions *SetUserShortnameOptions)`, func() {
-			setUserShortnameOptions := &mqcloudv1.SetUserShortnameOptions{
+		It(`SetUserName(setUserNameOptions *SetUserNameOptions)`, func() {
+			setUserNameOptions := &mqcloudv1.SetUserNameOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
 				UserID:              core.StringPtr(config["USER_ID"]),
-				Shortname:           core.StringPtr("testshortnameupdated"),
+				Name:                core.StringPtr("testString"),
 			}
 
-			userDetails, response, err := mqcloudService.SetUserShortname(setUserShortnameOptions)
+			userDetails, response, err := mqcloudService.SetUserName(setUserNameOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(userDetails).ToNot(BeNil())
@@ -514,18 +514,18 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		})
 	})
 
-	Describe(`SetApplicationShortname - Update the shortname for an application`, func() {
+	Describe(`SetApplicationName - Update the name for an application`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-		It(`SetApplicationShortname(setApplicationShortnameOptions *SetApplicationShortnameOptions)`, func() {
-			setApplicationShortnameOptions := &mqcloudv1.SetApplicationShortnameOptions{
+		It(`SetApplicationName(setApplicationNameOptions *SetApplicationNameOptions)`, func() {
+			setApplicationNameOptions := &mqcloudv1.SetApplicationNameOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
 				ApplicationID:       core.StringPtr(config["APPLICATION_ID"]),
-				Shortname:           core.StringPtr("testshortnameupdated"),
+				Name:                core.StringPtr("testString"),
 			}
 
-			applicationDetails, response, err := mqcloudService.SetApplicationShortname(setApplicationShortnameOptions)
+			applicationDetails, response, err := mqcloudService.SetApplicationName(setApplicationNameOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(applicationDetails).ToNot(BeNil())
@@ -779,7 +779,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			virtualPrivateEndpointGatewayDetails, response, err := mqcloudService.CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptions)
 			Expect(err).To(BeNil())
 			Expect(response.StatusCode).To(Equal(201))
-
 			Expect(virtualPrivateEndpointGatewayDetails).ToNot(BeNil())
 			gatewayid := *virtualPrivateEndpointGatewayDetails.ID
 			config["VIRTUAL_PRIVATE_ENDPOINT_GATEWAY_GUID"] = *virtualPrivateEndpointGatewayDetails.ID
@@ -805,9 +804,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 
 			var allResults []mqcloudv1.VirtualPrivateEndpointGatewayDetails
 			for {
-
 				virtualPrivateEndpointGatewayDetailsCollection, response, err := mqcloudService.ListVirtualPrivateEndpointGateways(listVirtualPrivateEndpointGatewaysOptions)
-
 				Expect(err).To(BeNil())
 				Expect(response.StatusCode).To(Equal(200))
 				Expect(virtualPrivateEndpointGatewayDetailsCollection).ToNot(BeNil())
