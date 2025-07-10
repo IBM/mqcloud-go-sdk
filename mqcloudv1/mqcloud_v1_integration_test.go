@@ -519,6 +519,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(userDetails).ToNot(BeNil())
 
+			fmt.Printf("✅ User shortname has been successfully updated to '%s'\n", *setUserNameOptions.Name)
 		})
 	})
 
@@ -659,6 +660,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			Expect(response.StatusCode).To(Equal(200))
 			Expect(applicationDetails).ToNot(BeNil())
 
+			fmt.Printf("✅ Application shortname has been successfully updated to '%s'\n", *setApplicationNameOptions.Name)
 		})
 	})
 
