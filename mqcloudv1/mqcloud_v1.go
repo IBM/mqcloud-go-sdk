@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2024.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.96.0-d6dec9d7-20241008-212902
+ * IBM OpenAPI SDK Code Generator Version: 3.104.0-b4a47c49-20250418-184351
  */
 
 // Package mqcloudv1 : Operations and models for the MqcloudV1 service
@@ -65,7 +65,7 @@ type MqcloudV1Options struct {
 	Authenticator core.Authenticator
 
 	// The acceptable list of languages supported in the client.
-	AcceptLanguage *string
+	AcceptLanguage *string 
 }
 
 // NewMqcloudV1UsingExternalConfig : constructs an instance of MqcloudV1 with passed in options and external configuration.
@@ -129,7 +129,7 @@ func NewMqcloudV1(options *MqcloudV1Options) (service *MqcloudV1, err error) {
 	}
 
 	service = &MqcloudV1{
-		Service:        baseService,
+		Service: baseService,
 		AcceptLanguage: options.AcceptLanguage,
 	}
 
@@ -537,7 +537,7 @@ func (mqcloud *MqcloudV1) GetQueueManagerWithContext(ctx context.Context, getQue
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *getQueueManagerOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *getQueueManagerOptions.QueueManagerID,
+		"queue_manager_id": *getQueueManagerOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -610,7 +610,7 @@ func (mqcloud *MqcloudV1) DeleteQueueManagerWithContext(ctx context.Context, del
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *deleteQueueManagerOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *deleteQueueManagerOptions.QueueManagerID,
+		"queue_manager_id": *deleteQueueManagerOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.DELETE)
@@ -683,7 +683,7 @@ func (mqcloud *MqcloudV1) SetQueueManagerVersionWithContext(ctx context.Context,
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *setQueueManagerVersionOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *setQueueManagerVersionOptions.QueueManagerID,
+		"queue_manager_id": *setQueueManagerVersionOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.PUT)
@@ -767,7 +767,7 @@ func (mqcloud *MqcloudV1) GetQueueManagerAvailableUpgradeVersionsWithContext(ctx
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *getQueueManagerAvailableUpgradeVersionsOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *getQueueManagerAvailableUpgradeVersionsOptions.QueueManagerID,
+		"queue_manager_id": *getQueueManagerAvailableUpgradeVersionsOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -840,7 +840,7 @@ func (mqcloud *MqcloudV1) GetQueueManagerConnectionInfoWithContext(ctx context.C
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *getQueueManagerConnectionInfoOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *getQueueManagerConnectionInfoOptions.QueueManagerID,
+		"queue_manager_id": *getQueueManagerConnectionInfoOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -913,7 +913,7 @@ func (mqcloud *MqcloudV1) GetQueueManagerStatusWithContext(ctx context.Context, 
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *getQueueManagerStatusOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *getQueueManagerStatusOptions.QueueManagerID,
+		"queue_manager_id": *getQueueManagerStatusOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -1151,7 +1151,7 @@ func (mqcloud *MqcloudV1) GetUserWithContext(ctx context.Context, getUserOptions
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *getUserOptions.ServiceInstanceGuid,
-		"user_id":               *getUserOptions.UserID,
+		"user_id": *getUserOptions.UserID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -1224,7 +1224,7 @@ func (mqcloud *MqcloudV1) DeleteUserWithContext(ctx context.Context, deleteUserO
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *deleteUserOptions.ServiceInstanceGuid,
-		"user_id":               *deleteUserOptions.UserID,
+		"user_id": *deleteUserOptions.UserID,
 	}
 
 	builder := core.NewRequestBuilder(core.DELETE)
@@ -1259,6 +1259,90 @@ func (mqcloud *MqcloudV1) DeleteUserWithContext(ctx context.Context, deleteUserO
 		core.EnrichHTTPProblem(err, "delete_user", getServiceComponentInfo())
 		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
 		return
+	}
+
+	return
+}
+
+// SetUserName : Update the name for a user
+// Update the name assigned to an MQ SaaS user.
+func (mqcloud *MqcloudV1) SetUserName(setUserNameOptions *SetUserNameOptions) (result *UserDetails, response *core.DetailedResponse, err error) {
+	result, response, err = mqcloud.SetUserNameWithContext(context.Background(), setUserNameOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// SetUserNameWithContext is an alternate form of the SetUserName method which supports a Context parameter
+func (mqcloud *MqcloudV1) SetUserNameWithContext(ctx context.Context, setUserNameOptions *SetUserNameOptions) (result *UserDetails, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(setUserNameOptions, "setUserNameOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(setUserNameOptions, "setUserNameOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"service_instance_guid": *setUserNameOptions.ServiceInstanceGuid,
+		"user_id": *setUserNameOptions.UserID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = mqcloud.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(mqcloud.Service.Options.URL, `/v1/{service_instance_guid}/users/{user_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range setUserNameOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("mqcloud", "V1", "SetUserName")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
+	}
+
+	body := make(map[string]interface{})
+	if setUserNameOptions.Name != nil {
+		body["name"] = setUserNameOptions.Name
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = mqcloud.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "set_user_name", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalUserDetails)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
 	}
 
 	return
@@ -1449,7 +1533,7 @@ func (mqcloud *MqcloudV1) GetApplicationWithContext(ctx context.Context, getAppl
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *getApplicationOptions.ServiceInstanceGuid,
-		"application_id":        *getApplicationOptions.ApplicationID,
+		"application_id": *getApplicationOptions.ApplicationID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -1522,7 +1606,7 @@ func (mqcloud *MqcloudV1) DeleteApplicationWithContext(ctx context.Context, dele
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *deleteApplicationOptions.ServiceInstanceGuid,
-		"application_id":        *deleteApplicationOptions.ApplicationID,
+		"application_id": *deleteApplicationOptions.ApplicationID,
 	}
 
 	builder := core.NewRequestBuilder(core.DELETE)
@@ -1562,6 +1646,90 @@ func (mqcloud *MqcloudV1) DeleteApplicationWithContext(ctx context.Context, dele
 	return
 }
 
+// SetApplicationName : Update the name for an application
+// Update the application assigned to an MQ SaaS application.
+func (mqcloud *MqcloudV1) SetApplicationName(setApplicationNameOptions *SetApplicationNameOptions) (result *ApplicationDetails, response *core.DetailedResponse, err error) {
+	result, response, err = mqcloud.SetApplicationNameWithContext(context.Background(), setApplicationNameOptions)
+	err = core.RepurposeSDKProblem(err, "")
+	return
+}
+
+// SetApplicationNameWithContext is an alternate form of the SetApplicationName method which supports a Context parameter
+func (mqcloud *MqcloudV1) SetApplicationNameWithContext(ctx context.Context, setApplicationNameOptions *SetApplicationNameOptions) (result *ApplicationDetails, response *core.DetailedResponse, err error) {
+	err = core.ValidateNotNil(setApplicationNameOptions, "setApplicationNameOptions cannot be nil")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "unexpected-nil-param", common.GetComponentInfo())
+		return
+	}
+	err = core.ValidateStruct(setApplicationNameOptions, "setApplicationNameOptions")
+	if err != nil {
+		err = core.SDKErrorf(err, "", "struct-validation-error", common.GetComponentInfo())
+		return
+	}
+
+	pathParamsMap := map[string]string{
+		"service_instance_guid": *setApplicationNameOptions.ServiceInstanceGuid,
+		"application_id": *setApplicationNameOptions.ApplicationID,
+	}
+
+	builder := core.NewRequestBuilder(core.PATCH)
+	builder = builder.WithContext(ctx)
+	builder.EnableGzipCompression = mqcloud.GetEnableGzipCompression()
+	_, err = builder.ResolveRequestURL(mqcloud.Service.Options.URL, `/v1/{service_instance_guid}/applications/{application_id}`, pathParamsMap)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "url-resolve-error", common.GetComponentInfo())
+		return
+	}
+
+	for headerName, headerValue := range setApplicationNameOptions.Headers {
+		builder.AddHeader(headerName, headerValue)
+	}
+
+	sdkHeaders := common.GetSdkHeaders("mqcloud", "V1", "SetApplicationName")
+	for headerName, headerValue := range sdkHeaders {
+		builder.AddHeader(headerName, headerValue)
+	}
+	builder.AddHeader("Accept", "application/json")
+	builder.AddHeader("Content-Type", "application/json")
+	if mqcloud.AcceptLanguage != nil {
+		builder.AddHeader("Accept-Language", fmt.Sprint(*mqcloud.AcceptLanguage))
+	}
+
+	body := make(map[string]interface{})
+	if setApplicationNameOptions.Name != nil {
+		body["name"] = setApplicationNameOptions.Name
+	}
+	_, err = builder.SetBodyContentJSON(body)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "set-json-body-error", common.GetComponentInfo())
+		return
+	}
+
+	request, err := builder.Build()
+	if err != nil {
+		err = core.SDKErrorf(err, "", "build-error", common.GetComponentInfo())
+		return
+	}
+
+	var rawResponse map[string]json.RawMessage
+	response, err = mqcloud.Service.Request(request, &rawResponse)
+	if err != nil {
+		core.EnrichHTTPProblem(err, "set_application_name", getServiceComponentInfo())
+		err = core.SDKErrorf(err, "", "http-request-err", common.GetComponentInfo())
+		return
+	}
+	if rawResponse != nil {
+		err = core.UnmarshalModel(rawResponse, "", &result, UnmarshalApplicationDetails)
+		if err != nil {
+			err = core.SDKErrorf(err, "", "unmarshal-resp-error", common.GetComponentInfo())
+			return
+		}
+		response.Result = result
+	}
+
+	return
+}
+
 // CreateApplicationApikey : Create a new apikey for an application
 // Create a new apikey for an application.
 func (mqcloud *MqcloudV1) CreateApplicationApikey(createApplicationApikeyOptions *CreateApplicationApikeyOptions) (result *ApplicationAPIKeyCreated, response *core.DetailedResponse, err error) {
@@ -1585,7 +1753,7 @@ func (mqcloud *MqcloudV1) CreateApplicationApikeyWithContext(ctx context.Context
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *createApplicationApikeyOptions.ServiceInstanceGuid,
-		"application_id":        *createApplicationApikeyOptions.ApplicationID,
+		"application_id": *createApplicationApikeyOptions.ApplicationID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
@@ -1669,7 +1837,7 @@ func (mqcloud *MqcloudV1) CreateTrustStorePemCertificateWithContext(ctx context.
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *createTrustStorePemCertificateOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *createTrustStorePemCertificateOptions.QueueManagerID,
+		"queue_manager_id": *createTrustStorePemCertificateOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
@@ -1746,7 +1914,7 @@ func (mqcloud *MqcloudV1) ListTrustStoreCertificatesWithContext(ctx context.Cont
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *listTrustStoreCertificatesOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *listTrustStoreCertificatesOptions.QueueManagerID,
+		"queue_manager_id": *listTrustStoreCertificatesOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -1819,8 +1987,8 @@ func (mqcloud *MqcloudV1) GetTrustStoreCertificateWithContext(ctx context.Contex
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *getTrustStoreCertificateOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *getTrustStoreCertificateOptions.QueueManagerID,
-		"certificate_id":        *getTrustStoreCertificateOptions.CertificateID,
+		"queue_manager_id": *getTrustStoreCertificateOptions.QueueManagerID,
+		"certificate_id": *getTrustStoreCertificateOptions.CertificateID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -1893,8 +2061,8 @@ func (mqcloud *MqcloudV1) DeleteTrustStoreCertificateWithContext(ctx context.Con
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *deleteTrustStoreCertificateOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *deleteTrustStoreCertificateOptions.QueueManagerID,
-		"certificate_id":        *deleteTrustStoreCertificateOptions.CertificateID,
+		"queue_manager_id": *deleteTrustStoreCertificateOptions.QueueManagerID,
+		"certificate_id": *deleteTrustStoreCertificateOptions.CertificateID,
 	}
 
 	builder := core.NewRequestBuilder(core.DELETE)
@@ -1957,8 +2125,8 @@ func (mqcloud *MqcloudV1) DownloadTrustStoreCertificateWithContext(ctx context.C
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *downloadTrustStoreCertificateOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *downloadTrustStoreCertificateOptions.QueueManagerID,
-		"certificate_id":        *downloadTrustStoreCertificateOptions.CertificateID,
+		"queue_manager_id": *downloadTrustStoreCertificateOptions.QueueManagerID,
+		"certificate_id": *downloadTrustStoreCertificateOptions.CertificateID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -2022,7 +2190,7 @@ func (mqcloud *MqcloudV1) CreateKeyStorePemCertificateWithContext(ctx context.Co
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *createKeyStorePemCertificateOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *createKeyStorePemCertificateOptions.QueueManagerID,
+		"queue_manager_id": *createKeyStorePemCertificateOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.POST)
@@ -2099,7 +2267,7 @@ func (mqcloud *MqcloudV1) ListKeyStoreCertificatesWithContext(ctx context.Contex
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *listKeyStoreCertificatesOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *listKeyStoreCertificatesOptions.QueueManagerID,
+		"queue_manager_id": *listKeyStoreCertificatesOptions.QueueManagerID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -2172,8 +2340,8 @@ func (mqcloud *MqcloudV1) GetKeyStoreCertificateWithContext(ctx context.Context,
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *getKeyStoreCertificateOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *getKeyStoreCertificateOptions.QueueManagerID,
-		"certificate_id":        *getKeyStoreCertificateOptions.CertificateID,
+		"queue_manager_id": *getKeyStoreCertificateOptions.QueueManagerID,
+		"certificate_id": *getKeyStoreCertificateOptions.CertificateID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -2246,8 +2414,8 @@ func (mqcloud *MqcloudV1) DeleteKeyStoreCertificateWithContext(ctx context.Conte
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *deleteKeyStoreCertificateOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *deleteKeyStoreCertificateOptions.QueueManagerID,
-		"certificate_id":        *deleteKeyStoreCertificateOptions.CertificateID,
+		"queue_manager_id": *deleteKeyStoreCertificateOptions.QueueManagerID,
+		"certificate_id": *deleteKeyStoreCertificateOptions.CertificateID,
 	}
 
 	builder := core.NewRequestBuilder(core.DELETE)
@@ -2310,8 +2478,8 @@ func (mqcloud *MqcloudV1) DownloadKeyStoreCertificateWithContext(ctx context.Con
 
 	pathParamsMap := map[string]string{
 		"service_instance_guid": *downloadKeyStoreCertificateOptions.ServiceInstanceGuid,
-		"queue_manager_id":      *downloadKeyStoreCertificateOptions.QueueManagerID,
-		"certificate_id":        *downloadKeyStoreCertificateOptions.CertificateID,
+		"queue_manager_id": *downloadKeyStoreCertificateOptions.QueueManagerID,
+		"certificate_id": *downloadKeyStoreCertificateOptions.CertificateID,
 	}
 
 	builder := core.NewRequestBuilder(core.GET)
@@ -2374,8 +2542,8 @@ func (mqcloud *MqcloudV1) GetCertificateAmsChannelsWithContext(ctx context.Conte
 	}
 
 	pathParamsMap := map[string]string{
-		"queue_manager_id":      *getCertificateAmsChannelsOptions.QueueManagerID,
-		"certificate_id":        *getCertificateAmsChannelsOptions.CertificateID,
+		"queue_manager_id": *getCertificateAmsChannelsOptions.QueueManagerID,
+		"certificate_id": *getCertificateAmsChannelsOptions.CertificateID,
 		"service_instance_guid": *getCertificateAmsChannelsOptions.ServiceInstanceGuid,
 	}
 
@@ -2448,8 +2616,8 @@ func (mqcloud *MqcloudV1) SetCertificateAmsChannelsWithContext(ctx context.Conte
 	}
 
 	pathParamsMap := map[string]string{
-		"queue_manager_id":      *setCertificateAmsChannelsOptions.QueueManagerID,
-		"certificate_id":        *setCertificateAmsChannelsOptions.CertificateID,
+		"queue_manager_id": *setCertificateAmsChannelsOptions.QueueManagerID,
+		"certificate_id": *setCertificateAmsChannelsOptions.CertificateID,
 		"service_instance_guid": *setCertificateAmsChannelsOptions.ServiceInstanceGuid,
 	}
 
@@ -2707,7 +2875,7 @@ func (mqcloud *MqcloudV1) GetVirtualPrivateEndpointGatewayWithContext(ctx contex
 	}
 
 	pathParamsMap := map[string]string{
-		"service_instance_guid":                 *getVirtualPrivateEndpointGatewayOptions.ServiceInstanceGuid,
+		"service_instance_guid": *getVirtualPrivateEndpointGatewayOptions.ServiceInstanceGuid,
 		"virtual_private_endpoint_gateway_guid": *getVirtualPrivateEndpointGatewayOptions.VirtualPrivateEndpointGatewayGuid,
 	}
 
@@ -2783,7 +2951,7 @@ func (mqcloud *MqcloudV1) DeleteVirtualPrivateEndpointGatewayWithContext(ctx con
 	}
 
 	pathParamsMap := map[string]string{
-		"service_instance_guid":                 *deleteVirtualPrivateEndpointGatewayOptions.ServiceInstanceGuid,
+		"service_instance_guid": *deleteVirtualPrivateEndpointGatewayOptions.ServiceInstanceGuid,
 		"virtual_private_endpoint_gateway_guid": *deleteVirtualPrivateEndpointGatewayOptions.VirtualPrivateEndpointGatewayGuid,
 	}
 
@@ -2872,6 +3040,9 @@ type ApplicationCreated struct {
 	// The name of the application - conforming to MQ rules.
 	Name *string `json:"name" validate:"required"`
 
+	// The IAM ID of the application.
+	IamServiceID *string `json:"iam_service_id" validate:"required"`
+
 	// The URI to create a new apikey for the application.
 	CreateApiKeyURI *string `json:"create_api_key_uri" validate:"required"`
 
@@ -2899,6 +3070,11 @@ func UnmarshalApplicationCreated(m map[string]json.RawMessage, result interface{
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "iam_service_id", &obj.IamServiceID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "iam_service_id-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "create_api_key_uri", &obj.CreateApiKeyURI)
@@ -2938,6 +3114,9 @@ type ApplicationDetails struct {
 	// The name of the application - conforming to MQ rules.
 	Name *string `json:"name" validate:"required"`
 
+	// The IAM ID of the application.
+	IamServiceID *string `json:"iam_service_id" validate:"required"`
+
 	// The URI to create a new apikey for the application.
 	CreateApiKeyURI *string `json:"create_api_key_uri" validate:"required"`
 
@@ -2956,6 +3135,11 @@ func UnmarshalApplicationDetails(m map[string]json.RawMessage, result interface{
 	err = core.UnmarshalPrimitive(m, "name", &obj.Name)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "name-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "iam_service_id", &obj.IamServiceID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "iam_service_id-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "create_api_key_uri", &obj.CreateApiKeyURI)
@@ -3149,9 +3333,9 @@ type ConfigurationOptions struct {
 // Constants associated with the ConfigurationOptions.Sizes property.
 // The queue manager sizes of deployment available.
 const (
-	ConfigurationOptions_Sizes_Large  = "large"
+	ConfigurationOptions_Sizes_Large = "large"
 	ConfigurationOptions_Sizes_Medium = "medium"
-	ConfigurationOptions_Sizes_Small  = "small"
+	ConfigurationOptions_Sizes_Small = "small"
 	ConfigurationOptions_Sizes_Xsmall = "xsmall"
 )
 
@@ -3287,8 +3471,8 @@ type CreateApplicationApikeyOptions struct {
 func (*MqcloudV1) NewCreateApplicationApikeyOptions(serviceInstanceGuid string, applicationID string, name string) *CreateApplicationApikeyOptions {
 	return &CreateApplicationApikeyOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		ApplicationID:       core.StringPtr(applicationID),
-		Name:                core.StringPtr(name),
+		ApplicationID: core.StringPtr(applicationID),
+		Name: core.StringPtr(name),
 	}
 }
 
@@ -3332,7 +3516,7 @@ type CreateApplicationOptions struct {
 func (*MqcloudV1) NewCreateApplicationOptions(serviceInstanceGuid string, name string) *CreateApplicationOptions {
 	return &CreateApplicationOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		Name:                core.StringPtr(name),
+		Name: core.StringPtr(name),
 	}
 }
 
@@ -3376,9 +3560,9 @@ type CreateKeyStorePemCertificateOptions struct {
 func (*MqcloudV1) NewCreateKeyStorePemCertificateOptions(serviceInstanceGuid string, queueManagerID string, label string, certificateFile io.ReadCloser) *CreateKeyStorePemCertificateOptions {
 	return &CreateKeyStorePemCertificateOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		Label:               core.StringPtr(label),
-		CertificateFile:     certificateFile,
+		QueueManagerID: core.StringPtr(queueManagerID),
+		Label: core.StringPtr(label),
+		CertificateFile: certificateFile,
 	}
 }
 
@@ -3439,9 +3623,9 @@ type CreateQueueManagerOptions struct {
 // Constants associated with the CreateQueueManagerOptions.Size property.
 // The queue manager sizes of deployment available.
 const (
-	CreateQueueManagerOptions_Size_Large  = "large"
+	CreateQueueManagerOptions_Size_Large = "large"
 	CreateQueueManagerOptions_Size_Medium = "medium"
-	CreateQueueManagerOptions_Size_Small  = "small"
+	CreateQueueManagerOptions_Size_Small = "small"
 	CreateQueueManagerOptions_Size_Xsmall = "xsmall"
 )
 
@@ -3449,9 +3633,9 @@ const (
 func (*MqcloudV1) NewCreateQueueManagerOptions(serviceInstanceGuid string, name string, location string, size string) *CreateQueueManagerOptions {
 	return &CreateQueueManagerOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		Name:                core.StringPtr(name),
-		Location:            core.StringPtr(location),
-		Size:                core.StringPtr(size),
+		Name: core.StringPtr(name),
+		Location: core.StringPtr(location),
+		Size: core.StringPtr(size),
 	}
 }
 
@@ -3519,9 +3703,9 @@ type CreateTrustStorePemCertificateOptions struct {
 func (*MqcloudV1) NewCreateTrustStorePemCertificateOptions(serviceInstanceGuid string, queueManagerID string, label string, certificateFile io.ReadCloser) *CreateTrustStorePemCertificateOptions {
 	return &CreateTrustStorePemCertificateOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		Label:               core.StringPtr(label),
-		CertificateFile:     certificateFile,
+		QueueManagerID: core.StringPtr(queueManagerID),
+		Label: core.StringPtr(label),
+		CertificateFile: certificateFile,
 	}
 }
 
@@ -3574,8 +3758,8 @@ type CreateUserOptions struct {
 func (*MqcloudV1) NewCreateUserOptions(serviceInstanceGuid string, email string, name string) *CreateUserOptions {
 	return &CreateUserOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		Email:               core.StringPtr(email),
-		Name:                core.StringPtr(name),
+		Email: core.StringPtr(email),
+		Name: core.StringPtr(name),
 	}
 }
 
@@ -3614,7 +3798,8 @@ type CreateVirtualPrivateEndpointGatewayOptions struct {
 	// The CRN of the target reserved capacity service instance.
 	TargetCrn *string `json:"target_crn" validate:"required"`
 
-	// The CRN of the trusted profile to assume for this request.
+	// The CRN of the trusted profile to assume for this request. This can only be retrieved using the CLI using `ibmcloud
+	// iam tp <profile_id> -o json`.
 	TrustedProfile *string `json:"Trusted-Profile,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -3625,8 +3810,8 @@ type CreateVirtualPrivateEndpointGatewayOptions struct {
 func (*MqcloudV1) NewCreateVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid string, name string, targetCrn string) *CreateVirtualPrivateEndpointGatewayOptions {
 	return &CreateVirtualPrivateEndpointGatewayOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		Name:                core.StringPtr(name),
-		TargetCrn:           core.StringPtr(targetCrn),
+		Name: core.StringPtr(name),
+		TargetCrn: core.StringPtr(targetCrn),
 	}
 }
 
@@ -3676,7 +3861,7 @@ type DeleteApplicationOptions struct {
 func (*MqcloudV1) NewDeleteApplicationOptions(serviceInstanceGuid string, applicationID string) *DeleteApplicationOptions {
 	return &DeleteApplicationOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		ApplicationID:       core.StringPtr(applicationID),
+		ApplicationID: core.StringPtr(applicationID),
 	}
 }
 
@@ -3717,8 +3902,8 @@ type DeleteKeyStoreCertificateOptions struct {
 func (*MqcloudV1) NewDeleteKeyStoreCertificateOptions(serviceInstanceGuid string, queueManagerID string, certificateID string) *DeleteKeyStoreCertificateOptions {
 	return &DeleteKeyStoreCertificateOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		CertificateID:       core.StringPtr(certificateID),
+		QueueManagerID: core.StringPtr(queueManagerID),
+		CertificateID: core.StringPtr(certificateID),
 	}
 }
 
@@ -3762,7 +3947,7 @@ type DeleteQueueManagerOptions struct {
 func (*MqcloudV1) NewDeleteQueueManagerOptions(serviceInstanceGuid string, queueManagerID string) *DeleteQueueManagerOptions {
 	return &DeleteQueueManagerOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
+		QueueManagerID: core.StringPtr(queueManagerID),
 	}
 }
 
@@ -3803,8 +3988,8 @@ type DeleteTrustStoreCertificateOptions struct {
 func (*MqcloudV1) NewDeleteTrustStoreCertificateOptions(serviceInstanceGuid string, queueManagerID string, certificateID string) *DeleteTrustStoreCertificateOptions {
 	return &DeleteTrustStoreCertificateOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		CertificateID:       core.StringPtr(certificateID),
+		QueueManagerID: core.StringPtr(queueManagerID),
+		CertificateID: core.StringPtr(certificateID),
 	}
 }
 
@@ -3848,7 +4033,7 @@ type DeleteUserOptions struct {
 func (*MqcloudV1) NewDeleteUserOptions(serviceInstanceGuid string, userID string) *DeleteUserOptions {
 	return &DeleteUserOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		UserID:              core.StringPtr(userID),
+		UserID: core.StringPtr(userID),
 	}
 }
 
@@ -3878,7 +4063,8 @@ type DeleteVirtualPrivateEndpointGatewayOptions struct {
 	// The id of the virtual private endpoint gateway.
 	VirtualPrivateEndpointGatewayGuid *string `json:"virtual_private_endpoint_gateway_guid" validate:"required,ne="`
 
-	// The CRN of the trusted profile to assume for this request.
+	// The CRN of the trusted profile to assume for this request. This can only be retrieved using the CLI using `ibmcloud
+	// iam tp <profile_id> -o json`.
 	TrustedProfile *string `json:"Trusted-Profile,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -3888,7 +4074,7 @@ type DeleteVirtualPrivateEndpointGatewayOptions struct {
 // NewDeleteVirtualPrivateEndpointGatewayOptions : Instantiate DeleteVirtualPrivateEndpointGatewayOptions
 func (*MqcloudV1) NewDeleteVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid string, virtualPrivateEndpointGatewayGuid string) *DeleteVirtualPrivateEndpointGatewayOptions {
 	return &DeleteVirtualPrivateEndpointGatewayOptions{
-		ServiceInstanceGuid:               core.StringPtr(serviceInstanceGuid),
+		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
 		VirtualPrivateEndpointGatewayGuid: core.StringPtr(virtualPrivateEndpointGatewayGuid),
 	}
 }
@@ -3936,8 +4122,8 @@ type DownloadKeyStoreCertificateOptions struct {
 func (*MqcloudV1) NewDownloadKeyStoreCertificateOptions(serviceInstanceGuid string, queueManagerID string, certificateID string) *DownloadKeyStoreCertificateOptions {
 	return &DownloadKeyStoreCertificateOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		CertificateID:       core.StringPtr(certificateID),
+		QueueManagerID: core.StringPtr(queueManagerID),
+		CertificateID: core.StringPtr(certificateID),
 	}
 }
 
@@ -3984,8 +4170,8 @@ type DownloadTrustStoreCertificateOptions struct {
 func (*MqcloudV1) NewDownloadTrustStoreCertificateOptions(serviceInstanceGuid string, queueManagerID string, certificateID string) *DownloadTrustStoreCertificateOptions {
 	return &DownloadTrustStoreCertificateOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		CertificateID:       core.StringPtr(certificateID),
+		QueueManagerID: core.StringPtr(queueManagerID),
+		CertificateID: core.StringPtr(certificateID),
 	}
 }
 
@@ -4047,7 +4233,7 @@ type GetApplicationOptions struct {
 func (*MqcloudV1) NewGetApplicationOptions(serviceInstanceGuid string, applicationID string) *GetApplicationOptions {
 	return &GetApplicationOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		ApplicationID:       core.StringPtr(applicationID),
+		ApplicationID: core.StringPtr(applicationID),
 	}
 }
 
@@ -4087,8 +4273,8 @@ type GetCertificateAmsChannelsOptions struct {
 // NewGetCertificateAmsChannelsOptions : Instantiate GetCertificateAmsChannelsOptions
 func (*MqcloudV1) NewGetCertificateAmsChannelsOptions(queueManagerID string, certificateID string, serviceInstanceGuid string) *GetCertificateAmsChannelsOptions {
 	return &GetCertificateAmsChannelsOptions{
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		CertificateID:       core.StringPtr(certificateID),
+		QueueManagerID: core.StringPtr(queueManagerID),
+		CertificateID: core.StringPtr(certificateID),
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
 	}
 }
@@ -4136,8 +4322,8 @@ type GetKeyStoreCertificateOptions struct {
 func (*MqcloudV1) NewGetKeyStoreCertificateOptions(serviceInstanceGuid string, queueManagerID string, certificateID string) *GetKeyStoreCertificateOptions {
 	return &GetKeyStoreCertificateOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		CertificateID:       core.StringPtr(certificateID),
+		QueueManagerID: core.StringPtr(queueManagerID),
+		CertificateID: core.StringPtr(certificateID),
 	}
 }
 
@@ -4209,7 +4395,7 @@ type GetQueueManagerAvailableUpgradeVersionsOptions struct {
 func (*MqcloudV1) NewGetQueueManagerAvailableUpgradeVersionsOptions(serviceInstanceGuid string, queueManagerID string) *GetQueueManagerAvailableUpgradeVersionsOptions {
 	return &GetQueueManagerAvailableUpgradeVersionsOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
+		QueueManagerID: core.StringPtr(queueManagerID),
 	}
 }
 
@@ -4247,7 +4433,7 @@ type GetQueueManagerConnectionInfoOptions struct {
 func (*MqcloudV1) NewGetQueueManagerConnectionInfoOptions(serviceInstanceGuid string, queueManagerID string) *GetQueueManagerConnectionInfoOptions {
 	return &GetQueueManagerConnectionInfoOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
+		QueueManagerID: core.StringPtr(queueManagerID),
 	}
 }
 
@@ -4285,7 +4471,7 @@ type GetQueueManagerOptions struct {
 func (*MqcloudV1) NewGetQueueManagerOptions(serviceInstanceGuid string, queueManagerID string) *GetQueueManagerOptions {
 	return &GetQueueManagerOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
+		QueueManagerID: core.StringPtr(queueManagerID),
 	}
 }
 
@@ -4323,7 +4509,7 @@ type GetQueueManagerStatusOptions struct {
 func (*MqcloudV1) NewGetQueueManagerStatusOptions(serviceInstanceGuid string, queueManagerID string) *GetQueueManagerStatusOptions {
 	return &GetQueueManagerStatusOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
+		QueueManagerID: core.StringPtr(queueManagerID),
 	}
 }
 
@@ -4364,8 +4550,8 @@ type GetTrustStoreCertificateOptions struct {
 func (*MqcloudV1) NewGetTrustStoreCertificateOptions(serviceInstanceGuid string, queueManagerID string, certificateID string) *GetTrustStoreCertificateOptions {
 	return &GetTrustStoreCertificateOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		CertificateID:       core.StringPtr(certificateID),
+		QueueManagerID: core.StringPtr(queueManagerID),
+		CertificateID: core.StringPtr(certificateID),
 	}
 }
 
@@ -4437,7 +4623,7 @@ type GetUserOptions struct {
 func (*MqcloudV1) NewGetUserOptions(serviceInstanceGuid string, userID string) *GetUserOptions {
 	return &GetUserOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		UserID:              core.StringPtr(userID),
+		UserID: core.StringPtr(userID),
 	}
 }
 
@@ -4467,7 +4653,8 @@ type GetVirtualPrivateEndpointGatewayOptions struct {
 	// The id of the virtual private endpoint gateway.
 	VirtualPrivateEndpointGatewayGuid *string `json:"virtual_private_endpoint_gateway_guid" validate:"required,ne="`
 
-	// The CRN of the trusted profile to assume for this request.
+	// The CRN of the trusted profile to assume for this request. This can only be retrieved using the CLI using `ibmcloud
+	// iam tp <profile_id> -o json`.
 	TrustedProfile *string `json:"Trusted-Profile,omitempty"`
 
 	// Allows users to set headers on API requests.
@@ -4477,7 +4664,7 @@ type GetVirtualPrivateEndpointGatewayOptions struct {
 // NewGetVirtualPrivateEndpointGatewayOptions : Instantiate GetVirtualPrivateEndpointGatewayOptions
 func (*MqcloudV1) NewGetVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid string, virtualPrivateEndpointGatewayGuid string) *GetVirtualPrivateEndpointGatewayOptions {
 	return &GetVirtualPrivateEndpointGatewayOptions{
-		ServiceInstanceGuid:               core.StringPtr(serviceInstanceGuid),
+		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
 		VirtualPrivateEndpointGatewayGuid: core.StringPtr(virtualPrivateEndpointGatewayGuid),
 	}
 }
@@ -4730,7 +4917,7 @@ type ListKeyStoreCertificatesOptions struct {
 func (*MqcloudV1) NewListKeyStoreCertificatesOptions(serviceInstanceGuid string, queueManagerID string) *ListKeyStoreCertificatesOptions {
 	return &ListKeyStoreCertificatesOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
+		QueueManagerID: core.StringPtr(queueManagerID),
 	}
 }
 
@@ -4814,7 +5001,7 @@ type ListTrustStoreCertificatesOptions struct {
 func (*MqcloudV1) NewListTrustStoreCertificatesOptions(serviceInstanceGuid string, queueManagerID string) *ListTrustStoreCertificatesOptions {
 	return &ListTrustStoreCertificatesOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
+		QueueManagerID: core.StringPtr(queueManagerID),
 	}
 }
 
@@ -4887,7 +5074,8 @@ type ListVirtualPrivateEndpointGatewaysOptions struct {
 	// The GUID that uniquely identifies the MQ on Cloud service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
-	// The CRN of the trusted profile to assume for this request.
+	// The CRN of the trusted profile to assume for this request. This can only be retrieved using the CLI using `ibmcloud
+	// iam tp <profile_id> -o json`.
 	TrustedProfile *string `json:"Trusted-Profile,omitempty"`
 
 	// A server-provided token determining what resource to start the page on.
@@ -5024,9 +5212,9 @@ type QueueManagerDetails struct {
 // Constants associated with the QueueManagerDetails.Size property.
 // The queue manager sizes of deployment available.
 const (
-	QueueManagerDetails_Size_Large  = "large"
+	QueueManagerDetails_Size_Large = "large"
 	QueueManagerDetails_Size_Medium = "medium"
-	QueueManagerDetails_Size_Small  = "small"
+	QueueManagerDetails_Size_Small = "small"
 	QueueManagerDetails_Size_Xsmall = "xsmall"
 )
 
@@ -5206,23 +5394,23 @@ type QueueManagerStatus struct {
 // states map to the queue manager states. State "ending" is either quiesing or ending immediately. State "ended" is
 // either ended normally or endedimmediately. The others map one to one with queue manager states.
 const (
-	QueueManagerStatus_Status_Deleting              = "deleting"
-	QueueManagerStatus_Status_Deploying             = "deploying"
-	QueueManagerStatus_Status_Failed                = "failed"
-	QueueManagerStatus_Status_InitializationFailed  = "initialization_failed"
-	QueueManagerStatus_Status_Initializing          = "initializing"
-	QueueManagerStatus_Status_RestoreFailed         = "restore_failed"
-	QueueManagerStatus_Status_RestoringConfig       = "restoring_config"
+	QueueManagerStatus_Status_Deleting = "deleting"
+	QueueManagerStatus_Status_Deploying = "deploying"
+	QueueManagerStatus_Status_Failed = "failed"
+	QueueManagerStatus_Status_InitializationFailed = "initialization_failed"
+	QueueManagerStatus_Status_Initializing = "initializing"
+	QueueManagerStatus_Status_RestoreFailed = "restore_failed"
+	QueueManagerStatus_Status_RestoringConfig = "restoring_config"
 	QueueManagerStatus_Status_RestoringQueueManager = "restoring_queue_manager"
-	QueueManagerStatus_Status_Resumable             = "resumable"
-	QueueManagerStatus_Status_Running               = "running"
-	QueueManagerStatus_Status_Starting              = "starting"
-	QueueManagerStatus_Status_StatusNotAvailable    = "status_not_available"
-	QueueManagerStatus_Status_Stopped               = "stopped"
-	QueueManagerStatus_Status_Stopping              = "stopping"
-	QueueManagerStatus_Status_Suspended             = "suspended"
-	QueueManagerStatus_Status_UpdatingRevision      = "updating_revision"
-	QueueManagerStatus_Status_UpgradingVersion      = "upgrading_version"
+	QueueManagerStatus_Status_Resumable = "resumable"
+	QueueManagerStatus_Status_Running = "running"
+	QueueManagerStatus_Status_Starting = "starting"
+	QueueManagerStatus_Status_StatusNotAvailable = "status_not_available"
+	QueueManagerStatus_Status_Stopped = "stopped"
+	QueueManagerStatus_Status_Stopping = "stopping"
+	QueueManagerStatus_Status_Suspended = "suspended"
+	QueueManagerStatus_Status_UpdatingRevision = "updating_revision"
+	QueueManagerStatus_Status_UpgradingVersion = "upgrading_version"
 )
 
 // UnmarshalQueueManagerStatus unmarshals an instance of QueueManagerStatus from the specified map of raw messages.
@@ -5323,6 +5511,54 @@ func UnmarshalQueueManagerVersionUpgrades(m map[string]json.RawMessage, result i
 	return
 }
 
+// SetApplicationNameOptions : The SetApplicationName options.
+type SetApplicationNameOptions struct {
+	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
+
+	// The id of the application.
+	ApplicationID *string `json:"application_id" validate:"required,ne="`
+
+	// The new name to update the application with.
+	Name *string `json:"name" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewSetApplicationNameOptions : Instantiate SetApplicationNameOptions
+func (*MqcloudV1) NewSetApplicationNameOptions(serviceInstanceGuid string, applicationID string, name string) *SetApplicationNameOptions {
+	return &SetApplicationNameOptions{
+		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
+		ApplicationID: core.StringPtr(applicationID),
+		Name: core.StringPtr(name),
+	}
+}
+
+// SetServiceInstanceGuid : Allow user to set ServiceInstanceGuid
+func (_options *SetApplicationNameOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *SetApplicationNameOptions {
+	_options.ServiceInstanceGuid = core.StringPtr(serviceInstanceGuid)
+	return _options
+}
+
+// SetApplicationID : Allow user to set ApplicationID
+func (_options *SetApplicationNameOptions) SetApplicationID(applicationID string) *SetApplicationNameOptions {
+	_options.ApplicationID = core.StringPtr(applicationID)
+	return _options
+}
+
+// SetName : Allow user to set Name
+func (_options *SetApplicationNameOptions) SetName(name string) *SetApplicationNameOptions {
+	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *SetApplicationNameOptions) SetHeaders(param map[string]string) *SetApplicationNameOptions {
+	options.Headers = param
+	return options
+}
+
 // SetCertificateAmsChannelsOptions : The SetCertificateAmsChannels options.
 type SetCertificateAmsChannelsOptions struct {
 	// The id of the queue manager to retrieve its full details.
@@ -5347,17 +5583,17 @@ type SetCertificateAmsChannelsOptions struct {
 // Constants associated with the SetCertificateAmsChannelsOptions.UpdateStrategy property.
 // Strategy for how the supplied channels should be applied.
 const (
-	SetCertificateAmsChannelsOptions_UpdateStrategy_Append  = "append"
+	SetCertificateAmsChannelsOptions_UpdateStrategy_Append = "append"
 	SetCertificateAmsChannelsOptions_UpdateStrategy_Replace = "replace"
 )
 
 // NewSetCertificateAmsChannelsOptions : Instantiate SetCertificateAmsChannelsOptions
 func (*MqcloudV1) NewSetCertificateAmsChannelsOptions(queueManagerID string, certificateID string, serviceInstanceGuid string, channels []ChannelDetails) *SetCertificateAmsChannelsOptions {
 	return &SetCertificateAmsChannelsOptions{
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		CertificateID:       core.StringPtr(certificateID),
+		QueueManagerID: core.StringPtr(queueManagerID),
+		CertificateID: core.StringPtr(certificateID),
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		Channels:            channels,
+		Channels: channels,
 	}
 }
 
@@ -5416,8 +5652,8 @@ type SetQueueManagerVersionOptions struct {
 func (*MqcloudV1) NewSetQueueManagerVersionOptions(serviceInstanceGuid string, queueManagerID string, version string) *SetQueueManagerVersionOptions {
 	return &SetQueueManagerVersionOptions{
 		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
-		QueueManagerID:      core.StringPtr(queueManagerID),
-		Version:             core.StringPtr(version),
+		QueueManagerID: core.StringPtr(queueManagerID),
+		Version: core.StringPtr(version),
 	}
 }
 
@@ -5441,6 +5677,54 @@ func (_options *SetQueueManagerVersionOptions) SetVersion(version string) *SetQu
 
 // SetHeaders : Allow user to set Headers
 func (options *SetQueueManagerVersionOptions) SetHeaders(param map[string]string) *SetQueueManagerVersionOptions {
+	options.Headers = param
+	return options
+}
+
+// SetUserNameOptions : The SetUserName options.
+type SetUserNameOptions struct {
+	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
+
+	// The id of the user.
+	UserID *string `json:"user_id" validate:"required,ne="`
+
+	// The new name to update the user with.
+	Name *string `json:"name" validate:"required"`
+
+	// Allows users to set headers on API requests.
+	Headers map[string]string
+}
+
+// NewSetUserNameOptions : Instantiate SetUserNameOptions
+func (*MqcloudV1) NewSetUserNameOptions(serviceInstanceGuid string, userID string, name string) *SetUserNameOptions {
+	return &SetUserNameOptions{
+		ServiceInstanceGuid: core.StringPtr(serviceInstanceGuid),
+		UserID: core.StringPtr(userID),
+		Name: core.StringPtr(name),
+	}
+}
+
+// SetServiceInstanceGuid : Allow user to set ServiceInstanceGuid
+func (_options *SetUserNameOptions) SetServiceInstanceGuid(serviceInstanceGuid string) *SetUserNameOptions {
+	_options.ServiceInstanceGuid = core.StringPtr(serviceInstanceGuid)
+	return _options
+}
+
+// SetUserID : Allow user to set UserID
+func (_options *SetUserNameOptions) SetUserID(userID string) *SetUserNameOptions {
+	_options.UserID = core.StringPtr(userID)
+	return _options
+}
+
+// SetName : Allow user to set Name
+func (_options *SetUserNameOptions) SetName(name string) *SetUserNameOptions {
+	_options.Name = core.StringPtr(name)
+	return _options
+}
+
+// SetHeaders : Allow user to set Headers
+func (options *SetUserNameOptions) SetHeaders(param map[string]string) *SetUserNameOptions {
 	options.Headers = param
 	return options
 }
@@ -5639,6 +5923,9 @@ type UserDetails struct {
 	// The email of the user.
 	Email *string `json:"email" validate:"required"`
 
+	// The IAM ID of the user.
+	IamServiceID *string `json:"iam_service_id" validate:"required"`
+
 	// The URL for the user details.
 	Href *string `json:"href" validate:"required"`
 }
@@ -5659,6 +5946,11 @@ func UnmarshalUserDetails(m map[string]json.RawMessage, result interface{}) (err
 	err = core.UnmarshalPrimitive(m, "email", &obj.Email)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "email-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "iam_service_id", &obj.IamServiceID)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "iam_service_id-error", common.GetComponentInfo())
 		return
 	}
 	err = core.UnmarshalPrimitive(m, "href", &obj.Href)
@@ -5856,11 +6148,13 @@ func (resp *VirtualPrivateEndpointGatewayDetailsCollection) GetNextStart() (*str
 	return start, nil
 }
 
+//
 // QueueManagersPager can be used to simplify the use of the "ListQueueManagers" method.
+//
 type QueueManagersPager struct {
-	hasNext     bool
-	options     *ListQueueManagersOptions
-	client      *MqcloudV1
+	hasNext bool
+	options *ListQueueManagersOptions
+	client  *MqcloudV1
 	pageContext struct {
 		next *int64
 	}
@@ -5948,11 +6242,13 @@ func (pager *QueueManagersPager) GetAll() (allItems []QueueManagerDetails, err e
 	return
 }
 
+//
 // UsersPager can be used to simplify the use of the "ListUsers" method.
+//
 type UsersPager struct {
-	hasNext     bool
-	options     *ListUsersOptions
-	client      *MqcloudV1
+	hasNext bool
+	options *ListUsersOptions
+	client  *MqcloudV1
 	pageContext struct {
 		next *int64
 	}
@@ -6040,11 +6336,13 @@ func (pager *UsersPager) GetAll() (allItems []UserDetails, err error) {
 	return
 }
 
+//
 // ApplicationsPager can be used to simplify the use of the "ListApplications" method.
+//
 type ApplicationsPager struct {
-	hasNext     bool
-	options     *ListApplicationsOptions
-	client      *MqcloudV1
+	hasNext bool
+	options *ListApplicationsOptions
+	client  *MqcloudV1
 	pageContext struct {
 		next *int64
 	}
@@ -6132,11 +6430,13 @@ func (pager *ApplicationsPager) GetAll() (allItems []ApplicationDetails, err err
 	return
 }
 
+//
 // VirtualPrivateEndpointGatewaysPager can be used to simplify the use of the "ListVirtualPrivateEndpointGateways" method.
+//
 type VirtualPrivateEndpointGatewaysPager struct {
-	hasNext     bool
-	options     *ListVirtualPrivateEndpointGatewaysOptions
-	client      *MqcloudV1
+	hasNext bool
+	options *ListVirtualPrivateEndpointGatewaysOptions
+	client  *MqcloudV1
 	pageContext struct {
 		next *string
 	}
