@@ -4,8 +4,6 @@ dist: focal
 
 
 go:
-- 1.21.x
-- 1.22.x
 - 1.23.x
 notifications:
   email: true
@@ -38,5 +36,5 @@ deploy:
     script: npm run semantic-release
     skip_cleanup: true
     on:
-      go: '1.21.x' 
+      go: '1.23.x' 
       branch: main
