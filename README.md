@@ -1,5 +1,5 @@
 
-# IBM Cloud MQ on Cloud Services Go SDK Version 0.2.0
+# IBM Cloud MQ on Cloud Services Go SDK Version 0.3.0
 Go client library to interact with the various [IBM Cloud MQ on Cloud APIs](https://cloud.ibm.com/apidocs/mq-on-cloud).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
@@ -50,7 +50,7 @@ Service Name | Package name
 * Go version 1.23 or above.
 
 ## Installation
-The current version of this SDK: 0.2.0
+The current version of this SDK: 0.3.0
 
 ### Go modules  
 If your application uses Go modules for dependency management (recommended), just add an import for each service
