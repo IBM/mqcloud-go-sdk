@@ -36,7 +36,7 @@ import (
 	"github.com/go-openapi/strfmt"
 )
 
-// MqcloudV1 : The MQ on Cloud API defines a REST API interface to work with MQ on Cloud service in IBM Cloud.
+// MqcloudV1 : The MQ SaaS API defines a REST API interface to work with MQ SaaS service in IBM Cloud.
 //
 // API Version: 1.1.0
 type MqcloudV1 struct {
@@ -3454,7 +3454,7 @@ func UnmarshalConnectionInfoChannel(m map[string]json.RawMessage, result interfa
 
 // CreateApplicationApikeyOptions : The CreateApplicationApikey options.
 type CreateApplicationApikeyOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the application.
@@ -3502,7 +3502,7 @@ func (options *CreateApplicationApikeyOptions) SetHeaders(param map[string]strin
 
 // CreateApplicationOptions : The CreateApplication options.
 type CreateApplicationOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The name of the application - conforming to MQ rules.
@@ -3540,7 +3540,7 @@ func (options *CreateApplicationOptions) SetHeaders(param map[string]string) *Cr
 
 // CreateKeyStorePemCertificateOptions : The CreateKeyStorePemCertificate options.
 type CreateKeyStorePemCertificateOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -3598,7 +3598,7 @@ func (options *CreateKeyStorePemCertificateOptions) SetHeaders(param map[string]
 
 // CreateQueueManagerOptions : The CreateQueueManager options.
 type CreateQueueManagerOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The name of the queue manager - conforming to MQ rules.
@@ -3683,7 +3683,7 @@ func (options *CreateQueueManagerOptions) SetHeaders(param map[string]string) *C
 
 // CreateTrustStorePemCertificateOptions : The CreateTrustStorePemCertificate options.
 type CreateTrustStorePemCertificateOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -3741,7 +3741,7 @@ func (options *CreateTrustStorePemCertificateOptions) SetHeaders(param map[strin
 
 // CreateUserOptions : The CreateUser options.
 type CreateUserOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The email of the user to be created.
@@ -3789,7 +3789,7 @@ func (options *CreateUserOptions) SetHeaders(param map[string]string) *CreateUse
 
 // CreateVirtualPrivateEndpointGatewayOptions : The CreateVirtualPrivateEndpointGateway options.
 type CreateVirtualPrivateEndpointGatewayOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The name of the virtual private endpoint gateway - conforming to naming rules.
@@ -3847,7 +3847,7 @@ func (options *CreateVirtualPrivateEndpointGatewayOptions) SetHeaders(param map[
 
 // DeleteApplicationOptions : The DeleteApplication options.
 type DeleteApplicationOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the application.
@@ -3885,7 +3885,7 @@ func (options *DeleteApplicationOptions) SetHeaders(param map[string]string) *De
 
 // DeleteKeyStoreCertificateOptions : The DeleteKeyStoreCertificate options.
 type DeleteKeyStoreCertificateOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -3933,7 +3933,7 @@ func (options *DeleteKeyStoreCertificateOptions) SetHeaders(param map[string]str
 
 // DeleteQueueManagerOptions : The DeleteQueueManager options.
 type DeleteQueueManagerOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -3971,7 +3971,7 @@ func (options *DeleteQueueManagerOptions) SetHeaders(param map[string]string) *D
 
 // DeleteTrustStoreCertificateOptions : The DeleteTrustStoreCertificate options.
 type DeleteTrustStoreCertificateOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4019,7 +4019,7 @@ func (options *DeleteTrustStoreCertificateOptions) SetHeaders(param map[string]s
 
 // DeleteUserOptions : The DeleteUser options.
 type DeleteUserOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the user.
@@ -4057,7 +4057,7 @@ func (options *DeleteUserOptions) SetHeaders(param map[string]string) *DeleteUse
 
 // DeleteVirtualPrivateEndpointGatewayOptions : The DeleteVirtualPrivateEndpointGateway options.
 type DeleteVirtualPrivateEndpointGatewayOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the virtual private endpoint gateway.
@@ -4105,7 +4105,7 @@ func (options *DeleteVirtualPrivateEndpointGatewayOptions) SetHeaders(param map[
 
 // DownloadKeyStoreCertificateOptions : The DownloadKeyStoreCertificate options.
 type DownloadKeyStoreCertificateOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4153,7 +4153,7 @@ func (options *DownloadKeyStoreCertificateOptions) SetHeaders(param map[string]s
 
 // DownloadTrustStoreCertificateOptions : The DownloadTrustStoreCertificate options.
 type DownloadTrustStoreCertificateOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4219,7 +4219,7 @@ func UnmarshalFirst(m map[string]json.RawMessage, result interface{}) (err error
 
 // GetApplicationOptions : The GetApplication options.
 type GetApplicationOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the application.
@@ -4263,7 +4263,7 @@ type GetCertificateAmsChannelsOptions struct {
 	// The id of the certificate.
 	CertificateID *string `json:"certificate_id" validate:"required,ne="`
 
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// Allows users to set headers on API requests.
@@ -4305,7 +4305,7 @@ func (options *GetCertificateAmsChannelsOptions) SetHeaders(param map[string]str
 
 // GetKeyStoreCertificateOptions : The GetKeyStoreCertificate options.
 type GetKeyStoreCertificateOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4353,7 +4353,7 @@ func (options *GetKeyStoreCertificateOptions) SetHeaders(param map[string]string
 
 // GetOptionsOptions : The GetOptions options.
 type GetOptionsOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// Allows users to set headers on API requests.
@@ -4381,7 +4381,7 @@ func (options *GetOptionsOptions) SetHeaders(param map[string]string) *GetOption
 
 // GetQueueManagerAvailableUpgradeVersionsOptions : The GetQueueManagerAvailableUpgradeVersions options.
 type GetQueueManagerAvailableUpgradeVersionsOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4419,7 +4419,7 @@ func (options *GetQueueManagerAvailableUpgradeVersionsOptions) SetHeaders(param 
 
 // GetQueueManagerConnectionInfoOptions : The GetQueueManagerConnectionInfo options.
 type GetQueueManagerConnectionInfoOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4457,7 +4457,7 @@ func (options *GetQueueManagerConnectionInfoOptions) SetHeaders(param map[string
 
 // GetQueueManagerOptions : The GetQueueManager options.
 type GetQueueManagerOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4495,7 +4495,7 @@ func (options *GetQueueManagerOptions) SetHeaders(param map[string]string) *GetQ
 
 // GetQueueManagerStatusOptions : The GetQueueManagerStatus options.
 type GetQueueManagerStatusOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4533,7 +4533,7 @@ func (options *GetQueueManagerStatusOptions) SetHeaders(param map[string]string)
 
 // GetTrustStoreCertificateOptions : The GetTrustStoreCertificate options.
 type GetTrustStoreCertificateOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4581,7 +4581,7 @@ func (options *GetTrustStoreCertificateOptions) SetHeaders(param map[string]stri
 
 // GetUsageDetailsOptions : The GetUsageDetails options.
 type GetUsageDetailsOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// Allows users to set headers on API requests.
@@ -4609,7 +4609,7 @@ func (options *GetUsageDetailsOptions) SetHeaders(param map[string]string) *GetU
 
 // GetUserOptions : The GetUser options.
 type GetUserOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the user.
@@ -4647,7 +4647,7 @@ func (options *GetUserOptions) SetHeaders(param map[string]string) *GetUserOptio
 
 // GetVirtualPrivateEndpointGatewayOptions : The GetVirtualPrivateEndpointGateway options.
 type GetVirtualPrivateEndpointGatewayOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the virtual private endpoint gateway.
@@ -4857,7 +4857,7 @@ func UnmarshalKeyStoreCertificateDetailsCollection(m map[string]json.RawMessage,
 
 // ListApplicationsOptions : The ListApplications options.
 type ListApplicationsOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// Pagination offset.
@@ -4903,7 +4903,7 @@ func (options *ListApplicationsOptions) SetHeaders(param map[string]string) *Lis
 
 // ListKeyStoreCertificatesOptions : The ListKeyStoreCertificates options.
 type ListKeyStoreCertificatesOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -4941,7 +4941,7 @@ func (options *ListKeyStoreCertificatesOptions) SetHeaders(param map[string]stri
 
 // ListQueueManagersOptions : The ListQueueManagers options.
 type ListQueueManagersOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// Pagination offset.
@@ -4987,7 +4987,7 @@ func (options *ListQueueManagersOptions) SetHeaders(param map[string]string) *Li
 
 // ListTrustStoreCertificatesOptions : The ListTrustStoreCertificates options.
 type ListTrustStoreCertificatesOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -5025,7 +5025,7 @@ func (options *ListTrustStoreCertificatesOptions) SetHeaders(param map[string]st
 
 // ListUsersOptions : The ListUsers options.
 type ListUsersOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// Pagination offset.
@@ -5071,7 +5071,7 @@ func (options *ListUsersOptions) SetHeaders(param map[string]string) *ListUsersO
 
 // ListVirtualPrivateEndpointGatewaysOptions : The ListVirtualPrivateEndpointGateways options.
 type ListVirtualPrivateEndpointGatewaysOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The CRN of the trusted profile to assume for this request. This can only be retrieved using the CLI using `ibmcloud
@@ -5513,7 +5513,7 @@ func UnmarshalQueueManagerVersionUpgrades(m map[string]json.RawMessage, result i
 
 // SetApplicationNameOptions : The SetApplicationName options.
 type SetApplicationNameOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the application.
@@ -5567,7 +5567,7 @@ type SetCertificateAmsChannelsOptions struct {
 	// The id of the certificate.
 	CertificateID *string `json:"certificate_id" validate:"required,ne="`
 
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The list of AMS channels that are using this certificate.
@@ -5635,7 +5635,7 @@ func (options *SetCertificateAmsChannelsOptions) SetHeaders(param map[string]str
 
 // SetQueueManagerVersionOptions : The SetQueueManagerVersion options.
 type SetQueueManagerVersionOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the queue manager to retrieve its full details.
@@ -5683,7 +5683,7 @@ func (options *SetQueueManagerVersionOptions) SetHeaders(param map[string]string
 
 // SetUserNameOptions : The SetUserName options.
 type SetUserNameOptions struct {
-	// The GUID that uniquely identifies the MQ on Cloud service instance.
+	// The GUID that uniquely identifies the MQ SaaS service instance.
 	ServiceInstanceGuid *string `json:"service_instance_guid" validate:"required,ne="`
 
 	// The id of the user.

@@ -153,7 +153,7 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 				config["SERVICE_INSTANCE_DEPLOYMENT_GUID"],
 				"testqm",
 				config["LOCATION"],
-				"xsmall",
+				"small",
 			)
 			createQueueManagerOptions.SetVersion(config["VERSION"])
 
