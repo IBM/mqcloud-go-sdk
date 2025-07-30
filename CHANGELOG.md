@@ -1,3 +1,11 @@
+# [0.3.0](https://github.com/IBM/mqcloud-go-sdk/compare/v0.2.0...v0.3.0) (2025-07-30)
+
+
+### Features
+
+* add ability to update name for users and apps ([#24](https://github.com/IBM/mqcloud-go-sdk/issues/24)) ([5f9e011](https://github.com/IBM/mqcloud-go-sdk/commit/5f9e0110862ab0e8e1b1763e7d25f52572e5ea91))
+* go 1.24 and MQ SaaS ([9c53bcc](https://github.com/IBM/mqcloud-go-sdk/commit/9c53bcc5195e70b9ca1a67593f7689bf8dd94baf))
+
 # [0.2.0](https://github.com/IBM/mqcloud-go-sdk/compare/v0.1.0...v0.2.0) (2024-11-26)
 
 
