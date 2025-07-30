@@ -32,9 +32,8 @@ before_deploy:
   - pip install --user bump2version
 
 deploy:
-  - provider: script
-    script: npm run semantic-release
-    skip_cleanup: true
-    on:
-      go: '1.23.x' 
-      branch: main
+- provider: script
+  script: npm run semantic-release
+  on:
+    condition: $TRAVIS_GO_VERSION =~ ^1\.24
+    branch: main
