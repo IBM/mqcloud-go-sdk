@@ -133,7 +133,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
 				Name:                core.StringPtr("testqm22"),
 				Location:            core.StringPtr(config["LOCATION"]),
-				Size:                core.StringPtr("xsmall"),
+				Size:                core.StringPtr("small"),
 				DisplayName:         core.StringPtr("A test queue manager"),
 				Version:             core.StringPtr(config["VERSION"]),
 			}
@@ -144,7 +144,7 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 			Expect(response.StatusCode).To(Equal(202))
 			Expect(queueManagerTaskStatus).ToNot(BeNil())
 			// Add a pause to ensure QM is fully created
-			time.Sleep(30 * time.Second) // Adjust duration as needed
+			time.Sleep(120 * time.Second) // Adjust duration as needed
 		})
 	})
 
@@ -469,7 +469,8 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		It(`CreateUser(createUserOptions *CreateUserOptions)`, func() {
 			createUserOptions := &mqcloudv1.CreateUserOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
-				Name:                core.StringPtr("user-aish22"),
+				Name:                core.StringPtr("user-test22"),
+				Email:               core.StringPtr("testemail@ibm.com"),
 			}
 
 			userDetails, response, err := mqcloudService.CreateUser(createUserOptions)
@@ -487,7 +488,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-
 		It(`GetUser(getUserOptions *GetUserOptions)`, func() {
 			getUserOptions := &mqcloudv1.GetUserOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
@@ -526,7 +526,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-
 		It(`ListApplications(listApplicationsOptions *ListApplicationsOptions) with pagination`, func() {
 			listApplicationsOptions := &mqcloudv1.ListApplicationsOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
@@ -563,7 +562,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 				}
 			}
 		})
-
 		It(`ListApplications(listApplicationsOptions *ListApplicationsOptions) using ApplicationsPager`, func() {
 			listApplicationsOptions := &mqcloudv1.ListApplicationsOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
@@ -602,7 +600,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-
 		It(`CreateApplication(createApplicationOptions *CreateApplicationOptions)`, func() {
 			createApplicationOptions := &mqcloudv1.CreateApplicationOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
@@ -628,7 +625,6 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 		BeforeEach(func() {
 			shouldSkipTest()
 		})
-
 		It(`GetApplication(getApplicationOptions *GetApplicationOptions)`, func() {
 			getApplicationOptions := &mqcloudv1.GetApplicationOptions{
 				ServiceInstanceGuid: core.StringPtr(config["SERVICE_INSTANCE_DEPLOYMENT_GUID"]),
