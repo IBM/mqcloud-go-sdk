@@ -387,7 +387,7 @@ var _ = Describe(`MqcloudV1 Examples Tests`, func() {
 			setUserNameOptions := mqcloudService.NewSetUserNameOptions(
 				config["SERVICE_INSTANCE_DEPLOYMENT_GUID"],
 				config["USER_ID"],
-				"testString",
+				"teststring",
 			)
 
 			userDetails, response, err := mqcloudService.SetUserName(setUserNameOptions)
