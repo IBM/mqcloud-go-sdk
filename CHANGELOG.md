@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/IBM/mqcloud-go-sdk/compare/v0.3.0...v0.4.0) (2025-09-08)
+
+
+### Features
+
+* add roles and iam managed to all userdetails ([#28](https://github.com/IBM/mqcloud-go-sdk/issues/28)) ([abd2a76](https://github.com/IBM/mqcloud-go-sdk/commit/abd2a768437117877116e7ac02abec0e6ccd5b16))
+
 # [0.3.0](https://github.com/IBM/mqcloud-go-sdk/compare/v0.2.0...v0.3.0) (2025-07-30)
 
 
