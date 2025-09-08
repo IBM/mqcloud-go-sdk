@@ -419,6 +419,12 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 				if user.Href != nil {
 					fmt.Printf("   🔗 Href          : %s\n", *user.Href)
 				}
+				if user.Roles != nil {
+					fmt.Printf("   Roles          : %v\n", user.Roles)
+				}
+				if user.IamManaged != nil {
+					fmt.Printf("   IamManaged          : %v\n", user.IamManaged)
+				}
 			}
 		})
 
@@ -457,6 +463,12 @@ var _ = Describe(`MqcloudV1 Integration Tests`, func() {
 				}
 				if user.Href != nil {
 					fmt.Printf("   🔗 Href          : %s\n", *user.Href)
+				}
+				if user.Roles != nil {
+					fmt.Printf("   Roles          : %v\n", user.Roles)
+				}
+				if user.IamManaged != nil {
+					fmt.Printf("   IamManaged          : %v\n", user.IamManaged)
 				}
 			}
 		})

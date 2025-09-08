@@ -68,14 +68,13 @@ var _ = Describe(`MqcloudV1`, func() {
 		Context(`Using external config, construct service client instances`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"MQCLOUD_URL": "https://mqcloudv1/api",
+				"MQCLOUD_URL":       "https://mqcloudv1/api",
 				"MQCLOUD_AUTH_TYPE": "noauth",
 			}
 
 			It(`Create service client using external config successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1UsingExternalConfig(&mqcloudv1.MqcloudV1Options{
-				})
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1UsingExternalConfig(&mqcloudv1.MqcloudV1Options{})
 				Expect(mqcloudService).ToNot(BeNil())
 				Expect(serviceErr).To(BeNil())
 				ClearTestEnvironment(testEnvironment)
@@ -104,8 +103,7 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Create service client using external config and set url programatically successfully`, func() {
 				SetTestEnvironment(testEnvironment)
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1UsingExternalConfig(&mqcloudv1.MqcloudV1Options{
-				})
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1UsingExternalConfig(&mqcloudv1.MqcloudV1Options{})
 				err := mqcloudService.SetServiceURL("https://testService/api")
 				Expect(err).To(BeNil())
 				Expect(mqcloudService).ToNot(BeNil())
@@ -123,13 +121,12 @@ var _ = Describe(`MqcloudV1`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid Auth`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"MQCLOUD_URL": "https://mqcloudv1/api",
+				"MQCLOUD_URL":       "https://mqcloudv1/api",
 				"MQCLOUD_AUTH_TYPE": "someOtherAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
-			mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1UsingExternalConfig(&mqcloudv1.MqcloudV1Options{
-			})
+			mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1UsingExternalConfig(&mqcloudv1.MqcloudV1Options{})
 
 			It(`Instantiate service client with error`, func() {
 				Expect(mqcloudService).To(BeNil())
@@ -140,7 +137,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		Context(`Using external config, construct service client instances with error: Invalid URL`, func() {
 			// Map containing environment variables used in testing.
 			var testEnvironment = map[string]string{
-				"MQCLOUD_AUTH_TYPE":   "NOAuth",
+				"MQCLOUD_AUTH_TYPE": "NOAuth",
 			}
 
 			SetTestEnvironment(testEnvironment)
@@ -201,8 +198,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetUsageDetails with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -255,8 +252,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetUsageDetails successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -312,8 +309,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetUsageDetails successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -339,8 +336,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetUsageDetails with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -381,8 +378,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetUsageDetails successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -426,8 +423,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetOptions with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -480,8 +477,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetOptions successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -537,8 +534,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetOptions successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -564,8 +561,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetOptions with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -606,8 +603,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetOptions successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -651,8 +648,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateQueueManager with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -726,8 +723,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateQueueManager successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -804,8 +801,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateQueueManager successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -836,8 +833,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateQueueManager with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -883,8 +880,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateQueueManager successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -935,8 +932,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListQueueManagers with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -993,8 +990,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListQueueManagers successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1054,8 +1051,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListQueueManagers successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1083,8 +1080,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListQueueManagers with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1127,8 +1124,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListQueueManagers successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1217,8 +1214,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Use QueueManagersPager.GetNext successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1226,7 +1223,7 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listQueueManagersOptionsModel := &mqcloudv1.ListQueueManagersOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:               core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := mqcloudService.NewQueueManagersPager(listQueueManagersOptionsModel)
@@ -1244,8 +1241,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Use QueueManagersPager.GetAll successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1253,7 +1250,7 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listQueueManagersOptionsModel := &mqcloudv1.ListQueueManagersOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:               core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := mqcloudService.NewQueueManagersPager(listQueueManagersOptionsModel)
@@ -1287,8 +1284,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManager with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1342,8 +1339,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManager successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1400,8 +1397,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManager successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1428,8 +1425,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManager with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1471,8 +1468,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManager successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1517,8 +1514,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteQueueManager with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1572,8 +1569,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteQueueManager successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1630,8 +1627,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteQueueManager successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1658,8 +1655,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteQueueManager with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1701,8 +1698,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteQueueManager successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1747,8 +1744,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetQueueManagerVersion with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1819,8 +1816,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetQueueManagerVersion successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1894,8 +1891,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetQueueManagerVersion successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1923,8 +1920,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetQueueManagerVersion with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -1967,8 +1964,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetQueueManagerVersion successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2014,8 +2011,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerAvailableUpgradeVersions with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2069,8 +2066,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerAvailableUpgradeVersions successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2127,8 +2124,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerAvailableUpgradeVersions successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2155,8 +2152,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerAvailableUpgradeVersions with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2198,8 +2195,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerAvailableUpgradeVersions successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2244,8 +2241,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerConnectionInfo with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2299,8 +2296,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerConnectionInfo successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2357,8 +2354,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerConnectionInfo successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2385,8 +2382,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerConnectionInfo with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2428,8 +2425,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerConnectionInfo successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2474,8 +2471,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerStatus with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2529,8 +2526,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerStatus successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2587,8 +2584,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerStatus successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2615,8 +2612,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerStatus with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2658,8 +2655,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetQueueManagerStatus successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2706,8 +2703,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListUsers with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2759,13 +2756,13 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListUsers successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2820,13 +2817,13 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}]}`)
+					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListUsers successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2854,8 +2851,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListUsers with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2898,8 +2895,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListUsers successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2978,9 +2975,9 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.WriteHeader(200)
 					requestNumber++
 					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","roles":["Roles"],"iam_managed":true,"href":"Href"}]}`)
 					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","href":"Href"}]}`)
+						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","roles":["Roles"],"iam_managed":true,"href":"Href"}]}`)
 					} else {
 						res.WriteHeader(400)
 					}
@@ -2988,8 +2985,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Use UsersPager.GetNext successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -2997,7 +2994,7 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listUsersOptionsModel := &mqcloudv1.ListUsersOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:               core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := mqcloudService.NewUsersPager(listUsersOptionsModel)
@@ -3015,8 +3012,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Use UsersPager.GetAll successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3024,7 +3021,7 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listUsersOptionsModel := &mqcloudv1.ListUsersOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:               core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := mqcloudService.NewUsersPager(listUsersOptionsModel)
@@ -3058,8 +3055,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateUser with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3125,13 +3122,13 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke CreateUser successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3200,13 +3197,13 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke CreateUser successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3234,8 +3231,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateUser with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3278,8 +3275,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateUser successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3325,8 +3322,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetUser with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3375,13 +3372,13 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetUser successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3433,13 +3430,13 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetUser successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3466,8 +3463,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetUser with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3509,8 +3506,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetUser successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3554,8 +3551,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteUser successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3579,8 +3576,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteUser with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3630,8 +3627,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetUserName with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3697,13 +3694,13 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke SetUserName successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3772,13 +3769,13 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "href": "Href"}`)
+					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke SetUserName successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3806,8 +3803,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetUserName with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3850,8 +3847,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetUserName successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3899,8 +3896,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListApplications with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -3957,8 +3954,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListApplications successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4018,8 +4015,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListApplications successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4047,8 +4044,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListApplications with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4091,8 +4088,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListApplications successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4181,8 +4178,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Use ApplicationsPager.GetNext successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4190,7 +4187,7 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listApplicationsOptionsModel := &mqcloudv1.ListApplicationsOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:               core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := mqcloudService.NewApplicationsPager(listApplicationsOptionsModel)
@@ -4208,8 +4205,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Use ApplicationsPager.GetAll successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4217,7 +4214,7 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listApplicationsOptionsModel := &mqcloudv1.ListApplicationsOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					Limit: core.Int64Ptr(int64(10)),
+					Limit:               core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := mqcloudService.NewApplicationsPager(listApplicationsOptionsModel)
@@ -4251,8 +4248,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplication with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4322,8 +4319,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplication successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4396,8 +4393,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplication successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4424,8 +4421,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplication with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4467,8 +4464,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplication successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4513,8 +4510,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetApplication with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4568,8 +4565,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetApplication successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4626,8 +4623,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetApplication successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4654,8 +4651,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetApplication with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4697,8 +4694,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetApplication successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4742,8 +4739,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteApplication successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4767,8 +4764,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteApplication with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4818,8 +4815,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetApplicationName with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4890,8 +4887,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetApplicationName successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4965,8 +4962,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetApplicationName successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -4994,8 +4991,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetApplicationName with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5038,8 +5035,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetApplicationName successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5085,8 +5082,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplicationApikey with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5157,8 +5154,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplicationApikey successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5232,8 +5229,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplicationApikey successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5261,8 +5258,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplicationApikey with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5305,8 +5302,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateApplicationApikey successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5352,8 +5349,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateTrustStorePemCertificate with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5409,8 +5406,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateTrustStorePemCertificate successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5469,8 +5466,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateTrustStorePemCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5499,8 +5496,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateTrustStorePemCertificate with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5544,8 +5541,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateTrustStorePemCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5592,8 +5589,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListTrustStoreCertificates with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5647,8 +5644,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListTrustStoreCertificates successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5705,8 +5702,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListTrustStoreCertificates successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5733,8 +5730,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListTrustStoreCertificates with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5776,8 +5773,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListTrustStoreCertificates successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5822,8 +5819,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetTrustStoreCertificate with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5878,8 +5875,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetTrustStoreCertificate successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5937,8 +5934,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetTrustStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -5966,8 +5963,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetTrustStoreCertificate with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6010,8 +6007,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetTrustStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6056,8 +6053,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteTrustStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6082,8 +6079,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteTrustStoreCertificate with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6139,8 +6136,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DownloadTrustStoreCertificate successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6198,8 +6195,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DownloadTrustStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6227,8 +6224,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DownloadTrustStoreCertificate with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6271,8 +6268,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DownloadTrustStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6289,7 +6286,6 @@ var _ = Describe(`MqcloudV1`, func() {
 				result, response, operationErr := mqcloudService.DownloadTrustStoreCertificate(downloadTrustStoreCertificateOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
-
 
 				// Verify empty byte buffer.
 				Expect(result).ToNot(BeNil())
@@ -6323,8 +6319,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateKeyStorePemCertificate with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6380,8 +6376,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateKeyStorePemCertificate successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6440,8 +6436,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateKeyStorePemCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6470,8 +6466,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateKeyStorePemCertificate with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6515,8 +6511,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateKeyStorePemCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6563,8 +6559,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListKeyStoreCertificates with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6618,8 +6614,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListKeyStoreCertificates successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6676,8 +6672,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListKeyStoreCertificates successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6704,8 +6700,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListKeyStoreCertificates with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6747,8 +6743,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListKeyStoreCertificates successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6793,8 +6789,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetKeyStoreCertificate with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6849,8 +6845,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetKeyStoreCertificate successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6908,8 +6904,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetKeyStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6937,8 +6933,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetKeyStoreCertificate with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -6981,8 +6977,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetKeyStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7027,8 +7023,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteKeyStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7053,8 +7049,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteKeyStoreCertificate with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7110,8 +7106,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DownloadKeyStoreCertificate successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7169,8 +7165,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DownloadKeyStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7198,8 +7194,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DownloadKeyStoreCertificate with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7242,8 +7238,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DownloadKeyStoreCertificate successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7260,7 +7256,6 @@ var _ = Describe(`MqcloudV1`, func() {
 				result, response, operationErr := mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModel)
 				Expect(operationErr).To(BeNil())
 				Expect(response).ToNot(BeNil())
-
 
 				// Verify empty byte buffer.
 				Expect(result).ToNot(BeNil())
@@ -7294,8 +7289,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetCertificateAmsChannels with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7350,8 +7345,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetCertificateAmsChannels successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7409,8 +7404,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetCertificateAmsChannels successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7438,8 +7433,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetCertificateAmsChannels with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7482,8 +7477,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetCertificateAmsChannels successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7529,8 +7524,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetCertificateAmsChannels with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7607,8 +7602,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetCertificateAmsChannels successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7688,8 +7683,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetCertificateAmsChannels successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7723,8 +7718,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetCertificateAmsChannels with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7773,8 +7768,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke SetCertificateAmsChannels successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7828,8 +7823,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateVirtualPrivateEndpointGateway with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7903,8 +7898,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateVirtualPrivateEndpointGateway successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -7981,8 +7976,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateVirtualPrivateEndpointGateway successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8011,8 +8006,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateVirtualPrivateEndpointGateway with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8056,8 +8051,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke CreateVirtualPrivateEndpointGateway successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8108,8 +8103,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListVirtualPrivateEndpointGateways with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8169,8 +8164,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListVirtualPrivateEndpointGateways successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8233,8 +8228,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListVirtualPrivateEndpointGateways successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8263,8 +8258,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListVirtualPrivateEndpointGateways with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8308,8 +8303,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke ListVirtualPrivateEndpointGateways successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8389,8 +8384,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Use VirtualPrivateEndpointGatewaysPager.GetNext successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8398,8 +8393,8 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listVirtualPrivateEndpointGatewaysOptionsModel := &mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					TrustedProfile: core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc"),
-					Limit: core.Int64Ptr(int64(10)),
+					TrustedProfile:      core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc"),
+					Limit:               core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := mqcloudService.NewVirtualPrivateEndpointGatewaysPager(listVirtualPrivateEndpointGatewaysOptionsModel)
@@ -8417,8 +8412,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Use VirtualPrivateEndpointGatewaysPager.GetAll successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8426,8 +8421,8 @@ var _ = Describe(`MqcloudV1`, func() {
 
 				listVirtualPrivateEndpointGatewaysOptionsModel := &mqcloudv1.ListVirtualPrivateEndpointGatewaysOptions{
 					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
-					TrustedProfile: core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc"),
-					Limit: core.Int64Ptr(int64(10)),
+					TrustedProfile:      core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc"),
+					Limit:               core.Int64Ptr(int64(10)),
 				}
 
 				pager, err := mqcloudService.NewVirtualPrivateEndpointGatewaysPager(listVirtualPrivateEndpointGatewaysOptionsModel)
@@ -8463,8 +8458,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetVirtualPrivateEndpointGateway with error: Operation response processing error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8521,8 +8516,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetVirtualPrivateEndpointGateway successfully with retries`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8582,8 +8577,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetVirtualPrivateEndpointGateway successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8611,8 +8606,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetVirtualPrivateEndpointGateway with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8655,8 +8650,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke GetVirtualPrivateEndpointGateway successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8703,8 +8698,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteVirtualPrivateEndpointGateway successfully`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8729,8 +8724,8 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 			It(`Invoke DeleteVirtualPrivateEndpointGateway with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:           testServer.URL,
-					Authenticator: &core.NoAuthAuthenticator{},
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
 					AcceptLanguage: core.StringPtr(acceptLanguage),
 				})
 				Expect(serviceErr).To(BeNil())
@@ -8765,8 +8760,8 @@ var _ = Describe(`MqcloudV1`, func() {
 		Context(`Using a service client instance`, func() {
 			acceptLanguage := "en-US,en;q=0.5"
 			mqcloudService, _ := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-				URL:           "http://mqcloudv1modelgenerator.com",
-				Authenticator: &core.NoAuthAuthenticator{},
+				URL:            "http://mqcloudv1modelgenerator.com",
+				Authenticator:  &core.NoAuthAuthenticator{},
 				AcceptLanguage: core.StringPtr(acceptLanguage),
 			})
 			It(`Invoke NewCreateApplicationApikeyOptions successfully`, func() {
