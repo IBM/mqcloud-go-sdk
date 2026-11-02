@@ -1,5 +1,5 @@
 /**
- * (C) Copyright IBM Corp. 2025.
+ * (C) Copyright IBM Corp. 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -159,7 +159,7 @@ var _ = Describe(`MqcloudV1`, func() {
 			url, err = mqcloudv1.GetServiceURLForRegion("INVALID_REGION")
 			Expect(url).To(BeEmpty())
 			Expect(err).ToNot(BeNil())
-			fmt.Fprintf(GinkgoWriter, "Expected error: %s\n", err.Error())
+			_, _ = fmt.Fprintf(GinkgoWriter, "Expected error: %s\n", err.Error())
 		})
 	})
 	Describe(`Parameterized URL tests`, func() {
@@ -193,7 +193,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetUsageDetails with error: Operation response processing error`, func() {
@@ -247,7 +247,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"vpc_entitlement": 4.0, "vpc_usage": 3.3}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"vpc_entitlement": 4.0, "vpc_usage": 3.3}`)
 				}))
 			})
 			It(`Invoke GetUsageDetails successfully with retries`, func() {
@@ -304,7 +304,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"vpc_entitlement": 4.0, "vpc_usage": 3.3}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"vpc_entitlement": 4.0, "vpc_usage": 3.3}`)
 				}))
 			})
 			It(`Invoke GetUsageDetails successfully`, func() {
@@ -418,7 +418,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetOptions with error: Operation response processing error`, func() {
@@ -472,7 +472,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["small"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["small"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
 				}))
 			})
 			It(`Invoke GetOptions successfully with retries`, func() {
@@ -529,7 +529,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["small"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"locations": ["reserved-eu-de-cluster-f884"], "sizes": ["small"], "versions": ["Versions"], "latest_version": "9.3.2_2"}`)
 				}))
 			})
 			It(`Invoke GetOptions successfully`, func() {
@@ -643,7 +643,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke CreateQueueManager with error: Operation response processing error`, func() {
@@ -708,7 +708,7 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -718,7 +718,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
 				}))
 			})
 			It(`Invoke CreateQueueManager successfully with retries`, func() {
@@ -789,14 +789,14 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
 				}))
 			})
 			It(`Invoke CreateQueueManager successfully`, func() {
@@ -927,7 +927,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke ListQueueManagers with error: Operation response processing error`, func() {
@@ -985,7 +985,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListQueueManagers successfully with retries`, func() {
@@ -1046,7 +1046,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "queue_managers": [{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListQueueManagers successfully`, func() {
@@ -1191,7 +1191,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 		Context(`Using mock server endpoint - paginated response`, func() {
 			BeforeEach(func() {
-				var requestNumber int = 0
+				requestNumber := 0
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
@@ -1203,11 +1203,12 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					requestNumber++
-					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"small","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
-					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"small","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
-					} else {
+					switch requestNumber {
+					case 1:
+						_, _ = fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"small","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
+					case 2:
+						_, _ = fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"queue_managers":[{"id":"ID","name":"Name","display_name":"DisplayName","location":"reserved-eu-de-cluster-f884","size":"small","status_uri":"StatusURI","version":"9.3.2_2","web_console_url":"WebConsoleURL","rest_api_endpoint_url":"RestApiEndpointURL","administrator_api_endpoint_url":"AdministratorApiEndpointURL","connection_info_uri":"ConnectionInfoURI","date_created":"2020-01-13T15:39:35.000Z","upgrade_available":true,"available_upgrade_versions_uri":"AvailableUpgradeVersionsURI","href":"Href"}]}`)
+					default:
 						res.WriteHeader(400)
 					}
 				}))
@@ -1279,7 +1280,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetQueueManager with error: Operation response processing error`, func() {
@@ -1334,7 +1335,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetQueueManager successfully with retries`, func() {
@@ -1392,7 +1393,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "display_name": "DisplayName", "location": "reserved-eu-de-cluster-f884", "size": "small", "status_uri": "StatusURI", "version": "9.3.2_2", "web_console_url": "WebConsoleURL", "rest_api_endpoint_url": "RestApiEndpointURL", "administrator_api_endpoint_url": "AdministratorApiEndpointURL", "connection_info_uri": "ConnectionInfoURI", "date_created": "2020-01-13T15:39:35.000Z", "upgrade_available": true, "available_upgrade_versions_uri": "AvailableUpgradeVersionsURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetQueueManager successfully`, func() {
@@ -1509,7 +1510,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke DeleteQueueManager with error: Operation response processing error`, func() {
@@ -1564,7 +1565,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
 				}))
 			})
 			It(`Invoke DeleteQueueManager successfully with retries`, func() {
@@ -1622,7 +1623,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
 				}))
 			})
 			It(`Invoke DeleteQueueManager successfully`, func() {
@@ -1724,273 +1725,6 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
-	Describe(`SetQueueManagerVersion(setQueueManagerVersionOptions *SetQueueManagerVersionOptions) - Operation response error`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		setQueueManagerVersionPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/version"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setQueueManagerVersionPath))
-					Expect(req.Method).To(Equal("PUT"))
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(202)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke SetQueueManagerVersion with error: Operation response processing error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the SetQueueManagerVersionOptions model
-				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
-				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
-				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				mqcloudService.EnableRetries(0, 0)
-				result, response, operationErr = mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`SetQueueManagerVersion(setQueueManagerVersionOptions *SetQueueManagerVersionOptions)`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		setQueueManagerVersionPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/version"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setQueueManagerVersionPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
-				}))
-			})
-			It(`Invoke SetQueueManagerVersion successfully with retries`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-				mqcloudService.EnableRetries(0, 0)
-
-				// Construct an instance of the SetQueueManagerVersionOptions model
-				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
-				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
-				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := mqcloudService.SetQueueManagerVersionWithContext(ctx, setQueueManagerVersionOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				mqcloudService.DisableRetries()
-				result, response, operationErr := mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = mqcloudService.SetQueueManagerVersionWithContext(ctx, setQueueManagerVersionOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setQueueManagerVersionPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(202)
-					fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
-				}))
-			})
-			It(`Invoke SetQueueManagerVersion successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := mqcloudService.SetQueueManagerVersion(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the SetQueueManagerVersionOptions model
-				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
-				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
-				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke SetQueueManagerVersion with error: Operation validation and request error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the SetQueueManagerVersionOptions model
-				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
-				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
-				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := mqcloudService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the SetQueueManagerVersionOptions model with no property values
-				setQueueManagerVersionOptionsModelNew := new(mqcloudv1.SetQueueManagerVersionOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(202)
-				}))
-			})
-			It(`Invoke SetQueueManagerVersion successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the SetQueueManagerVersionOptions model
-				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
-				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
-				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
 	Describe(`GetQueueManagerAvailableUpgradeVersions(getQueueManagerAvailableUpgradeVersionsOptions *GetQueueManagerAvailableUpgradeVersionsOptions) - Operation response error`, func() {
 		acceptLanguage := "en-US,en;q=0.5"
 		getQueueManagerAvailableUpgradeVersionsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/available_versions"
@@ -2006,7 +1740,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetQueueManagerAvailableUpgradeVersions with error: Operation response processing error`, func() {
@@ -2061,7 +1795,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"total_count": 10, "versions": [{"version": "9.3.2_2", "target_date": "2023-01-13T15:39:35.000Z"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"total_count": 0, "versions": [{"version": "9.3.2_2", "target_date": "2023-01-13T15:39:35.000Z"}]}`)
 				}))
 			})
 			It(`Invoke GetQueueManagerAvailableUpgradeVersions successfully with retries`, func() {
@@ -2119,7 +1853,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"total_count": 10, "versions": [{"version": "9.3.2_2", "target_date": "2023-01-13T15:39:35.000Z"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"total_count": 0, "versions": [{"version": "9.3.2_2", "target_date": "2023-01-13T15:39:35.000Z"}]}`)
 				}))
 			})
 			It(`Invoke GetQueueManagerAvailableUpgradeVersions successfully`, func() {
@@ -2236,7 +1970,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetQueueManagerConnectionInfo with error: Operation response processing error`, func() {
@@ -2291,7 +2025,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"channel": [{"name": "Name", "clientConnection": {"connection": [{"host": "Host", "port": 4}], "queueManager": "QueueManager"}, "transmissionSecurity": {"cipherSpecification": "CipherSpecification"}, "type": "Type"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"channel": [{"name": "Name", "clientConnection": {"connection": [{"host": "Host", "port": 1}], "queueManager": "QueueManager"}, "transmissionSecurity": {"cipherSpecification": "CipherSpecification"}, "type": "Type"}]}`)
 				}))
 			})
 			It(`Invoke GetQueueManagerConnectionInfo successfully with retries`, func() {
@@ -2349,7 +2083,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"channel": [{"name": "Name", "clientConnection": {"connection": [{"host": "Host", "port": 4}], "queueManager": "QueueManager"}, "transmissionSecurity": {"cipherSpecification": "CipherSpecification"}, "type": "Type"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"channel": [{"name": "Name", "clientConnection": {"connection": [{"host": "Host", "port": 1}], "queueManager": "QueueManager"}, "transmissionSecurity": {"cipherSpecification": "CipherSpecification"}, "type": "Type"}]}`)
 				}))
 			})
 			It(`Invoke GetQueueManagerConnectionInfo successfully`, func() {
@@ -2466,7 +2200,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetQueueManagerStatus with error: Operation response processing error`, func() {
@@ -2521,7 +2255,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"status": "initializing"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"status": "initializing"}`)
 				}))
 			})
 			It(`Invoke GetQueueManagerStatus successfully with retries`, func() {
@@ -2579,7 +2313,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"status": "initializing"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"status": "initializing"}`)
 				}))
 			})
 			It(`Invoke GetQueueManagerStatus successfully`, func() {
@@ -2681,6 +2415,273 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
+	Describe(`SetQueueManagerVersion(setQueueManagerVersionOptions *SetQueueManagerVersionOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		setQueueManagerVersionPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/version"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setQueueManagerVersionPath))
+					Expect(req.Method).To(Equal("PUT"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke SetQueueManagerVersion with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the SetQueueManagerVersionOptions model
+				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
+				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
+				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`SetQueueManagerVersion(setQueueManagerVersionOptions *SetQueueManagerVersionOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		setQueueManagerVersionPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/version"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setQueueManagerVersionPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
+				}))
+			})
+			It(`Invoke SetQueueManagerVersion successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the SetQueueManagerVersionOptions model
+				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
+				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
+				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.SetQueueManagerVersionWithContext(ctx, setQueueManagerVersionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.SetQueueManagerVersionWithContext(ctx, setQueueManagerVersionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setQueueManagerVersionPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"queue_manager_uri": "QueueManagerURI", "queue_manager_status_uri": "QueueManagerStatusURI", "queue_manager_id": "QueueManagerID"}`)
+				}))
+			})
+			It(`Invoke SetQueueManagerVersion successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.SetQueueManagerVersion(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the SetQueueManagerVersionOptions model
+				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
+				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
+				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke SetQueueManagerVersion with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the SetQueueManagerVersionOptions model
+				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
+				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
+				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the SetQueueManagerVersionOptions model with no property values
+				setQueueManagerVersionOptionsModelNew := new(mqcloudv1.SetQueueManagerVersionOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(202)
+				}))
+			})
+			It(`Invoke SetQueueManagerVersion successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the SetQueueManagerVersionOptions model
+				setQueueManagerVersionOptionsModel := new(mqcloudv1.SetQueueManagerVersionOptions)
+				setQueueManagerVersionOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setQueueManagerVersionOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setQueueManagerVersionOptionsModel.Version = core.StringPtr("9.3.2_2")
+				setQueueManagerVersionOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.SetQueueManagerVersion(setQueueManagerVersionOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`ListUsers(listUsersOptions *ListUsersOptions) - Operation response error`, func() {
 		acceptLanguage := "en-US,en;q=0.5"
 		listUsersPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/users"
@@ -2698,7 +2699,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke ListUsers with error: Operation response processing error`, func() {
@@ -2756,7 +2757,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListUsers successfully with retries`, func() {
@@ -2817,7 +2818,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 5, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "users": [{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListUsers successfully`, func() {
@@ -2962,7 +2963,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 		Context(`Using mock server endpoint - paginated response`, func() {
 			BeforeEach(func() {
-				var requestNumber int = 0
+				requestNumber := 0
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
@@ -2974,11 +2975,12 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					requestNumber++
-					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","roles":["Roles"],"iam_managed":true,"href":"Href"}]}`)
-					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","roles":["Roles"],"iam_managed":true,"href":"Href"}]}`)
-					} else {
+					switch requestNumber {
+					case 1:
+						_, _ = fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","roles":["Roles"],"iam_managed":true,"href":"Href"}]}`)
+					case 2:
+						_, _ = fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"users":[{"id":"ID","name":"Name","email":"user@host.org","iam_service_id":"IamServiceID","roles":["Roles"],"iam_managed":true,"href":"Href"}]}`)
+					default:
 						res.WriteHeader(400)
 					}
 				}))
@@ -3050,7 +3052,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke CreateUser with error: Operation response processing error`, func() {
@@ -3112,7 +3114,7 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -3122,7 +3124,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke CreateUser successfully with retries`, func() {
@@ -3190,14 +3192,14 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke CreateUser successfully`, func() {
@@ -3317,7 +3319,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetUser with error: Operation response processing error`, func() {
@@ -3372,7 +3374,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetUser successfully with retries`, func() {
@@ -3430,7 +3432,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetUser successfully`, func() {
@@ -3622,7 +3624,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke SetUserName with error: Operation response processing error`, func() {
@@ -3684,7 +3686,7 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -3694,7 +3696,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke SetUserName successfully with retries`, func() {
@@ -3762,14 +3764,14 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "email": "user@host.org", "iam_service_id": "IamServiceID", "roles": ["Roles"], "iam_managed": true, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke SetUserName successfully`, func() {
@@ -3891,7 +3893,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke ListApplications with error: Operation response processing error`, func() {
@@ -3949,7 +3951,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "applications": [{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "applications": [{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListApplications successfully with retries`, func() {
@@ -4010,7 +4012,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"offset": 6, "limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "previous": {"href": "Href"}, "applications": [{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "applications": [{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListApplications successfully`, func() {
@@ -4155,7 +4157,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 		Context(`Using mock server endpoint - paginated response`, func() {
 			BeforeEach(func() {
-				var requestNumber int = 0
+				requestNumber := 0
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
@@ -4167,11 +4169,12 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					requestNumber++
-					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"applications":[{"id":"ID","name":"Name","iam_service_id":"IamServiceID","create_api_key_uri":"CreateApiKeyURI","href":"Href"}]}`)
-					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"applications":[{"id":"ID","name":"Name","iam_service_id":"IamServiceID","create_api_key_uri":"CreateApiKeyURI","href":"Href"}]}`)
-					} else {
+					switch requestNumber {
+					case 1:
+						_, _ = fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"total_count":2,"limit":1,"applications":[{"id":"ID","name":"Name","iam_service_id":"IamServiceID","create_api_key_uri":"CreateApiKeyURI","href":"Href"}]}`)
+					case 2:
+						_, _ = fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"applications":[{"id":"ID","name":"Name","iam_service_id":"IamServiceID","create_api_key_uri":"CreateApiKeyURI","href":"Href"}]}`)
+					default:
 						res.WriteHeader(400)
 					}
 				}))
@@ -4243,7 +4246,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke CreateApplication with error: Operation response processing error`, func() {
@@ -4304,7 +4307,7 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -4314,7 +4317,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
 				}))
 			})
 			It(`Invoke CreateApplication successfully with retries`, func() {
@@ -4381,14 +4384,14 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href", "api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
 				}))
 			})
 			It(`Invoke CreateApplication successfully`, func() {
@@ -4505,7 +4508,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetApplication with error: Operation response processing error`, func() {
@@ -4560,7 +4563,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetApplication successfully with retries`, func() {
@@ -4618,7 +4621,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetApplication successfully`, func() {
@@ -4810,7 +4813,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke SetApplicationName with error: Operation response processing error`, func() {
@@ -4872,7 +4875,7 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -4882,7 +4885,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke SetApplicationName successfully with retries`, func() {
@@ -4950,14 +4953,14 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "name": "Name", "iam_service_id": "IamServiceID", "create_api_key_uri": "CreateApiKeyURI", "href": "Href"}`)
 				}))
 			})
 			It(`Invoke SetApplicationName successfully`, func() {
@@ -5077,7 +5080,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke CreateApplicationApikey with error: Operation response processing error`, func() {
@@ -5139,7 +5142,7 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -5149,7 +5152,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
 				}))
 			})
 			It(`Invoke CreateApplicationApikey successfully with retries`, func() {
@@ -5217,14 +5220,14 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"api_key_name": "ApiKeyName", "api_key_id": "ApiKeyID", "api_key": "ApiKey"}`)
 				}))
 			})
 			It(`Invoke CreateApplicationApikey successfully`, func() {
@@ -5329,6 +5332,1508 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
+	Describe(`CreateKeyStorePemCertificate(createKeyStorePemCertificateOptions *CreateKeyStorePemCertificateOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		createKeyStorePemCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createKeyStorePemCertificatePath))
+					Expect(req.Method).To(Equal("POST"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateKeyStorePemCertificate with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the CreateKeyStorePemCertificateOptions model
+				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
+				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
+				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
+				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateKeyStorePemCertificate(createKeyStorePemCertificateOptions *CreateKeyStorePemCertificateOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		createKeyStorePemCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createKeyStorePemCertificatePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 0, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}, "in_use_by_web_console": false, "valid_for_web_console": true}`)
+				}))
+			})
+			It(`Invoke CreateKeyStorePemCertificate successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the CreateKeyStorePemCertificateOptions model
+				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
+				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
+				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
+				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.CreateKeyStorePemCertificateWithContext(ctx, createKeyStorePemCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.CreateKeyStorePemCertificateWithContext(ctx, createKeyStorePemCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createKeyStorePemCertificatePath))
+					Expect(req.Method).To(Equal("POST"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(201)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 0, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}, "in_use_by_web_console": false, "valid_for_web_console": true}`)
+				}))
+			})
+			It(`Invoke CreateKeyStorePemCertificate successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the CreateKeyStorePemCertificateOptions model
+				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
+				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
+				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
+				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateKeyStorePemCertificate with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the CreateKeyStorePemCertificateOptions model
+				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
+				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
+				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
+				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateKeyStorePemCertificateOptions model with no property values
+				createKeyStorePemCertificateOptionsModelNew := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(201)
+				}))
+			})
+			It(`Invoke CreateKeyStorePemCertificate successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the CreateKeyStorePemCertificateOptions model
+				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
+				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
+				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
+				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListKeyStoreCertificates(listKeyStoreCertificatesOptions *ListKeyStoreCertificatesOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		listKeyStoreCertificatesPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listKeyStoreCertificatesPath))
+					Expect(req.Method).To(Equal("GET"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ListKeyStoreCertificates with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListKeyStoreCertificatesOptions model
+				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
+				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListKeyStoreCertificates(listKeyStoreCertificatesOptions *ListKeyStoreCertificatesOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		listKeyStoreCertificatesPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listKeyStoreCertificatesPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"total_count": 1, "key_store": [{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 0, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}, "in_use_by_web_console": false, "valid_for_web_console": true}]}`)
+				}))
+			})
+			It(`Invoke ListKeyStoreCertificates successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the ListKeyStoreCertificatesOptions model
+				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
+				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.ListKeyStoreCertificatesWithContext(ctx, listKeyStoreCertificatesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.ListKeyStoreCertificatesWithContext(ctx, listKeyStoreCertificatesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listKeyStoreCertificatesPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"total_count": 1, "key_store": [{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 0, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}, "in_use_by_web_console": false, "valid_for_web_console": true}]}`)
+				}))
+			})
+			It(`Invoke ListKeyStoreCertificates successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ListKeyStoreCertificatesOptions model
+				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
+				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ListKeyStoreCertificates with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListKeyStoreCertificatesOptions model
+				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
+				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the ListKeyStoreCertificatesOptions model with no property values
+				listKeyStoreCertificatesOptionsModelNew := new(mqcloudv1.ListKeyStoreCertificatesOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke ListKeyStoreCertificates successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListKeyStoreCertificatesOptions model
+				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
+				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetKeyStoreCertificate(getKeyStoreCertificateOptions *GetKeyStoreCertificateOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getKeyStoreCertificatePath))
+					Expect(req.Method).To(Equal("GET"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetKeyStoreCertificate with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetKeyStoreCertificateOptions model
+				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
+				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetKeyStoreCertificate(getKeyStoreCertificateOptions *GetKeyStoreCertificateOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getKeyStoreCertificatePath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 0, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}, "in_use_by_web_console": false, "valid_for_web_console": true}`)
+				}))
+			})
+			It(`Invoke GetKeyStoreCertificate successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetKeyStoreCertificateOptions model
+				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
+				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.GetKeyStoreCertificateWithContext(ctx, getKeyStoreCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.GetKeyStoreCertificateWithContext(ctx, getKeyStoreCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getKeyStoreCertificatePath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 0, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}, "in_use_by_web_console": false, "valid_for_web_console": true}`)
+				}))
+			})
+			It(`Invoke GetKeyStoreCertificate successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetKeyStoreCertificateOptions model
+				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
+				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetKeyStoreCertificate with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetKeyStoreCertificateOptions model
+				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
+				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetKeyStoreCertificateOptions model with no property values
+				getKeyStoreCertificateOptionsModelNew := new(mqcloudv1.GetKeyStoreCertificateOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetKeyStoreCertificate successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetKeyStoreCertificateOptions model
+				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
+				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptions *DeleteKeyStoreCertificateOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		deleteKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233"
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteKeyStoreCertificatePath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.WriteHeader(204)
+				}))
+			})
+			It(`Invoke DeleteKeyStoreCertificate successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				response, operationErr := mqcloudService.DeleteKeyStoreCertificate(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+
+				// Construct an instance of the DeleteKeyStoreCertificateOptions model
+				deleteKeyStoreCertificateOptionsModel := new(mqcloudv1.DeleteKeyStoreCertificateOptions)
+				deleteKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				deleteKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				response, operationErr = mqcloudService.DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+			})
+			It(`Invoke DeleteKeyStoreCertificate with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteKeyStoreCertificateOptions model
+				deleteKeyStoreCertificateOptionsModel := new(mqcloudv1.DeleteKeyStoreCertificateOptions)
+				deleteKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				deleteKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				response, operationErr := mqcloudService.DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				// Construct a second instance of the DeleteKeyStoreCertificateOptions model with no property values
+				deleteKeyStoreCertificateOptionsModelNew := new(mqcloudv1.DeleteKeyStoreCertificateOptions)
+				// Invoke operation with invalid model (negative test)
+				response, operationErr = mqcloudService.DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetCertificateAmsChannels(getCertificateAmsChannelsOptions *GetCertificateAmsChannelsOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getCertificateAmsChannelsPath))
+					Expect(req.Method).To(Equal("GET"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetCertificateAmsChannels with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetCertificateAmsChannelsOptions model
+				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
+				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetCertificateAmsChannels(getCertificateAmsChannelsOptions *GetCertificateAmsChannelsOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getCertificateAmsChannelsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"channels": [{"name": "Name"}]}`)
+				}))
+			})
+			It(`Invoke GetCertificateAmsChannels successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetCertificateAmsChannelsOptions model
+				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
+				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.GetCertificateAmsChannelsWithContext(ctx, getCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.GetCertificateAmsChannelsWithContext(ctx, getCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getCertificateAmsChannelsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"channels": [{"name": "Name"}]}`)
+				}))
+			})
+			It(`Invoke GetCertificateAmsChannels successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetCertificateAmsChannelsOptions model
+				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
+				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetCertificateAmsChannels with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetCertificateAmsChannelsOptions model
+				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
+				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetCertificateAmsChannelsOptions model with no property values
+				getCertificateAmsChannelsOptionsModelNew := new(mqcloudv1.GetCertificateAmsChannelsOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetCertificateAmsChannels successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetCertificateAmsChannelsOptions model
+				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
+				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`SetCertificateAmsChannels(setCertificateAmsChannelsOptions *SetCertificateAmsChannelsOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		setCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setCertificateAmsChannelsPath))
+					Expect(req.Method).To(Equal("PUT"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke SetCertificateAmsChannels with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ChannelDetails model
+				channelDetailsModel := new(mqcloudv1.ChannelDetails)
+				channelDetailsModel.Name = core.StringPtr("testString")
+
+				// Construct an instance of the SetCertificateAmsChannelsOptions model
+				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
+				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
+				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
+				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`SetCertificateAmsChannels(setCertificateAmsChannelsOptions *SetCertificateAmsChannelsOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		setCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setCertificateAmsChannelsPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"channels": [{"name": "Name"}]}`)
+				}))
+			})
+			It(`Invoke SetCertificateAmsChannels successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the ChannelDetails model
+				channelDetailsModel := new(mqcloudv1.ChannelDetails)
+				channelDetailsModel.Name = core.StringPtr("testString")
+
+				// Construct an instance of the SetCertificateAmsChannelsOptions model
+				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
+				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
+				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
+				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.SetCertificateAmsChannelsWithContext(ctx, setCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.SetCertificateAmsChannelsWithContext(ctx, setCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(setCertificateAmsChannelsPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"channels": [{"name": "Name"}]}`)
+				}))
+			})
+			It(`Invoke SetCertificateAmsChannels successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ChannelDetails model
+				channelDetailsModel := new(mqcloudv1.ChannelDetails)
+				channelDetailsModel.Name = core.StringPtr("testString")
+
+				// Construct an instance of the SetCertificateAmsChannelsOptions model
+				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
+				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
+				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
+				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke SetCertificateAmsChannels with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ChannelDetails model
+				channelDetailsModel := new(mqcloudv1.ChannelDetails)
+				channelDetailsModel.Name = core.StringPtr("testString")
+
+				// Construct an instance of the SetCertificateAmsChannelsOptions model
+				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
+				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
+				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
+				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the SetCertificateAmsChannelsOptions model with no property values
+				setCertificateAmsChannelsOptionsModelNew := new(mqcloudv1.SetCertificateAmsChannelsOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke SetCertificateAmsChannels successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ChannelDetails model
+				channelDetailsModel := new(mqcloudv1.ChannelDetails)
+				channelDetailsModel.Name = core.StringPtr("testString")
+
+				// Construct an instance of the SetCertificateAmsChannelsOptions model
+				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
+				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
+				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
+				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptions *DownloadKeyStoreCertificateOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		downloadKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/download"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(downloadKeyStoreCertificatePath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/octet-stream")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `This is a mock binary response.`)
+				}))
+			})
+			It(`Invoke DownloadKeyStoreCertificate successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the DownloadKeyStoreCertificateOptions model
+				downloadKeyStoreCertificateOptionsModel := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
+				downloadKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				downloadKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				downloadKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				downloadKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.DownloadKeyStoreCertificateWithContext(ctx, downloadKeyStoreCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.DownloadKeyStoreCertificateWithContext(ctx, downloadKeyStoreCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(downloadKeyStoreCertificatePath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/octet-stream")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `This is a mock binary response.`)
+				}))
+			})
+			It(`Invoke DownloadKeyStoreCertificate successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.DownloadKeyStoreCertificate(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the DownloadKeyStoreCertificateOptions model
+				downloadKeyStoreCertificateOptionsModel := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
+				downloadKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				downloadKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				downloadKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				downloadKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke DownloadKeyStoreCertificate with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DownloadKeyStoreCertificateOptions model
+				downloadKeyStoreCertificateOptionsModel := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
+				downloadKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				downloadKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				downloadKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				downloadKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the DownloadKeyStoreCertificateOptions model with no property values
+				downloadKeyStoreCertificateOptionsModelNew := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke DownloadKeyStoreCertificate successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DownloadKeyStoreCertificateOptions model
+				downloadKeyStoreCertificateOptionsModel := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
+				downloadKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				downloadKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				downloadKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
+				downloadKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify empty byte buffer.
+				Expect(result).ToNot(BeNil())
+				buffer, operationErr := io.ReadAll(result)
+				Expect(operationErr).To(BeNil())
+				Expect(buffer).ToNot(BeNil())
+				Expect(len(buffer)).To(Equal(0))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`CreateTrustStorePemCertificate(createTrustStorePemCertificateOptions *CreateTrustStorePemCertificateOptions) - Operation response error`, func() {
 		acceptLanguage := "en-US,en;q=0.5"
 		createTrustStorePemCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/trust_store"
@@ -5344,7 +6849,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke CreateTrustStorePemCertificate with error: Operation response processing error`, func() {
@@ -5401,7 +6906,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke CreateTrustStorePemCertificate successfully with retries`, func() {
@@ -5461,7 +6966,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke CreateTrustStorePemCertificate successfully`, func() {
@@ -5584,7 +7089,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke ListTrustStoreCertificates with error: Operation response processing error`, func() {
@@ -5639,7 +7144,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"total_count": 1, "trust_store": [{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"total_count": 1, "trust_store": [{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListTrustStoreCertificates successfully with retries`, func() {
@@ -5697,7 +7202,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"total_count": 1, "trust_store": [{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"total_count": 1, "trust_store": [{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}]}`)
 				}))
 			})
 			It(`Invoke ListTrustStoreCertificates successfully`, func() {
@@ -5814,7 +7319,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetTrustStoreCertificate with error: Operation response processing error`, func() {
@@ -5870,7 +7375,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetTrustStoreCertificate successfully with retries`, func() {
@@ -5929,7 +7434,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "trust_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "trusted": false, "href": "Href"}`)
 				}))
 			})
 			It(`Invoke GetTrustStoreCertificate successfully`, func() {
@@ -6131,7 +7636,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/octet-stream")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `This is a mock binary response.`)
+					_, _ = fmt.Fprintf(res, "%s", `This is a mock binary response.`)
 				}))
 			})
 			It(`Invoke DownloadTrustStoreCertificate successfully with retries`, func() {
@@ -6190,7 +7695,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/octet-stream")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `This is a mock binary response.`)
+					_, _ = fmt.Fprintf(res, "%s", `This is a mock binary response.`)
 				}))
 			})
 			It(`Invoke DownloadTrustStoreCertificate successfully`, func() {
@@ -6299,1508 +7804,6 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
-	Describe(`CreateKeyStorePemCertificate(createKeyStorePemCertificateOptions *CreateKeyStorePemCertificateOptions) - Operation response error`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		createKeyStorePemCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(createKeyStorePemCertificatePath))
-					Expect(req.Method).To(Equal("POST"))
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(201)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke CreateKeyStorePemCertificate with error: Operation response processing error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the CreateKeyStorePemCertificateOptions model
-				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
-				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
-				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
-				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				mqcloudService.EnableRetries(0, 0)
-				result, response, operationErr = mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`CreateKeyStorePemCertificate(createKeyStorePemCertificateOptions *CreateKeyStorePemCertificateOptions)`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		createKeyStorePemCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(createKeyStorePemCertificatePath))
-					Expect(req.Method).To(Equal("POST"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}`)
-				}))
-			})
-			It(`Invoke CreateKeyStorePemCertificate successfully with retries`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-				mqcloudService.EnableRetries(0, 0)
-
-				// Construct an instance of the CreateKeyStorePemCertificateOptions model
-				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
-				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
-				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
-				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := mqcloudService.CreateKeyStorePemCertificateWithContext(ctx, createKeyStorePemCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				mqcloudService.DisableRetries()
-				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = mqcloudService.CreateKeyStorePemCertificateWithContext(ctx, createKeyStorePemCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(createKeyStorePemCertificatePath))
-					Expect(req.Method).To(Equal("POST"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}`)
-				}))
-			})
-			It(`Invoke CreateKeyStorePemCertificate successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the CreateKeyStorePemCertificateOptions model
-				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
-				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
-				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
-				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke CreateKeyStorePemCertificate with error: Operation validation and request error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the CreateKeyStorePemCertificateOptions model
-				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
-				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
-				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
-				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := mqcloudService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the CreateKeyStorePemCertificateOptions model with no property values
-				createKeyStorePemCertificateOptionsModelNew := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(201)
-				}))
-			})
-			It(`Invoke CreateKeyStorePemCertificate successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the CreateKeyStorePemCertificateOptions model
-				createKeyStorePemCertificateOptionsModel := new(mqcloudv1.CreateKeyStorePemCertificateOptions)
-				createKeyStorePemCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createKeyStorePemCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				createKeyStorePemCertificateOptionsModel.Label = core.StringPtr("certlabel")
-				createKeyStorePemCertificateOptionsModel.CertificateFile = CreateMockReader("This is a mock file.")
-				createKeyStorePemCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := mqcloudService.CreateKeyStorePemCertificate(createKeyStorePemCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`ListKeyStoreCertificates(listKeyStoreCertificatesOptions *ListKeyStoreCertificatesOptions) - Operation response error`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		listKeyStoreCertificatesPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(listKeyStoreCertificatesPath))
-					Expect(req.Method).To(Equal("GET"))
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke ListKeyStoreCertificates with error: Operation response processing error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the ListKeyStoreCertificatesOptions model
-				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
-				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				mqcloudService.EnableRetries(0, 0)
-				result, response, operationErr = mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`ListKeyStoreCertificates(listKeyStoreCertificatesOptions *ListKeyStoreCertificatesOptions)`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		listKeyStoreCertificatesPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(listKeyStoreCertificatesPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"total_count": 1, "key_store": [{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}]}`)
-				}))
-			})
-			It(`Invoke ListKeyStoreCertificates successfully with retries`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-				mqcloudService.EnableRetries(0, 0)
-
-				// Construct an instance of the ListKeyStoreCertificatesOptions model
-				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
-				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := mqcloudService.ListKeyStoreCertificatesWithContext(ctx, listKeyStoreCertificatesOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				mqcloudService.DisableRetries()
-				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = mqcloudService.ListKeyStoreCertificatesWithContext(ctx, listKeyStoreCertificatesOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(listKeyStoreCertificatesPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"total_count": 1, "key_store": [{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}]}`)
-				}))
-			})
-			It(`Invoke ListKeyStoreCertificates successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the ListKeyStoreCertificatesOptions model
-				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
-				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke ListKeyStoreCertificates with error: Operation validation and request error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the ListKeyStoreCertificatesOptions model
-				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
-				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := mqcloudService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the ListKeyStoreCertificatesOptions model with no property values
-				listKeyStoreCertificatesOptionsModelNew := new(mqcloudv1.ListKeyStoreCertificatesOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke ListKeyStoreCertificates successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the ListKeyStoreCertificatesOptions model
-				listKeyStoreCertificatesOptionsModel := new(mqcloudv1.ListKeyStoreCertificatesOptions)
-				listKeyStoreCertificatesOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				listKeyStoreCertificatesOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				listKeyStoreCertificatesOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := mqcloudService.ListKeyStoreCertificates(listKeyStoreCertificatesOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetKeyStoreCertificate(getKeyStoreCertificateOptions *GetKeyStoreCertificateOptions) - Operation response error`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		getKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getKeyStoreCertificatePath))
-					Expect(req.Method).To(Equal("GET"))
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke GetKeyStoreCertificate with error: Operation response processing error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the GetKeyStoreCertificateOptions model
-				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
-				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				mqcloudService.EnableRetries(0, 0)
-				result, response, operationErr = mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetKeyStoreCertificate(getKeyStoreCertificateOptions *GetKeyStoreCertificateOptions)`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		getKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getKeyStoreCertificatePath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}`)
-				}))
-			})
-			It(`Invoke GetKeyStoreCertificate successfully with retries`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-				mqcloudService.EnableRetries(0, 0)
-
-				// Construct an instance of the GetKeyStoreCertificateOptions model
-				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
-				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := mqcloudService.GetKeyStoreCertificateWithContext(ctx, getKeyStoreCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				mqcloudService.DisableRetries()
-				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = mqcloudService.GetKeyStoreCertificateWithContext(ctx, getKeyStoreCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getKeyStoreCertificatePath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"id": "ID", "label": "Label", "certificate_type": "key_store", "fingerprint_sha256": "FingerprintSha256", "subject_dn": "SubjectDn", "subject_cn": "SubjectCn", "issuer_dn": "IssuerDn", "issuer_cn": "IssuerCn", "issued": "2019-01-01T12:00:00.000Z", "expiry": "2019-01-01T12:00:00.000Z", "is_default": false, "dns_names_total_count": 18, "dns_names": ["DnsNames"], "href": "Href", "config": {"ams": {"channels": [{"name": "Name"}]}}}`)
-				}))
-			})
-			It(`Invoke GetKeyStoreCertificate successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the GetKeyStoreCertificateOptions model
-				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
-				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke GetKeyStoreCertificate with error: Operation validation and request error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the GetKeyStoreCertificateOptions model
-				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
-				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := mqcloudService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the GetKeyStoreCertificateOptions model with no property values
-				getKeyStoreCertificateOptionsModelNew := new(mqcloudv1.GetKeyStoreCertificateOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke GetKeyStoreCertificate successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the GetKeyStoreCertificateOptions model
-				getKeyStoreCertificateOptionsModel := new(mqcloudv1.GetKeyStoreCertificateOptions)
-				getKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := mqcloudService.GetKeyStoreCertificate(getKeyStoreCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptions *DeleteKeyStoreCertificateOptions)`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		deleteKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233"
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(deleteKeyStoreCertificatePath))
-					Expect(req.Method).To(Equal("DELETE"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					res.WriteHeader(204)
-				}))
-			})
-			It(`Invoke DeleteKeyStoreCertificate successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				response, operationErr := mqcloudService.DeleteKeyStoreCertificate(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-
-				// Construct an instance of the DeleteKeyStoreCertificateOptions model
-				deleteKeyStoreCertificateOptionsModel := new(mqcloudv1.DeleteKeyStoreCertificateOptions)
-				deleteKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				deleteKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				deleteKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				deleteKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				response, operationErr = mqcloudService.DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-			})
-			It(`Invoke DeleteKeyStoreCertificate with error: Operation validation and request error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the DeleteKeyStoreCertificateOptions model
-				deleteKeyStoreCertificateOptionsModel := new(mqcloudv1.DeleteKeyStoreCertificateOptions)
-				deleteKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				deleteKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				deleteKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				deleteKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := mqcloudService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				response, operationErr := mqcloudService.DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				// Construct a second instance of the DeleteKeyStoreCertificateOptions model with no property values
-				deleteKeyStoreCertificateOptionsModelNew := new(mqcloudv1.DeleteKeyStoreCertificateOptions)
-				// Invoke operation with invalid model (negative test)
-				response, operationErr = mqcloudService.DeleteKeyStoreCertificate(deleteKeyStoreCertificateOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptions *DownloadKeyStoreCertificateOptions)`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		downloadKeyStoreCertificatePath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/download"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(downloadKeyStoreCertificatePath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/octet-stream")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `This is a mock binary response.`)
-				}))
-			})
-			It(`Invoke DownloadKeyStoreCertificate successfully with retries`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-				mqcloudService.EnableRetries(0, 0)
-
-				// Construct an instance of the DownloadKeyStoreCertificateOptions model
-				downloadKeyStoreCertificateOptionsModel := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
-				downloadKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				downloadKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				downloadKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				downloadKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := mqcloudService.DownloadKeyStoreCertificateWithContext(ctx, downloadKeyStoreCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				mqcloudService.DisableRetries()
-				result, response, operationErr := mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = mqcloudService.DownloadKeyStoreCertificateWithContext(ctx, downloadKeyStoreCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(downloadKeyStoreCertificatePath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Set mock response
-					res.Header().Set("Content-type", "application/octet-stream")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `This is a mock binary response.`)
-				}))
-			})
-			It(`Invoke DownloadKeyStoreCertificate successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := mqcloudService.DownloadKeyStoreCertificate(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the DownloadKeyStoreCertificateOptions model
-				downloadKeyStoreCertificateOptionsModel := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
-				downloadKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				downloadKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				downloadKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				downloadKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke DownloadKeyStoreCertificate with error: Operation validation and request error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the DownloadKeyStoreCertificateOptions model
-				downloadKeyStoreCertificateOptionsModel := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
-				downloadKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				downloadKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				downloadKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				downloadKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := mqcloudService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the DownloadKeyStoreCertificateOptions model with no property values
-				downloadKeyStoreCertificateOptionsModelNew := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke DownloadKeyStoreCertificate successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the DownloadKeyStoreCertificateOptions model
-				downloadKeyStoreCertificateOptionsModel := new(mqcloudv1.DownloadKeyStoreCertificateOptions)
-				downloadKeyStoreCertificateOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				downloadKeyStoreCertificateOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				downloadKeyStoreCertificateOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				downloadKeyStoreCertificateOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := mqcloudService.DownloadKeyStoreCertificate(downloadKeyStoreCertificateOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify empty byte buffer.
-				Expect(result).ToNot(BeNil())
-				buffer, operationErr := io.ReadAll(result)
-				Expect(operationErr).To(BeNil())
-				Expect(buffer).ToNot(BeNil())
-				Expect(len(buffer)).To(Equal(0))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetCertificateAmsChannels(getCertificateAmsChannelsOptions *GetCertificateAmsChannelsOptions) - Operation response error`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		getCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getCertificateAmsChannelsPath))
-					Expect(req.Method).To(Equal("GET"))
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke GetCertificateAmsChannels with error: Operation response processing error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the GetCertificateAmsChannelsOptions model
-				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
-				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				mqcloudService.EnableRetries(0, 0)
-				result, response, operationErr = mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`GetCertificateAmsChannels(getCertificateAmsChannelsOptions *GetCertificateAmsChannelsOptions)`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		getCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getCertificateAmsChannelsPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"channels": [{"name": "Name"}]}`)
-				}))
-			})
-			It(`Invoke GetCertificateAmsChannels successfully with retries`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-				mqcloudService.EnableRetries(0, 0)
-
-				// Construct an instance of the GetCertificateAmsChannelsOptions model
-				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
-				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := mqcloudService.GetCertificateAmsChannelsWithContext(ctx, getCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				mqcloudService.DisableRetries()
-				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = mqcloudService.GetCertificateAmsChannelsWithContext(ctx, getCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(getCertificateAmsChannelsPath))
-					Expect(req.Method).To(Equal("GET"))
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"channels": [{"name": "Name"}]}`)
-				}))
-			})
-			It(`Invoke GetCertificateAmsChannels successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the GetCertificateAmsChannelsOptions model
-				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
-				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke GetCertificateAmsChannels with error: Operation validation and request error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the GetCertificateAmsChannelsOptions model
-				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
-				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := mqcloudService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the GetCertificateAmsChannelsOptions model with no property values
-				getCertificateAmsChannelsOptionsModelNew := new(mqcloudv1.GetCertificateAmsChannelsOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke GetCertificateAmsChannels successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the GetCertificateAmsChannelsOptions model
-				getCertificateAmsChannelsOptionsModel := new(mqcloudv1.GetCertificateAmsChannelsOptions)
-				getCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				getCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				getCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				getCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := mqcloudService.GetCertificateAmsChannels(getCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`SetCertificateAmsChannels(setCertificateAmsChannelsOptions *SetCertificateAmsChannelsOptions) - Operation response error`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		setCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
-		Context(`Using mock server endpoint with invalid JSON response`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setCertificateAmsChannelsPath))
-					Expect(req.Method).To(Equal("PUT"))
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
-				}))
-			})
-			It(`Invoke SetCertificateAmsChannels with error: Operation response processing error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the ChannelDetails model
-				channelDetailsModel := new(mqcloudv1.ChannelDetails)
-				channelDetailsModel.Name = core.StringPtr("testString")
-
-				// Construct an instance of the SetCertificateAmsChannelsOptions model
-				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
-				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
-				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
-				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Expect response parsing to fail since we are receiving a text/plain response
-				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-
-				// Enable retries and test again
-				mqcloudService.EnableRetries(0, 0)
-				result, response, operationErr = mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
-	Describe(`SetCertificateAmsChannels(setCertificateAmsChannelsOptions *SetCertificateAmsChannelsOptions)`, func() {
-		acceptLanguage := "en-US,en;q=0.5"
-		setCertificateAmsChannelsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/certificates/key_store/9b7d1e723af8233/config/ams"
-		Context(`Using mock server endpoint with timeout`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setCertificateAmsChannelsPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Sleep a short time to support a timeout test
-					time.Sleep(100 * time.Millisecond)
-
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"channels": [{"name": "Name"}]}`)
-				}))
-			})
-			It(`Invoke SetCertificateAmsChannels successfully with retries`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-				mqcloudService.EnableRetries(0, 0)
-
-				// Construct an instance of the ChannelDetails model
-				channelDetailsModel := new(mqcloudv1.ChannelDetails)
-				channelDetailsModel.Name = core.StringPtr("testString")
-
-				// Construct an instance of the SetCertificateAmsChannelsOptions model
-				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
-				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
-				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
-				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with a Context to test a timeout error
-				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc()
-				_, _, operationErr := mqcloudService.SetCertificateAmsChannelsWithContext(ctx, setCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-
-				// Disable retries and test again
-				mqcloudService.DisableRetries()
-				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-				// Re-test the timeout error with retries disabled
-				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
-				defer cancelFunc2()
-				_, _, operationErr = mqcloudService.SetCertificateAmsChannelsWithContext(ctx, setCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Verify the contents of the request
-					Expect(req.URL.EscapedPath()).To(Equal(setCertificateAmsChannelsPath))
-					Expect(req.Method).To(Equal("PUT"))
-
-					// For gzip-disabled operation, verify Content-Encoding is not set.
-					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
-
-					// If there is a body, then make sure we can read it
-					bodyBuf := new(bytes.Buffer)
-					if req.Header.Get("Content-Encoding") == "gzip" {
-						body, err := core.NewGzipDecompressionReader(req.Body)
-						Expect(err).To(BeNil())
-						_, err = bodyBuf.ReadFrom(body)
-						Expect(err).To(BeNil())
-					} else {
-						_, err := bodyBuf.ReadFrom(req.Body)
-						Expect(err).To(BeNil())
-					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
-
-					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
-					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
-					// Set mock response
-					res.Header().Set("Content-type", "application/json")
-					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"channels": [{"name": "Name"}]}`)
-				}))
-			})
-			It(`Invoke SetCertificateAmsChannels successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Invoke operation with nil options model (negative test)
-				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(nil)
-				Expect(operationErr).NotTo(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-
-				// Construct an instance of the ChannelDetails model
-				channelDetailsModel := new(mqcloudv1.ChannelDetails)
-				channelDetailsModel.Name = core.StringPtr("testString")
-
-				// Construct an instance of the SetCertificateAmsChannelsOptions model
-				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
-				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
-				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
-				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation with valid options model (positive test)
-				result, response, operationErr = mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-				Expect(result).ToNot(BeNil())
-
-			})
-			It(`Invoke SetCertificateAmsChannels with error: Operation validation and request error`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the ChannelDetails model
-				channelDetailsModel := new(mqcloudv1.ChannelDetails)
-				channelDetailsModel.Name = core.StringPtr("testString")
-
-				// Construct an instance of the SetCertificateAmsChannelsOptions model
-				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
-				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
-				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
-				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-				// Invoke operation with empty URL (negative test)
-				err := mqcloudService.SetServiceURL("")
-				Expect(err).To(BeNil())
-				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-				// Construct a second instance of the SetCertificateAmsChannelsOptions model with no property values
-				setCertificateAmsChannelsOptionsModelNew := new(mqcloudv1.SetCertificateAmsChannelsOptions)
-				// Invoke operation with invalid model (negative test)
-				result, response, operationErr = mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModelNew)
-				Expect(operationErr).ToNot(BeNil())
-				Expect(response).To(BeNil())
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-		Context(`Using mock server endpoint with missing response body`, func() {
-			BeforeEach(func() {
-				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
-					defer GinkgoRecover()
-
-					// Set success status code with no respoonse body
-					res.WriteHeader(200)
-				}))
-			})
-			It(`Invoke SetCertificateAmsChannels successfully`, func() {
-				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
-					URL:            testServer.URL,
-					Authenticator:  &core.NoAuthAuthenticator{},
-					AcceptLanguage: core.StringPtr(acceptLanguage),
-				})
-				Expect(serviceErr).To(BeNil())
-				Expect(mqcloudService).ToNot(BeNil())
-
-				// Construct an instance of the ChannelDetails model
-				channelDetailsModel := new(mqcloudv1.ChannelDetails)
-				channelDetailsModel.Name = core.StringPtr("testString")
-
-				// Construct an instance of the SetCertificateAmsChannelsOptions model
-				setCertificateAmsChannelsOptionsModel := new(mqcloudv1.SetCertificateAmsChannelsOptions)
-				setCertificateAmsChannelsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
-				setCertificateAmsChannelsOptionsModel.CertificateID = core.StringPtr("9b7d1e723af8233")
-				setCertificateAmsChannelsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				setCertificateAmsChannelsOptionsModel.Channels = []mqcloudv1.ChannelDetails{*channelDetailsModel}
-				setCertificateAmsChannelsOptionsModel.UpdateStrategy = core.StringPtr("replace")
-				setCertificateAmsChannelsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
-
-				// Invoke operation
-				result, response, operationErr := mqcloudService.SetCertificateAmsChannels(setCertificateAmsChannelsOptionsModel)
-				Expect(operationErr).To(BeNil())
-				Expect(response).ToNot(BeNil())
-
-				// Verify a nil result
-				Expect(result).To(BeNil())
-			})
-			AfterEach(func() {
-				testServer.Close()
-			})
-		})
-	})
 	Describe(`CreateVirtualPrivateEndpointGateway(createVirtualPrivateEndpointGatewayOptions *CreateVirtualPrivateEndpointGatewayOptions) - Operation response error`, func() {
 		acceptLanguage := "en-US,en;q=0.5"
 		createVirtualPrivateEndpointGatewayPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/virtual_private_endpoint_gateway"
@@ -7818,7 +7821,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke CreateVirtualPrivateEndpointGateway with error: Operation response processing error`, func() {
@@ -7833,7 +7836,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe-gateway1-to-vpe-gateway2")
 				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
 				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -7881,7 +7884,7 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -7893,7 +7896,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
 				}))
 			})
 			It(`Invoke CreateVirtualPrivateEndpointGateway successfully with retries`, func() {
@@ -7909,7 +7912,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe-gateway1-to-vpe-gateway2")
 				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
 				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -7962,7 +7965,7 @@ var _ = Describe(`MqcloudV1`, func() {
 						_, err := bodyBuf.ReadFrom(req.Body)
 						Expect(err).To(BeNil())
 					}
-					fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
 
 					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
 					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
@@ -7971,7 +7974,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(201)
-					fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
 				}))
 			})
 			It(`Invoke CreateVirtualPrivateEndpointGateway successfully`, func() {
@@ -7992,7 +7995,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe-gateway1-to-vpe-gateway2")
 				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
 				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -8016,7 +8019,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe-gateway1-to-vpe-gateway2")
 				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
 				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -8061,7 +8064,7 @@ var _ = Describe(`MqcloudV1`, func() {
 				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
 				createVirtualPrivateEndpointGatewayOptionsModel := new(mqcloudv1.CreateVirtualPrivateEndpointGatewayOptions)
 				createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.Name = core.StringPtr("vpe-gateway1-to-vpe-gateway2")
 				createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn = core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
 				createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile = core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
@@ -8098,7 +8101,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke ListVirtualPrivateEndpointGateways with error: Operation response processing error`, func() {
@@ -8159,7 +8162,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "virtual_private_endpoint_gateways": [{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "virtual_private_endpoint_gateways": [{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}]}`)
 				}))
 			})
 			It(`Invoke ListVirtualPrivateEndpointGateways successfully with retries`, func() {
@@ -8223,7 +8226,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"limit": 50, "first": {"href": "Href"}, "next": {"href": "Href"}, "virtual_private_endpoint_gateways": [{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}]}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "virtual_private_endpoint_gateways": [{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}]}`)
 				}))
 			})
 			It(`Invoke ListVirtualPrivateEndpointGateways successfully`, func() {
@@ -8361,7 +8364,7 @@ var _ = Describe(`MqcloudV1`, func() {
 		})
 		Context(`Using mock server endpoint - paginated response`, func() {
 			BeforeEach(func() {
-				var requestNumber int = 0
+				requestNumber := 0
 				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
 					defer GinkgoRecover()
 
@@ -8373,11 +8376,12 @@ var _ = Describe(`MqcloudV1`, func() {
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
 					requestNumber++
-					if requestNumber == 1 {
-						fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?start=1"},"total_count":2,"limit":1,"virtual_private_endpoint_gateways":[{"href":"Href","id":"ID","name":"Name","target_crn":"TargetCrn","status":"Status"}]}`)
-					} else if requestNumber == 2 {
-						fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"virtual_private_endpoint_gateways":[{"href":"Href","id":"ID","name":"Name","target_crn":"TargetCrn","status":"Status"}]}`)
-					} else {
+					switch requestNumber {
+					case 1:
+						_, _ = fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?start=1"},"total_count":2,"limit":1,"virtual_private_endpoint_gateways":[{"href":"Href","id":"ID","name":"Name","target_crn":"TargetCrn","status":"Status"}]}`)
+					case 2:
+						_, _ = fmt.Fprintf(res, "%s", `{"total_count":2,"limit":1,"virtual_private_endpoint_gateways":[{"href":"Href","id":"ID","name":"Name","target_crn":"TargetCrn","status":"Status"}]}`)
+					default:
 						res.WriteHeader(400)
 					}
 				}))
@@ -8453,7 +8457,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					Expect(req.Header["Trusted-Profile"][0]).To(Equal(fmt.Sprintf("%v", "crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprint(res, `} this is not valid json {`)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
 				}))
 			})
 			It(`Invoke GetVirtualPrivateEndpointGateway with error: Operation response processing error`, func() {
@@ -8511,7 +8515,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
 				}))
 			})
 			It(`Invoke GetVirtualPrivateEndpointGateway successfully with retries`, func() {
@@ -8572,7 +8576,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
+					_, _ = fmt.Fprintf(res, "%s", `{"href": "Href", "id": "ID", "name": "Name", "target_crn": "TargetCrn", "status": "Status"}`)
 				}))
 			})
 			It(`Invoke GetVirtualPrivateEndpointGateway successfully`, func() {
@@ -8756,6 +8760,3052 @@ var _ = Describe(`MqcloudV1`, func() {
 			})
 		})
 	})
+	Describe(`GetOperation(getOperationOptions *GetOperationOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getOperationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getOperationPath))
+					Expect(req.Method).To(Equal("GET"))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetOperation with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetOperationOptions model
+				getOperationOptionsModel := new(mqcloudv1.GetOperationOptions)
+				getOperationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getOperationOptionsModel.OperationID = core.StringPtr("b3c5e5cdebec4748adfdac8e2f834be9")
+				getOperationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.GetOperation(getOperationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.GetOperation(getOperationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetOperation(getOperationOptions *GetOperationOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getOperationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getOperationPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke GetOperation successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetOperationOptions model
+				getOperationOptionsModel := new(mqcloudv1.GetOperationOptions)
+				getOperationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getOperationOptionsModel.OperationID = core.StringPtr("b3c5e5cdebec4748adfdac8e2f834be9")
+				getOperationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.GetOperationWithContext(ctx, getOperationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.GetOperation(getOperationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.GetOperationWithContext(ctx, getOperationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getOperationPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke GetOperation successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.GetOperation(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetOperationOptions model
+				getOperationOptionsModel := new(mqcloudv1.GetOperationOptions)
+				getOperationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getOperationOptionsModel.OperationID = core.StringPtr("b3c5e5cdebec4748adfdac8e2f834be9")
+				getOperationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.GetOperation(getOperationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetOperation with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetOperationOptions model
+				getOperationOptionsModel := new(mqcloudv1.GetOperationOptions)
+				getOperationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getOperationOptionsModel.OperationID = core.StringPtr("b3c5e5cdebec4748adfdac8e2f834be9")
+				getOperationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.GetOperation(getOperationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetOperationOptions model with no property values
+				getOperationOptionsModelNew := new(mqcloudv1.GetOperationOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.GetOperation(getOperationOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetOperation successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetOperationOptions model
+				getOperationOptionsModel := new(mqcloudv1.GetOperationOptions)
+				getOperationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getOperationOptionsModel.OperationID = core.StringPtr("b3c5e5cdebec4748adfdac8e2f834be9")
+				getOperationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.GetOperation(getOperationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateQueueManagerWebConsoleConfiguration(createQueueManagerWebConsoleConfigurationOptions *CreateQueueManagerWebConsoleConfigurationOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		createQueueManagerWebConsoleConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("POST"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateQueueManagerWebConsoleConfiguration with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerWebConsoleConfigurationOptions model
+				createQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerWebConsoleConfigurationOptions)
+				createQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				createQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.CreateQueueManagerWebConsoleConfiguration(createQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.CreateQueueManagerWebConsoleConfiguration(createQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateQueueManagerWebConsoleConfiguration(createQueueManagerWebConsoleConfigurationOptions *CreateQueueManagerWebConsoleConfigurationOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		createQueueManagerWebConsoleConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke CreateQueueManagerWebConsoleConfiguration successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerWebConsoleConfigurationOptions model
+				createQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerWebConsoleConfigurationOptions)
+				createQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				createQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.CreateQueueManagerWebConsoleConfigurationWithContext(ctx, createQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.CreateQueueManagerWebConsoleConfiguration(createQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.CreateQueueManagerWebConsoleConfigurationWithContext(ctx, createQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke CreateQueueManagerWebConsoleConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.CreateQueueManagerWebConsoleConfiguration(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerWebConsoleConfigurationOptions model
+				createQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerWebConsoleConfigurationOptions)
+				createQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				createQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.CreateQueueManagerWebConsoleConfiguration(createQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateQueueManagerWebConsoleConfiguration with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerWebConsoleConfigurationOptions model
+				createQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerWebConsoleConfigurationOptions)
+				createQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				createQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.CreateQueueManagerWebConsoleConfiguration(createQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateQueueManagerWebConsoleConfigurationOptions model with no property values
+				createQueueManagerWebConsoleConfigurationOptionsModelNew := new(mqcloudv1.CreateQueueManagerWebConsoleConfigurationOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.CreateQueueManagerWebConsoleConfiguration(createQueueManagerWebConsoleConfigurationOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(202)
+				}))
+			})
+			It(`Invoke CreateQueueManagerWebConsoleConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerWebConsoleConfigurationOptions model
+				createQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerWebConsoleConfigurationOptions)
+				createQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				createQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.CreateQueueManagerWebConsoleConfiguration(createQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListQueueManagerWebConsoleConfigurations(listQueueManagerWebConsoleConfigurationsOptions *ListQueueManagerWebConsoleConfigurationsOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		listQueueManagerWebConsoleConfigurationsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listQueueManagerWebConsoleConfigurationsPath))
+					Expect(req.Method).To(Equal("GET"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
+					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ListQueueManagerWebConsoleConfigurations with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListQueueManagerWebConsoleConfigurationsOptions model
+				listQueueManagerWebConsoleConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerWebConsoleConfigurationsOptions)
+				listQueueManagerWebConsoleConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.ListQueueManagerWebConsoleConfigurations(listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.ListQueueManagerWebConsoleConfigurations(listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListQueueManagerWebConsoleConfigurations(listQueueManagerWebConsoleConfigurationsOptions *ListQueueManagerWebConsoleConfigurationsOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		listQueueManagerWebConsoleConfigurationsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listQueueManagerWebConsoleConfigurationsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
+					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "web_console_configurations": [{"id": "c4d6f6defcfd4859aefdbd9f3f945ca0", "web_console": {"certificate": "provider_managed"}}]}`)
+				}))
+			})
+			It(`Invoke ListQueueManagerWebConsoleConfigurations successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the ListQueueManagerWebConsoleConfigurationsOptions model
+				listQueueManagerWebConsoleConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerWebConsoleConfigurationsOptions)
+				listQueueManagerWebConsoleConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.ListQueueManagerWebConsoleConfigurationsWithContext(ctx, listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.ListQueueManagerWebConsoleConfigurations(listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.ListQueueManagerWebConsoleConfigurationsWithContext(ctx, listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listQueueManagerWebConsoleConfigurationsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
+					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "web_console_configurations": [{"id": "c4d6f6defcfd4859aefdbd9f3f945ca0", "web_console": {"certificate": "provider_managed"}}]}`)
+				}))
+			})
+			It(`Invoke ListQueueManagerWebConsoleConfigurations successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.ListQueueManagerWebConsoleConfigurations(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ListQueueManagerWebConsoleConfigurationsOptions model
+				listQueueManagerWebConsoleConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerWebConsoleConfigurationsOptions)
+				listQueueManagerWebConsoleConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.ListQueueManagerWebConsoleConfigurations(listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ListQueueManagerWebConsoleConfigurations with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListQueueManagerWebConsoleConfigurationsOptions model
+				listQueueManagerWebConsoleConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerWebConsoleConfigurationsOptions)
+				listQueueManagerWebConsoleConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.ListQueueManagerWebConsoleConfigurations(listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the ListQueueManagerWebConsoleConfigurationsOptions model with no property values
+				listQueueManagerWebConsoleConfigurationsOptionsModelNew := new(mqcloudv1.ListQueueManagerWebConsoleConfigurationsOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.ListQueueManagerWebConsoleConfigurations(listQueueManagerWebConsoleConfigurationsOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke ListQueueManagerWebConsoleConfigurations successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListQueueManagerWebConsoleConfigurationsOptions model
+				listQueueManagerWebConsoleConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerWebConsoleConfigurationsOptions)
+				listQueueManagerWebConsoleConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.ListQueueManagerWebConsoleConfigurations(listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Test pagination helper method on response`, func() {
+			It(`Invoke GetNextOffset successfully`, func() {
+				responseObject := new(mqcloudv1.WebConsoleConfigurationCollection)
+				nextObject := new(mqcloudv1.Next)
+				nextObject.Href = core.StringPtr("ibm.com?offset=135")
+				responseObject.Next = nextObject
+
+				value, err := responseObject.GetNextOffset()
+				Expect(err).To(BeNil())
+				Expect(value).To(Equal(core.Int64Ptr(int64(135))))
+			})
+			It(`Invoke GetNextOffset without a "Next" property in the response`, func() {
+				responseObject := new(mqcloudv1.WebConsoleConfigurationCollection)
+
+				value, err := responseObject.GetNextOffset()
+				Expect(err).To(BeNil())
+				Expect(value).To(BeNil())
+			})
+			It(`Invoke GetNextOffset without any query params in the "Next" URL`, func() {
+				responseObject := new(mqcloudv1.WebConsoleConfigurationCollection)
+				nextObject := new(mqcloudv1.Next)
+				nextObject.Href = core.StringPtr("ibm.com")
+				responseObject.Next = nextObject
+
+				value, err := responseObject.GetNextOffset()
+				Expect(err).To(BeNil())
+				Expect(value).To(BeNil())
+			})
+			It(`Invoke GetNextOffset with a non-integer query param in the "Next" URL`, func() {
+				responseObject := new(mqcloudv1.WebConsoleConfigurationCollection)
+				nextObject := new(mqcloudv1.Next)
+				nextObject.Href = core.StringPtr("ibm.com?offset=tiger")
+				responseObject.Next = nextObject
+
+				value, err := responseObject.GetNextOffset()
+				Expect(err).NotTo(BeNil())
+				Expect(value).To(BeNil())
+			})
+		})
+		Context(`Using mock server endpoint - paginated response`, func() {
+			BeforeEach(func() {
+				requestNumber := 0
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listQueueManagerWebConsoleConfigurationsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					requestNumber++
+					switch requestNumber {
+					case 1:
+						_, _ = fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"web_console_configurations":[{"id":"c4d6f6defcfd4859aefdbd9f3f945ca0","web_console":{"certificate":"provider_managed"}}],"total_count":2,"limit":1}`)
+					case 2:
+						_, _ = fmt.Fprintf(res, "%s", `{"web_console_configurations":[{"id":"c4d6f6defcfd4859aefdbd9f3f945ca0","web_console":{"certificate":"provider_managed"}}],"total_count":2,"limit":1}`)
+					default:
+						res.WriteHeader(400)
+					}
+				}))
+			})
+			It(`Use QueueManagerWebConsoleConfigurationsPager.GetNext successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				listQueueManagerWebConsoleConfigurationsOptionsModel := &mqcloudv1.ListQueueManagerWebConsoleConfigurationsOptions{
+					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
+					QueueManagerID:      core.StringPtr("b8e1aeda078009cf3db74e90d5d42328"),
+					Limit:               core.Int64Ptr(int64(10)),
+				}
+
+				pager, err := mqcloudService.NewQueueManagerWebConsoleConfigurationsPager(listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(err).To(BeNil())
+				Expect(pager).ToNot(BeNil())
+
+				var allResults []mqcloudv1.WebConsoleConfiguration
+				for pager.HasNext() {
+					nextPage, err := pager.GetNext()
+					Expect(err).To(BeNil())
+					Expect(nextPage).ToNot(BeNil())
+					allResults = append(allResults, nextPage...)
+				}
+				Expect(len(allResults)).To(Equal(2))
+			})
+			It(`Use QueueManagerWebConsoleConfigurationsPager.GetAll successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				listQueueManagerWebConsoleConfigurationsOptionsModel := &mqcloudv1.ListQueueManagerWebConsoleConfigurationsOptions{
+					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
+					QueueManagerID:      core.StringPtr("b8e1aeda078009cf3db74e90d5d42328"),
+					Limit:               core.Int64Ptr(int64(10)),
+				}
+
+				pager, err := mqcloudService.NewQueueManagerWebConsoleConfigurationsPager(listQueueManagerWebConsoleConfigurationsOptionsModel)
+				Expect(err).To(BeNil())
+				Expect(pager).ToNot(BeNil())
+
+				allResults, err := pager.GetAll()
+				Expect(err).To(BeNil())
+				Expect(allResults).ToNot(BeNil())
+				Expect(len(allResults)).To(Equal(2))
+			})
+		})
+	})
+	Describe(`GetQueueManagerWebConsoleConfiguration(getQueueManagerWebConsoleConfigurationOptions *GetQueueManagerWebConsoleConfigurationOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getQueueManagerWebConsoleConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("GET"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetQueueManagerWebConsoleConfiguration with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetQueueManagerWebConsoleConfigurationOptions model
+				getQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerWebConsoleConfigurationOptions)
+				getQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.GetQueueManagerWebConsoleConfiguration(getQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.GetQueueManagerWebConsoleConfiguration(getQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetQueueManagerWebConsoleConfiguration(getQueueManagerWebConsoleConfigurationOptions *GetQueueManagerWebConsoleConfigurationOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getQueueManagerWebConsoleConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "c4d6f6defcfd4859aefdbd9f3f945ca0", "web_console": {"certificate": "provider_managed"}}`)
+				}))
+			})
+			It(`Invoke GetQueueManagerWebConsoleConfiguration successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetQueueManagerWebConsoleConfigurationOptions model
+				getQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerWebConsoleConfigurationOptions)
+				getQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.GetQueueManagerWebConsoleConfigurationWithContext(ctx, getQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.GetQueueManagerWebConsoleConfiguration(getQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.GetQueueManagerWebConsoleConfigurationWithContext(ctx, getQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "c4d6f6defcfd4859aefdbd9f3f945ca0", "web_console": {"certificate": "provider_managed"}}`)
+				}))
+			})
+			It(`Invoke GetQueueManagerWebConsoleConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.GetQueueManagerWebConsoleConfiguration(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetQueueManagerWebConsoleConfigurationOptions model
+				getQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerWebConsoleConfigurationOptions)
+				getQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.GetQueueManagerWebConsoleConfiguration(getQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetQueueManagerWebConsoleConfiguration with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetQueueManagerWebConsoleConfigurationOptions model
+				getQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerWebConsoleConfigurationOptions)
+				getQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.GetQueueManagerWebConsoleConfiguration(getQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetQueueManagerWebConsoleConfigurationOptions model with no property values
+				getQueueManagerWebConsoleConfigurationOptionsModelNew := new(mqcloudv1.GetQueueManagerWebConsoleConfigurationOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.GetQueueManagerWebConsoleConfiguration(getQueueManagerWebConsoleConfigurationOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetQueueManagerWebConsoleConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetQueueManagerWebConsoleConfigurationOptions model
+				getQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerWebConsoleConfigurationOptions)
+				getQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.GetQueueManagerWebConsoleConfiguration(getQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ReplaceQueueManagerWebConsoleConfiguration(replaceQueueManagerWebConsoleConfigurationOptions *ReplaceQueueManagerWebConsoleConfigurationOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		replaceQueueManagerWebConsoleConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(replaceQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("PUT"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ReplaceQueueManagerWebConsoleConfiguration with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerWebConsoleConfigurationOptions model
+				replaceQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerWebConsoleConfigurationOptions)
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerWebConsoleConfiguration(replaceQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.ReplaceQueueManagerWebConsoleConfiguration(replaceQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ReplaceQueueManagerWebConsoleConfiguration(replaceQueueManagerWebConsoleConfigurationOptions *ReplaceQueueManagerWebConsoleConfigurationOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		replaceQueueManagerWebConsoleConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(replaceQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke ReplaceQueueManagerWebConsoleConfiguration successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerWebConsoleConfigurationOptions model
+				replaceQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerWebConsoleConfigurationOptions)
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.ReplaceQueueManagerWebConsoleConfigurationWithContext(ctx, replaceQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerWebConsoleConfiguration(replaceQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.ReplaceQueueManagerWebConsoleConfigurationWithContext(ctx, replaceQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(replaceQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke ReplaceQueueManagerWebConsoleConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerWebConsoleConfiguration(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerWebConsoleConfigurationOptions model
+				replaceQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerWebConsoleConfigurationOptions)
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.ReplaceQueueManagerWebConsoleConfiguration(replaceQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ReplaceQueueManagerWebConsoleConfiguration with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerWebConsoleConfigurationOptions model
+				replaceQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerWebConsoleConfigurationOptions)
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerWebConsoleConfiguration(replaceQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the ReplaceQueueManagerWebConsoleConfigurationOptions model with no property values
+				replaceQueueManagerWebConsoleConfigurationOptionsModelNew := new(mqcloudv1.ReplaceQueueManagerWebConsoleConfigurationOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.ReplaceQueueManagerWebConsoleConfiguration(replaceQueueManagerWebConsoleConfigurationOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(202)
+				}))
+			})
+			It(`Invoke ReplaceQueueManagerWebConsoleConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerWebConsoleConfigurationOptions model
+				replaceQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerWebConsoleConfigurationOptions)
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.WebConsole = webConsoleSettingsModel
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerWebConsoleConfiguration(replaceQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteQueueManagerWebConsoleConfiguration(deleteQueueManagerWebConsoleConfigurationOptions *DeleteQueueManagerWebConsoleConfigurationOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		deleteQueueManagerWebConsoleConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("DELETE"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke DeleteQueueManagerWebConsoleConfiguration with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteQueueManagerWebConsoleConfigurationOptions model
+				deleteQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerWebConsoleConfigurationOptions)
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.DeleteQueueManagerWebConsoleConfiguration(deleteQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.DeleteQueueManagerWebConsoleConfiguration(deleteQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteQueueManagerWebConsoleConfiguration(deleteQueueManagerWebConsoleConfigurationOptions *DeleteQueueManagerWebConsoleConfigurationOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		deleteQueueManagerWebConsoleConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke DeleteQueueManagerWebConsoleConfiguration successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the DeleteQueueManagerWebConsoleConfigurationOptions model
+				deleteQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerWebConsoleConfigurationOptions)
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.DeleteQueueManagerWebConsoleConfigurationWithContext(ctx, deleteQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.DeleteQueueManagerWebConsoleConfiguration(deleteQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.DeleteQueueManagerWebConsoleConfigurationWithContext(ctx, deleteQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteQueueManagerWebConsoleConfigurationPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke DeleteQueueManagerWebConsoleConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.DeleteQueueManagerWebConsoleConfiguration(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the DeleteQueueManagerWebConsoleConfigurationOptions model
+				deleteQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerWebConsoleConfigurationOptions)
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.DeleteQueueManagerWebConsoleConfiguration(deleteQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke DeleteQueueManagerWebConsoleConfiguration with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteQueueManagerWebConsoleConfigurationOptions model
+				deleteQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerWebConsoleConfigurationOptions)
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.DeleteQueueManagerWebConsoleConfiguration(deleteQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the DeleteQueueManagerWebConsoleConfigurationOptions model with no property values
+				deleteQueueManagerWebConsoleConfigurationOptionsModelNew := new(mqcloudv1.DeleteQueueManagerWebConsoleConfigurationOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.DeleteQueueManagerWebConsoleConfiguration(deleteQueueManagerWebConsoleConfigurationOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(202)
+				}))
+			})
+			It(`Invoke DeleteQueueManagerWebConsoleConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteQueueManagerWebConsoleConfigurationOptions model
+				deleteQueueManagerWebConsoleConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerWebConsoleConfigurationOptions)
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.DeleteQueueManagerWebConsoleConfiguration(deleteQueueManagerWebConsoleConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateQueueManagerConfiguration(createQueueManagerConfigurationOptions *CreateQueueManagerConfigurationOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		createQueueManagerConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("POST"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke CreateQueueManagerConfiguration with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerConfigurationOptions model
+				createQueueManagerConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerConfigurationOptions)
+				createQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				createQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.CreateQueueManagerConfiguration(createQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.CreateQueueManagerConfiguration(createQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`CreateQueueManagerConfiguration(createQueueManagerConfigurationOptions *CreateQueueManagerConfigurationOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		createQueueManagerConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke CreateQueueManagerConfiguration successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerConfigurationOptions model
+				createQueueManagerConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerConfigurationOptions)
+				createQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				createQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.CreateQueueManagerConfigurationWithContext(ctx, createQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.CreateQueueManagerConfiguration(createQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.CreateQueueManagerConfigurationWithContext(ctx, createQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(createQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("POST"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke CreateQueueManagerConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.CreateQueueManagerConfiguration(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerConfigurationOptions model
+				createQueueManagerConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerConfigurationOptions)
+				createQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				createQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.CreateQueueManagerConfiguration(createQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke CreateQueueManagerConfiguration with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerConfigurationOptions model
+				createQueueManagerConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerConfigurationOptions)
+				createQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				createQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.CreateQueueManagerConfiguration(createQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the CreateQueueManagerConfigurationOptions model with no property values
+				createQueueManagerConfigurationOptionsModelNew := new(mqcloudv1.CreateQueueManagerConfigurationOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.CreateQueueManagerConfiguration(createQueueManagerConfigurationOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(202)
+				}))
+			})
+			It(`Invoke CreateQueueManagerConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the CreateQueueManagerConfigurationOptions model
+				createQueueManagerConfigurationOptionsModel := new(mqcloudv1.CreateQueueManagerConfigurationOptions)
+				createQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				createQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.CreateQueueManagerConfiguration(createQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListQueueManagerConfigurations(listQueueManagerConfigurationsOptions *ListQueueManagerConfigurationsOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		listQueueManagerConfigurationsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listQueueManagerConfigurationsPath))
+					Expect(req.Method).To(Equal("GET"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
+					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ListQueueManagerConfigurations with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListQueueManagerConfigurationsOptions model
+				listQueueManagerConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerConfigurationsOptions)
+				listQueueManagerConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.ListQueueManagerConfigurations(listQueueManagerConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.ListQueueManagerConfigurations(listQueueManagerConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ListQueueManagerConfigurations(listQueueManagerConfigurationsOptions *ListQueueManagerConfigurationsOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		listQueueManagerConfigurationsPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listQueueManagerConfigurationsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
+					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "queue_manager_configurations": [{"id": "c4d6f6defcfd4859aefdbd9f3f945ca0", "queue_manager": {"certificate": "provider_managed"}}]}`)
+				}))
+			})
+			It(`Invoke ListQueueManagerConfigurations successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the ListQueueManagerConfigurationsOptions model
+				listQueueManagerConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerConfigurationsOptions)
+				listQueueManagerConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.ListQueueManagerConfigurationsWithContext(ctx, listQueueManagerConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.ListQueueManagerConfigurations(listQueueManagerConfigurationsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.ListQueueManagerConfigurationsWithContext(ctx, listQueueManagerConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listQueueManagerConfigurationsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					Expect(req.URL.Query()["offset"]).To(Equal([]string{fmt.Sprint(int64(0))}))
+					Expect(req.URL.Query()["limit"]).To(Equal([]string{fmt.Sprint(int64(10))}))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"offset": 0, "limit": 1, "first": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "next": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=25&limit=25"}, "previous": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers?offset=0&limit=25"}, "queue_manager_configurations": [{"id": "c4d6f6defcfd4859aefdbd9f3f945ca0", "queue_manager": {"certificate": "provider_managed"}}]}`)
+				}))
+			})
+			It(`Invoke ListQueueManagerConfigurations successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.ListQueueManagerConfigurations(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the ListQueueManagerConfigurationsOptions model
+				listQueueManagerConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerConfigurationsOptions)
+				listQueueManagerConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.ListQueueManagerConfigurations(listQueueManagerConfigurationsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ListQueueManagerConfigurations with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListQueueManagerConfigurationsOptions model
+				listQueueManagerConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerConfigurationsOptions)
+				listQueueManagerConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.ListQueueManagerConfigurations(listQueueManagerConfigurationsOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the ListQueueManagerConfigurationsOptions model with no property values
+				listQueueManagerConfigurationsOptionsModelNew := new(mqcloudv1.ListQueueManagerConfigurationsOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.ListQueueManagerConfigurations(listQueueManagerConfigurationsOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke ListQueueManagerConfigurations successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the ListQueueManagerConfigurationsOptions model
+				listQueueManagerConfigurationsOptionsModel := new(mqcloudv1.ListQueueManagerConfigurationsOptions)
+				listQueueManagerConfigurationsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerConfigurationsOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerConfigurationsOptionsModel.Offset = core.Int64Ptr(int64(0))
+				listQueueManagerConfigurationsOptionsModel.Limit = core.Int64Ptr(int64(10))
+				listQueueManagerConfigurationsOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.ListQueueManagerConfigurations(listQueueManagerConfigurationsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Test pagination helper method on response`, func() {
+			It(`Invoke GetNextOffset successfully`, func() {
+				responseObject := new(mqcloudv1.QueueManagerConfigurationCollection)
+				nextObject := new(mqcloudv1.Next)
+				nextObject.Href = core.StringPtr("ibm.com?offset=135")
+				responseObject.Next = nextObject
+
+				value, err := responseObject.GetNextOffset()
+				Expect(err).To(BeNil())
+				Expect(value).To(Equal(core.Int64Ptr(int64(135))))
+			})
+			It(`Invoke GetNextOffset without a "Next" property in the response`, func() {
+				responseObject := new(mqcloudv1.QueueManagerConfigurationCollection)
+
+				value, err := responseObject.GetNextOffset()
+				Expect(err).To(BeNil())
+				Expect(value).To(BeNil())
+			})
+			It(`Invoke GetNextOffset without any query params in the "Next" URL`, func() {
+				responseObject := new(mqcloudv1.QueueManagerConfigurationCollection)
+				nextObject := new(mqcloudv1.Next)
+				nextObject.Href = core.StringPtr("ibm.com")
+				responseObject.Next = nextObject
+
+				value, err := responseObject.GetNextOffset()
+				Expect(err).To(BeNil())
+				Expect(value).To(BeNil())
+			})
+			It(`Invoke GetNextOffset with a non-integer query param in the "Next" URL`, func() {
+				responseObject := new(mqcloudv1.QueueManagerConfigurationCollection)
+				nextObject := new(mqcloudv1.Next)
+				nextObject.Href = core.StringPtr("ibm.com?offset=tiger")
+				responseObject.Next = nextObject
+
+				value, err := responseObject.GetNextOffset()
+				Expect(err).NotTo(BeNil())
+				Expect(value).To(BeNil())
+			})
+		})
+		Context(`Using mock server endpoint - paginated response`, func() {
+			BeforeEach(func() {
+				requestNumber := 0
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(listQueueManagerConfigurationsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					requestNumber++
+					switch requestNumber {
+					case 1:
+						_, _ = fmt.Fprintf(res, "%s", `{"next":{"href":"https://myhost.com/somePath?offset=1"},"queue_manager_configurations":[{"id":"c4d6f6defcfd4859aefdbd9f3f945ca0","queue_manager":{"certificate":"provider_managed"}}],"total_count":2,"limit":1}`)
+					case 2:
+						_, _ = fmt.Fprintf(res, "%s", `{"queue_manager_configurations":[{"id":"c4d6f6defcfd4859aefdbd9f3f945ca0","queue_manager":{"certificate":"provider_managed"}}],"total_count":2,"limit":1}`)
+					default:
+						res.WriteHeader(400)
+					}
+				}))
+			})
+			It(`Use QueueManagerConfigurationsPager.GetNext successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				listQueueManagerConfigurationsOptionsModel := &mqcloudv1.ListQueueManagerConfigurationsOptions{
+					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
+					QueueManagerID:      core.StringPtr("b8e1aeda078009cf3db74e90d5d42328"),
+					Limit:               core.Int64Ptr(int64(10)),
+				}
+
+				pager, err := mqcloudService.NewQueueManagerConfigurationsPager(listQueueManagerConfigurationsOptionsModel)
+				Expect(err).To(BeNil())
+				Expect(pager).ToNot(BeNil())
+
+				var allResults []mqcloudv1.QueueManagerConfiguration
+				for pager.HasNext() {
+					nextPage, err := pager.GetNext()
+					Expect(err).To(BeNil())
+					Expect(nextPage).ToNot(BeNil())
+					allResults = append(allResults, nextPage...)
+				}
+				Expect(len(allResults)).To(Equal(2))
+			})
+			It(`Use QueueManagerConfigurationsPager.GetAll successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				listQueueManagerConfigurationsOptionsModel := &mqcloudv1.ListQueueManagerConfigurationsOptions{
+					ServiceInstanceGuid: core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"),
+					QueueManagerID:      core.StringPtr("b8e1aeda078009cf3db74e90d5d42328"),
+					Limit:               core.Int64Ptr(int64(10)),
+				}
+
+				pager, err := mqcloudService.NewQueueManagerConfigurationsPager(listQueueManagerConfigurationsOptionsModel)
+				Expect(err).To(BeNil())
+				Expect(pager).ToNot(BeNil())
+
+				allResults, err := pager.GetAll()
+				Expect(err).To(BeNil())
+				Expect(allResults).ToNot(BeNil())
+				Expect(len(allResults)).To(Equal(2))
+			})
+		})
+	})
+	Describe(`GetQueueManagerConfiguration(getQueueManagerConfigurationOptions *GetQueueManagerConfigurationOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getQueueManagerConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("GET"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke GetQueueManagerConfiguration with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetQueueManagerConfigurationOptions model
+				getQueueManagerConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerConfigurationOptions)
+				getQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.GetQueueManagerConfiguration(getQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.GetQueueManagerConfiguration(getQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`GetQueueManagerConfiguration(getQueueManagerConfigurationOptions *GetQueueManagerConfigurationOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		getQueueManagerConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "c4d6f6defcfd4859aefdbd9f3f945ca0", "queue_manager": {"certificate": "provider_managed"}}`)
+				}))
+			})
+			It(`Invoke GetQueueManagerConfiguration successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the GetQueueManagerConfigurationOptions model
+				getQueueManagerConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerConfigurationOptions)
+				getQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.GetQueueManagerConfigurationWithContext(ctx, getQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.GetQueueManagerConfiguration(getQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.GetQueueManagerConfigurationWithContext(ctx, getQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(getQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "c4d6f6defcfd4859aefdbd9f3f945ca0", "queue_manager": {"certificate": "provider_managed"}}`)
+				}))
+			})
+			It(`Invoke GetQueueManagerConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.GetQueueManagerConfiguration(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the GetQueueManagerConfigurationOptions model
+				getQueueManagerConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerConfigurationOptions)
+				getQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.GetQueueManagerConfiguration(getQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke GetQueueManagerConfiguration with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetQueueManagerConfigurationOptions model
+				getQueueManagerConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerConfigurationOptions)
+				getQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.GetQueueManagerConfiguration(getQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the GetQueueManagerConfigurationOptions model with no property values
+				getQueueManagerConfigurationOptionsModelNew := new(mqcloudv1.GetQueueManagerConfigurationOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.GetQueueManagerConfiguration(getQueueManagerConfigurationOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(200)
+				}))
+			})
+			It(`Invoke GetQueueManagerConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the GetQueueManagerConfigurationOptions model
+				getQueueManagerConfigurationOptionsModel := new(mqcloudv1.GetQueueManagerConfigurationOptions)
+				getQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.GetQueueManagerConfiguration(getQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ReplaceQueueManagerConfiguration(replaceQueueManagerConfigurationOptions *ReplaceQueueManagerConfigurationOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		replaceQueueManagerConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(replaceQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("PUT"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke ReplaceQueueManagerConfiguration with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerConfigurationOptions model
+				replaceQueueManagerConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerConfigurationOptions)
+				replaceQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				replaceQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerConfiguration(replaceQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.ReplaceQueueManagerConfiguration(replaceQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`ReplaceQueueManagerConfiguration(replaceQueueManagerConfigurationOptions *ReplaceQueueManagerConfigurationOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		replaceQueueManagerConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(replaceQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke ReplaceQueueManagerConfiguration successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerConfigurationOptions model
+				replaceQueueManagerConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerConfigurationOptions)
+				replaceQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				replaceQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.ReplaceQueueManagerConfigurationWithContext(ctx, replaceQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerConfiguration(replaceQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.ReplaceQueueManagerConfigurationWithContext(ctx, replaceQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(replaceQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("PUT"))
+
+					// For gzip-disabled operation, verify Content-Encoding is not set.
+					Expect(req.Header.Get("Content-Encoding")).To(BeEmpty())
+
+					// If there is a body, then make sure we can read it
+					bodyBuf := new(bytes.Buffer)
+					if req.Header.Get("Content-Encoding") == "gzip" {
+						body, err := core.NewGzipDecompressionReader(req.Body)
+						Expect(err).To(BeNil())
+						_, err = bodyBuf.ReadFrom(body)
+						Expect(err).To(BeNil())
+					} else {
+						_, err := bodyBuf.ReadFrom(req.Body)
+						Expect(err).To(BeNil())
+					}
+					_, _ = fmt.Fprintf(GinkgoWriter, "  Request body: %s", bodyBuf.String())
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke ReplaceQueueManagerConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerConfiguration(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerConfigurationOptions model
+				replaceQueueManagerConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerConfigurationOptions)
+				replaceQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				replaceQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.ReplaceQueueManagerConfiguration(replaceQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke ReplaceQueueManagerConfiguration with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerConfigurationOptions model
+				replaceQueueManagerConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerConfigurationOptions)
+				replaceQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				replaceQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerConfiguration(replaceQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the ReplaceQueueManagerConfigurationOptions model with no property values
+				replaceQueueManagerConfigurationOptionsModelNew := new(mqcloudv1.ReplaceQueueManagerConfigurationOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.ReplaceQueueManagerConfiguration(replaceQueueManagerConfigurationOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(202)
+				}))
+			})
+			It(`Invoke ReplaceQueueManagerConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+
+				// Construct an instance of the ReplaceQueueManagerConfigurationOptions model
+				replaceQueueManagerConfigurationOptionsModel := new(mqcloudv1.ReplaceQueueManagerConfigurationOptions)
+				replaceQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerConfigurationOptionsModel.QueueManager = queueManagerSettingsModel
+				replaceQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.ReplaceQueueManagerConfiguration(replaceQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteQueueManagerConfiguration(deleteQueueManagerConfigurationOptions *DeleteQueueManagerConfigurationOptions) - Operation response error`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		deleteQueueManagerConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with invalid JSON response`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("DELETE"))
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprint(res, `} this is not valid json {`)
+				}))
+			})
+			It(`Invoke DeleteQueueManagerConfiguration with error: Operation response processing error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteQueueManagerConfigurationOptions model
+				deleteQueueManagerConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerConfigurationOptions)
+				deleteQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Expect response parsing to fail since we are receiving a text/plain response
+				result, response, operationErr := mqcloudService.DeleteQueueManagerConfiguration(deleteQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+
+				// Enable retries and test again
+				mqcloudService.EnableRetries(0, 0)
+				result, response, operationErr = mqcloudService.DeleteQueueManagerConfiguration(deleteQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
+	Describe(`DeleteQueueManagerConfiguration(deleteQueueManagerConfigurationOptions *DeleteQueueManagerConfigurationOptions)`, func() {
+		acceptLanguage := "en-US,en;q=0.5"
+		deleteQueueManagerConfigurationPath := "/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b8e1aeda078009cf3db74e90d5d42328/configurations/c4d6f6defcfd4859aefdbd9f3f945ca0"
+		Context(`Using mock server endpoint with timeout`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Sleep a short time to support a timeout test
+					time.Sleep(100 * time.Millisecond)
+
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke DeleteQueueManagerConfiguration successfully with retries`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+				mqcloudService.EnableRetries(0, 0)
+
+				// Construct an instance of the DeleteQueueManagerConfigurationOptions model
+				deleteQueueManagerConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerConfigurationOptions)
+				deleteQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with a Context to test a timeout error
+				ctx, cancelFunc := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc()
+				_, _, operationErr := mqcloudService.DeleteQueueManagerConfigurationWithContext(ctx, deleteQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+
+				// Disable retries and test again
+				mqcloudService.DisableRetries()
+				result, response, operationErr := mqcloudService.DeleteQueueManagerConfiguration(deleteQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Re-test the timeout error with retries disabled
+				ctx, cancelFunc2 := context.WithTimeout(context.Background(), 80*time.Millisecond)
+				defer cancelFunc2()
+				_, _, operationErr = mqcloudService.DeleteQueueManagerConfigurationWithContext(ctx, deleteQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring("deadline exceeded"))
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Verify the contents of the request
+					Expect(req.URL.EscapedPath()).To(Equal(deleteQueueManagerConfigurationPath))
+					Expect(req.Method).To(Equal("DELETE"))
+
+					Expect(req.Header["Accept-Language"]).ToNot(BeNil())
+					Expect(req.Header["Accept-Language"][0]).To(Equal(fmt.Sprintf("%v", "en-US,en;q=0.5")))
+					// Set mock response
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(202)
+					_, _ = fmt.Fprintf(res, "%s", `{"id": "b3c5e5cdebec4748adfdac8e2f834be9", "href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/operations/b3c5e5cdebec4748adfdac8e2f834be9", "status": "in_progress", "action": "update", "resource": {"href": "https://api.private.eu-de.mq2.cloud.ibm.com/v1/a2b4d4bc-dadb-4637-bcec-9b7d1e723af8/queue_managers/b3c5e5cdebec4748adfdac8e2f834be9/web_console_configurations/c4d6f6defcfd4859aefdbd9f3f945ca0", "id": "b3c5e5cdebec4748adfdac8e2f834be9"}, "errors": [{"code": "OPERATION_FAILED", "message": "The operation failed."}]}`)
+				}))
+			})
+			It(`Invoke DeleteQueueManagerConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Invoke operation with nil options model (negative test)
+				result, response, operationErr := mqcloudService.DeleteQueueManagerConfiguration(nil)
+				Expect(operationErr).NotTo(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+
+				// Construct an instance of the DeleteQueueManagerConfigurationOptions model
+				deleteQueueManagerConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerConfigurationOptions)
+				deleteQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation with valid options model (positive test)
+				result, response, operationErr = mqcloudService.DeleteQueueManagerConfiguration(deleteQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+			})
+			It(`Invoke DeleteQueueManagerConfiguration with error: Operation validation and request error`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteQueueManagerConfigurationOptions model
+				deleteQueueManagerConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerConfigurationOptions)
+				deleteQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+				// Invoke operation with empty URL (negative test)
+				err := mqcloudService.SetServiceURL("")
+				Expect(err).To(BeNil())
+				result, response, operationErr := mqcloudService.DeleteQueueManagerConfiguration(deleteQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(operationErr.Error()).To(ContainSubstring(core.ERRORMSG_SERVICE_URL_MISSING))
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+				// Construct a second instance of the DeleteQueueManagerConfigurationOptions model with no property values
+				deleteQueueManagerConfigurationOptionsModelNew := new(mqcloudv1.DeleteQueueManagerConfigurationOptions)
+				// Invoke operation with invalid model (negative test)
+				result, response, operationErr = mqcloudService.DeleteQueueManagerConfiguration(deleteQueueManagerConfigurationOptionsModelNew)
+				Expect(operationErr).ToNot(BeNil())
+				Expect(response).To(BeNil())
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+		Context(`Using mock server endpoint with missing response body`, func() {
+			BeforeEach(func() {
+				testServer = httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					// Set success status code with no respoonse body
+					res.WriteHeader(202)
+				}))
+			})
+			It(`Invoke DeleteQueueManagerConfiguration successfully`, func() {
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            testServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				// Construct an instance of the DeleteQueueManagerConfigurationOptions model
+				deleteQueueManagerConfigurationOptionsModel := new(mqcloudv1.DeleteQueueManagerConfigurationOptions)
+				deleteQueueManagerConfigurationOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerConfigurationOptionsModel.QueueManagerID = core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerConfigurationOptionsModel.ConfigurationID = core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerConfigurationOptionsModel.Headers = map[string]string{"x-custom-header": "x-custom-value"}
+
+				// Invoke operation
+				result, response, operationErr := mqcloudService.DeleteQueueManagerConfiguration(deleteQueueManagerConfigurationOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+
+				// Verify a nil result
+				Expect(result).To(BeNil())
+			})
+			AfterEach(func() {
+				testServer.Close()
+			})
+		})
+	})
 	Describe(`Model constructor tests`, func() {
 		Context(`Using a service client instance`, func() {
 			acceptLanguage := "en-US,en;q=0.5"
@@ -8812,6 +11862,27 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(createKeyStorePemCertificateOptionsModel.CertificateFile).To(Equal(CreateMockReader("This is a mock file.")))
 				Expect(createKeyStorePemCertificateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewCreateQueueManagerConfigurationOptions successfully`, func() {
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				Expect(queueManagerSettingsModel).ToNot(BeNil())
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+				Expect(queueManagerSettingsModel.Certificate).To(Equal(core.StringPtr("provider_managed")))
+
+				// Construct an instance of the CreateQueueManagerConfigurationOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				createQueueManagerConfigurationOptionsModel := mqcloudService.NewCreateQueueManagerConfigurationOptions(serviceInstanceGuid, queueManagerID)
+				createQueueManagerConfigurationOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerConfigurationOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerConfigurationOptionsModel.SetQueueManager(queueManagerSettingsModel)
+				createQueueManagerConfigurationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createQueueManagerConfigurationOptionsModel).ToNot(BeNil())
+				Expect(createQueueManagerConfigurationOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(createQueueManagerConfigurationOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(createQueueManagerConfigurationOptionsModel.QueueManager).To(Equal(queueManagerSettingsModel))
+				Expect(createQueueManagerConfigurationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewCreateQueueManagerOptions successfully`, func() {
 				// Construct an instance of the CreateQueueManagerOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
@@ -8834,6 +11905,27 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(createQueueManagerOptionsModel.DisplayName).To(Equal(core.StringPtr("A test queue manager")))
 				Expect(createQueueManagerOptionsModel.Version).To(Equal(core.StringPtr("9.3.2_2")))
 				Expect(createQueueManagerOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewCreateQueueManagerWebConsoleConfigurationOptions successfully`, func() {
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				Expect(webConsoleSettingsModel).ToNot(BeNil())
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+				Expect(webConsoleSettingsModel.Certificate).To(Equal(core.StringPtr("provider_managed")))
+
+				// Construct an instance of the CreateQueueManagerWebConsoleConfigurationOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				createQueueManagerWebConsoleConfigurationOptionsModel := mqcloudService.NewCreateQueueManagerWebConsoleConfigurationOptions(serviceInstanceGuid, queueManagerID)
+				createQueueManagerWebConsoleConfigurationOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				createQueueManagerWebConsoleConfigurationOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				createQueueManagerWebConsoleConfigurationOptionsModel.SetWebConsole(webConsoleSettingsModel)
+				createQueueManagerWebConsoleConfigurationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(createQueueManagerWebConsoleConfigurationOptionsModel).ToNot(BeNil())
+				Expect(createQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(createQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(createQueueManagerWebConsoleConfigurationOptionsModel.WebConsole).To(Equal(webConsoleSettingsModel))
+				Expect(createQueueManagerWebConsoleConfigurationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewCreateTrustStorePemCertificateOptions successfully`, func() {
 				// Construct an instance of the CreateTrustStorePemCertificateOptions model
@@ -8873,17 +11965,17 @@ var _ = Describe(`MqcloudV1`, func() {
 			It(`Invoke NewCreateVirtualPrivateEndpointGatewayOptions successfully`, func() {
 				// Construct an instance of the CreateVirtualPrivateEndpointGatewayOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
-				createVirtualPrivateEndpointGatewayOptionsName := "vpe_gateway1-to-vpe_gateway2"
+				createVirtualPrivateEndpointGatewayOptionsName := "vpe-gateway1-to-vpe-gateway2"
 				createVirtualPrivateEndpointGatewayOptionsTargetCrn := "crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud"
 				createVirtualPrivateEndpointGatewayOptionsModel := mqcloudService.NewCreateVirtualPrivateEndpointGatewayOptions(serviceInstanceGuid, createVirtualPrivateEndpointGatewayOptionsName, createVirtualPrivateEndpointGatewayOptionsTargetCrn)
 				createVirtualPrivateEndpointGatewayOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
-				createVirtualPrivateEndpointGatewayOptionsModel.SetName("vpe_gateway1-to-vpe_gateway2")
+				createVirtualPrivateEndpointGatewayOptionsModel.SetName("vpe-gateway1-to-vpe-gateway2")
 				createVirtualPrivateEndpointGatewayOptionsModel.SetTargetCrn("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")
 				createVirtualPrivateEndpointGatewayOptionsModel.SetTrustedProfile("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")
 				createVirtualPrivateEndpointGatewayOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
 				Expect(createVirtualPrivateEndpointGatewayOptionsModel).ToNot(BeNil())
 				Expect(createVirtualPrivateEndpointGatewayOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
-				Expect(createVirtualPrivateEndpointGatewayOptionsModel.Name).To(Equal(core.StringPtr("vpe_gateway1-to-vpe_gateway2")))
+				Expect(createVirtualPrivateEndpointGatewayOptionsModel.Name).To(Equal(core.StringPtr("vpe-gateway1-to-vpe-gateway2")))
 				Expect(createVirtualPrivateEndpointGatewayOptionsModel.TargetCrn).To(Equal(core.StringPtr("crn:v1:bluemix:public:mqcloud:eu-de:::endpoint:qm1.private.eu-de.mq2.test.appdomain.cloud")))
 				Expect(createVirtualPrivateEndpointGatewayOptionsModel.TrustedProfile).To(Equal(core.StringPtr("crn:v1:bluemix:public:iam-identity::a/5d5ff2a9001c4055ab1408e9bf185f48::profile:Profile-1c0a8609-ca25-4ad2-a09b-aea472d34afc")))
 				Expect(createVirtualPrivateEndpointGatewayOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
@@ -8917,6 +12009,22 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(deleteKeyStoreCertificateOptionsModel.CertificateID).To(Equal(core.StringPtr("9b7d1e723af8233")))
 				Expect(deleteKeyStoreCertificateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewDeleteQueueManagerConfigurationOptions successfully`, func() {
+				// Construct an instance of the DeleteQueueManagerConfigurationOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				configurationID := "c4d6f6defcfd4859aefdbd9f3f945ca0"
+				deleteQueueManagerConfigurationOptionsModel := mqcloudService.NewDeleteQueueManagerConfigurationOptions(serviceInstanceGuid, queueManagerID, configurationID)
+				deleteQueueManagerConfigurationOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerConfigurationOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerConfigurationOptionsModel.SetConfigurationID("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerConfigurationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(deleteQueueManagerConfigurationOptionsModel).ToNot(BeNil())
+				Expect(deleteQueueManagerConfigurationOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(deleteQueueManagerConfigurationOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(deleteQueueManagerConfigurationOptionsModel.ConfigurationID).To(Equal(core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")))
+				Expect(deleteQueueManagerConfigurationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewDeleteQueueManagerOptions successfully`, func() {
 				// Construct an instance of the DeleteQueueManagerOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
@@ -8929,6 +12037,22 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(deleteQueueManagerOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(deleteQueueManagerOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
 				Expect(deleteQueueManagerOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewDeleteQueueManagerWebConsoleConfigurationOptions successfully`, func() {
+				// Construct an instance of the DeleteQueueManagerWebConsoleConfigurationOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				configurationID := "c4d6f6defcfd4859aefdbd9f3f945ca0"
+				deleteQueueManagerWebConsoleConfigurationOptionsModel := mqcloudService.NewDeleteQueueManagerWebConsoleConfigurationOptions(serviceInstanceGuid, queueManagerID, configurationID)
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.SetConfigurationID("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				deleteQueueManagerWebConsoleConfigurationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(deleteQueueManagerWebConsoleConfigurationOptionsModel).ToNot(BeNil())
+				Expect(deleteQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(deleteQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(deleteQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID).To(Equal(core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")))
+				Expect(deleteQueueManagerWebConsoleConfigurationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewDeleteTrustStoreCertificateOptions successfully`, func() {
 				// Construct an instance of the DeleteTrustStoreCertificateOptions model
@@ -9051,6 +12175,19 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(getKeyStoreCertificateOptionsModel.CertificateID).To(Equal(core.StringPtr("9b7d1e723af8233")))
 				Expect(getKeyStoreCertificateOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewGetOperationOptions successfully`, func() {
+				// Construct an instance of the GetOperationOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				operationID := "b3c5e5cdebec4748adfdac8e2f834be9"
+				getOperationOptionsModel := mqcloudService.NewGetOperationOptions(serviceInstanceGuid, operationID)
+				getOperationOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getOperationOptionsModel.SetOperationID("b3c5e5cdebec4748adfdac8e2f834be9")
+				getOperationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getOperationOptionsModel).ToNot(BeNil())
+				Expect(getOperationOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(getOperationOptionsModel.OperationID).To(Equal(core.StringPtr("b3c5e5cdebec4748adfdac8e2f834be9")))
+				Expect(getOperationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewGetOptionsOptions successfully`, func() {
 				// Construct an instance of the GetOptionsOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
@@ -9073,6 +12210,22 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(getQueueManagerAvailableUpgradeVersionsOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(getQueueManagerAvailableUpgradeVersionsOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
 				Expect(getQueueManagerAvailableUpgradeVersionsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewGetQueueManagerConfigurationOptions successfully`, func() {
+				// Construct an instance of the GetQueueManagerConfigurationOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				configurationID := "c4d6f6defcfd4859aefdbd9f3f945ca0"
+				getQueueManagerConfigurationOptionsModel := mqcloudService.NewGetQueueManagerConfigurationOptions(serviceInstanceGuid, queueManagerID, configurationID)
+				getQueueManagerConfigurationOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerConfigurationOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerConfigurationOptionsModel.SetConfigurationID("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerConfigurationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getQueueManagerConfigurationOptionsModel).ToNot(BeNil())
+				Expect(getQueueManagerConfigurationOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(getQueueManagerConfigurationOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(getQueueManagerConfigurationOptionsModel.ConfigurationID).To(Equal(core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")))
+				Expect(getQueueManagerConfigurationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetQueueManagerConnectionInfoOptions successfully`, func() {
 				// Construct an instance of the GetQueueManagerConnectionInfoOptions model
@@ -9112,6 +12265,22 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(getQueueManagerStatusOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
 				Expect(getQueueManagerStatusOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
 				Expect(getQueueManagerStatusOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewGetQueueManagerWebConsoleConfigurationOptions successfully`, func() {
+				// Construct an instance of the GetQueueManagerWebConsoleConfigurationOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				configurationID := "c4d6f6defcfd4859aefdbd9f3f945ca0"
+				getQueueManagerWebConsoleConfigurationOptionsModel := mqcloudService.NewGetQueueManagerWebConsoleConfigurationOptions(serviceInstanceGuid, queueManagerID, configurationID)
+				getQueueManagerWebConsoleConfigurationOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				getQueueManagerWebConsoleConfigurationOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				getQueueManagerWebConsoleConfigurationOptionsModel.SetConfigurationID("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				getQueueManagerWebConsoleConfigurationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(getQueueManagerWebConsoleConfigurationOptionsModel).ToNot(BeNil())
+				Expect(getQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(getQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(getQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID).To(Equal(core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")))
+				Expect(getQueueManagerWebConsoleConfigurationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewGetTrustStoreCertificateOptions successfully`, func() {
 				// Construct an instance of the GetTrustStoreCertificateOptions model
@@ -9194,6 +12363,40 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(listKeyStoreCertificatesOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
 				Expect(listKeyStoreCertificatesOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
+			It(`Invoke NewListQueueManagerConfigurationsOptions successfully`, func() {
+				// Construct an instance of the ListQueueManagerConfigurationsOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				listQueueManagerConfigurationsOptionsModel := mqcloudService.NewListQueueManagerConfigurationsOptions(serviceInstanceGuid, queueManagerID)
+				listQueueManagerConfigurationsOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerConfigurationsOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerConfigurationsOptionsModel.SetOffset(int64(0))
+				listQueueManagerConfigurationsOptionsModel.SetLimit(int64(10))
+				listQueueManagerConfigurationsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(listQueueManagerConfigurationsOptionsModel).ToNot(BeNil())
+				Expect(listQueueManagerConfigurationsOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(listQueueManagerConfigurationsOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(listQueueManagerConfigurationsOptionsModel.Offset).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(listQueueManagerConfigurationsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
+				Expect(listQueueManagerConfigurationsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewListQueueManagerWebConsoleConfigurationsOptions successfully`, func() {
+				// Construct an instance of the ListQueueManagerWebConsoleConfigurationsOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				listQueueManagerWebConsoleConfigurationsOptionsModel := mqcloudService.NewListQueueManagerWebConsoleConfigurationsOptions(serviceInstanceGuid, queueManagerID)
+				listQueueManagerWebConsoleConfigurationsOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				listQueueManagerWebConsoleConfigurationsOptionsModel.SetOffset(int64(0))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.SetLimit(int64(10))
+				listQueueManagerWebConsoleConfigurationsOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(listQueueManagerWebConsoleConfigurationsOptionsModel).ToNot(BeNil())
+				Expect(listQueueManagerWebConsoleConfigurationsOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(listQueueManagerWebConsoleConfigurationsOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(listQueueManagerWebConsoleConfigurationsOptionsModel.Offset).To(Equal(core.Int64Ptr(int64(0))))
+				Expect(listQueueManagerWebConsoleConfigurationsOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
+				Expect(listQueueManagerWebConsoleConfigurationsOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
 			It(`Invoke NewListQueueManagersOptions successfully`, func() {
 				// Construct an instance of the ListQueueManagersOptions model
 				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
@@ -9250,6 +12453,54 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Start).To(Equal(core.StringPtr("r010-ebab3c08-c9a8-40c4-8869-61c09ddf7b44")))
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Limit).To(Equal(core.Int64Ptr(int64(10))))
 				Expect(listVirtualPrivateEndpointGatewaysOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewReplaceQueueManagerConfigurationOptions successfully`, func() {
+				// Construct an instance of the QueueManagerSettings model
+				queueManagerSettingsModel := new(mqcloudv1.QueueManagerSettings)
+				Expect(queueManagerSettingsModel).ToNot(BeNil())
+				queueManagerSettingsModel.Certificate = core.StringPtr("provider_managed")
+				Expect(queueManagerSettingsModel.Certificate).To(Equal(core.StringPtr("provider_managed")))
+
+				// Construct an instance of the ReplaceQueueManagerConfigurationOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				configurationID := "c4d6f6defcfd4859aefdbd9f3f945ca0"
+				replaceQueueManagerConfigurationOptionsModel := mqcloudService.NewReplaceQueueManagerConfigurationOptions(serviceInstanceGuid, queueManagerID, configurationID)
+				replaceQueueManagerConfigurationOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerConfigurationOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerConfigurationOptionsModel.SetConfigurationID("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerConfigurationOptionsModel.SetQueueManager(queueManagerSettingsModel)
+				replaceQueueManagerConfigurationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(replaceQueueManagerConfigurationOptionsModel).ToNot(BeNil())
+				Expect(replaceQueueManagerConfigurationOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(replaceQueueManagerConfigurationOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(replaceQueueManagerConfigurationOptionsModel.ConfigurationID).To(Equal(core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")))
+				Expect(replaceQueueManagerConfigurationOptionsModel.QueueManager).To(Equal(queueManagerSettingsModel))
+				Expect(replaceQueueManagerConfigurationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
+			})
+			It(`Invoke NewReplaceQueueManagerWebConsoleConfigurationOptions successfully`, func() {
+				// Construct an instance of the WebConsoleSettings model
+				webConsoleSettingsModel := new(mqcloudv1.WebConsoleSettings)
+				Expect(webConsoleSettingsModel).ToNot(BeNil())
+				webConsoleSettingsModel.Certificate = core.StringPtr("provider_managed")
+				Expect(webConsoleSettingsModel.Certificate).To(Equal(core.StringPtr("provider_managed")))
+
+				// Construct an instance of the ReplaceQueueManagerWebConsoleConfigurationOptions model
+				serviceInstanceGuid := "a2b4d4bc-dadb-4637-bcec-9b7d1e723af8"
+				queueManagerID := "b8e1aeda078009cf3db74e90d5d42328"
+				configurationID := "c4d6f6defcfd4859aefdbd9f3f945ca0"
+				replaceQueueManagerWebConsoleConfigurationOptionsModel := mqcloudService.NewReplaceQueueManagerWebConsoleConfigurationOptions(serviceInstanceGuid, queueManagerID, configurationID)
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.SetServiceInstanceGuid("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.SetQueueManagerID("b8e1aeda078009cf3db74e90d5d42328")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.SetConfigurationID("c4d6f6defcfd4859aefdbd9f3f945ca0")
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.SetWebConsole(webConsoleSettingsModel)
+				replaceQueueManagerWebConsoleConfigurationOptionsModel.SetHeaders(map[string]string{"foo": "bar"})
+				Expect(replaceQueueManagerWebConsoleConfigurationOptionsModel).ToNot(BeNil())
+				Expect(replaceQueueManagerWebConsoleConfigurationOptionsModel.ServiceInstanceGuid).To(Equal(core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")))
+				Expect(replaceQueueManagerWebConsoleConfigurationOptionsModel.QueueManagerID).To(Equal(core.StringPtr("b8e1aeda078009cf3db74e90d5d42328")))
+				Expect(replaceQueueManagerWebConsoleConfigurationOptionsModel.ConfigurationID).To(Equal(core.StringPtr("c4d6f6defcfd4859aefdbd9f3f945ca0")))
+				Expect(replaceQueueManagerWebConsoleConfigurationOptionsModel.WebConsole).To(Equal(webConsoleSettingsModel))
+				Expect(replaceQueueManagerWebConsoleConfigurationOptionsModel.Headers).To(Equal(map[string]string{"foo": "bar"}))
 			})
 			It(`Invoke NewSetApplicationNameOptions successfully`, func() {
 				// Construct an instance of the SetApplicationNameOptions model
@@ -9347,6 +12598,42 @@ var _ = Describe(`MqcloudV1`, func() {
 			Expect(result).ToNot(BeNil())
 			Expect(result).To(Equal(model))
 		})
+		It(`Invoke UnmarshalQueueManagerSettings successfully`, func() {
+			// Construct an instance of the model.
+			model := new(mqcloudv1.QueueManagerSettings)
+			model.Certificate = core.StringPtr("provider_managed")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *mqcloudv1.QueueManagerSettings
+			err = mqcloudv1.UnmarshalQueueManagerSettings(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
+		It(`Invoke UnmarshalWebConsoleSettings successfully`, func() {
+			// Construct an instance of the model.
+			model := new(mqcloudv1.WebConsoleSettings)
+			model.Certificate = core.StringPtr("provider_managed")
+
+			b, err := json.Marshal(model)
+			Expect(err).To(BeNil())
+
+			var raw map[string]json.RawMessage
+			err = json.Unmarshal(b, &raw)
+			Expect(err).To(BeNil())
+
+			var result *mqcloudv1.WebConsoleSettings
+			err = mqcloudv1.UnmarshalWebConsoleSettings(raw, &result)
+			Expect(err).To(BeNil())
+			Expect(result).ToNot(BeNil())
+			Expect(result).To(Equal(model))
+		})
 	})
 	Describe(`Utility function tests`, func() {
 		It(`Invoke CreateMockByteArray() successfully`, func() {
@@ -9411,12 +12698,12 @@ func CreateMockDateTime(mockData string) *strfmt.DateTime {
 
 func SetTestEnvironment(testEnvironment map[string]string) {
 	for key, value := range testEnvironment {
-		os.Setenv(key, value)
+		_ = os.Setenv(key, value)
 	}
 }
 
 func ClearTestEnvironment(testEnvironment map[string]string) {
 	for key := range testEnvironment {
-		os.Unsetenv(key)
+		_ = os.Unsetenv(key)
 	}
 }
