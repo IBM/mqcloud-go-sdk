@@ -5892,6 +5892,13 @@ type Usage struct {
 
 	// VPC usage.
 	VpcUsage *float32 `json:"vpc_usage,omitempty"`
+
+	// Current deployed capacity units for a Reserved Capacity service instance.
+	CapacityUnits *int64 `json:"capacity_units,omitempty"`
+
+	// Capacity lifecycle status of a Reserved Capacity service instance, for example `Available`, `Scaling_In_Progress`
+	// or `Scaling_Failed`.
+	CapacityStatus *string `json:"capacity_status,omitempty"`
 }
 
 // UnmarshalUsage unmarshals an instance of Usage from the specified map of raw messages.
@@ -5905,6 +5912,16 @@ func UnmarshalUsage(m map[string]json.RawMessage, result interface{}) (err error
 	err = core.UnmarshalPrimitive(m, "vpc_usage", &obj.VpcUsage)
 	if err != nil {
 		err = core.SDKErrorf(err, "", "vpc_usage-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "capacity_units", &obj.CapacityUnits)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "capacity_units-error", common.GetComponentInfo())
+		return
+	}
+	err = core.UnmarshalPrimitive(m, "capacity_status", &obj.CapacityStatus)
+	if err != nil {
+		err = core.SDKErrorf(err, "", "capacity_status-error", common.GetComponentInfo())
 		return
 	}
 	reflect.ValueOf(result).Elem().Set(reflect.ValueOf(obj))

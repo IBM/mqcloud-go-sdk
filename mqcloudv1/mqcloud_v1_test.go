@@ -247,7 +247,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"vpc_entitlement": 4.0, "vpc_usage": 3.3}`)
+					fmt.Fprintf(res, "%s", `{"vpc_entitlement": 4.0, "vpc_usage": 3.3, "capacity_units": 2, "capacity_status": "Available"}`)
 				}))
 			})
 			It(`Invoke GetUsageDetails successfully with retries`, func() {
@@ -304,7 +304,7 @@ var _ = Describe(`MqcloudV1`, func() {
 					// Set mock response
 					res.Header().Set("Content-type", "application/json")
 					res.WriteHeader(200)
-					fmt.Fprintf(res, "%s", `{"vpc_entitlement": 4.0, "vpc_usage": 3.3}`)
+					fmt.Fprintf(res, "%s", `{"vpc_entitlement": 4.0, "vpc_usage": 3.3, "capacity_units": 2, "capacity_status": "Available"}`)
 				}))
 			})
 			It(`Invoke GetUsageDetails successfully`, func() {
