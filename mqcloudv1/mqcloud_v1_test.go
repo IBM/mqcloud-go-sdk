@@ -333,6 +333,56 @@ var _ = Describe(`MqcloudV1`, func() {
 				Expect(response).ToNot(BeNil())
 				Expect(result).ToNot(BeNil())
 
+				// Verify the capacity fields are populated from the response
+				Expect(result.VpcEntitlement).ToNot(BeNil())
+				Expect(*result.VpcEntitlement).To(BeNumerically("~", 4.0, 0.001))
+				Expect(result.VpcUsage).ToNot(BeNil())
+				Expect(*result.VpcUsage).To(BeNumerically("~", 3.3, 0.001))
+				Expect(result.CapacityUnits).ToNot(BeNil())
+				Expect(*result.CapacityUnits).To(Equal(int64(2)))
+				Expect(result.CapacityStatus).ToNot(BeNil())
+				Expect(*result.CapacityStatus).To(Equal("Available"))
+			})
+			It(`Invoke GetUsageDetails against a response without capacity fields (non-RC instance)`, func() {
+				noCapacityServer := httptest.NewServer(http.HandlerFunc(func(res http.ResponseWriter, req *http.Request) {
+					defer GinkgoRecover()
+
+					Expect(req.URL.EscapedPath()).To(Equal(getUsageDetailsPath))
+					Expect(req.Method).To(Equal("GET"))
+
+					res.Header().Set("Content-type", "application/json")
+					res.WriteHeader(200)
+					fmt.Fprintf(res, "%s", `{"vpc_entitlement": 4.0, "vpc_usage": 3.3}`)
+				}))
+				defer noCapacityServer.Close()
+
+				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
+					URL:            noCapacityServer.URL,
+					Authenticator:  &core.NoAuthAuthenticator{},
+					AcceptLanguage: core.StringPtr(acceptLanguage),
+				})
+				Expect(serviceErr).To(BeNil())
+				Expect(mqcloudService).ToNot(BeNil())
+
+				getUsageDetailsOptionsModel := new(mqcloudv1.GetUsageDetailsOptions)
+				getUsageDetailsOptionsModel.ServiceInstanceGuid = core.StringPtr("a2b4d4bc-dadb-4637-bcec-9b7d1e723af8")
+
+				result, response, operationErr := mqcloudService.GetUsageDetails(getUsageDetailsOptionsModel)
+				Expect(operationErr).To(BeNil())
+				Expect(response).ToNot(BeNil())
+				Expect(result).ToNot(BeNil())
+
+				// Existing fields are still populated; the new fields are left nil
+				Expect(result.VpcEntitlement).ToNot(BeNil())
+				Expect(result.VpcUsage).ToNot(BeNil())
+				Expect(result.CapacityUnits).To(BeNil())
+				Expect(result.CapacityStatus).To(BeNil())
+
+				// omitempty: the new fields are not emitted when serialising
+				serialised, marshalErr := json.Marshal(result)
+				Expect(marshalErr).To(BeNil())
+				Expect(string(serialised)).ToNot(ContainSubstring("capacity_units"))
+				Expect(string(serialised)).ToNot(ContainSubstring("capacity_status"))
 			})
 			It(`Invoke GetUsageDetails with error: Operation validation and request error`, func() {
 				mqcloudService, serviceErr := mqcloudv1.NewMqcloudV1(&mqcloudv1.MqcloudV1Options{
