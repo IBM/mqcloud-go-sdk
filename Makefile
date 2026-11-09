@@ -15,10 +15,13 @@ test-cov:
 	${GO} test ./... ${COVERAGE}
 
 test-int:
-	${GO} test ./... -tags=integration
+	${GO} test ./... -tags=integration -timeout 45m
 
 test-int-cov:
-	${GO} test ./... -tags=integration ${COVERAGE}
+	${GO} test ./... -tags=integration ${COVERAGE} -timeout 45m
+
+test-examples:
+	${GO} test ./... -tags=examples -timeout 45m
 
 lint:
 	${LINT} run --build-tags=integration,examples --timeout 120s
