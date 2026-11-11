@@ -5896,8 +5896,8 @@ type Usage struct {
 	// Current deployed capacity units for a Reserved Capacity service instance.
 	CapacityUnits *int64 `json:"capacity_units,omitempty"`
 
-	// Capacity lifecycle status of a Reserved Capacity service instance, for example `Available`, `Scaling_In_Progress`
-	// or `Scaling_Failed`.
+	// Capacity lifecycle status of a Reserved Capacity service instance, for example `Available`, `Scaling_In_Progress` or
+	// `Scaling_Failed`.
 	CapacityStatus *string `json:"capacity_status,omitempty"`
 }
 
